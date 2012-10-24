@@ -1,0 +1,550 @@
+\chapter{Problems\ldots and solutions!}
+%--------------------------------------
+
+\lettrine[lines=2]{I}{n} this chapter we present problems encountered by users and when possible, the solution for solving it \footnote{If you encounter problems/bugs not presented in the following pages, please send a bug-report to one of the author with a description of the problem and a screen-capture if possible}. 
+
+\minitoc
+
+
+\section{FAQ}
+
+\subsection{Where can I get the latest \diva\,version?}
+%--------------------------------------------------
+
+The latest stable version if available at \url{http://modb.oce.ulg.ac.be/projects/1/diva} If you already have a version installed, it is sometimes possible to update it using the packages \texttt{diva-4.x.yto4.x2.y2.source.tar.gz}, where (x,y) denotes the version you have, and (x2,y2) the version to which you will update. 
+
+Another possibility is to check the page \url{http://modb.oce.ulg.ac.be/viewsvn/}, which contains the svn repository.
+
+\subsection{What value for parameter \texttt{ireg }should I choose for a semi-normed analysis}
+%----------------------------------------------------------------------------------------------
+
+
+The best option is to choose \texttt{ireg} = 0.
+
+
+In fact, \texttt{divaseminorm} performs four operations:
+\begin{enumerate}
+\item \texttt{divarefe} = computing a reference fields with large value for $L$ (your
+value multiplied by 5) and low signal-to-noise ration (your value divided
+by 10)
+
+\item \texttt{divaanom}: difference between your data and the reference fields at
+these data points
+
+\item \texttt{divacalc}: performs a diva analysis with the parameters you put in
+param.par, on the data anomaly. This is why you should choose ireg=0: you
+are working with anomalies, thus no need to subtract any background field.
+
+\item \texttt{divasumup}: reconstruction of the analysed field by summing the reference
+and anomaly fields.
+
+\end{enumerate}
+
+
+\subsection{How can one create monthly analysis where the reference field is the annual analysis?}
+%----------------------------------------------------------------------------------------------
+
+
+The latest version of \texttt{divaanom} is able to use an existing reference field. This field should be present as a binary file in the output directory with the name \texttt{fieldgher.anl.ref}, and the \texttt{GridInfo.dat} file should be present in \texttt{output/ghertonetcdf/} directory.
+
+An execution of \texttt{divaanom} will provide you with \texttt{data.dat} which contains anomalies with respect to your reference field (annual analysis in this case). Then you can work with \texttt{data.dat} as usual. 
+
+The last step is to apply \texttt{divasumup} to reconstruct the field by summing the anomaly analysis and the reference field.
+
+In summary the steps to follow are:
+
+\begin{enumerate} 
+\item apply \texttt{divadress} to the annual data (after the optimisation of the parameters),
+\item copy the output \texttt{fieldgher.anl} with the name \texttt{fieldgher.anl.ref},
+\item for each month:
+\begin{enumerate}
+\item copy the corresponding data file into the input directory,
+\item apply \texttt{divaanom},
+\item perform an analysis on the anomalies,
+\item apply \texttt{divasumup}.
+\end{enumerate}									 
+\end{enumerate}
+									 
+%\section{}
+%
+%
+%longitude latitude
+%coordinate system is chosen by the user, it is up to him to make the adequate projection.
+
+\subsection{How to contribute to the development?}
+%----------------------------------------------
+
+Any suggestion concerning the development of the software is welcome. Simply send a description of what improvements/tools you would like to see and we will check if this could be added to the general distribution.
+
+
+\subsection{How to report a problem/bug?} 
+%-------------------------------------
+
+Along with the description of the problem, if possible, add the input files that generated the problem as well, so that we can run the case and check if the issue is machine-dependent. 
+
+\subsection{How can I run \diva\, on a multi-processor machine?}
+%------------------------------------------------------------
+
+The best option is to copy the whole directory \texttt{divastripped} in the directory in which it is located, but with a different name (\textit{e.g.} \texttt{divastripped2}, or \texttt{divastripped\_username1}). The you can run \diva\,analysis separately in these directories. 
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.80\textwidth]{multiple_diva}
+\caption{Simultaneous run of \diva.}
+\end{figure}
+
+
+\section{Error messages}
+
+\subsection{"Command not found" message}
+%------------------------------------
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.80\textwidth]{problempath}
+\caption{Error message when a command is not found.}
+\end{figure}
+
+\subsubsection{\question}
+%--------------------------------------
+
+Although you are in the correct directory, the command is not found. This is because the current directory (represented by \texttt{./}) is not in the path of your system. 
+
+\subsubsection{\answer}
+%--------------------------------------
+
+You can type \\
+\textcom{./name\_of\_the\_command}\\
+so that the system knows the command is the current directory.
+
+A better solution is to adapt your path by typing:\\
+\textcom{PATH=\$PATH:.}
+
+For example in \texttt{cygwin}:\\
+\begin{itemize}
+\item go in the \texttt{/ect/}
+\item edit file \texttt{bash.bashrc} file
+and add the following line:\\
+export \texttt{PATH=\$PATH:.}
+\item type \textcom{source bash.bashrc} in order to take into account the modification made.
+\end{itemize}
+
+
+%----------------------------------------------------------------------------------------------
+
+
+\subsection{Command-line scripts not working}
+%-----------------------------------------
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.80\textwidth]{dos2unix2}
+\caption{Error messages due to bad ends of lines. \label{fig:error_dos2unix}}
+\end{figure}
+
+\subsubsection{\question}
+%--------------------------------------
+
+End of lines in Unix and Windows files are different, and this causes problems when switching from a system to the other. Typically if you visualize a Windows-end-of-line file under Unix, you will see end of lines with the symbol \verb|^M| or \verb|\r|. When reading such files, scripts get in trouble because they expect to read numbers, but they find characters.
+
+\textbf{Note:} strange behaviours of \diva\,are often related to this topic, therefore always be aware of this possible problem before undertaking more complex actions.
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.80\textwidth]{dos2unix}
+\caption{Example of bad ends of lines.\label{fig:error_dos2unix2}}
+\end{figure}
+
+
+\subsubsection{\answer}
+%--------------------------------------
+
+Working on a individual file, the command\\
+
+\textcom{dos2unix -U name\_of\_the\_file}
+
+does the conversion between Windows and Unix end of lines.
+If you have to perform the conversion on a large number of files, use the script \texttt{divados2unix} located in \texttt{diva-\divaversion}.
+
+
+
+\subsection{Compilation problems\label{sec:error_compile}}
+%------------------------------------------------------------------------------------------------
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.80\textwidth]{error_compile_g77}
+\caption{Error message obtained during compilation. \label{fig:error_compile}}
+\end{figure}
+
+\subsection{\question}
+%--------------------------------------
+
+The array $S$ defined in the various programs located in \texttt{./src/Fortran/Calc/} are too large to be handled by your compiler. 
+
+
+\subsubsection{\answer}
+%--------------------------------------
+
+You need to recompile the sources after reducing the values of parameter \texttt{nrea} in file \texttt{./src/Fortran/Calc/divainc.h}:
+\begin{verbatim}
+      PARAMETER(nrea=150000000)
+\end{verbatim}
+Then use script \texttt{divacompile} to get the new executables (see Sec. \ref{sec:compilation}). If you get the same error message, reduce again the value of \texttt{nrea}.
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.80\textwidth]{solution_resource}
+\caption{Solution to the resource problem.}
+\end{figure}
+
+
+\subsection{Undefined references to NetCDF routines\label{sec:error_netcdf}}
+%------------------------------------------------------------------------------------------------
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.80\textwidth]{error_netcdf}
+\caption{Error message during execution of \texttt{divacomp} with gfortran\label{fig:error_netcdf}.}
+\end{figure}
+
+\subsubsection{\question}
+%--------------------------------------
+
+The NetCDF library, required for compiling of \texttt{netcdf\-output.f}, \texttt{netcdf\-output\-field.f} and \texttt{netcdf\-output\-error.f}, is not compatible with your compiler, or not found by the linker.
+
+\subsubsection{\answer}
+%--------------------------------------
+
+You have to make sure that \texttt{divacompile} includes the appropriate link path.
+
+If this is not sufficient, you will have to rebuild the NetCDF library corresponding to your operating system. Installation and compilation procedures can be at \url{http://www.unidata.ucar.edu/software/netcdf/docs/netcdf-install/}
+
+%----------------------------------------------------------------------------
+
+
+\subsection[Resource temporarily unavailable]{Resource temporarily unavailable \label{sec:error_resource}}
+%------------------------------------------------------------------------------------------------
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.80\textwidth]{error_resource}
+\caption{Error message during the run of \texttt{divacalc}\label{fig:error_resource}.}
+\end{figure}
+
+\subsubsection{\question}
+%--------------------------------------
+
+The \texttt{diva.a} executable requires to much memory to work. This error comes from the operating system limitations.
+
+
+\subsubsection{\answer}
+%--------------------------------------
+
+The solution is the same as case \ref{sec:error_compile}: recompile the sources after reducing the values of parameters \texttt{nrea} and \texttt{nent} in file \texttt{./src/Fortran/Calc/divainc.h}:
+\begin{verbatim}
+      PARAMETER(nrea=25000000)
+      PARAMETER(nent=25000000)
+\end{verbatim}
+If you get the same error message, reduce again the values of \texttt{nrea} and \texttt{nent}.
+
+Note that maximal allowable values for these parameters depends on your compiler and system, so it is not possible to assign them with universal values.
+
+
+%----------------------------------------------------------------------------
+
+\subsection{Error of allocation \label{sec:error_allocation}}
+%-------------------------------------------------------
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.80\textwidth]{error_allody}
+\caption{Error message due to allocation problem.\label{fig:error_allocation}}
+\end{figure}
+
+\subsubsection{\question}
+%---------------------
+
+The memory allocation is not sufficient for the \diva\,to be executed in the case you consider. This message may appear either during the mesh generation (the required mesh is too fine considering the size of the domain) or during the resolution itself (\textit{i.e.} \texttt{divacalc}).
+
+\subsubsection{\answer}
+%-------------------
+
+The solution is nearly the same as the previous case: you need to compile the source again, this time after increasing the values of \texttt{nrea} and \texttt{nent}.
+
+\subsubsection[Additional information]{Additional information \expert}
+%-------------------------------------------------------------------
+
+In some uncommon cases, you may not be able to find values of \texttt{nrea} and \texttt{nent} that will allow you to avoid both problems \ref{sec:error_resource} and \ref{sec:error_allocation}. In these cases, the recommended solution consists of:
+\begin{enumerate}
+\item Find the highest values of \texttt{nrea} and \texttt{nent} that allow you not to have message error \ref{sec:error_allocation};
+\item Generate a mesh with a value 3-5 times larger than the correlation length you want to use for the resolution; this can be done be simply editing file \texttt{./input/param.par}, changing the value of correlation length, and run \texttt{divamesh};
+\item Once the mesh is generated, edit again \texttt{param.par} and assign the correct value to the correlation length, and run an analysis with \texttt{divacalc}.
+\end{enumerate}
+
+This procedure should help you to save memory otherwise used for the finite-element mesh. Working with a coarser mesh will not affect excessively your results.
+
+
+
+
+%-------------------------------------------------------------------------------
+
+\subsection{Permission denied for execution of \texttt{diva.a}\label{sec:error_gfortran}}
+%------------------------------------------------------------------------------------------------
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.80\textwidth]{error_gfortran}
+\caption{Error message during execution of \texttt{divacalc} with gfortran\label{fig:error_gfortran}.}
+\end{figure}
+
+\subsubsection{\question}
+%--------------------------------------
+
+Although the compilation worked without any message error, \texttt{diva.a} cannot be executed. This problem seems to occur only with \textsl{gfortran} compiler under \textsf{Cygwin}. Actually the problem is not related to permission (command \textcom{chmod} will not solve the problem) but with compilation. As described in problem \ref{sec:error_resource}, values of parameters\, \texttt{nrea} and \texttt{nent} shall be decreased and the sources recompiled.
+
+\subsubsection{\answer}
+%--------------------------
+
+Same as problem \ref{sec:error_resource}. 
+
+
+%------------------------------------------------------------------------------------
+
+
+\subsection{Problem with contour generation}
+%------------------------------------------
+
+See Fig. \ref{error:cont}.
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.80\textwidth]{error_divacont}
+\caption{Error message with contour generation.\label{error:cont}}
+\end{figure}
+
+\subsubsection{\question}
+%---------------------
+
+The number of contours created from a given topography (Sec. \ref{sec:contourtopo}) is too high. 
+
+\subsubsection{\answer}
+%-------------------
+
+Modify the first line of \texttt{contourgen.f} (located in \texttt{./src/Fortran/Mesh/}) and increase the value of \texttt{nm}:
+\begin{verbatim}
+parameter(nm=5000000)
+\end{verbatim}
+
+\subsubsection{Additional information}
+%----------------------------------
+
+As the default value of \texttt{nm} is already large, you may also consider working with a topography with lower resolution. This should avoid the creation of of a great number of very small contours (\textit{e.g.} Fig. \ref{fig:smallcont}), which will not necessarily add quality to your analysis.
+
+
+\begin{figure}[htpb]
+\centering
+\parbox{.65\textwidth}{
+\includegraphics[width=.6\textwidth]{fine_contour}
+}\parbox{.35\textwidth}{
+\caption[Small contours]{Small contours created from DBDBV topography in the North Atlantic at 4500 m depth\label{fig:smallcont}.}
+}
+\end{figure}
+ 
+
+%--------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Jacobian matrix with null determinant}
+%------------------------------------------
+
+The value of the Jacobian determinant is zero (Fig. \ref{fig:error_jacobian}).
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.80\textwidth]{error_jacobian}\\
+\includegraphics[width=.80\textwidth]{error_jacobian2}
+\caption{Examples of \diva\,execution with problem with the Jacobian matrix. \label{fig:error_jacobian}}
+\end{figure}
+
+\subsubsection{\question}
+%--------------------------------------
+
+This messages comes from a problem in the mesh generation: some of the triangular elements are too deformed and generate a null value for the determinant. Then the solver cannot work, since it needs to inverse the Jacobian matrix.
+
+
+\subsubsection{\answer}
+%--------------------------------------
+
+This problem was fixed in latest versions of \diva. 
+
+
+%-------------------------------------------------------------------------------
+
+\subsection{Analysed field with white stripes}
+%------------------------------------------
+
+The analysed fields has stripes of $NaN$ values.
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.45\textwidth]{error_stripes}\includegraphics[width=.45\textwidth]{error_stripes3}
+\caption{Examples of \diva\,outputs with random zones of $NaN$. \label{fig:error_stripes}}
+\end{figure}
+
+\subsubsection{\question}
+%--------------------------------------
+
+This problem comes from a too aggressive optimisation to create executable \texttt{diva.a}, although during the compilation, no warning or error was detected.  
+
+\subsubsection{\answer}
+%--------------------------------------
+
+This problem has been fixed in latest version of \diva. However, if you are still using older versions and get this kind of outputs, you can avoid them by changing the compilation flags and compile the source again. The recommended change is to use \texttt{'-O0'} flags instead of \texttt{'-O3'} (optimization flags) when compiling the sources located in the \texttt{Fortran/Calc/} directory.
+
+
+
+
+%-------------------------------------------------------------------------------
+
+\subsection{Analysis yields empty field}
+%------------------------------------------
+
+
+After the execution of \texttt{divacalc}, you get very small input files, with only one grid point.
+
+\subsubsection{\question}
+%--------------------------------------
+
+The most frequent reason is that the \texttt{param.par} file has been modified during the execution of (Generalised) Cross Validation \footnote{To save computational time \texttt{nx} and \texttt{ny} are set to $1$, since the analysis at every grid points is not necessary.} and the process was interrupted before it ends, leaving a parameter file similar to \ref{fig:errorparampar}.
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.80\textwidth]{error_parampar}
+\caption{File \texttt{param.par} resulting from an interruption of \texttt{divagcv}.\label{fig:errorparampar}}
+\end{figure}
+
+\subsubsection{\answer}
+%--------------------------------------
+
+
+Simply edit \textsc{param.par} to write the correct values of \texttt{nx} and \texttt{ny}, then run again \texttt{divacalc} (or \texttt{divadress}) to have an analysis on the desired grid.
+
+
+
+
+
+%-------------------------------------------------------------------------------
+
+\subsection{Windows runs out of virtual memory during diva execution}
+%------------------------------------------
+
+
+
+
+\subsection{\question}
+%--------------------------------------
+
+The problem arises probably because you have a computer with little RAM.
+
+\diva\, uses a memory allocation for the largest problem encountered. This 
+translates in Windows to a request of virtual memory of around 1.3Gb.
+During execution, the real memory used can be much smaller than that and 
+the problem actually fit in real memory, even if you have less than 1Gb RAM.
+
+The only problem is that if your Windows virtual memory (the swap file) 
+is not big enough, \diva\, will not execute.
+
+
+\subsubsection{\answer}
+%--------------------------------------
+
+The best solution would be to 
+add real memory (your computer would benefit from it anyway), but to 
+make DIVA work you can simply increase the virtual memory of Windows by 
+changing the windows settings. As administrator:\\
+
+\begin{verbatim}
+my computer right click -> properties -> advanced -> performance -> 
+settings -> advanced -> change
+\end{verbatim}
+
+Put there a virtual memory (swap file) of 2Gb (initial and maximum) and 
+\diva\, should run. 
+
+
+Other solution consists of recompiling with lower \texttt{nrea} value (see problem \ref{sec:error_compile}).
+
+
+
+\subsection{"Cannot move directory" \ldots "permission denied" messages}
+%------------------------------------
+
+
+%\begin{figure}[htpb]
+%\centering
+%\includegraphics[width=.80\textwidth]{problempath}
+%\caption{Error message when a command is not found.}
+%\end{figure}
+
+\subsubsection{\question}
+%--------------------------------------
+
+An application has opened one or several files located in the directory you want to (re)move, so that it is impossible to perform the operation.
+
+\subsubsection{\answer}
+%--------------------------------------
+
+Simply close the application(s) that open the files of the concerned directory.
+
+
+
+\subsection{"Corrupted data file" message}
+%------------------------------------
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.80\textwidth]{corrupted_file}
+\caption{Error message during the reading of the data file.}
+\end{figure}
+
+\subsubsection{\question}
+%--------------------------------------
+
+
+This problem was observed when decimal numbers were written with commas instead of points.
+
+
+\subsubsection{\answer}
+%--------------------------------------
+
+Simply convert the decimal separator (\textit{e.g.} using the commands described in the beginning of Chap. \ref{chap:general}).
+
+
+\subsubsection{Additional information}
+%-----------------------------------
+
+The behaviour of \texttt{awk} is susceptible to change the points into commas when used in \texttt{awkfilter} or other routines. To fix the problem, simply replaced
+
+\texttt{gawk}
+
+by
+
+\texttt{LC\_ALL=C gawk}.
+
+Remark: in latest versions of the code, this bug was fixed by adding 
+
+\texttt{export LC\_ALL=C}
+
+in the scripts employing \texttt{awk}.
+
+
+
+
