@@ -1,8 +1,7 @@
-\chapter[Generalized Cross Validation]{Generalized Cross Validation\\ 
-  in \diva \label{gcv}}
+\chapter[Analysis parameters]{Analysis parameters in \diva\label{gcv}}
 % ------------------------------------------------------------------------------------------------
 
-\lettrine[lines=2, loversize=-0.1, lraise=0.1]{T}{he} purpose of this chapter is to describe the validations tools included in the \diva\, software.  Generalized Cross-Validation is has been used to deduce statistical estimators from the dataset \citep{BRANKART96}. In the present version, it serves for the determination of the signal-to-noise ratio.
+\lettrine[lines=2, loversize=-0.1, lraise=0.1]{T}{he} purpose of this chapter is to describe the validations tools included in the \diva software.  Generalized Cross-Validation is has been used to deduce statistical estimators from the dataset \citep{BRANKART96}. In the present version, it serves for the determination of the signal-to-noise ratio.
 
 We start with theoretical notions about the Cross Validation, followed by a section about the quality control of data. 
 % The chapter ends with the application to \diva.
@@ -122,7 +121,7 @@ allows to keep the data during the analysis and will reduce the computing cost. 
 
 When the matrix $\matr{A}$ is not explicitly calculated, $A_{ii}$ can be obtained by performing an analysis with a vector $\vect{e}_i=(0\,0\ldots\,0\,1\,0\ldots 0)$ (zero on all data locations, except at point $i$, where its value is one). This demands an analysis for every data point in which the estimator is constructed.
 
-The associated computational cost can be reduced by  replacing $A_{ii}$ by the average value and assuming:
+The associated computational cost can be reduced by replacing $A_{ii}$ by the average value and assuming:
 \begin{equation}
 A_{ii} \simeq \frac{1}{N} \trace{\matr{A}}.
 \label{eq:aiitrace}
@@ -255,22 +254,21 @@ Hence we can detect points qualified as outliers if they satisfy the inequality
  
 This normalized version of quality control to some extent corrects for inaccurate estimation of the expected misfits $\Delta$.
 
- 
 
 % -----------------------------------------------------------------------------------
 
 \section{Application and implementation in \diva\label{sec:divagcv}}
 %-------------------------------------------------------------------
 
-The latest version of \diva\, allows the user to perform generalized cross validation as well as quality control. Two are designed to achieve these tasks: \texttt{dataqc} and \texttt{gcvfac}.
+The latest version of \diva allows the user to perform generalized cross validation as well as quality control. Two are designed to achieve these tasks: \command{dataqc} and \command{gcvfac}.
 
 
-\subsection{\diva\divaspace formulation}
+\subsection{\diva formulation}
 % ---------------------------------------
 
-The \diva\, theory is extensively described in Chapter \ref{chaptheory}. We limit ourselves here to recall the base formulation.
+The \diva theory is extensively described in Chapter~\ref{chaptheory}. We limit ourselves here to recall the base formulation.
 
-When working with non-dimensional space coordinates, \diva\, consists in minimizing
+When working with non-dimensional space coordinates, \diva consists in minimizing
 
 \begin{eqnarray}
 {J}[\varphi]&=&\sum_{i=1}^{N}\mu_i L^2 [d_{i}-\varphi(x_{i},y_{i})]^{2}\\ \notag 
