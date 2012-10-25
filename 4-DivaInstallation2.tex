@@ -21,10 +21,10 @@ The basic requirements to run \diva are:
 \item ifort (Intel\textsuperscript{\textregistered}, \url{http://software.intel.com/en-us/intel-compilers}),
 \item pgf (Portland Group, \url{http://www.pgroup.com/}).
 \end{itemize}    
-\itzm The NetCDF library (\url{http://www.unidata.ucar.edu/software/netcdf/}) for Fortran.
+\item The NetCDF library (\url{http://www.unidata.ucar.edu/software/netcdf/}) for Fortran.
 \end{enumerate}
 
-For a quick visualization of the results, a software able to read and display the content of a NetCDF file is recommended:
+For a quick visualization of the results, a software able to read and display the content of a NetCDF \index{NetCDF} file is recommended:
 \begin{itemize}
 \item ncBrowse (\url{http://www.epic.noaa.gov/java/ncBrowse/}, a Java application,
 \item Ncview (\url{http://meteora.ucsd.edu/~pierce/ncview_home_page.html}), a visual browser, 
@@ -85,7 +85,7 @@ There are two possibilities to obtain the binaries:
 The second option is provided for cases where the compilation was not possible, mainly because to missing libraries (e.g., NetCDF). 
 
 \subsection{Compilation\label{sec:compilation}}
-
+\index{Compilation}
 Go in the source directory 
 \begin{lstlisting}[style=Bash]
 [charles@gher13 GODIVA_07_2012]$ cd DIVA3D/src/Fortran/
@@ -219,129 +219,10 @@ and should be close to Fig.~\ref{fig:diva_bigtest_results}.
 %\item Open the \texttt{msys} shell (Fig. \ref{shell}) by double-clicking on the \texttt{msys} icon (MS-DOS command file) located in the \texttt{msys} folder.
 %\end{enumerate}
 %
-%
-%
-%\subsection{Linux}
-%%-----------------
-%
-%Under Linux, \texttt{msys} (or \texttt{cygwin}) installation is not required.
-%
-%
-%
-%\section{Executables\label{sec:executables}} 
-%% ------------------------------------------
-%
-%
-%The final step to achieve the \divainstallation consists in copying the pre-compiled versions of the executables (\texttt{*.a} files) corresponding to your system into \texttt{diva-\divaversion/bin}. They are provided in \texttt{diva-\divaversion/bin/Win32}, \texttt{diva-\divaversion/\-bin/\-Linux} and \texttt{diva-\divaversion/\-bin/\-SGI}.
-%
-%\example for Windows: open a shell in \texttt{diva-\divaversion} and type:\\
-%\textcom{cp -fv ./bin/WIN32/*.a ./bin}
-%
+
 %
 
 %
-%\subsubsection{\tcltk}
-%%---------------------
-%
-%As \tcltk\, is an interpreted language, it has not to be compiled. Modifications you may have made in \texttt{.tcl} files will be taken into account once you will have launched the \diva GUI.  
-%
-%
-%
-%\section{Creation of short-cuts}
-%% -----------------------------
-%
-%Operations described in the present section are optional. The purpose is simply to have short-cut like\\ %\raisebox{-2mm}{\includegraphics[height=.7cm]{logo_diva}} for GUI and\\ 
-%\raisebox{-2mm}{\includegraphics[height=.7cm]{logo_diva_cl}} for CL on your desktop.
-%
-%\subsection{Windows}
-%%-------------------
-%
-%\begin{itemize}
-%\item Copy \texttt{diva.ico}, \texttt{divacl.ico}, \texttt{diva.bat}, \texttt{divastripped.bat} and \texttt{.profile} (all found in \texttt{diva-\divaversion/\-inst\-all}) into the \texttt{msys} directory.
-%
-%
-%\item Edit \texttt{.profile} and modify the third line according to your configuration.\\
-%\example cd \textcom{c:/diva-\divaversion}
-%
-%\item With explorer, create short-cut to \texttt{msys/divastripped.bat} and move it to the desktop.
-%
-%\item Right-click on the desktop-shortcut-Properties:\\
-%    in General: use \texttt{diva-\divaversion\, CL} instead of shortcut \ldots as text for the CL version,\\
-%    in Shortcut: change icon, browse to \texttt{msys} and chose \texttt{divacl.ico}.
-%    
-%\end{itemize}
-%
-%
-%%\subsection{Linux}
-%%%-----------------
-%%\begin{itemize}
-%%\item Right-click on your desktop and select \textsl{Create launcher},
-%%\item Type =  application,\\
-%%name = DIVA (as you wish),\\
-%%command = path to the \texttt{wish} executable + path to \texttt{main.tcl}.
-%%\item In permission: allow executing file as program.
-%%\end{itemize}
-%
-%
-%
-%\section{Run a test case}
-%% -----------------------
-%
-%Now that everything is installed, we suggest you to run one of the test case provided in the sub-folders of \texttt{examples}. To this end, simply copy the files into the \texttt{divastripped/input/} directory (for example using command \texttt{divaload}, described in Sect. \ref{sec:divaload}). Open a shell, go in \texttt{./divastripped} and type \textcom{divadress}. If the process is not interrupted, our installation has been done properly. If not, a cause of the problem may be the executable: you may have to recompile the source, as described in Sec. \ref{sec:compilation}.
-%
-%
-%\btips
-%When working under Unix, you may have to convert the compilation script (\texttt{divacompile}) and the \textsl{batch} files (files with a name starting with \texttt{diva*} and file \texttt{dbdb2diva} located in \texttt{diva-\divaversion/divastripped}). 
-%
-%To perform the conversion, use the command \textcom{divados2unix} \footnote{This script uses \texttt{dos2unix}, which should be available within your \texttt{msys} or \texttt{cygwin} distribution.} provided in the \texttt{install} directory.
-%\etips
-%
-%
-%\btips
-%Depending on the O.S. you have, the command \texttt{dos2unix} may behave differently. In some cases, running \texttt{dos2unix} twice will return you the original file (\textit{i.e.} the first time will convert the file to \texttt{unix}, the second one to \texttt{dos}). In that case you have to specify an option, such as
-%
-%\textcom{dos2unix -U}
-%
-%Hence, in case of doubt it is useful to have a look at the \texttt{dos2unix} command description for your system.
-%\etips
-%
-%%\section{PlPlot library}
-%%% ----------------------
-%%\hypertarget{PLPLOT}{}
-%%The PlPlot library is a set of Fortran routines that allow you to obtain graphical outputs without resort to external softwares, such as \matlab\, or NcView. Her is the procedure for the installation:
-%%
-%%\begin{enumerate}
-%%
-%%\item download the most recent version of PlPlot from\\
-%%\url{http://plplot.sourceforge.net/}
-%%
-%%\item uncompress and unpack the archive \texttt{plplot-5.7.1.tar.gz}
-%%
-%%\begin{listevide}
-%%\item \textcom{gunzip plplot-5.7.1.tar.gz}
-%%\item \textcom{tar xvf plplot-5.7.1.tar.gz}
-%%\end{listevide}
-%%
-%%\item in the directory \texttt{plplot-5.7.1}, type:
-%%
-%%\begin{listevide}
-%%\item \textcom{./configure --prefix=MYPREFIX}, where MYPREFIX stands for the installation prefix (\example \texttt{/usr/local/plplot}) 
-%%\item \textcom{make}
-%%\item \textcom{make install}
-%%\end{listevide}
-%%
-%%\item in the directory MYPREFIX/share/plplotVERSION/examples, type:
-%%\begin{listevide}
-%%\item \textcom{make}
-%%\item \textcom{./plplot-test.sh} to see some examples.
-%%\end{listevide}
-%%
-%%The complete installation procedure is described in the file \texttt{INSTALL}.
-%%
-%%\end{enumerate}
-%
-%
-
 %\section[Installation checking]{Installation checking \expert}
 %%-----------------------------------------
 %

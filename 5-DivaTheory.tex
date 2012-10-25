@@ -8,16 +8,16 @@
 \section{The gridding problem\label{gridding}}
 %----------------------------------------------
 
-In oceanography a typical concern consists in determining a field $\varphi(\mathbf{r})$ on a regular grid of positions $\mathbf{r}$, knowing $N_{d}$ data in locations $\mathbf{r_{j}}, j=1,\ldots, N_{d}$. This is called the \textit{gridding problem} (Fig. \ref{gridproblem}) and is useful for many applications such as data analysis, graphical display, forcing or initialization of a model.
+In oceanography a typical concern consists in determining a field $\varphi(\mathbf{r})$ on a regular grid of positions $\mathbf{r}$, knowing $N_{d}$ data in locations $\mathbf{r_{j}}, j=1,\ldots, N_{d}$. This is called the \textit{gridding problem} (Fig.~\ref{gridproblem}) and is useful for many applications such as data analysis, graphical display, forcing or initialization of a model.
 
 In this chapter we consider only two-dimensional cases, but generalization can be done to $3D$ and even $4$D (using "distance" in time, but being aware of autocorrelations as in seasonal signals).
 
 \begin{figure}[htpb]
 	\centering
 	\parbox{.5\textwidth}{
-		\includegraphics[width=.40\textwidth]{gridding}
+		\includegraphics[width=.45\textwidth,bb=166  289 440 564]{gridding}
 		}\parbox{.5\textwidth}{
-		\caption{Gridding problem: black dots indicate data positions, while the circle is the points where the field has to be determined.\label{gridproblem}}
+		\caption{Gridding problem: the blue dots indicate data positions, while the nodes of the grid  are the points where the field has to be determined.\label{gridproblem}}
 		}
 \end{figure}
 
@@ -96,7 +96,7 @@ Perfect fit to data is therefore not advised. In \diva, the analysis behaviour i
 \section{The Optimal Interpolation method\label{sec:OImethod}}
 %---------------------------------------------------------
  
-The principle of \textit{Optimal interpolation} (OI hereinafter) was developed by  \cite{GANDIN65} and \cite{BRETHERTON76}. It is assumed that the true anomaly field $\varphi_t$ is one realization out of a zero mean ensemble. The problem consists in determining weights $w_j$ of Eq. (\ref{objectiveanal}), so that expected error variance of the analysis is minimal. Equation (\ref{objectiveanal}) means that the true field $\varphi_t$ we are reconstructing is decomposed into the sum of a background field $\varphi_b$ and a linear combinations of the $N_{d}$ data $d_{j}$.
+The principle of \textit{Optimal interpolation} (OI hereinafter\index{OI}) was developed by  \cite{GANDIN65} and \cite{BRETHERTON76}. It is assumed that the true anomaly field $\varphi_t$ is one realization out of a zero mean ensemble. The problem consists in determining weights $w_j$ of Eq. (\ref{objectiveanal}), so that expected error variance of the analysis is minimal. Equation (\ref{objectiveanal}) means that the true field $\varphi_t$ we are reconstructing is decomposed into the sum of a background field $\varphi_b$ and a linear combinations of the $N_{d}$ data $d_{j}$.
 
 Note that \textit{Kriging} \citep{KRIGE51,MATHERON63} is an equivalent technique: it uses the same criterion as OI, but with a mathematical formulation that is different. Weights $w_{i}$ are chosen from the study of the covariance between the values as a function of the distance between them.
 
@@ -424,7 +424,7 @@ The problem is now how to specify this vector $\mathbf{g}$.
 \subsection{Kernel and correlation function \label{sec:kernel}}
 % ------------------------------------------
 
-\hypertarget{KERNEL}{Kernel} functions can be examined by analyzing a single point with high signal-to-noise ratio and no background field (Fig. \ref{singleanalysis}). In this particular case, we performed an analysis with a point located at the center $(0,0)$ of a square domain. The correlation length is equal to $1$ and the signal-to-noise ratio is taken equal to $1000$.
+\hypertarget{KERNEL}{Kernel} functions can be examined by analyzing a single point with high signal-to-noise ratio and no background field (Fig.~\ref{singleanalysis}). In this particular case, we performed an analysis with a point located at the center $(0,0)$ of a square domain. The correlation length is equal to $1$ and the signal-to-noise ratio is taken equal to $1000$.
 
 The exact function in an infinite domain is given by 
 
@@ -458,7 +458,7 @@ where $r$ is the Euclidean distance,\\
 
 The choice of this correlation model results from the mathematical structure of the variational method \citep{BRASSEUR96}.
 
-Fig. \ref{kernel1} shows both the exact solution (\ref{kernelfunction}) and the correlation function by a single point analysis. The two curves are close to each other, the differences between the two curves being only due to the boundaries.
+Fig.~\ref{kernel1} shows both the exact solution (\ref{kernelfunction}) and the correlation function by a single point analysis. The two curves are close to each other, the differences between the two curves being only due to the boundaries.
 
 In an infinite domain, the correlation function was shown to be proportional to the Kernel of the VIM norm.
 
@@ -603,18 +603,4 @@ For more details about \dineof, the reader is invited to consult:
 \cite{ALVERA05,ALVERA07,BECKERS03,BECKERS06}, \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/DINEOF} and   \url{http://ocgmod2.marine.usf.edu/DINEOF-welcome.html}.
 
 
-
-\subsection{Future developments}
-%--------------------------------
-
-Some aspects of \diva are still under development. Improvements in progress are:
-
-\begin{itemize}
-%\item 3D extensions: from surface to deep layers through EOF calculated from data set (\dineof\, approach), and application in horizontal planes.
-%\item Static stability constraints.
-\item Multivariate approaches (easy in OI, but more difficult in VIM).
-\item Parameter calibration by cross validation in multivariate version.
-\item Data query modules, possibly through ODV.
-\item Strategy for combined analysis of satellite and {\it in situ} data.
-\end{itemize}
 
