@@ -167,7 +167,7 @@ Outputs:\\
 
 \item[\texttt{subsampling.f}] creates a subsampling of the data (called in \texttt{dvsample}).
 
-\item[\texttt{sumgrid.f}] performs the sum of two gridded fields in \gher\,format (called in \texttt{divasumup}).
+\item[\texttt{sumgrid.f}] performs the sum of two gridded fields in GHER format (called in \texttt{divasumup}).
 
 \item[\texttt{sumup.f}] performs the sum element by element of two ascii files (called in \texttt{divasumup}).
 
@@ -209,13 +209,13 @@ The graphical interface requires some particular routines:
 \begin{description}
 \item[\texttt{extract.f}]: interface to select or extract Data from MODB and MED formatted databases.
 \vspace{.25cm}
-\item[\texttt{fem3d.f}] is based upon a mesh file and a bathymetry file (regular grid in the \gher\, format); it creates a result file containing information to determinate if a mesh is in land or is sea, for a given depth.
+\item[\texttt{fem3d.f}] is based upon a mesh file and a bathymetry file (regular grid in GHER format); it creates a result file containing information to determinate if a mesh is in land or is sea, for a given depth.
 \vspace{.25cm}
 % -----------------------------------------------------------------------------------
 \item[\texttt{concat.f}] is used to create the 3D file from the 2D files.
 \item[\texttt{stiff.f}] generates the rigidity file (\texttt{fort.60}) in the 3D case.
 \item[\texttt{mask.f}] masked the solution according to the bathymetry and the depth.
-\item[\texttt{sum.f}] writes the sum of two fields (with same dimensions) in \gher\, format.
+\item[\texttt{sum.f}] writes the sum of two fields (with same dimensions) in GHER format.
 \item[\texttt{substref.f}] subtracts the reference field to the computed solution (only available when using the \textit{semi-normed} reference field).
 \vspace{.25cm}
 \item[\texttt{header2.f}] and \texttt{visu.f} are subroutines to visualize the data, the mesh and the solution (requires the \plplot\, library). Two versions of \texttt{visu.f} are provided: one is located in \texttt{diva-\divaversion/\-src/\-Fortran/\-PlPlot} and the other in \texttt{diva-\divaversion/\-src/\-Fortran/\-NoPlPlot}. The first can be compiled only if you have installed the \plplot\, library on your computer (for now, only under Linux).

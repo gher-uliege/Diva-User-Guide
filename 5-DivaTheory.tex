@@ -1,6 +1,6 @@
 \chapter{\diva\divaspace general theory\label{chaptheory}}
 \vspace*{-2cm}
-\lettrine[lines=2, loversize=-0.1, lraise=0.1]{T}{his} chapter is dedicated to the description of the theoretical background necessary to understand how the \diva software works. As only the main ideas are summarized, the reader is invited to refer to the articles mentioned in the bibliography.
+\lettrine[lines=2, loversize=-0.1, lraise=0.1]{T}{his} chapter describes the theory behind the \diva interpolation method. 
 
 \minitoc
 
@@ -8,7 +8,9 @@
 \section{The gridding problem\label{gridding}}
 %----------------------------------------------
 
-In oceanography a typical concern consists in determining a field $\varphi(\mathbf{r})$ on a regular grid of positions $\mathbf{r}$, knowing $N_{d}$ data in locations $\mathbf{r_{j}}, j=1,\ldots, N_{d}$. This is called the \textit{gridding problem} (Fig.~\ref{gridproblem}) and is useful for many applications such as data analysis, graphical display, forcing or initialization of a model.
+The generation of gridded fields from non-uniformly distributed observations (both in space and time) is a frequent concern in geosciences. Similarly to \citet{OOYAMA87}, we will refer to an \textit{analysis} or \textit{analysed field} as "the estimation of a continuous spatial field of a given variable from a set of discrete measurements". The range of applications is wide, going from model initializations to validation exercises  or simple plotting purposes. 
+
+Mathematically, gridding consists in determining a field $\varphi(\mathbf{r})$ on a regular grid at positions $\mathbf{r}$, using $N_{d}$ measurements located in $\mathbf{r_{j}}, j=1,\ldots, N_{d}$ (Fig.~\ref{gridproblem}).  
 
 In this chapter we consider only two-dimensional cases, but generalization can be done to $3D$ and even $4$D (using "distance" in time, but being aware of autocorrelations as in seasonal signals).
 
@@ -21,19 +23,19 @@ In this chapter we consider only two-dimensional cases, but generalization can b
 		}
 \end{figure}
 
+%----------------------------------------------
+\subsection{Interpolation versus approximation}
+%----------------------------------------------
 
-\subsection{Interpolation vs. approximation}
-%-------------------------------------------
-
-When treating the gridding problem, two main techniques have to be distinguished:
+For solving the gridding problem, two main techniques have to be distinguished:
 
 \begin{enumerate}
 
-\item \textit{Interpolation}, which implies a strict passage of the solution through the points of data. Physically, this means you assume you have no error on the data. 
+\item The \textit{interpolation}, which implies a strict passage of the solution through the points of data. Physically, this means that one assumes that there is no error on the data. 
 
 % Among the methods of interpolation, let us mention: the linear, cubic, inverse distance, optimal interpolations, the \textit{kriging}, \ldots
 
-\item \textit{Approximation} (or \textit{analysis}) provides a solution smoother than the one given by interpolation: in this case, the solution does not necessarily have to contain all the data points. The solution passes \textsl{near} the data points, so its shape is still influenced by the data. This technique allows taking into account errors on data, as well as to treat multiple data with different values at the same location. 
+\item The \textit{approximation} (or \textit{analysis}) provides a solution smoother than the one given by interpolation: in this case, the solution does not necessarily have to contain all the data points. The solution is close to the data points, so its shape is still influenced by the data. This technique allows taking into account errors on data, as well as to treat multiple data with different values at the same location. 
 \end{enumerate}
 
 \begin{figure}[htpb]
@@ -41,65 +43,63 @@ When treating the gridding problem, two main techniques have to be distinguished
 	\parbox{.5\textwidth}{
 		\includegraphics[width=.35\textwidth]{approx}
 		}\parbox{.5\textwidth}{
-		\caption{Interpolation vs. approximation.}
+		\caption{Interpolation provides a solution that goes across all the data points, while the approximation has only to be "close" to the measurements, but with a relative "smoothness".}
 		}
 \end{figure}
 
 
-\subsection{Data analysis and gridding methodologies\label{sec:gridding}}
-% ---------------------------------------------------
+\subsection{Objective versus subjective data analysis methods\label{sec:gridding}}
+% --------------------------------------------------------------------------------
 
-Because of data error and often close data points, the considered field is always reconstructed with the help of an approximation, never with a strict interpolation. 
+In geosciences and in particular in oceanography, it is frequent to have error on the measurements and close data points. Hence the approximation methods are preferred to strict interpolation techniques.
 
-We have to differentiate \textit{subjective} analysis, for which the way the approximation is performed is decided \textit{by hand}, and \textit{objective} analysis, which is based on predefined mathematical operations. \textit{Data assimilation} uses in addition physical/biochemical dynamic governing equations.
+We have to differentiate \textit{subjective} analysis, for which the way the approximation is performed is decided by hand, and \textit{objective} analysis, which is based on predefined mathematical operations. Note that beyond these two kinds of analysis, \textit{data assimilation} uses in addition physical/biochemical dynamic governing equations. 
 
-\textbf{Choice of a method:} among the previous methods, our choice will be the objective analysis. Indeed, the subjective analysis is not sufficiently objective, and the data assimilation depends on the region and the model.
+Since data assimilation depends on the region and the model and the subjective analysis is not sufficiently objective, the objective analysis is chosen. 
 
-Instead of working with the data themselves, we will work with \textit{anomalies} ($\varphi'$) with respect to a \textit{background field} ($\varphi_b$):
+%------------------------------------------
+\subsection{Background field and anomalies}
+%------------------------------------------
 
+The field $\varphi(\mathbf{r})$ can be decomposed as the sum of a \textit{background field} \index{Background field} $\varphi_b$ and an anomaly $\varphi'$: 
 \begin{equation}
  \varphi(\mathbf{r}) = \varphi_b(\mathbf{r}) + \varphi'(\mathbf{r}).
  \label{background}
 \end{equation}
+Instead of working with the data themselves, we will work with the anomalies of these data with respect to the background field. The background field is defined a priori and the anomalies are calculated with respect to this reference field (e.g., climatological average, linear regression, theoretical solution). 
 
-The background field $\varphi_b$ is defined {\it a priori} and the anomalies are calculated with respect to this reference field (\textit{e.g.} climatological average, linear regression, theoretical solution). 
-
-We assume that the anomalies can be expressed as a linear combination of the data, \textit{i.e.}
-
+The anomalies are assumed to be computed as a linear combination of the data, i.e., 
 \begin{equation}
 \varphi(\mathbf{r}) = \varphi_b(\mathbf{r}) + \sum_{j=1}^{N_d} w_j\, d_j,
 \label{objectiveanal}
 \end{equation}
-
-where $d_{j}$ is the data anomaly at the point $\mathbf{r}= \mathbf{r_{j}}$ and $w_j$ is the relative weight of the data $j$. Now the problem consists in determining the weighting functions. 
-
-Once the background field and the weights are known, the field can be computed at any position $\mathbf{r}$, hence gridding is possible.
+where $d_{j}$ is the data anomaly at $\mathbf{r}= \mathbf{r_{j}}$ and $w_j$ is the relative weight of the data $j$. The weighting functions are the new unknowns to determine: once the background field and the weights are known, the field $\varphi$ can be computed at any position $\mathbf{r}$, hence gridding is possible.
 
 From here on, we will work with anomaly only and therefore formally use $\varphi_{b}=0$.
 
-% -------------------------------------------
-
+% ------------------------
 \subsection{Noise on data}
 % ------------------------
 
-When measuring a field, there is always uncertainty on the value obtained (whatever the instrument and the field). \textit{Noise} does not only take into account \textit{instrumental} error (which is generally low), but also:
+When measuring a field, there is always an uncertainty on the value obtained (whatever the instrument and the field). \textit{Noise} \index{Noise} does not only take into account \textit{instrumental} error (which is generally low), but also:
 \begin{itemize}
-\item \textit{representativeness} errors (what one measures is not always what ones intends to analyze):\\
-\textit{e.g.,} skin temperature, inadequate scales, \ldots
-\item \textit{synopticity} errors (when the measures are assumed to be taken at the same time):\\
-\textit{e.g.,} data from a cruise \citep{RIXEN01}.
+\item the \textit{representativeness} errors, meaning that what one measures is not always what ones intends to analyse):\\
+e.g., skin temperature, inadequate scales, \ldots
+\item the \textit{synopticity} errors, occuring when the measurements are assumed to be taken at the same time):\\
+e.g., data from a cruise \citep{RIXEN01}.
 \end{itemize}
 
-Perfect fit to data is therefore not advised. In \diva, the analysis behaviour is controlled via the \textit{signal-to-noise ratio} of data.
+Because of the multiple sources of error, a perfect fit to data is not advised, and the noise on the measurements has to be considered during the analysis.
 
-
+%-------------------------------------------------------------
 \section{The Optimal Interpolation method\label{sec:OImethod}}
-%---------------------------------------------------------
+%-------------------------------------------------------------
  
-The principle of \textit{Optimal interpolation} (OI hereinafter\index{OI}) was developed by  \cite{GANDIN65} and \cite{BRETHERTON76}. It is assumed that the true anomaly field $\varphi_t$ is one realization out of a zero mean ensemble. The problem consists in determining weights $w_j$ of Eq. (\ref{objectiveanal}), so that expected error variance of the analysis is minimal. Equation (\ref{objectiveanal}) means that the true field $\varphi_t$ we are reconstructing is decomposed into the sum of a background field $\varphi_b$ and a linear combinations of the $N_{d}$ data $d_{j}$.
+Before explaining the core of \diva technique, the main principles of \textit{Optimal interpolation} (OI hereinafter\index{OI}) are explained. OI was developed by \citet{GANDIN65} and \citet{BRETHERTON76}, and assumes that the true anomaly field $\varphi_t$ is one realization out of a zero mean ensemble. The problem consists in determining the weights $w_j$ of \eqref{objectiveanal}), so that expected error variance of the analysis is minimal. Equation (\ref{objectiveanal}) means that the true field $\varphi_t$ is decomposed into the sum of a background field $\varphi_b$ and a linear combinations of the $N_{d}$ observations $d_{j}$.
 
-Note that \textit{Kriging} \citep{KRIGE51,MATHERON63} is an equivalent technique: it uses the same criterion as OI, but with a mathematical formulation that is different. Weights $w_{i}$ are chosen from the study of the covariance between the values as a function of the distance between them.
+Note that \textit{Kriging}\index{Kriging} \citep{KRIGE51,MATHERON63} is an equivalent technique: it uses the same criterion as OI, but with a different mathematical formulation: the weights $w_{i}$ are chosen from the study of the covariance between the values as a function of the distance between them.
 
+%-------------------------------------
 \subsection{Mathematical formulation}
 %-------------------------------------
 
@@ -110,7 +110,7 @@ $\varphi_{t}$, the true (unknown) field,\\
 $\mathbf{d}$, the vector containing the $N_{d}$ data,\\
 $\mathbf{r}$, the vector position.
 
-The aim is to minimize the expected error
+The principle of OI is to minimize the expected error:
 \begin{equation}
 e^{2}(\mathbf{r}) = \overline{[\varphi(\mathbf{r})-\varphi_{t}(\mathbf{r})]^{2}}.
 \end{equation}
@@ -122,7 +122,7 @@ e^{2}(\mathbf{r}) = \overline{\left[\sum_{i=1}^{N_{d}}w_{i}(\mathbf{r})d_{i}(\ma
 \label{error2}
 \end{equation}
 
-We now have to determine the weights $w_{i}$ that will minimize \eqref{error2}. Let us call $\mathbf{w}(\mathbf{r})$, the vector of size $N_{d}$ containing the weights applied on the data to interpolate the field at position $\mathbf{r}$. The previous eq. is now written as 
+We now have to determine the weights $w_{i}$ that will minimize \eqref{error2}. Let us call $\mathbf{w}(\mathbf{r})$, the vector of size $N_{d}$ containing the weights applied on the data to interpolate the field at position $\mathbf{r}$. The previous equation is now written as 
 
 
 \beqn
@@ -130,7 +130,7 @@ e^{2}(\mathbf{r}) &=& \overline{[\mathbf{w}^{T}\mathbf{d}-\varphi_{t}(\mathbf{r}
 									&=& \overline{\varphi_{t}(\mathbf{r})^{2}} + \overline{\mathbf{w}^{T}\mathbf{d} \mathbf{d}^{T}\mathbf{w}} - 2 \overline{\varphi_{t}(\mathbf{r}) \mathbf{d}^{T}\mathbf{w} }
 \eeqn
 
-We define the \textit{covariance matrix}
+We define the \textit{covariance matrix}\index{Covariance}
 
 \[
 \mathbf{D} = \overline{\mathbf{d}\mathbf{d}^{T}},
@@ -176,11 +176,11 @@ and the interpolated field is computed as
 To determine the covariance matrix, $\mathbf{D}$, and the covariance of the data with the real field, $\mathbf{g}$, the following assumptions are made: 
 
 \begin{enumerate}
-\item errors $\noise_{i}$ on measurements are not correlated, \textit{i.e.} 
+\item errors $\noise_{i}$ on measurements are not correlated, i.e.,
 \[
 \overline{\noise_{i}\noise_{j}} = \noise^{2}\delta_{ij},
 \]
-where $\noise^{2}$ is the variance of the errors on measurement (\textit{i.e.} the noise);
+where $\noise^{2}$ is the variance of the errors on measurement (i.e., the noise);
 
 \item errors on measurements are not correlated with the real field, \textit{i.e.}
 
@@ -201,12 +201,17 @@ D_{ij} &=& \overline{\varphi_{t}(\mathbf{r_i})\varphi_{t}(\mathbf{r_j})}+\noise^
 \eeq
 where $c(\mathbf{r},\mathbf{r_i})$ is the \textit{correlation function} and $\signal$ is the \textit{signal} of the data.
 
+\subsection{Drawbacks of OI}
+%---------------------------
 
+As the method requires the inversion of a $N_{d}$-by-$N_{d}$ matrix ($N_{d}$ being the number of data), it is not adapted for situations with large number of observations (number of operations proportional to $N_{d}^{3}$). 
 
-\section[VIM and its implementation]{VIM and its implementation \diva}
+Also ...
+
+\section[VIM and its implementation]{The Variational Inverse Method}
 % ---------------------------------------
 
-VIM stands for \textit{Variational Inverse Method}. This method was initially designed for climatology: in that case, you have generally high resolution vertical profiles, sufficient profiles in all seasons, but irregular horizontal coverage \citep{BRASSEUR96}. Thus a spatial analysis on horizontal planes is needed. 
+The Variational Inverse Method (VIM\index{VIM}) was initially designed for climatology purposes: in that case, vertical profiles have high vertical resolution and sufficient profiles for all seasons, but have an irregular horizontal coverage \citep{BRASSEUR96}. Thus a spatial analysis on horizontal planes is needed. 
 
 Relatively large number of data points in each plane penalizes Optimal Interpolation (OI) methods, because these methods require the inversion of a $N_{d}$-by-$N_{d}$ matrix, \textit{i.e.} a number of operations proportional to $N_{d}^{3}$ (see Tab. \ref{tabdata} and eq. \ref{eq:theory_error}).
 
@@ -497,7 +502,7 @@ Method   & $\min( \varepsilon^2)$ & 3D       & Multivar & Ops/image        & $ \
 Cressman &                    & $\star$  &  $\star$ & $N_d N_a$        &                        & $w(r/L)$         &($L$) & ($\star$)  \\ 
 OI     &   $\star$          & $\star$  &  $\star$ & $N_d^3+ N_d N_a$ &  $\star$               & $c(r/L)$         & $L,\sigma^2/\mu^2$&($\star$)\\ 
 {\bf VIM}&   $\star$       & ($\star$)& ($\star$)& $N_a^{5/2}$      &  $\star$               & $K(r/L)$         & $L,\sigma^2/\mu^2$&($\star$)\\
-\dineof\footnote{described in Sec. \ref{lasttool}.}   &   ($\star$)        &  $\star$ &  $\star$ & $N_a^{5/4}$      &  ($\star$)   &  stat.          & $N$               & $\star$\\ 
+DINEOF\footnote{described in Sec. \ref{lasttool}.}   &   ($\star$)        &  $\star$ &  $\star$ & $N_a^{5/4}$      &  ($\star$)   &  stat.          & $N$               & $\star$\\ 
 \hline
 \end{tabular}
 \end{flushleft}
@@ -552,13 +557,6 @@ Data-field covariance & $[\mathbf{c}]_{i}=\signal^{2} c(\mathbf{r},\mathbf{r_{i}
 \end{table}
 
 
- 
- 
- 
- 
- 
- 
- 
 
 \section{Additional tools}
 % ------------------------
@@ -593,13 +591,13 @@ The whole procedure is described in the second volume of the manual.
 
 The reconstruction of three-dimensional fields of temperature and salinity by stacking of layers of analysed fields may leads to unstable density fields. A procedure implemented in \diva in order to remove these instabilities is presented in the second volume of the manual.
 
-\subsection{\dineof\label{lasttool}}
+\subsection{DINEOF\label{lasttool}}
 %-----------------------------------
 
-\hypertarget{DINEOF}{\dineof}\, stands for \textit{Data INterpolating Empirical Orthogonal Function}.
+\hypertarget{DINEOF}{DINEOF} stands for \textit{Data INterpolating Empirical Orthogonal Function}.
 
-It is designed to exploit repeated observations with missing data (\textit{e.g.} a series of collocated satellite images with clouds).
-For more details about \dineof, the reader is invited to consult:
+It is designed to exploit repeated observations with missing data (\textit{e.g.,} a series of collocated satellite images with clouds).
+For more details about DINEOF, the reader is invited to consult:
 \cite{ALVERA05,ALVERA07,BECKERS03,BECKERS06}, \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/DINEOF} and   \url{http://ocgmod2.marine.usf.edu/DINEOF-welcome.html}.
 
 
