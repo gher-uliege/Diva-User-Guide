@@ -1,10 +1,14 @@
 \chapter{Description of the input files\label{chap:general}}
 %-----------------------------------------------------------
 
-\lettrine[lines=2, loversize=0.0, lraise=0.5]{T}{he} input files required by \diva for simple 2-D analysis are described here. input files required by \diva for simple 2-D analysis are described here.
-input files required by \diva for simple 2-D analysis are described here.
+\lettrine[lines=2, loversize=0.0, lraise=0.5]{T}{he} input files required by \diva for simple 2-D analysis are described here. 
+Basically, only three files are needed as input:
 
-
+\begin{enumerate}
+\item a file containing the data (\texttt{data.dat})
+\item the specification of the domain of analysis (\texttt{coast.cont}) and 
+\item the list of the parameters used during the analysis (\texttt{param.par}).
+\end{enumerate}
 
 
 \minitoc
@@ -12,24 +16,12 @@ input files required by \diva for simple 2-D analysis are described here.
 \newpage % 
 
 
-
-
-%
-%Only three files are needed as input:
-%
-%\begin{enumerate}
-%\item a file containing the data (\texttt{data.dat})
-%\item the specification of the domain of analysis (\texttt{coast.cont}) and 
-%\item the list of the parameters used during the analysis (\texttt{param.par}).
-%\end{enumerate}
-
 \begin{center}
 \fbox{
-\begin{minipage}{0.9\textwidth}
+\begin{minipage}{0.7\textwidth}
 \vspace{.25cm}
-\textbf{Convention:} \diva\, works with decimal numbers represented with\quad \textbf{.}\quad  not \textbf{,}\quad
-
-If you use excel for exporting data, try to respect the convention if possible. 
+\textbf{Convention:} \diva works with decimal numbers\\ 
+represented with\quad \textbf{.}\quad  not \quad \textbf{,}
 \vspace{.25cm}
 \end{minipage}
 }
@@ -37,54 +29,54 @@ If you use excel for exporting data, try to respect the convention if possible.
 
 
 \btips
+Use unix \command{sed} to replace \textbf{,} by \textbf{.}:
+\begin{lstlisting}[style=Bash]
+[charles@gher13 Software]$ cat file1.dat | sed s/,/./g > file2.dat
+\end{lstlisting}
 
-Use editor \textsl{vi} (see Sec. \ref{sec:vi}) to perform this task.
-
-Simply type:
-
-%\begin{verbatim}
-%vi topo.gebco
-%:,$s/,/./g
-%\end{verbatim}
+where: \file{file1.dat} is the old file and \\
+\hphantom{where:} \file{file2.dat} is the file where the replacement has been made.
 \etips
 
 
 \btips
+Use editor \textsl{vi} to replace \textbf{,} by \textbf{.}:
 
-If you do not like \texttt{vi}, you can use the following batch command:
+Simply type:
 \begin{verbatim}
-cat file1 | sed s/,/./g > file2
+vi file1.dat
+:,$s/,/./g
 \end{verbatim}
-
-where: \texttt{file1} is the old file and \\
-\hphantom{where:} \texttt{file2} is the file where the replacement has been made.
 \etips
 
-
-
-
+%---------------
 \section{Data}
 %----------------
 
-The data file contains three (or four) columns: \texttt{ X | Y | value | (relative weight)}.\\
+The data file (\file{data.dat}) contains three (or four) columns: 
+\begin{enumerate}
+\item the $x-$coordinate (usually the longitude, but can also be an horizontal distance in $km$, or any coordinate).
+\item the $y-$coordinate (usually the latitude).
+\item the data value.
+\item the weight [optional] 
+\end{enumerate}
 If the number of column is three, the fourth column is assumed to take the value $1$. If there are more than four columns, columns 5 and higher are not used by the software.% (but can be used by the user) .
+
+\begin{exfile}[htpb]
+\begin{footnotesize}
+\texttt{
+25 25  5 1\\
+25 75 10 1\\
+75 75  5 1\\
+75 25 10 1} 
+\end{footnotesize}
+\caption{data.dat\label{ex:data.dat}}
+\end{exfile}
+
 
 \begin{figure}[H]
 \centering
-
-\parbox{.5\textwidth}{
-\begin{footnotesize}
-\tt
---------\\
-25 25	5\\
-25 75 10\\
-75 75 5\\
-75 25 10\\
---------
-\end{footnotesize}
-}\parbox{.5\textwidth}{
 \includegraphics[width=.45\textwidth]{island_data}
-}
 \caption{Example of a data file and its graphical representation.}
 \end{figure}
 
@@ -92,25 +84,19 @@ If the number of column is three, the fourth column is assumed to take the value
 \section{Contour\label{contourdiva}}
 %--------------------------------------
 
-The contour files are defined this way:
+The contour file (\file{coast.cont}) delimits the region where the analysis has to be performed, i.e., it specifies the boundary between land and sea. The file is defined this way:
 \begin{enumerate}
-\item The first line indicates the number of contours in the region of interest (say $M$).
-\item The second line tells the number of points in the first contour (say $N_{1}$).
-\item The next $N_1$ lines are the coordinates of the points of the first contour. The convention for the contour is that \textsl{the land is on the right when you follow the points successively}. The contour is automatically closed, meaning that the last point of a given contour should be different from the first one. 
-\item The following line is the number of points of the second contour (say $N_{2}$).
+\item The first line indicates the number of contours ($M$) in the region of interest.
+\item The second line tells the number of points ($N_{1}$) in the first contour.
+\item The next $N_1$ lines are the coordinates of the points of the first contour. The convention for the contour is that \textit{the land is on the right when you follow the points successively}. The contour is automatically closed, meaning that the last point of a given contour is be from the first one. 
+\item The following line is the number of points ($N_{2}$) of the second contour.
 \item \ldots
 \item The last $N_M$ lines are the coordinates of the points of the last contour.
 \end{enumerate}
 
-
-\begin{figure}[H]
-\centering 
-\parbox{.5\textwidth}{
-
+\begin{exfile}[htpb]
 \begin{footnotesize}
-\tt
---------\\
-2\\
+\texttt{2\\
 4\\
 0 0\\
 100 0\\
@@ -120,14 +106,20 @@ The contour files are defined this way:
 40 40\\
 40 60\\
 60 60\\
-60 40\\
---------
+60 40\\} 
 \end{footnotesize}
+\caption{coast.dat\label{ex:coast.dat}}
+\end{exfile}
 
-}\parbox{.5\textwidth}{
+Here, our contour is made up of 2 sub-contours: 
+\begin{itemize}
+\item the first one with 4 points (and four edges): $(0,0)$, $(100,0)$, $(100,100)$ and $(0,100)$. It is the main contour.
+\item the second one with also 4 points. It is the interior contour (island).
+\end{itemize}
+
+\begin{figure}[H]
+\centering 
 \includegraphics[width=.45\textwidth]{island_contour}
-}
-
 \caption{Example of a contour file and its graphical representation.}
 \end{figure}
 
@@ -136,7 +128,7 @@ The contour files are defined this way:
 \section[Additional points of analysis]{Locations of additional points where analysis is required (optional)}
 %--------------------------------------------------------------------------------
 
-The file \texttt{valatxy.coord} is a two-column list of locations where you want the analysis to be performed.  
+The file \file{valatxy.coord} is a two-column list of locations where you want the analysis to be performed.  
 
 \begin{exfile}[htpb]
 \begin{footnotesize}
@@ -156,9 +148,7 @@ If there are more than two columns, columns 3 and higher are not used.
 \section{Parameters\label{sec:param.par}}
 %-------------------------------------------
 
-In each step of a \diva\, analysis, many parameters can be changed according to the particular case you are treating. If you work with the CL version, these parameters have to be entered in the file \texttt{param.par} (see file \ref{paramfile}). If you work with the GUI version, the parameters are chosen one after each other during the analysis.
-
-Here is a example of a \texttt{param.par} file followed by the description of all the parameters.
+The file \file{./input/param.par} determines the main analysis parameters and options of \diva. A clear understanding of is essential for a propoer use of the software. 
 
 \begin{exfile}[htpb]
 \begin{footnotesize}
@@ -207,7 +197,7 @@ Global correlation length used for the analysis (see Sec. \ref{sec:parammeaning}
 
 Specifies the desired type of coordinate system:\\
 
-\texttt{icoordchange} \begin{minipage}[t]{.7\textwidth} = $0$ if no change is necessary (data position in kilometers);\\
+\texttt{icoordchange} \begin{minipage}[t]{.7\textwidth} = $0$ if no change is necessary (data position in kilometres);\\
                                                         = $1$ if data positions are given in degrees;\\
                                                         = $2$ if data positions are given in degrees and your domain extends on a wide span of latitude                                                           (uses a cosine projection);\\
                                                         = $-xscale$ to scale $x$ coordinates by $xscale$ before doing anything ( for vertical                                                              sections)
@@ -222,7 +212,7 @@ Four base-values specifies the required error outputs:\\
 \texttt{ispec}       = 0\qquad: no error field requested\\
 \hphantom{\texttt{ispec}}  = 1\qquad: gridded error field specified by \texttt{xori}, \texttt{yori}, \texttt{nx} and \texttt{ny}; \\
 \hphantom{\texttt{ispec}}  = 2\qquad: errors at data locations;\\
-\hphantom{\texttt{ispec}}  = 4\qquad: errors at locations listed in \texttt{valatxy.coord}.
+\hphantom{\texttt{ispec}}  = 4\qquad: errors at locations listed in \file{valatxy.coord}.
 
 Then you can combine these four values to obtain several error outputs:
 
@@ -241,7 +231,7 @@ simply multiply the \texttt{ispec} value by $-1$:
 Finally, a \textit{poor man's} error estimate (quick and underestimated error field) is available by adding $+10$ to the \texttt{ispec} value:
 
 \example\\
-\texttt{ispec}             = 16 \qquad \begin{minipage}[t]{.7\textwidth}{means you want errors at data locations and at points listed in \texttt{valatxy.coord} computed with the \textit{poor man's} error estimate.}\end{minipage}
+\texttt{ispec}             = 16 \qquad \begin{minipage}[t]{.7\textwidth}{means you want errors at data locations and at points listed in \file{valatxy.coord} computed with the \textit{poor man's} error estimate.}\end{minipage}
 
 
 \subsection{\texttt{ireg}}
@@ -267,7 +257,7 @@ Exclusion value: value used to fill the output matrix when a point corresponds w
 \subsection{\texttt{snr}}
 %---------------------------
 
-Signal-to-noise ratio of the whole dataset (Sec. \ref{sec:formulation}).
+Signal-to-noise ratio of the whole dataset (Section~\ref{sec:formulation}).
 
 
 \subsection{\texttt{varbak}}
@@ -276,29 +266,34 @@ Signal-to-noise ratio of the whole dataset (Sec. \ref{sec:formulation}).
 Variance of the background field.
 
 
-%\subsection{Other parameters} 
-%%----------------------------
-%The GUI gives the user the possibility to chose the value of parameters:
-%
-%\begin{itemize}
-%\item Surface coefficient: controls the shape of the triangular element.
-%\item Smooth number: controls smoothing of the mesh elements.
-%\end{itemize}
 
-\section{Working directories}
+\section{Working directories (2-D analysis)}
 % ------------------------------
 
-The Command Line version is contained in \texttt{diva-\divaversion/divastripped}. Four subdirectories exist inside \texttt{divastripped}:
+For 2 dimension analysis, the main working directory is \directory{divastripped}. Inside it, we have:
+\begin{lstlisting}[style=Bash]
+[charles@gher13 divastripped]$ tree -d -L 2
+.
+|-- divawork
+|   `-- sub
+|-- gnuwork
+|   |-- gnuplottools
+|   `-- plots
+|-- input
+|-- meshgenwork
+`-- output
+    |-- ghertonetcdf
+    `-- meshvisu
 
-\begin{enumerate}
-\item \texttt{input} contains data, contour(s) and parameters needed by \diva\, to perform an analysis.
+10 directories
+\end{lstlisting}
 
-\item \texttt{meshgenwork} is the mesh generation working directory.
 
-\item \texttt{divawork} is the working directory of the CL version, where the \diva\, calculation is performed. 
+\begin{description}
 
-\item \texttt{output} contains user results.
-
-\item \texttt{gnuwork} is used for quick visualisation with gnuplot.
-
-\end{enumerate}
+\item[\directory{divawork}] is where the intermediate files are produced.
+\item[\directory{gnuwork}] contains the scripts for generating the plots with gnuplot. These plots will be located in the sub-folder \directory{plots}.
+\item[\directory{input}] contains the input files presented in this section.
+\item[\directory{divawork}] is the working directory for the mesh generation.
+\item[\texttt{output}] contains the analysis results. In \directory{ghertonetcdf}, one can find the output in NetCDF format (file \file{results.nc}), while \directory{meshvisu} stores the files that describe the mesh.
+\end{description}
