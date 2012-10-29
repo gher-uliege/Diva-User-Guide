@@ -1,12 +1,15 @@
-                       
-
 \chapter{VADEMECUM}
-\pagestyle{empty}
-\thispagestyle{empty}
-\vspace{-6cm}
 
-\vspace{-3cm}
-\begin{table}
+
+\minitoc
+
+
+\newpage
+
+\vspace*{-3cm}
+\section{Scripts and actions}
+%\vspace*{-1cm}
+\begin{table}[H]
 \centering
 \caption{DIVADEMECUM: \diva in- and outputs. When not specified differently, input files are from directory  {\tt ./input} and 
 output files are placed in directory {\tt ./output}. Script {\tt divarefe} takes the same inputs as {\tt divacalc}
@@ -359,23 +362,34 @@ while {\tt divaanom} and {\tt divasumup} use no other user-provided files than t
 & {\tt mycase/outut/*} \\ 
 \bottomrule
 \end{tabular}
-
 }}
 \end{table}
 
 
-\pagebreak
-\clearpage
-\pagebreak
+%\pagebreak
+%\clearpage
+%\pagebreak
 
-%\LaTeXPiX{divademecum}{Scripts used in the command-line version of DIVA; optional arguments are between {\tt []}.}{vade}
+\section{Workflow}
 
-\pagebreak
-\clearpage
-\thispagestyle{empty}
-{\Huge{Input files}}
+%%\LaTeXPiX{./figures/images/divademecum}{Scripts used in the command-line version of DIVA; optional arguments are between {\tt []}.}{vade}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.25\textwidth,angle=90]{divademecum}
+\caption{Scripts used in the command-line version of \diva; optional arguments are between {\tt []}.}
+\end{figure}
+
+%\pagebreak
+%\clearpage
+
+%\thispagestyle{empty}
+%{\Huge{Input files}}
+%\vspace*{-3cm}
+
+
+\section{Input files}
 \begin{multicols}{2}
-\thispagestyle{empty}
 {
 \begin{minipage}{.5\textwidth}
 \rule{\textwidth}{10pt}
@@ -407,21 +421,23 @@ while {\tt divaanom} and {\tt divasumup} use no other user-provided files than t
 # snr signal to noise ratio 
 10
 # varbak variance of the background field
-1
-\end{verbatim}
+1\end{verbatim}
 }}
+%\hrule{\textwidth}
+\vspace*{-0.5cm}
 \makebox[\textwidth]{\hrulefill}
-{{\tt param.par} file content. Parameters are self-explaining, except for error output specification. {\tt ispec=0} means no error field requested; add +1 for a gridded error field, +2 for error at data location and +4 for error at coordinates defined in {\tt valatxy.coord}.
+{\file{param.par} file content. Parameters are self-explaining, except for error output specification. {\tt ispec=0} means no error field requested; add $+1$ for a gridded error field, $+2$ for error at data location and $+4$ for error at coordinates defined in \file{valatxy.coord}.
 From there if you want \begin{itemize}
-\item error based on real covariance: {\tt ispec} $\leftarrow$ {\tt -ispec}
+\footnotesize
+\item error based on real covariance:\\ {\tt ispec} $\leftarrow$ {\tt -ispec}
 \item error based on real covariance with boundary effect: {\tt ispec} $\leftarrow$ {\tt -ispec-10}
 \item poor man's error estimate (quick and underestimated error field): {\tt ispec} $\leftarrow$ {\tt ispec+10}
 \end{itemize}
-(ex: {\tt ispec=12} makes a poor mans error estimate at data locations) }
+\footnotesize{(ex: {\tt ispec=12} makes a poor man's error estimate at data locations) }}
 \end{minipage}
 }
 
-\begin{minipage}{9cm}
+\begin{minipage}{.5\textwidth}
 \rule{\textwidth}{10pt}
 %\begin{figure}
 {\scriptsize{
@@ -431,11 +447,15 @@ From there if you want \begin{itemize}
 ...
 \end{verbatim}
 }}
+\vspace*{-0.5cm}
 \makebox[\textwidth]{\hrulefill}
-{{\tt data.dat} file content. Simple ascii file with {\tt x,y,val} and optional fourth column containing the relative weight on the data (large value = high confidence)}. {\tt topo.dat} is just a special case where the third column represents depth (positive for sea values).
+{\file{data.dat} file content. Simple ascii file with {\tt x,y,val} and optional fourth column containing the relative weight on the data (large value = high confidence)}.\\
+\file{topo.dat} is just a special case where the third column represents depth (positive for sea values).
 \end{minipage}
 
-\begin{minipage}{9cm}
+%\vfill
+
+\begin{minipage}{.5\textwidth}
 \rule{\textwidth}{10pt}
 %\begin{figure}
 {\scriptsize{
@@ -443,12 +463,15 @@ From there if you want \begin{itemize}
 100 10
 \end{verbatim}
 }}
+\vspace*{-0.5cm}
 \makebox[\textwidth]{\hrulefill}
-{{\tt constraint.dat} file content. 
-First value= weight on advection constraint, second value=diffusion coefficient in advection/diffusion equation.}
+
+{\file{constraint.dat} file content. \\
+First value = weight on advection constraint,\\
+second value=diffusion coefficient in advection/diffusion equation.}
 \end{minipage}
 
-\begin{minipage}{9cm}
+\begin{minipage}{.5\textwidth}
 %\makebox[\textwidth]{\hrulefill}
 \rule{\textwidth}{10pt}
 %\begin{figure}
@@ -465,22 +488,19 @@ First value= weight on advection constraint, second value=diffusion coefficient 
 100
 \end{verbatim}
 }}
+\vspace*{-0.5cm}
 \makebox[\textwidth]{\hrulefill}
-{{\tt gcvsampling.dat} file content. A list of trial values for the signal/noise ratio used in cross validation tools.}
+{\file{gcvsampling.dat} file content. A list of trial values for the signal-to-noise ratio used in cross validation tools.}
 \end{minipage}
 
-\begin{minipage}{9cm}
+\begin{minipage}{.5\textwidth}
 %\makebox[\textwidth]{\hrulefill}
 \rule{\textwidth}{10pt}
 %\begin{figure}
 {\scriptsize{
 \begin{verbatim}
-2000
-1500
 1000
-800
-700
-600
+750
 500
 400
 300
@@ -489,11 +509,12 @@ First value= weight on advection constraint, second value=diffusion coefficient 
 0
 \end{verbatim}
 }}
+\vspace*{-0.5cm}
 \makebox[\textwidth]{\hrulefill}
-{{\tt contour.depth} file content with depth for contours and subsequent analysis.}
+{\file{contour.depth} file content with depths for contours and subsequent analysis.}
 \end{minipage}
 
-\begin{minipage}{9cm}
+\begin{minipage}{.5\textwidth}
 %\makebox[\textwidth]{\hrulefill}
 \rule{\textwidth}{10pt}
 %\begin{figure}
@@ -507,26 +528,28 @@ First value= weight on advection constraint, second value=diffusion coefficient 
 51
 \end{verbatim}
 }}
+\vspace*{-0.5cm}
 \makebox[\textwidth]{\hrulefill}
-{{\tt *info.dat} file desribing the gridding parameters of binary gridded files such as {\tt Uvel.dat}, {\tt topo.grd}, {\tt RL.dat}, {\tt fieldgher.anl}, {\tt errorfieldgher.anl}. Here first grid point in (0,10), with steps (0.1,0.2) and 101x51 grid points. Look at examples how to read/write binary files with Fortran or Matlab}
+{\file{*info.dat} file describing the gridding parameters of binary gridded files such as \file{Uvel.dat}, \file{topo.grd}, \file{RL.dat},  \file{fieldgher.anl}, \file{errorfieldgher.anl}. Here first grid point in $(0,10)$, with steps $(0.1,0.2)$ and $101 \times 51$ grid points. Look at examples how to read/write binary files with Fortran or Matlab}
 \end{minipage}
-
-
 
 \end{multicols}
 
-\pagebreak
-\clearpage
-{\Huge{Output files}}
+%\pagebreak
+%\clearpage
+%%{\Huge{Output files}}
+
+\section{Output files}
 \begin{multicols}{2}
-\thispagestyle{empty}
+
+%\thispagestyle{empty}
 
 
-\begin{minipage}{9cm}
+\begin{minipage}{.5\textwidth}
 %\makebox[\textwidth]{\hrulefill}
 \rule{\textwidth}{10pt}
 %\begin{figure}
-{\scriptsize{
+{\tiny{
 \begin{verbatim}
  0.50E+01 1131 0.16E+02 0.43E+02 0.38E+02 0.37E+02 0.13E+00
  ...
@@ -535,14 +558,14 @@ First value= weight on advection constraint, second value=diffusion coefficient 
 \end{verbatim}
 }}
 \makebox[\textwidth]{\hrulefill}
-{{\tt outliers*.dat} Sorted ouliers, from most suspect to least suspect. Column 1: outlier indicator (larger than 3 suspect), following columns: data identifier, x and y coordinates, original data value, analysed data value, expected misfit.}
+{\file{outliers*.dat} Sorted outliers, from most suspect to least suspect. Column 1: outlier indicator (larger than 3 suspect), following columns: data identifier, x and y coordinates, original data value, analysed data value, expected misfit.}
 \end{minipage}
 
-\begin{minipage}{9cm}
+\begin{minipage}{.5\textwidth}
 %\makebox[\textwidth]{\hrulefill}
 \rule{\textwidth}{10pt}
 %\begin{figure}
-{\scriptsize{
+{\tiny{
 \begin{verbatim}
 Correlation length (in degrees latitude)
   3.69890785
@@ -554,10 +577,10 @@ Correlation length (in degrees latitude)
 \end{verbatim}
 }}
 \makebox[\textwidth]{\hrulefill}
-{{\tt paramfit.dat} Self explaining output from {\tt divafit}. When option {\tt [-r]} is used with {\tt divafit}, an adapted {\tt param.par} will be placed in {\tt ./input}.}
+{\file{paramfit.dat} Self explaining output from {\tt divafit}. When option {\tt [-r]} is used with {\tt divafit}, an adapted \file{param.par} will be placed in {\tt ./input}.}
 \end{minipage}
 
-\begin{minipage}{9cm}
+\begin{minipage}{.5\textwidth}
 %\makebox[\textwidth]{\hrulefill}
 \rule{\textwidth}{10pt}
 %\begin{figure}
@@ -570,7 +593,7 @@ Correlation length (in degrees latitude)
 \end{verbatim}
 }}
 \makebox[\textwidth]{\hrulefill}
-{{\tt gcvsnvar.dat} Self explaining output from {\tt divacv, divagc, divacvrand}. When option {\tt [-r]} is used with cross validation, an adapted {\tt param.par} will be placed in {\tt ./input}}.
+{\file{gcvsnvar.dat} Self explaining output from {\tt divacv, divagc, divacvrand}. When option {\tt [-r]} is used with cross validation, an adapted \file{param.par} will be placed in {\tt ./input}}.
 \end{minipage}
 
 \end{multicols}

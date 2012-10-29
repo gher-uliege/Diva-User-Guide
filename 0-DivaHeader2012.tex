@@ -8,6 +8,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{color}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{fancyhdr}
 \usepackage{amsmath}
 \usepackage{array}
@@ -40,6 +41,11 @@
 \usepackage{booktabs}
 %\usepackage{kpfonts}
 \usepackage{titlesec}
+%\usepackage{pict2e}
+
+\usepackage{texgraph}
+\usepackage{epic,eepic}
+\usepackage{rotating}
 
 \lstdefinestyle{Bash}
 {language=bash,
@@ -78,7 +84,7 @@ literate={\$}{{\textcolor{red}{\$}}}1
 % ------------------------------------------------
 % NEW COLOR
 \definecolor{gris}{rgb}{0.7,0.7,0.7}
-
+\definecolor{darkgreen}{rgb}{0.14 0.73 0.21}
 
 % ------------------------------------------------
 % LENGTH DEFINITIONS
@@ -170,6 +176,17 @@ literate={\$}{{\textcolor{red}{\$}}}1
 \newcommand{\posx}{\mathsf{r}}
 \newcommand{\trace}[1]{\mathrm{trace}\left( #1 \right)}
 
+\newcommand{\LaTeXPiX}[3]{
+                          \begin{sidewaysfigure*}[ht]
+                            \begin{center}
+                            {\small{
+                                \input{#1.eepic}
+                                \caption{#2
+                                \label{#3}}
+                                }}
+                            \end{center}
+                          \end{sidewaysfigure*}
+                        }
 % ----------end of JMB newcommands
 
 % ------------------------------------
@@ -193,7 +210,7 @@ literate={\$}{{\textcolor{red}{\$}}}1
 \newcommand{\expert}{$\star\star\star$}
 
 \newcommand{\directory}{\texttt}
-\newcommand{\file}{\texttt}
+\newcommand{\file}[1]{\texttt{\color{MidnightBlue}{#1}}}
 \newcommand{\command}{\textsf}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
