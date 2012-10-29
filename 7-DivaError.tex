@@ -1,29 +1,61 @@
 \chapter{Error computation\label{chap:error}}
 \vspace*{-1cm}
-\lettrine[lines=2, loversize=-0.1, lraise=0.1]{D}{iva} 
+\lettrine[lines=2, loversize=-0.1, lraise=0.1]{T}{his} chapter presents the different methods that allows the computation of the error field associated to the analysis.  
 
 \minitoc
 
-
+%---------------------
 \section{Introduction}
+%---------------------
 
-% \section{Error field with advection}
+The analysis performed with the optimised parameters should have the lowest global error, as measured by \eqref{eq:gcvbis}. Nevertheless, the spatial distribution of the error is also of interest for any interpolation or analysis method, since it gives the user an indication of the reliability of the results. The error field is expected to be affected by:
+\begin{enumerate}
+\item the data coverage: the error field is expected to be higher where the data coverage is lower;
+\item the noise on the data: the more imprecision we have on the data, the higher will be the error field.
+\end{enumerate}
 
-% provided by diva, but interpretation different as the normal case
-% need to add more details on this
-The analysis performed with the optimised parameters should have the lowest global error, as measured by \eqref{eq:gcvbis}. Nevertheless, the spatial distribution of the error is also of interest. The latter is very easy to calculate with OI: according to \eqref{eq:erroroi} we need to apply the analysis (operator $\matr{H}$) on a vector containing the covariances of the data locations with the location where the error has to be calculated. Hence, in principle, a new analysis has to be performed for each point in which the error is requested. On the contrary, the error calculation in \diva is not trivial since the covariance functions are never explicitly specified. The object of this section is to define methods to generate error fields associated to the analysis. 
+OI (Sections~\ref{sec:OImethod}) allows the simultaneous derivation of analysis and error fields:
+\be
+e^{2}(\mathbf{r}) = \epsilon^{2}(\mathbf{r})-\mathbf{g}(\mathbf{r})^{T}\mathbf{D}^{-1}  \mathbf{g}(\mathbf{r}),
+\label{eq:erroroi}
+\ee
+where $\epsilon^{2}$ is the local variance of the background field. This equality highlights that the error is provided by the analysis of a pseudo-data array containing covariances $\mathbf{g}(\mathbf{r})$. 
+
+However, in principle, a new analysis has to be performed for each point $\mathbf{r}$ in which the error is requested and then is not adapted for large data sets. On the contrary, the error calculation in \diva is not trivial since the covariance functions are never explicitly specified. We will see in the next sections how \diva computes this error field.
+
+%-------------------------------------
+\section{Methods implemented in \diva}
+%-------------------------------------
+
+According to the data sets, the type of analysis (with/without dynamical constraints, constant or variable correlation length, \ldots), several error calculation methods are available with \diva. 
 
 \subsection{The poor man's estimate\label{sec:poormans}}
+%-------------------------------------------------------
 
 To circumvent the main problems (unknown covariance function and repeated analysis), \citet{BRASSEUR94} estimated the error by analysing a vector of "covariances" with constant $\sigma^2$. As all "covariances" are identical, the error can be assessed in all locations with the same analysis. The advantage is the fast calculation, but the drawback is a systematic underestimation of the actual errors, since the error reduction by the overestimated covariances \eqref{eq:erroroi} is also overestimated. The poor man's error field is a very efficient way to assess data-coverage and determine the regions where the analysis cannot be trusted.
 
 \subsection{The hybrid approach}
+%-------------------------------
 
-In this approach, the covariance vector to be analysed is calculated using the covariance function of an infinite domain \citep{BRANKART98,RIXEN00}. In an infinite domain, the error calculation is then "exact", while for more complicated domains, it is nearly exact far away from boundaries, provided no anisotropic constraint is activated. 
+In this approach, \cite{BRANKART98} and \cite{RIXEN00} proposed a heuristic statistical error expression for the VIM: in \diva, error fields are calculated by analogy with OI: since analysis in OI is equivalent to analysis with VIM (insofar as the reproducing Kernel of VIM and the covariance function of OI are identical) and since error field of OI equals analysis of covariance fields, error field of VIM equals analysis (by VIM) of covariance fields.
 
-The problem of the approximate hybrid error calculation relies on the fact that instead of the actual covariance, only the kernel computed under the assumption of an infinite domain (without dynamic constrain) is analysed with \diva to produce the error field. Hence, for anisotropic cases (as found with advection constraints, variable length scale or near boundaries), the hybrid error field can be incoherent. This is what motivated the evaluation of the real covariance function in \diva.
+Mathematically, according to the developments of Section~\ref{sec:OImethod}, we have:
+
+\begin{align}
+\textrm{Solution OI:} 	&	& \varphi(\mathbf{r}) &=& \underbrace{\mathbf{g}(\mathbf{r})^{T}\mathbf{D}^{-1}}_{(\star)}		&& \mathbf{d}\\
+\textrm{Solution VIM:}	&	& \varphi(\mathbf{r}) &=& \underbrace{\mathbf{T_{1}}(\mathbf{r})\mathbf{K}^{-1} \mathbf{T_{2}}(\mathbf{r})}_{(\star\star)} 																								&&\mathbf{d}\\
+\textrm{Error~OI:}  	& 	& e^{2}(\mathbf{r})   &=& \epsilon^{2}(\mathbf{r})-\underbrace{\mathbf{g}(\mathbf{r})^{T}\mathbf{D}^{-1}}_{(\star)}														&&\mathbf{g}(\mathbf{r})	\\		
+\rightarrow \textrm{Error~VIM:}		& 	& e^{2}(\mathbf{r})   &=& \epsilon^{2}(\mathbf{r})-\underbrace{\mathbf{T_{1}}(\mathbf{r})\mathbf{K}^{-1} \mathbf{T_{2}}(\mathbf{r})}_{(\star\star)}		&&\mathbf{g}(\mathbf{r})
+\end{align}
+
+In practice, the data input of the analysis tool for an error calculation is a vector containing the
+covariance of data points ($\mathbf{g}(\mathbf{r})$) with the point in which the error estimate is to be calculated. The covariance vector to be analysed is calculated using the covariance function of an infinite domain. In an infinite domain, the error calculation is then "exact", while for more complicated domains, it is nearly exact far away from boundaries, provided no anisotropic constraint (advection constraint, variable length scale, boundaries, \ldots) is activated. 
+
+Thus for anisotropic cases, the hybrid error field can provide incoherent results. This is what motivated the evaluation of the real covariance function in \diva.
+
 
 \subsection{The real covariance method}
+%--------------------------------------
 
 If we look back at the OI interpretation, we can place a data of value $1$ at location $\vect{r}$ and compute the analysis $\varphi_1(\vect{r}^\prime)$ at a location $\vect{r}^\prime$:
 \begin{equation}
@@ -35,7 +67,7 @@ At the data location itself, we get the analysis
 \varphi_1(\vect{r}) = {\snr \hat{B} (\vect{r},\vect{r}) \over \snr \hat{B}(\vect{r},\vect{r}) + \hat{R}(\vect{r}) }.
 \end{equation}
 
-In terms of interpretation of the covariance function as the kernel of the norm (the second term of \eqref{eq:variab}), it is the background covariance that is modified by the anisotropy and not the noise level. Hence, if we put the unit data value with a unit signal-to-noise ratio in $\vect{r}$, we directly have
+In terms of interpretation of the covariance function as the kernel of the norm (\eqref{divaformula2}), it is the background covariance that is modified by the anisotropy and not the noise level. Hence, if we put the unit data value with a unit signal-to-noise ratio in $\vect{r}$, we directly have
 
 \begin{equation}
 \varphi_1(\vect{r}^\prime) = { \hat{B} (\vect{r},\vect{r}^\prime)\over   \hat{B}(\vect{r},\vect{r}) + 1 } \qquad \textrm{and} \qquad 
@@ -74,7 +106,6 @@ the covariance $\hat{B} (\vect{r},\vect{r}_i)$ is obtained as
 
 Up to the multiplication constant $1/(1-\varphi_0)$, the non-dimensional covariance of a point in position $\vect{r}$ with a list of other points can therefore be obtained by putting a unit data value in $\vect{r}$ and taking the value of the analysis at the coordinates of the list of points. 
 
-
 To illustrate the procedure, we take a simple case with one point in the center of the domain, and another point near the boundary.
 Near the boundary, data points influence more easily the analysis because rigidity is reduced (Fig.~\ref{fig:fig4_kernel_bceffect}). This translates into a larger background variance. Error fields will therefore be larger near boundaries when there are no nearby data.
  
@@ -85,7 +116,6 @@ Near the boundary, data points influence more easily the analysis because rigidi
 \label{fig:fig4_kernel_bceffect}}
 \end{figure} 
  
- 
 From there, applying the correction $1/(1-\varphi_0)$, we can use the covariances as input vector for a second \diva execution, so as to perform an analysis of the covariance and getting access to the error of the analysis at the desired location. Indeed, using the equivalence of \diva and OI, if the analysis step applied to a data vector $\vect{d}$ is formally written 
 \begin{equation}
 \varphi_a = \matr{H} \vect{d},
@@ -95,6 +125,124 @@ then the error is
 \epsilon_a^2 (\vect{r}) = \sigma^2 \hat{B}(\vect{r},\vect{r}) - \sigma^2 \matr{H} \hat{\vect{b}},
 \end{equation}
 where $\hat{B}(\vect{r},\vect{r})$ is the local relative background variance (calculated by \eqref{eq:brr}) and $\hat{\vect{b}}$ is a vector filled according to \eqref{eq:btildco}.
+
+%-----------------
+\subsubsection{Usage}
+%-----------------
+
+Calculation of the full covariance function for error calculation is recommended when at least one of the following conditions is true:
+\begin{itemize}
+\item Advection constraint is strong.
+\item Signal-to-noise ratio is high and few data are available near the boundaries.
+\item $\xi$ (penalizing gradients) is different from 1 and the kernel is not \eqref{kernelfunction} any more. 
+\item The correlation length is variable over the domain. 
+\end{itemize}
+
+In the aforementioned cases, the assumptions for the hybrid approach are not fulfilled and the use of \eqref{eq:kernelbessel} to express the covariance will provide an error field that is not coherent with the analysis. For instance, lower errors can be obtained in regions void of observations. 
+
+\section{Numerical cost}
+
+Let us assume that the error is requested at $N_{c}$ locations (sparse points or regular grid). The error computation with OI (in its original formulation) requires the inversion of a matrix of size $N_{d} \times N_{d}$ and the projection of onto the $N_{c}$ locations. We will now see how it can be done with \diva.
+
+\subsection{Poor man's estimate}
+
+An analysis is performed on a vector filled with constant covariance $\sigma^{2}$. As the vector of covariances is filled with identical values $\sigma^{2}$, the error is assessed for all the $N_{c}$ locations with the same analysis. Since the matrix to be inverted for the analysis (the stiffness matrix $\matr{K}$, \eqref{eq:feminversion}) is already factorized\footnote{$\mathsf{LU}$ decomposition or factorization: the matrix is written as the product of a lower triangular matrix $\mathsf{L}$ and an upper triangular matrix $\mathsf{U}$.}, the additional cost is almost zero because a single analysis is needed.   
+
+\subsection{Hybrid method} 
+
+Again, the cost is kept low by exploiting the already existing factorization. For each of the $N_c$ locations, matrix-vector operations are needed. Roughly, if the cost of the first analysis is $M$, the error field calculation requests $M N_c/\sqrt{N_e}$ operations, where $N_e$ is the number of degrees of freedom of the finite-element mesh.
+
+\subsection{Real covariance function}
+
+For each of the $N_c$ points in which the error is to be evaluated, an additional analyse providing the covariance function is needed. If done naively, this would be prohibitive since a new analyse with another data set (the unit data in different locations) normally requests a new matrix inversion. 
+
+To save computing time, a nice mathematical property was discovered and exploited: performing an analysis that differs only by one data point from a previous analysis can be performed using an already existing matrix factorization. In this case, the generation of all covariances (always changing only one data point) can be performed with a cost similar to a single error analysis with prescribed mathematical covariance functions.
+
+To explain the method, let us suppose that we have constructed and inverted the stiffness matrix $\matr{K_0}$ for the same problem without any data point (as explained in Section~\ref{sec:finiteelements}, $\matr{K_0}$ has a component that is related to the smoothness constraint, not to the data). Then, adding a single data point with unit value at location $i$ would demand the solution of 
+
+\begin{equation}
+\left( \matr{K}_0 + \mu_i \matr{S}_i \transp{\matr{S}}_i \right) \vect{q} ~=~ \mu_i \matr{S}_i.
+\end{equation}
+Here, the \textit{Woodbury-Sherman} formula yields
+\begin{equation}
+\vect{q}=\left( 1 \over 1 + \mu_i \transp{\matr{S}}_i \inv{\matr{K}}_0 \matr{S}_i \right) \mu_i \inv{\matr{K}}_0 \matr{S}_i.
+\label{eq:qwoodone}
+\end{equation}
+Since the term in parenthesis is a scalar multiplicative factor, the solution with the data is obtained by analysing this data point with the stiffness matrix $\matr{K}_0$ and then multiplying all analyses by $ 1 /( 1 + \mu_i \transp{\matr{S}}_i \inv{\matr{K}}_0 \matr{S}_i)$.
+The value of 
+\begin{equation} 
+\varphi_0 = \mu_i \transp{\matr{S}}_i \inv{\matr{K}}_0 \matr{S}_i
+\end{equation}
+is actually nothing else than the analysis at the new data location, again using the stiffness matrix $\matr{K}_0$.
+Hence the recipe for calculation of the covariances is now clear: 
+
+\begin{enumerate}
+\item Create and invert once the stiffness matrix $\matr{K}_0$ constructed without any data points. 
+\item For each point for which the covariance is needed:
+\begin{enumerate}
+\item Create the elementary charge vector $\mu_i \matr{S}_i$.
+\item Apply the already inverted stiffness matrix $\inv{\matr{K}}_0$  and the multiplicative factor of \eqref{eq:qwoodone} to derive the values of $\varphi_0$ and $\varphi_i$
+\item Compute the covariances using \eqref{eq:brr} and \eqref{eq:btildco}.
+\end{enumerate}
+\end{enumerate}
+
+The efficiency of the method is due to the fact that we remain within the same \diva execution, where the matrix inversion $\inv{\matr{K}}_0$  is much less expensive than the initial factorization. Indeed the cost is reduced by a factor $\sqrt{N_e}$, with $N_e$ typically around 10$^4$-10$^5$, thus gain is again significant. Each covariance can be stored on disk for later use by the error calculation.
+
+Overall the cost for the full error calculation is now roughly equivalent to twice the hybrid approach, which is a substantial reduction compared to a brute force approach. The only unsolved problem is the storage of the covariance functions if they are calculated before the actual \diva run for the error calculations. This storage will take $N \times N_c$ words when $N_c$ points for error calculations are requested. The intermediate storage can however be avoided by using Unix-pipes between concurrent execution of two \diva cores, one providing the covariance for the other on demand.
+
+%---------------------------------------
+\section{Comparison between the methods}
+%---------------------------------------
+
+This example employs salinity measurements in the Mediterranean Sea at a depth of 30~m in July, for the 1980-1990 period (Fig.~\ref{fig:diva_oi_09_10030dataval_mesh3}). The data set is built up by exploiting the SeaDataNet portal (\url{http://www.seadatanet.org}) and the World Ocean Database 2009 \citep[WOD09,][]{BOYER09} and contains 1061 data points. 
+
+The regular grid for the analysis extends from 7$^{\circ}$W to 36$^{\circ}$E and from 30$^{\circ}$15'N to 45$^{\circ}$45'N, with a horizontal resolution of about 10~km. Measurements in the Black Sea and the Atlantic Ocean were removed in order to concentrate only on the Mediterranean Sea properties. The land-sea contours are created from the GEBCO bathymetry.
+
+\begin{figure*}[h!]
+\centering
+\includegraphics[width=.9\textwidth,bb=14 254 588 561]{diva_oi_09_10030dataval_mesh3}
+\caption{Finite-element mesh and salinity measurements used for the application.\label{fig:diva_oi_09_10030dataval_mesh3}}
+\end{figure*}
+
+In this example the error is scaled locally by the local variance of the background field $\hat{B}$; yielding relative errors. 
+
+The OI field (Fig.~\ref{fig:salinity_error_oi_0707_10030DD}a) shows the effect of the data coverage on the error magnitude. The relative error lies between 40 and 60\% around the regions with a sufficient amount of observations. The largest values ($>80\%$) occur along the south coasts of the Mediterranean Sea, where almost no data are available for the considered period. This means that the analysis obtained in these areas cannot be taken with much confidence.
+
+The poor man's estimate (Fig.~\ref{fig:salinity_error_oi_0707_10030DD}b) provides an error field with lower values over the whole domain. Where data are available, the error is below 20\%, whereas the 80-100\% error region is limited to a small zone close to the coast of Libya. 
+
+%The relation \eqref{eq:erroroi} explains why this method underestimate the error: the error variance ($e^2$) is obtained by subtracting the analysis applied to a vector containing the data covariances ($\matr{H} \vect{c}$) to the variance of the background field ($\signal^2$). When we replace the covariance vector $\vect{c}$ by a vector containing only $1$, the covariances are overestimated, so is the error reduction by the analysis. 
+
+The hybrid method was build by analogy with the OI error estimate \citep{BRANKART98}. Thus it is expected that the two methods provide comparable results. Indeed, the error field of Figs.~\ref{fig:salinity_error_oi_0707_10030DD}(a) and (c) exhibit a similar spatial distribution. Some discrepancies appear in certain regions: along the Italian coasts (on both side of the Peninsula), in the Alboran Sea, and around Cyprus. These differences are related to the presence of the coasts: 
+\begin{enumerate}
+\item As with the analysis, the FE method prevent the information to cross land. Hence the error reduction due to the analysis is lower with the hybrid method than with OI. 
+\item Close to the coasts, the variance of the background field in \diva is increased, due to the specified boundary conditions. 
+\end{enumerate}
+
+Finally, the error using the real covariance function (Fig.~\ref{fig:salinity_error_oi_0707_10030DD}d) is also close to the hybrid results. The main differences between the two methods occur in the coastal areas, for instance in the Adriatic Sea or around Cyprus. In these regions, the error is lower when the real covariance is employed, because it allows for the consideration of coastline effects. 
+
+
+\begin{figure*}[htpb]
+\centering
+\includegraphics[width=1.35\textwidth,angle=90,bb=24 292 581 605]{salinity_error_oi_0707_10030DD}
+\caption{Error fields computed using four different methods: (a) OI, (b) poor man's estimate, (c) hybrid and (d) real covariance methods.\label{fig:salinity_error_oi_0707_10030DD}}
+\end{figure*}
+
+The choice of one particular method depends on several factors:
+\begin{itemize}
+\item The size of the output grid.
+\item The number of analyses to be performed.
+\item The sources of anisotropies (advection, coastlines).
+\end{itemize} 
+
+If the objective is limited to having an indication of the area where the analysed field cannot be trusted, then the poor man's estimate is sufficient. If a more complex error field is to be constructed, a bypass is the reduction of the output grid resolution. This solution is particularly welcome when a large number of analyses ($\mathcal{O}(10^{2})$) is required, as it is the case for a climatology.
+
+
+
+% \section{Error field with advection}
+
+% provided by diva, but interpretation different as the normal case
+% need to add more details on this
+
 
 \clearpage
 

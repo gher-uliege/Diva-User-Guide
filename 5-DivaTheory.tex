@@ -287,7 +287,7 @@ and multiplying by $L^{2}$:
 \end{equation}
 
 
-Hence $\alpha_0$ fixes the length scale over which variations are significant to move the \hyperlink{KERNEL}{\textit{kernel function}} of the norm from one to zero:
+Hence $\alpha_0$ fixes the length scale over which variations are significant to move the \textit{kernel function}\index{Kernel function} of the norm from one to zero:
 \begin{equation}
 \alpha_0 L^4 = 1
 \end{equation}
@@ -302,7 +302,7 @@ Finally  $\alpha_1$ fixes the influence of gradients:
 \begin{equation}
 \alpha_1 L^2 = 2 \xi
 \end{equation}
-where   $\xi=1$ if penalization on the gradients is enforced, $\xi=0$ if no penalization is enforced. $\xi$ is a non-dimensional parameter close to one if the gradients are to be penalized with a similar weight than the second derivatives.
+where $\xi=1$ if penalization on the gradients is enforced, $\xi=0$ if no penalization is enforced. $\xi$ is a non-dimensional parameter close to one if the gradients are to be penalized with a similar weight than the second derivatives.
 
 
 \subsubsection{Weights on data}
@@ -334,10 +334,10 @@ Normally, interpolation (and extrapolation) works on anomalies with respect to a
 In particular when no treatment is applied (with $\alpha_0 > 0$), the minimization forces the analysis toward zero when there are no
 data points in a distance comparable to $L$. This is coherent with the idea of an anomaly only.
 
-\subsection{Resolution by Finite-Element Method}
-% ----------------------------------------------
+\subsection{Resolution by Finite-Element method\label{sec:finiteelements}}
+% ------------------------------------------------------------------------
 
-Minimization of (\ref{divaformula}) is actually performed by a Finite-Element Method (FEM), hence the need for generating a finite-element grid. 
+Minimization of (\ref{divaformula}) is actually performed by a Finite-Element (FE) method\index{Finite-element}, hence the need for generating a finite-element grid. 
 Because the field to analyse is only defined in the water, the minimization also works only within the contours defining the coastline or more generally, the considered isobath.
 
 Thus the grid generation has to be consistent with the coasts existing in the considered region. The corresponding mathematical problem is referred to the \textit{Constrained Triangulation}. %More details about the FEM will be given in section \ref{femgrid}.
@@ -398,49 +398,10 @@ Combining the two previous equations, we obtain the relation between $\varphi$, 
 \ee
 
 
-\subsection{Error field}
-% ----------------------
-
-For any analysis method, a quantification of associated errors is an essential feature, since it gives the user an indication of the reliability of the results. Broadly speaking we may expect the error field to be affected by:
-\begin{enumerate}
-\item the data coverage: the error field is expected to be higher where the data coverage is lower;
-\item the noise on the data: the more imprecision we have on the data, the higher will be the error field.
-\end{enumerate}
-
-We will see in the next sections how \diva computes this error field.
-
-\subsubsection{Derivation of the error field}
-%--------------------------------------------
-
-Optimal Interpolation (Sec. \ref{sec:OImethod}) allows the simultaneous derivation of analysis and error fields, but is not adapted for large data sets, while the spline methods are suitable for large amount of data but does not offer an error estimation.
-
-To fill in this gap, \cite{BRANKART98} and \cite{RIXEN00} proposed a heuristic statistical error expression for the VIM: in \diva, error fields are calculated by analogy with OI: since analysis in OI is equivalent to analysis with VIM \footnote{Insofar as the reproducing Kernel of VIM and the covariance function of OI are identical.} and 
-since error field of OI equals analysis of covariance fields, error field of VIM equals analysis (by VIM) of covariance fields.
-
-Mathematically, according to the developments of section \ref{sec:OImethod}, we have:
-
-\begin{tabular}{rlccrl}
-\hline
-\rule{0pt}{4ex}Solution &OI:  & $\varphi(\mathbf{r})$ &=& $\underbrace{\mathbf{g}(\mathbf{r})^{T}\mathbf{D}^{-1}}_{(\star)}$				&$\mathbf{d}$\\
-\rule{0pt}{4ex}Solution				 &VIM:	& $\varphi(\mathbf{r})$ &=& $\underbrace{\mathbf{T_{1}}(\mathbf{r})\mathbf{K}^{-1} \mathbf{T_{2}}(\mathbf{r})}_{(\star\star)}$	&$\mathbf{d}$\\
-\rule{0pt}{4ex}Error		 &OI:  & $e^{2}(\mathbf{r})$   &=& $\epsilon^{2}(\mathbf{r})-\underbrace{\mathbf{g}(\mathbf{r})^{T}\mathbf{D}^{-1}}_{(\star)}$		&$\mathbf{g}(\mathbf{r})$	\\		
-				\hline
-\rule{0pt}{4ex}$\stackrel{\textrm{by analogy}}{\rightarrow}$				 &VIM:	& $e^{2}(\mathbf{r})$   &=& $\epsilon^{2}(\mathbf{r})-\underbrace{\mathbf{T_{1}}(\mathbf{r})\mathbf{K}^{-1} \mathbf{T_{2}}(\mathbf{r})}_{(\star\star)}$&$\mathbf{g}(\mathbf{r})$\\
-\hline
-\end{tabular}
-
-
-
-In practice, the data input of the analysis tool for an error calculation is a vector containing the
-covariance of data points with the point in which the error estimate is to be calculated. 
-
-The problem is now how to specify this vector $\mathbf{g}$. 
-
-
 \subsection{Kernel and correlation function \label{sec:kernel}}
 % ------------------------------------------
 
-Kernel functions \index{Kernel function} can be examined by analyzing a single point with high signal-to-noise ratio and no background field (Fig.~\ref{singleanalysis}). In this particular case, we performed an analysis with a point located at the center $(0,0)$ of a square domain. The correlation length is equal to $1$ and the signal-to-noise ratio is taken equal to $1000$.
+Kernel functions \index{Kernel function} can be examined by analysing a single point with high signal-to-noise ratio and no background field (Fig.~\ref{singleanalysis}). In this particular case, we performed an analysis with a point located at the center $(0,0)$ of a square domain. The correlation length is equal to $1$ and the signal-to-noise ratio is taken equal to $1000$.
 
 The exact function in an infinite domain is given by 
 
@@ -554,17 +515,6 @@ DINEOF   &  ($\bullet$)     & $\bullet$ &  $\bullet$ & $N_a^{5/4}$   & $\bullet$
 \bottomrule
 \end{tabular*}
 \end{table}
-where 
-\begin{itemize}
-\item[$N_d$]: number of data points,
-\item[$N_a$]: number of grid points for analysis,
-\item[$N$]: number of EOFs,
-\item[$L$]: correlation length,
-\item[$\sigma^2/ \varepsilon^2$]: signal to noise ratio,
-\item[$\bullet$]: available feature,
-\item[($\bullet$)]: available with some adaptations.
-\end{itemize}
-
 
 \section{Additional tools}
 % ------------------------
