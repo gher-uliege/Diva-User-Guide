@@ -1,7 +1,4 @@
-                         }
-%\usepackage{geometry}
-%\geometry{scale=.9, nohead}
-
+                       
 
 \chapter{VADEMECUM}
 \pagestyle{empty}
@@ -10,14 +7,18 @@
 
 \vspace{-3cm}
 \begin{table}
-\centerline{\shortstack{{\Large{DIVADEMECUM}} \\ {{}} \\ {{}}\\ {{}} \\ {{}}}}
-\begin{center}
-{\small{
+\centering
+\caption{DIVADEMECUM: \diva in- and outputs. When not specified differently, input files are from directory  {\tt ./input} and 
+output files are placed in directory {\tt ./output}. Script {\tt divarefe} takes the same inputs as {\tt divacalc}
+while {\tt divaanom} and {\tt divasumup} use no other user-provided files than the other scripts. Brackets {\tt [ ]} enclose optional files or parameters. Ex. {\tt [-r]} will replace an input file by the outputs from the scripts.\label{vdm}}
+
+%%\centerline{\shortstack{{\Large{DIVADEMECUM}} \\ {{}} \\ {{}}\\ {{}} \\ {{}}}}
+
+{\scriptsize{
 \begin{tabular}{c|c|c}
-\hline 
-{\Large{Input}} & 
-\shortstack{\Large{{\sf Action}} \\
-{\Large{{\tt Execution}}} } & {\Large{ Output}} \\ \hline 
+\toprule
+{\Large{Input}} & \shortstack{\Large{{\sf Action}} \\
+{\Large{{\tt Execution}}} } & {\Large{ Output}} \\ \midrule
 {\tt mycase/input/*}  & 
 \shortstack{ 
 {  { }  } \\
@@ -355,15 +356,11 @@
 {\sf save results} \\
 {\tt divasave mycase} 
 }
-& {\tt mycase/outut/*} \\ \hline
+& {\tt mycase/outut/*} \\ 
+\bottomrule
 \end{tabular}
-\caption{DIVA in- and outputs. When not specified differently, input files are from directory  {\tt ./input} and 
-output files are placed in directory {\tt ./output}.  Script {\tt divarefe} takes the same inputs as {\tt divacalc}
-while {\tt divaanom} and {\tt divasumup} use no other user-provided files than the other scripts. Brackets {\tt [ ]} enclose optional files or parameters. Ex. {\tt [-r]} will replace an input file by the outputs from the scripts.
-}
-\label{vdm}
+
 }}
-\end{center}
 \end{table}
 
 
@@ -371,7 +368,7 @@ while {\tt divaanom} and {\tt divasumup} use no other user-provided files than t
 \clearpage
 \pagebreak
 
-\LaTeXPiX{divademecum}{Scripts used in the command-line version of DIVA; optional arguments are between {\tt []}.}{vade}
+%\LaTeXPiX{divademecum}{Scripts used in the command-line version of DIVA; optional arguments are between {\tt []}.}{vade}
 
 \pagebreak
 \clearpage
@@ -380,10 +377,10 @@ while {\tt divaanom} and {\tt divasumup} use no other user-provided files than t
 \begin{multicols}{2}
 \thispagestyle{empty}
 {
-\begin{minipage}{9cm}
+\begin{minipage}{.5\textwidth}
 \rule{\textwidth}{10pt}
 %\begin{figure}
-{\scriptsize{
+{\tiny{
 \begin{verbatim}
 # Correlation length (in units of data, if degrees: S-N)
 1

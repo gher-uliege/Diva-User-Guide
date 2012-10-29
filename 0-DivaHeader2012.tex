@@ -23,7 +23,8 @@
 \usepackage{url}
 \usepackage{lscape}
 \usepackage{lettrine}
-\usepackage{textcomp}
+%\usepackage{textcomp}
+\usepackage{multicol}
 \usepackage{caption}
 \usepackage{wasysym}
 %\usepackage{mathbx}
@@ -36,7 +37,9 @@
 \usepackage{tikz}
 \usepackage{listings}
 \usepackage{makeidx}
-
+\usepackage{booktabs}
+%\usepackage{kpfonts}
+\usepackage{titlesec}
 
 \lstdefinestyle{Bash}
 {language=bash,
@@ -241,60 +244,27 @@ urlcolor=blue}
 % ------------------------------------------------
 % chapter style
 %-------------------------------------------------
-\makeatletter
-\def\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
-\def\@makechapterhead#1{%
-  \reset@font
-  \parindent \z@ 
-  \vspace*{10\p@}%
-  \hbox{%
-    \vbox{\hsize=2cm
-      \begin{tabular}{c}
-        \scshape \strut \@chapapp{} \\
-        \fbox{%
-          \vrule depth 10em width 0pt%
-          \vrule height 0pt depth 0pt width 1ex%
-          {\LARGE \bfseries \strut \thechapter}%
-          \vrule height 0pt depth 0pt width 1ex%
-          }
-      \end{tabular}%
-      }%
-    \vbox{%
-      \advance\hsize by -2cm
-      \hrule\par
-      \vskip 6pt%
-      \hspace{1em}%
-      \Huge \bfseries #1
-      }%
-    }%
-  \vskip 100\p@
-}
-\def\@makeschapterhead#1{%
-  \reset@font
-  \parindent \z@ 
-  \vspace*{10\p@}%
- \hbox{%
-    \vbox{\hsize=2cm
-      \begin{tabular}{c}
-        \scshape \strut \vphantom{\@chapapp{}} \hphantom{\@chapapp{}} \\
-        \fbox{%
-          \vrule depth 10em width 0pt%
-          \vrule height 0pt depth 0pt width 1ex%
-          {\LARGE \bfseries \strut \hphantom{\thechapter}}%
-          \vrule height 0pt depth 0pt width 1ex%
-          }
-      \end{tabular}%
-      }%
-    \vbox{%
-      \advance\hsize by -2cm    
-      \hrule\par
-      \vskip 6pt%
-      \hspace{1em}%
-      \Huge \bfseries #1
-      }%
-    }%
-  \vskip 100\p@
-}
+
+%\newcommand*\chapterlabel{}
+%\titleformat{\chapter}
+%  {\gdef\chapterlabel{}
+%   \normalfont\sffamily\Huge\bfseries\scshape}
+%  {\gdef\chapterlabel{\thechapter\ }}{0pt}
+%  {\begin{tikzpicture}[remember picture,overlay]
+%    \node[yshift=-3cm] at (current page.north west)
+%      {\begin{tikzpicture}[remember picture, overlay]
+%        \draw[fill=red] (0,0) rectangle
+%          (\paperwidth,3cm);
+%        \node[anchor=east,xshift=.9\paperwidth,rectangle,
+%              rounded corners=20pt,inner sep=11pt,
+%              fill=blue]
+%              {\color{white}\chapterlabel#1};
+%       \end{tikzpicture}
+%      };
+%   \end{tikzpicture}
+%  }
+%\titlespacing*{\chapter}{0pt}{50pt}{-60pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \parskip 0.25cm
 \urlstyle{tt}

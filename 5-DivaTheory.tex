@@ -95,7 +95,9 @@ Because of the multiple sources of error, a perfect fit to data is not advised, 
 \section{The Optimal Interpolation method\label{sec:OImethod}}
 %-------------------------------------------------------------
  
-Before explaining the core of \diva technique, the main principles of \textit{Optimal interpolation} (OI hereinafter\index{OI}) are explained. OI was developed by \citet{GANDIN65} and \citet{BRETHERTON76}, and assumes that the true anomaly field $\varphi_t$ is one realization out of a zero mean ensemble. The problem consists in determining the weights $w_j$ of \eqref{objectiveanal}), so that expected error variance of the analysis is minimal. Equation (\ref{objectiveanal}) means that the true field $\varphi_t$ is decomposed into the sum of a background field $\varphi_b$ and a linear combinations of the $N_{d}$ observations $d_{j}$.
+Before explaining the core of \diva technique, the main principles of \textit{Optimal interpolation} \citep[OI,][]{STOR99,CHILES99} are explained\index{OI}. OI is a popular analysis tool, owing to its ease of use and the error field associated to the analysis \citep[e.g.,][]{SHEN98b,KAPLAN00}. The first references of the method are \citet{GANDIN65} and \citet{BRETHERTON76}.
+
+The idea is to minimise the expected error variance of the analysis. This conditions lead to the determination of the weights $w_j$ \eqref{objectiveanal}), with the assumption that the true anomaly field $\varphi_t$ is one realization out of a zero mean ensemble. 
 
 Note that \textit{Kriging}\index{Kriging} \citep{KRIGE51,MATHERON63} is an equivalent technique: it uses the same criterion as OI, but with a different mathematical formulation: the weights $w_{i}$ are chosen from the study of the covariance between the values as a function of the distance between them.
 
@@ -170,10 +172,10 @@ and the interpolated field is computed as
 \ee
 
 
-\subsubsection{Derivation of $\mathbf{D}$ and $\mathbf{g}$}
+\subsubsection{Derivation of the covariances}
 %--------------------------------------------------------
 
-To determine the covariance matrix, $\mathbf{D}$, and the covariance of the data with the real field, $\mathbf{g}$, the following assumptions are made: 
+To determine the data covariance matrix, $\mathbf{D}$, and the covariance of the data with the real field, $\mathbf{g}$, the following assumptions are made: 
 
 \begin{enumerate}
 \item errors $\noise_{i}$ on measurements are not correlated, i.e.,
@@ -182,8 +184,7 @@ To determine the covariance matrix, $\mathbf{D}$, and the covariance of the data
 \]
 where $\noise^{2}$ is the variance of the errors on measurement (i.e., the noise);
 
-\item errors on measurements are not correlated with the real field, \textit{i.e.}
-
+\item errors on measurements are not correlated with the real field, i.e.,
 \[
 \overline{\noise_{i}\varphi_{t}} = 0.
 \]
@@ -201,19 +202,28 @@ D_{ij} &=& \overline{\varphi_{t}(\mathbf{r_i})\varphi_{t}(\mathbf{r_j})}+\noise^
 \eeq
 where $c(\mathbf{r},\mathbf{r_i})$ is the \textit{correlation function} and $\signal$ is the \textit{signal} of the data.
 
+%---------------------------
 \subsection{Drawbacks of OI}
 %---------------------------
 
-As the method requires the inversion of a $N_{d}$-by-$N_{d}$ matrix ($N_{d}$ being the number of data), it is not adapted for situations with large number of observations (number of operations proportional to $N_{d}^{3}$). 
+There are two main drawbacks when using OI, as detailed in the following paragraphs: 
+\begin{itemize}
+\item The numerical cost.
+\item The specification of the covariances.
+\end{itemize}
 
-Also ...
+As the method requires the inversion of a $N_{d}$-by-$N_{d}$ matrix ($N_{d}$ being the number of data), it is not adapted for situations with large number of observations (number of operations proportional to $N_{d}^{3}$). Moreover the method does not always produce the theoretical optimum, specially when the number of data is not sufficient and the covariances are not correctly specified \citep[e.g.,][]{RIXEN00,GOMIS01}. Some adaptations have been made to the OI scheme to improve the numerical efficiency \citep[e.g.,][]{HARTMAN08,ZHANG10}.
+
+The quality of OI (and other gridding techniques) relies on the correct specification of the covariances of the observational error and of the background field. The covariance functions used in OI are not restricted (except that the covariance matrices have to be positive-definite and symmetric), allowing for example correlated observational errors. Yet in most cases, covariances between two points are parametrized by simple expressions, such as a Gaussian function depending on the sole distance between the points, leading to isotropic functions, which are not always well adapted to oceanography. Indeed, wich such functions, the propagation of information through islands and continents is enabled. To circumvent this problem, adaptations of the OI scheme are necessary in order to allow the use of anisotropic functions \citep[e.g.,][]{TANDEO11}.
+
+Finally, although OI provides the best analysis in the sense that it gives the minimum expected error, the method has the drawback of not being objective: the covariance of the unknown field, and the standard deviation of observational errors generally have to be chosen subjectively by he user.
 
 \section[VIM and its implementation]{The Variational Inverse Method}
 % ---------------------------------------
 
 The Variational Inverse Method (VIM\index{VIM}) was initially designed for climatology purposes: in that case, vertical profiles have high vertical resolution and sufficient profiles for all seasons, but have an irregular horizontal coverage \citep{BRASSEUR96}. Thus a spatial analysis on horizontal planes is needed. 
 
-Relatively large number of data points in each plane penalizes Optimal Interpolation (OI) methods, because these methods require the inversion of a $N_{d}$-by-$N_{d}$ matrix, \textit{i.e.} a number of operations proportional to $N_{d}^{3}$ (see Tab. \ref{tabdata} and eq. \ref{eq:theory_error}).
+Relatively large number of data points in each plane penalizes Optimal Interpolation (OI) methods, because these methods require the inversion of a $N_{d}$-by-$N_{d}$ matrix, \textit{i.e.} a number of operations proportional to $N_{d}^{3}$ (see Tab.~\ref{tabdata} and eq. \ref{eq:theory_error}).
 
 This is the reason why VIM resorts to the expertise in efficient finite-element solvers.
 
@@ -429,7 +439,7 @@ The problem is now how to specify this vector $\mathbf{g}$.
 \subsection{Kernel and correlation function \label{sec:kernel}}
 % ------------------------------------------
 
-\hypertarget{KERNEL}{Kernel} functions can be examined by analyzing a single point with high signal-to-noise ratio and no background field (Fig.~\ref{singleanalysis}). In this particular case, we performed an analysis with a point located at the center $(0,0)$ of a square domain. The correlation length is equal to $1$ and the signal-to-noise ratio is taken equal to $1000$.
+Kernel functions \index{Kernel function} can be examined by analyzing a single point with high signal-to-noise ratio and no background field (Fig.~\ref{singleanalysis}). In this particular case, we performed an analysis with a point located at the center $(0,0)$ of a square domain. The correlation length is equal to $1$ and the signal-to-noise ratio is taken equal to $1000$.
 
 The exact function in an infinite domain is given by 
 
@@ -463,7 +473,7 @@ where $r$ is the Euclidean distance,\\
 
 The choice of this correlation model results from the mathematical structure of the variational method \citep{BRASSEUR96}.
 
-Fig.~\ref{kernel1} shows both the exact solution (\ref{kernelfunction}) and the correlation function by a single point analysis. The two curves are close to each other, the differences between the two curves being only due to the boundaries.
+Figure~\ref{kernel1} shows both the exact solution (\ref{kernelfunction}) and the correlation function by a single point analysis. The two curves are close to each other, the differences between the two curves being only due to the boundaries.
 
 In an infinite domain, the correlation function was shown to be proportional to the Kernel of the VIM norm.
 
@@ -480,35 +490,69 @@ In an infinite domain, the correlation function was shown to be proportional to 
 \end{figure}
 
 
-The Kernel function can be used to calibrate \diva parameters ($\alpha_0, \alpha_1, \mu$) so as to fit observed covariance functions. This principle is used by the tool \texttt{divafit} which helps one to estimate the correlation length (see Sec. \ref{sec:divafit}).
+The Kernel function can be used to calibrate \diva parameters ($\alpha_0, \alpha_1, \mu$) so as to fit observed covariance functions. This principle is used by the tool \command{divafit} which helps one to estimate the correlation length (see Section~\ref{sec:divafit}).
 
 It can also be used for specifying the covariance for error calculations.% (Sec. \ref{}).
 
 
 
-\section{Comparison between the methods}
-%---------------------------------------
 
-Numerous methods are available for data interpolating. Tab. \ref{tabdata} shows different characteristics of each methods: error minimization ($\min( \varepsilon^2)$), extension to 3D, multivariate analysis, number of operations, error estimate ($\varepsilon(\mathbf{r})$), \textit{a priori} known parameters, control parameters and treatment of anisotropy. 
+
+\subsection{Comparison OI--VIM}
+%-----------------------------------------
+
+\cite{RIXEN00} compared the two methods by testing quasi-synoptic salinity data. Results showed that the main differences between OA and VIM occur in coastal areas and around islands ($\mathcal{O}(0.10)$), whereas the differences range from $-0.01$ to $0.02$ within the domain. The same conclusions were drawn when they compared OI and VIM in the case of climatological data set: both fields were nearly identical, except in the vicinity of the coasts (differences of up to 0.1).
+
+A summary of the main characteristics of the two methods is found in Tab.~\ref{tabOAVIM}.
 
 
 \begin{table}[htpb]
-\begin{flushleft}
-\caption{Characteristics of different methods of data analysis. \label{tabdata}}
-\begin{tabular}{lcccccccc}
-\hline
-Method   & $\min( \varepsilon^2)$ & 3D       & Multivar & Ops/image        & $ \varepsilon(\mathbf{r})$& \textit{a priori}& C.V. & anis. \\ 
-\hline
-Cressman &                    & $\star$  &  $\star$ & $N_d N_a$        &                        & $w(r/L)$         &($L$) & ($\star$)  \\ 
-OI     &   $\star$          & $\star$  &  $\star$ & $N_d^3+ N_d N_a$ &  $\star$               & $c(r/L)$         & $L,\sigma^2/\mu^2$&($\star$)\\ 
-{\bf VIM}&   $\star$       & ($\star$)& ($\star$)& $N_a^{5/2}$      &  $\star$               & $K(r/L)$         & $L,\sigma^2/\mu^2$&($\star$)\\
-DINEOF\footnote{described in Sec. \ref{lasttool}.}   &   ($\star$)        &  $\star$ &  $\star$ & $N_a^{5/4}$      &  ($\star$)   &  stat.          & $N$               & $\star$\\ 
-\hline
-\end{tabular}
-\end{flushleft}
+\caption{Statistical equivalence between OI and VIM (from \cite{RIXEN00})\label{tabOAVIM}}
+\begin{tabular*}{0.99\textwidth}{@{\extracolsep{\fill}}lll}
+\toprule
+											&		OI	& VIM \\
+\midrule
+Minimization \rule{0pt}{3ex}	& $e^{2}(\mathbf{r})= \overline{ [\varphi(\mathbf{r})-\varphi_{t}(\mathbf{r})]^{2}}$ 	& $J[\varphi]=\sum_{i=1}^{N_d}\mu_{i}[d_{i}-\phi(\mathbf{r_{i}})]^{2}+\left\|\varphi\right\|^{2}$							\\
+Solution						& $\varphi(\mathbf{r})= \mathbf{c}^{T}(\mathbf{r})\mathbf{D}^{-1}\mathbf{d}$			& 
+$\varphi(\mathbf{r})= \mathbf{c}^{T}(\mathbf{r})\mathbf{D}^{-1}\mathbf{d}$												\\
+Data correlation				& $[\mathbf{D}]_{ij}=\signal^{2} c(\mathbf{r_{i}},\mathbf{r_{j}})+\noise^{2}\delta_{ij}$& $[\mathbf{D}]_{ij}=K(\mathbf{r_i},\mathbf{r_j})+(1/\mu)\delta_{ij}$														\\
+Data-field covariance 			& $[\mathbf{c}]_{i}=\signal^{2} c(\mathbf{r},\mathbf{r_{i}})$							& $[\mathbf{c}]_{i}=K(\mathbf{r},\mathbf{r_{i}})$																			\\
+\bottomrule
+\end{tabular*}
 \end{table}
-\clearpage
 
+%-------------------------------------------------------------
+\subsection{Comparison between the spatial interpolation methods}
+%-------------------------------------------------------------
+
+Table~\ref{tabdata} compares characteristics of different spatial interpolation methods: 
+\begin{itemize}
+\item the error minimization ($\min( \varepsilon^2)$),
+\item the extension to 3 dimensions (3-D), 
+\item the multivariate analysis, 
+\item the number of operations per analysis, 
+\item the error estimate ($\varepsilon(\mathbf{r})$),
+\item \textit{a priori} known parameters, 
+\item the control parameters and 
+\item the treatment of anisotropy. 
+\end{itemize} 
+
+All the methods compared here are base on a minimisation of the error estimate except the Cressman method. OI and VIM are similar methods: they use the same control parameters and require similar a priori information. To work in 3-D and in multivariate mode, VIM needs a few adaptations. 
+The main difference concerns the number of operations, which is almost independent on the number of data for VIM.
+
+\begin{table}[htpb]
+\caption{Characteristics of different methods of data analysis. $\bullet$ denote available features in the interpolation method, ($\bullet$) indicate that the feature is available with some adaptations. $\varepsilon(\mathbf{r})$ is the error estimate, $N_d$ the number of data points, $N_a$ the number of grid points for analysis, $N$ the number of EOFs, $L$ the correlation length and $\signal^2/ \noise^2$ the signal-to-noise ratio.\label{tabdata}}
+\begin{tabular*}{0.99\textwidth}{@{\extracolsep{\fill}}lcccccccc}
+\toprule
+Method   & $\min(\noise^2)$	& 3-D       & Multivar & Ops/anal.        & $\noise(\mathbf{r})$& \textit{a priori}& C.V. & anis. \\ 
+\midrule
+Cressman &              	& $\bullet$& $\bullet$& $N_d N_a$        &                & $w(r/L)$   &($L$) & ($\bullet$) 			\\ 
+OI    	 &   $\bullet$    	& $\bullet$& $\bullet$& $N_d^3+ N_d N_a$ & $\bullet$      & $c(r/L)$   & $L,\sigma^2/\noise^2$&($\bullet$)	\\ 
+{\bf VIM}&   $\bullet$      &($\bullet$)& ($\bullet$)& $N_a^{5/2}$   & $\bullet$      & $K(r/L)$   & $L,\sigma^2/\noise^2$&($\bullet$)	\\
+DINEOF   &  ($\bullet$)     & $\bullet$ &  $\bullet$ & $N_a^{5/4}$   & $\bullet$  	  &  --		   & $N$               & $\bullet$	\\ 
+\bottomrule
+\end{tabular*}
+\end{table}
 where 
 \begin{itemize}
 \item[$N_d$]: number of data points,
@@ -516,89 +560,47 @@ where
 \item[$N$]: number of EOFs,
 \item[$L$]: correlation length,
 \item[$\sigma^2/ \varepsilon^2$]: signal to noise ratio,
-\item[$\star$]: available feature,
-\item[($\star$)]: available with some adaptations.
+\item[$\bullet$]: available feature,
+\item[($\bullet$)]: available with some adaptations.
 \end{itemize}
-
-\subsection{Drawbacks of OI}
-%-----------------------------------
-
-The first inconvenient is that OI is not well-adapted for situations where the number of data to treat is large, since inverting the correlation matrix requires  $\mathcal{O}(N_{d}^{3})$ operations. Typically VIM analysis (error) becomes faster than OA when more than 250 (130) data are available \citep{RIXEN00}. 
-
-A second important factor is the propagation of information through islands and continents when working with OI: as the correlation functions are isotropic, the method cannot take into account spatial anisotropies due to boundaries, whereas VIM only covers the real domain and therefore detects automatically obstacles. 
-
-Finally, although OI provides the best analysis in the sense that it gives the minimum expected error, the method has the drawback of not being objective: the covariance of the unknown field, and the standard deviation of observational errors generally have to be chosen subjectively by he user.
-
-%Basic examples in section \ref{testcases} will illustrate the differences between analysis fields provided by OI and by VIM.
-
-
-\subsection{OI vs. VIM}
-%-----------------------------------------
-
-\cite{RIXEN00} compared the two methods by testing quasi-synoptic salinity data. Results showed that the main differences between OA and VIM occur in coastal areas and around islands ($\mathcal{O}(0.10)$), whereas the differences range from $-0.01$ to $0.02$ within the domain. The same conclusions were drawn when they compared OI and VIM in the case of climatological data set: both fields were nearly identical, except in the vicinity of the coasts (differences of up to 0.1).
-
-A summary of the main characteristics of the two methods is found in Tab. \ref{tabOAVIM}.
-
-
-\begin{table}[H]
-\begin{flushleft}
-\caption{Statistical equivalence between OI and VIM (from \cite{RIXEN00})\label{tabOAVIM}}
-\begin{tabular}{lll}
-\hline
-											&		OI																																										  	&VIM \\
-											\hline
-Minimization \rule{0pt}{3ex}& $e^{2}(\mathbf{r})= \overline{ [\varphi(\mathbf{r})-\varphi_{t}(\mathbf{r})]^{2}}$					& $J[\varphi]=\sum_{i=1}^{N_d}\mu_{i}[d_{i}-\phi(\mathbf{r_{i}})]^{2}+\left\|\varphi\right\|^{2}$\\
-Solution							& $\varphi(\mathbf{r})= \mathbf{c}^{T}(\mathbf{r})\mathbf{D}^{-1}\mathbf{d}$								& $\varphi(\mathbf{r})= \mathbf{c}^{T}(\mathbf{r})\mathbf{D}^{-1}\mathbf{d}$	\\
-Data correlation			& $[\mathbf{D}]_{ij}=\signal^{2} c(\mathbf{r_{i}},\mathbf{r_{j}})+\noise^{2}\delta_{ij}$	& $[\mathbf{D}]_{ij}=K(\mathbf{r_i},\mathbf{r_j})+(1/\mu)\delta_{ij}$\\
-Data-field covariance & $[\mathbf{c}]_{i}=\signal^{2} c(\mathbf{r},\mathbf{r_{i}})$																						& $[\mathbf{c}]_{i}=K(\mathbf{r},\mathbf{r_{i}})$	\\
-\hline
-\end{tabular}
-\end{flushleft}
-\end{table}
-
 
 
 \section{Additional tools}
 % ------------------------
 
-\diva software is provided with addition tools designed for parameters adjustment and validation of results.
+\diva software is provided with additional tools designed for parameters adjustment, quality control of results and other physical constraints in the analysis.
 
+\subsection{Automatic estimation of analysis parameters}
+%-------------------------------------------------------
 
-\subsection{Generalized Cross Validation (GCV)\label{firsttool}}
-%---------------------------------------------------------------
+The correlation length can be estimated, based on the dataset itself. The method performs a least-square fit of the data covariance function with a theoretical function. 
 
-GCV allows estimating global errors and calibration of the correlation length $L$ and the signal-to-noise ratio $\snr=\frac{\signal^{2}}{\noise^{2}}$.
-The method consists in setting one or several data aside and perform an analysis in order to obtain a global error estimate. GCV applies analysis to random anomalies at the same locations as real data. A detailed description of the method is provided in Chap.~\ref{gcv}.
+The signal-to-noise ratio $\snr=\frac{\signal^{2}}{\noise^{2}}$ is estimated with a Generalized Cross-Validation (GCV). GCV allows estimating global errors and calibration of the analysis parameters. 
 
+The tools will be further explained in Chapter~\ref{chap:analysisparameters}.
  
-\subsection{Advection constraint}
-%--------------------------------
+\subsection{Additional physical constraint}
+%------------------------------------------
 
+In the base formulation of \diva, the cost function contains a term relative to the regularity of the reconstructed field and a term relative to the proximity to the observations. We will see in Chapter~\ref{chap:advection} that physics (advection, diffusion, source terms) can be added in the cost function.
 
-The advection constraint aims at taking into account the transport of information (temperature, salinity, or any other tracer) by the velocity field. 
-This is the topic of Chap. \ref{chap:advection}
-
-
-\subsection{Three-dimensional analysis}
+%--------------------------------------
+\subsection{Multi-dimensional analysis}
 %--------------------------------------
 
-\diva is able to carry out analysis in oceanic basin, by applying successive analysis on horizontal layers, from surface to bottom. A set of scripts (\texttt{diva3D*}) are designed to perform such analysis in an automatic way.
+In order to perform three-dimension analysis (horizontal coordinates and depth), the solution is to applying successive analysis in horizontal layers, from the deeper to the shallower layer. A set of scripts (\texttt{diva3D*}) are designed to perform such analysis in an automatic way.
 
-The whole procedure is described in the second volume of the manual.
+However, the reconstruction of three-dimensional fields of temperature and salinity by stacking of layers of analysed fields may leads to unstable density fields. An algorithm has been implemented in \diva in order to remove these instabilities.
 
-\subsection{Static instabilities removal}
-%----------------------------------------
+These topics are described in Chapter~\ref{chap:godiva}.
 
-The reconstruction of three-dimensional fields of temperature and salinity by stacking of layers of analysed fields may leads to unstable density fields. A procedure implemented in \diva in order to remove these instabilities is presented in the second volume of the manual.
 
-\subsection{DINEOF\label{lasttool}}
+\subsection{DINEOF\label{sec:DINEOF}}
 %-----------------------------------
 
-\hypertarget{DINEOF}{DINEOF} stands for \textit{Data INterpolating Empirical Orthogonal Function}.
+\diva is mainly designed to work with in situ data, characterized by a scattered spatial distribution. When dealing with satellite images, the spatial interpolation can be made in a clever way, by using the information contained in the satellite images acquired before in the same region. This idea is implemented in Data INterpolating Empirical Orthogonal Function \citep[DINEOF;][]{BECKERS03,ALVERA05}\index{DINEOF}.
 
-It is designed to exploit repeated observations with missing data (\textit{e.g.,} a series of collocated satellite images with clouds).
-For more details about DINEOF, the reader is invited to consult:
-\cite{ALVERA05,ALVERA07,BECKERS03,BECKERS06}, \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/DINEOF} and   \url{http://ocgmod2.marine.usf.edu/DINEOF-welcome.html}.
-
+This tool is designed to exploit repeated observations with missing data (e.g., a series of collocated satellite images with clouds). 
+For more details about DINEOF, please consult \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/DINEOF} and the other references describing the method: \cite{ALVERA05,ALVERA07,ALVERA09,BECKERS06}.
 
 
