@@ -131,7 +131,6 @@ literate={\$}{{\textcolor{red}{\$}}}1
 %-------------------------------------------------
 
 \newcommand{\nablab}{\boldsymbol{\nabla}}
-% \newcommand{\filefordivas}[1]{\href{run:../divastripped/#1}{\texttt{#1}}}
 \newcommand{\statmean}[1]{\left\langle #1 \right\rangle}
 \newcommand{\mean}[1]{\statmean{#1}}
 \newcommand{\true}[1]{{#1}^t}
@@ -142,7 +141,6 @@ literate={\$}{{\textcolor{red}{\$}}}1
 \newcommand{\errorv}{\vect{\epsilon}}
 \newcommand{\errorobs}{\vect{\epsilon}^o}
 
-%\newcommand{\diva}{\texttt{Diva }}
 \newcommand{\sing} {\rho}
 \newcommand{\vnorm}[1] { \parallel \! #1 \! \parallel }
 \newcommand{\taumax}[1] { \mu_{#1}^{max} }
@@ -207,7 +205,7 @@ literate={\$}{{\textcolor{red}{\$}}}1
 
 \newcommand{\directory}[1]{\texttt{\color{ForestGreen}{#1}}}
 \newcommand{\file}[1]{\texttt{\color{MidnightBlue}{#1}}}
-\newcommand{\command}[1]{\texttt{\color{RawSienna}{#1}}}
+\newcommand{\command}[1]{\texttt{\color{RedOrange}{#1}}}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -264,11 +262,11 @@ urlcolor=blue}
    \normalfont\sffamily\Huge\bfseries\scshape}
   {\gdef\chapterlabel{\thechapter\ }}{0pt}
   {\begin{tikzpicture}[remember picture,overlay]
-    \node[yshift=-3cm] at (current page.north west)
+    \node[yshift=-2.5cm] at (current page.north west)
       {\begin{tikzpicture}[remember picture, overlay]
         \draw[fill=lightgray] (0,0) rectangle
-          (\paperwidth,3cm);
-        \node[anchor=east,xshift=.9\paperwidth,rectangle,
+          (\paperwidth,2.5cm);
+        \node[anchor=east,xshift=.95\paperwidth,rectangle,
               rounded corners=20pt,inner sep=11pt,
               fill=black]
               {\color{white}\chapterlabel#1};
