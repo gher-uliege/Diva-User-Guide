@@ -39,10 +39,7 @@
 \usepackage{listings}
 \usepackage{makeidx}
 \usepackage{booktabs}
-%\usepackage{kpfonts}
-\usepackage{titlesec}
-%\usepackage{pict2e}
-
+\usepackage[explicit]{titlesec}
 \usepackage{texgraph}
 \usepackage{epic,eepic}
 \usepackage{rotating}
@@ -106,7 +103,6 @@ literate={\$}{{\textcolor{red}{\$}}}1
 \newcommand{\textcom}{\textsl}
 \newcommand{\example}{\underline{Example}:\,}
 \newcommand{\examples}{\underline{Examples}:\,}
-\newcommand{\divaspace}{\hspace{1ex}}
 \newcommand{\be}{\begin{equation}}
 \newcommand{\ee}{\end{equation}}
 \newcommand{\beq}{\begin{eqnarray}}
@@ -262,25 +258,25 @@ urlcolor=blue}
 % chapter style
 %-------------------------------------------------
 
-%\newcommand*\chapterlabel{}
-%\titleformat{\chapter}
-%  {\gdef\chapterlabel{}
-%   \normalfont\sffamily\Huge\bfseries\scshape}
-%  {\gdef\chapterlabel{\thechapter\ }}{0pt}
-%  {\begin{tikzpicture}[remember picture,overlay]
-%    \node[yshift=-3cm] at (current page.north west)
-%      {\begin{tikzpicture}[remember picture, overlay]
-%        \draw[fill=red] (0,0) rectangle
-%          (\paperwidth,3cm);
-%        \node[anchor=east,xshift=.9\paperwidth,rectangle,
-%              rounded corners=20pt,inner sep=11pt,
-%              fill=blue]
-%              {\color{white}\chapterlabel#1};
-%       \end{tikzpicture}
-%      };
-%   \end{tikzpicture}
-%  }
-%\titlespacing*{\chapter}{0pt}{50pt}{-60pt}
+\newcommand*\chapterlabel{}
+\titleformat{\chapter}
+  {\gdef\chapterlabel{}
+   \normalfont\sffamily\Huge\bfseries\scshape}
+  {\gdef\chapterlabel{\thechapter\ }}{0pt}
+  {\begin{tikzpicture}[remember picture,overlay]
+    \node[yshift=-3cm] at (current page.north west)
+      {\begin{tikzpicture}[remember picture, overlay]
+        \draw[fill=lightgray] (0,0) rectangle
+          (\paperwidth,3cm);
+        \node[anchor=east,xshift=.9\paperwidth,rectangle,
+              rounded corners=20pt,inner sep=11pt,
+              fill=black]
+              {\color{white}\chapterlabel#1};
+       \end{tikzpicture}
+      };
+   \end{tikzpicture}
+  }
+\titlespacing*{\chapter}{0pt}{50pt}{-60pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \parskip 0.25cm

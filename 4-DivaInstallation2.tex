@@ -35,7 +35,7 @@ For a quick visualization of the results, a software able to read and display th
 \section{Download and extraction of the archive}
 %-----------------------------------------
 
-Select a directory on your local disk where you want install the software and download the archive available at \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/DIVA#How_to_get_the_code.3F}.
+Select a directory on your local disk (here we install in a directory \directory{\~{}/Software/}) where you want install \diva and download the archive available at \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/DIVA#How_to_get_the_code.3F}.
 
 \begin{lstlisting}[style=Bash]
 [charles@gher13 ~]$ cd Software/
@@ -102,11 +102,15 @@ nclib=/usr/local/lib/netcdf3ifort/libnetcdf.a
 ...
 \end{verbatim}
 
-If your installation knows the \command{nc-config} command, you can use 
-\begin{verbatim}
-# Netcdf library
-nclib=`nc-config --flibs`
-\end{verbatim}
+If your installation knows the \command{nc-config} command, the compiler and the options for the NetCDF library will be detected automatically during the compilation. If you want to check before compilation, type:
+\begin{lstlisting}[style=Bash]
+[charles@gher13 ~]$ nc-config --fc
+gfortran
+[charles@gher13 ~]$ nc-config --flibs
+-L/usr/lib -lnetcdff -lnetcdf
+\end{lstlisting}
+Check the options of this command by typing \command{nc-config}, or visit the web page: \url{http://www.unidata.ucar.edu/software/netcdf/workshops/2011/utilities/Nc-config.html}.
+
 
 Then run the compilation script: 
 \begin{lstlisting}[style=Bash]
@@ -134,12 +138,12 @@ Binaries are located in directory:
 
 \section{Direct copy of pre-compiled binaries}
 
-If the compilation failed, go in the \directory{GODIVA\_07\_2012/DIVA3D/bin/} directory and copy directly the binaries available in the sub-directories. For example for Windos with the Cygwin tool:
+If the compilation failed, go in the \directory{GODIVA\_07\_2012/DIVA3D/bin/} directory and copy directly the binaries available in the sub-directories. For example for Windows with the Cygwin tool:
 \begin{lstlisting}[style=Bash]
 [charles@gher13 bin]$ cp -f cygwin/* .
 \end{lstlisting}
 
-\section{Run tests}
+\section{Run tests\label{sec:divatest}}
 %------------------
 
 In the main working directory (\directory{GODIVA\_07\_2012/DIVA3D/divastripped}), run one the two available tests: \command{divatest} and \command{divabigtest}. 
