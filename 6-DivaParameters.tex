@@ -1,24 +1,28 @@
 \chapter[Determination of analysis parameters]{Determination of analysis parameters \label{chap:analysisparameters}}
 % ----------------------------------------------------------------------------------------
 
-\lettrine[lines=2, loversize=-0.1, lraise=0.1]{T}{he} purpose of this chapter is to describe the validations tools included in the \diva software.  Generalized Cross-Validation is has been used to deduce statistical estimators from the dataset \citep{BRANKART96}. In the present version, it serves for the determination of the signal-to-noise ratio.
-
-We start with theoretical notions about the Cross Validation, followed by a section about the quality control of data. 
-% The chapter ends with the application to \diva.
+The purpose of this chapter is to describe the tools included in the \diva software and that provide estimates of the analysis parameters: the correlation length $L$ and the signal-to-noise ratio $\snr$. The end of the chapter deals with the automatic quality control of data within the analysis.
 
 \minitoc
 
 
-\section{Generalities}
+\section{Determination of the correlation length}
+%------------------------------------------------
+
+
+\section{Determination of the signal-to-noise ratio}
+%---------------------------------------------------
+
+\subsection{Generalities}
 %------------------------
 
-Let us consider the vector $\vect{d}$ containing the $N$ data anomalies. Objective analysis of $\vect{d}$ leads to analyzed field with minimal expected error variance. The analysis $\phi^a$ at any location $\vect{r}$ is given by
+Let us consider the vector $\vect{d}$ containing the $N$ data anomalies. Objective analysis of $\vect{d}$ leads to analysed field with minimal expected error variance. The analysis $\varphi^a$ at any location $\vect{r}$ is given by
 \begin{equation}
-\phi^a(\vect{r}) = \vect{c} \inv{(\matr{B}+\matr{R})} \matr{d}
+\varphi^a(\vect{r}) = \vect{c} \inv{(\matr{B}+\matr{R})} \matr{d}
 \end{equation}
 where $\vect{c}$ is a vector containing the background covariance between the point in which the analysis is to be performed and all data point locations. The optimal interpolation is based on the \textit{background covariance} matrix $\matr{B}$ and \textit{error covariance} matrix $\matr{R}$ of the data.
  
-Let us call $\tilde{\vect{d}}$ the analysis vector at data points. The two vectors ${\vect{d}}$ and $\tilde{\vect{d}}$ can be related by the expression:
+Let us call $\tilde{\vect{d}}$, the analysis vector at data points. The two vectors ${\vect{d}}$ and $\tilde{\vect{d}}$ can be related by the expression:
 
 \begin{equation}
 \tilde{\vect{d}}  =  \matr{A} \vect{d}
@@ -87,11 +91,11 @@ Dividing both sides of Eq. \ref{eqcovC} by $\signal^{2}$ and  $\noise^{2}$, we a
 so that knowing $\snr$ we can calculate the signal and noise variances from the data values.
 
 % ----------------------------------------------------------------------------------
-
 \subsection{Ordinary Cross Validation (OCV)}
 %-------------------------------------------
 
-We want to optimize the parameter $\snr$ by looking for its value for which the analysis has a minimal error. For this reason, we need to find a proxy norm that we will be able to minimize. As the difference of the analysis with the true field is not available, we will work with the difference of the analyzed field at the data points with respect to the original data field:
+\index{Ordinary cross validation}
+The objective is to optimize the parameter $\snr$ by searching for its value for which the analysis has a minimal error. For this reason, we need to find a proxy norm that we will be able to minimize. As the difference of the analysis with the true field is not available, we will work with the difference of the analysed field at the data points with respect to the original data field:
 
 \begin{equation}
 {\theta_i^2} = {(d_i - \tilde{d}_i)^2}.
@@ -99,7 +103,7 @@ We want to optimize the parameter $\snr$ by looking for its value for which the 
 
 If we try to minimize this norm, we will get an infinite signal-to-noise ratio and a perfect data-analysis fit. This is because the analysis at the data point is directly influenced by the corresponding data. 
 
-To avoid this inconvenient, the solution is to calculate the difference of the data value with respect to the analyzed field in which the data under investigation was not taken into account. This is called the \textit{Ordinary Cross Validation}. 
+To avoid this inconvenient, the solution is to calculate the difference of the data value with respect to the analysed field in which the data under investigation was not taken into account. This is called the \textit{Ordinary Cross Validation}. 
 
 To make this estimate robust, the analysis has to be repeated over a large number of data points, increasing the computing cost, so that OCV is generally too expensive to perform.
 
@@ -114,7 +118,7 @@ According to \cite{CRAVEN78}, modifying the error estimate as follows:
 \label{eq:misfitestimate}
 \end{equation}
 
-allows to keep the data during the analysis and will reduce the computing cost. In this formulation, the denominator penalizes more heavily data points in which the analysis is forced to be close the data and accounts therefore for the self-influence of the data point (which is absent in the case of pure cross-validation).
+allows one to keep the data during the analysis and will reduce the computing cost. In this formulation, the denominator penalizes more heavily data points in which the analysis is forced to be close the data and accounts therefore for the self-influence of the data point (which is absent in the case of pure cross-validation).
 
 \subsubsection{Computation of $A_{ii}$}
 % ---------------------------------------
@@ -160,14 +164,12 @@ In view of \eqref{eq:epsilonmisfit} and \eqref{eq:gcv} the expected variance of 
 \end{equation}
 
 
-
 When the observational errors are uncorrelated but vary in space, we should replace the residual measure $r = \transp{(\vect{d}-\tilde{\vect{d}})} (\vect{d}-\tilde{\vect{d}}) $ by 
 
 \begin{equation}
 r = \transp{(\vect{d}-\tilde{\vect{d}})} \,\inv{ \hat{\matr{R}}} \,(\vect{d}-\tilde{\vect{d}})
 \end{equation}
 to take into account the relative noise level.
-
 
 For a diagonal matrix, we can define weights $w_i$ such that
 
@@ -189,12 +191,13 @@ where the weights should, according to \eqref{eq:rcondition} satisfy
 \label{eq:condition}
 \end{equation}
 
-The $\tilde{w}_i$ are the values provided as optional fourth column in \texttt{data.dat}.
+The $\tilde{w}_i$ are the values provided as optional fourth column in \file{data.dat}.
 
+%------------------------------------------------------
 \section{Quality control (QC) of data\label{secdivaqc}}
 %------------------------------------------------------
 
-Having defined the generalized cross validator, we look for a criterion that will allow us to reject or accept a given data.
+Having defined the generalized cross validator, we look for a criterion that will allow the user to reject or accept a given data. Note that this QC is performed based on the analysis itself and shall be preceded by an a priori QC on the data (e.g., range of values, gradients, etc). 
 
 \subsection{Quality criteria}
 % ---------------------------
@@ -255,59 +258,15 @@ Hence we can detect points qualified as outliers if they satisfy the inequality
 This normalized version of quality control to some extent corrects for inaccurate estimation of the expected misfits $\Delta$.
 
 
-% -----------------------------------------------------------------------------------
 
-\section{Application and implementation in \diva\label{sec:divagcv}}
+
+\subsection{Implementation in \diva\label{sec:divagcv}}
 %-------------------------------------------------------------------
 
-The latest version of \diva allows the user to perform generalized cross validation as well as quality control. Two are designed to achieve these tasks: \command{dataqc} and \command{gcvfac}.
-
-
-\subsection{\diva formulation}
-% ---------------------------------------
-
-The \diva theory is extensively described in Chapter~\ref{chaptheory}. We limit ourselves here to recall the base formulation.
-
-When working with non-dimensional space coordinates, \diva consists in minimizing
-
-\begin{eqnarray}
-{J}[\varphi]&=&\sum_{i=1}^{N}\mu_i L^2 [d_{i}-\varphi(x_{i},y_{i})]^{2}\\ \notag 
-&+ &
- \int_{\tilde{D}}\left(
- \tilde{\nabla}\tilde{\nabla}\varphi : \tilde{\nabla}\tilde{\nabla}\varphi + { \alpha_{1} L^2}
-\tilde{\nabla}\varphi \cdot \tilde{\nabla}\varphi + \alpha_{0} L^4 \varphi^{2} \right) \ddiff \tilde{D}
-\end{eqnarray}
-
-where $\varphi(x_{i},y_{i})$ is the field to analyze, $d_{i}$ is the field value at point $(x_i,y_i)$, $L$ is the characteristic length of the problem and $\alpha_{0}$, $\alpha_{1}$ and $\mu$ are parameters that have to be adapted to the considered problem. 
-
-
-$\alpha_0$ fixes the length scale $L$ over which variations are significant to move the kernel function from one to zero:
+\index{Signal-to-noise ratio} The overall signal-to-noise ratio $\snr$ is calculated as
 
 \begin{equation}
-\alpha_0 L^4 = 1
-\end{equation}
-
-$\mu L^2$ fixes the weight on data vs. regularization. As the signal variance is $\sigma^2$ and the noise variance $\noise_i^2$, we can write:
-\begin{equation}
-\mu_i L^2= 4 \pi \frac{\signal^2}{\noise_i^2}
-\end{equation}
-
-$\alpha_1$ fixes the influence of gradients:
-
-\begin{equation}
-\alpha_1 L^2 = 2 \xi
-\end{equation}
-where $\xi$ is a non-dimensional parameter close to one if the gradients are to be penalized with a similar weight than the second derivatives.
-
-% --------------------------------------------------------------------------
-
-\subsection{Implementation of result validation in \diva\label{sec:qc}}
-% -------------------------------------------------------
-
-The overall signal-to-noise ratio is calculated as
-
-\begin{equation}
-\lambda = \frac{\sigma^2 }{\epsilon^2}.
+\snr = \frac{\sigma^2 }{\epsilon^2}.
 \end{equation}
 
 The relative weights on the data are then defined as
@@ -315,9 +274,7 @@ The relative weights on the data are then defined as
 \tilde{w}_i= \frac{\mu_i L^2}{4 \pi \lambda}.
 \end{equation}
 
-To be coherent with the total noise we should in principle use relative weights 
-\footnote{The optional fourth column for data in \diva}
-on the data that satisfy \eqref{eq:condition}.
+To be coherent with the total noise, we should in principle use relative weights (the optional fourth column for data in \diva) on the data that satisfy \eqref{eq:condition}.
 
 Hence, defining $\bar{w}$ as
 \begin{equation}
@@ -325,11 +282,17 @@ Hence, defining $\bar{w}$ as
 \end{equation}
 the weights $w_i=\tilde{w}_i/\bar{w}$ are relative weights coherent with the noise.
 
-
 In this case, we can use \eqref{eq:gcvbis} for the estimator.
 
 In practice, in \diva, the relative weights can be retrieved by $w_i=\mu_i/\bar{\mu}$, where
 the average $\bar{\hphantom{\mu}}$ is a harmonic mean. The minimisation and the optimum for $\lambda$ are the same, even if the weights provided by the user do not satisfy the condition \eqref{eq:condition}. However the interpretation of $\Theta$, $\noise$ and $\sigma$ might be different.
+
+Three scripts are available for the QC:
+\begin{description}
+\item[\command{divaqc}:] the most expensive version of QC, based on criterion \eqref{eq:qc1}.
+\item[\command{divaqcbis}:] a quicker version, based on criterion \eqref{eq:qc2}.
+\item[\command{divaqcter}:] based on the RMS value of the misfit and the generalized cross validator $\Theta$, according to criterion \eqref{eq:qc3}.
+\end{description}
 
 
 \subsubsection{\diva GCV}
