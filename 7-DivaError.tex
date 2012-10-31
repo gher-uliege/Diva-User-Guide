@@ -11,15 +11,15 @@
 The analysis performed with the optimised parameters should have the lowest global error, as measured by \eqref{eq:gcvbis}. Nevertheless, the spatial distribution of the error is also of interest for any interpolation or analysis method, since it gives the user an indication of the reliability of the results. The error field is expected to be affected by:
 \begin{enumerate}
 \item the data coverage: the error field is expected to be higher where the data coverage is lower;
-\item the noise on the data: the more imprecision we have on the data, the higher will be the error field.
+\item the noise on the data: the more uncertainties we have on the data, the higher will be the error field.
 \end{enumerate}
 
 OI (Sections~\ref{sec:OImethod}) allows the simultaneous derivation of analysis and error fields:
 \be
-e^{2}(\mathbf{r}) = \epsilon^{2}(\mathbf{r})-\mathbf{g}(\mathbf{r})^{T}\mathbf{D}^{-1}  \mathbf{g}(\mathbf{r}),
+e^{2}(\mathbf{r}) = \sigma^{2}(\mathbf{r})-\transp{\mathbf{g}(\mathbf{r})}\mathbf{D}^{-1}  \mathbf{g}(\mathbf{r}),
 \label{eq:erroroi}
 \ee
-where $\epsilon^{2}$ is the local variance of the background field. This equality highlights that the error is provided by the analysis of a pseudo-data array containing covariances $\mathbf{g}(\mathbf{r})$. 
+where $\sigma^{2}$ is the local variance of the background field. This equality highlights that the error is provided by the analysis of a pseudo-data array containing covariances $\mathbf{g}(\mathbf{r})$. 
 
 However, in principle, a new analysis has to be performed for each point $\mathbf{r}$ in which the error is requested and then is not adapted for large data sets. On the contrary, the error calculation in \diva is not trivial since the covariance functions are never explicitly specified. We will see in the next sections how \diva computes this error field.
 
@@ -42,14 +42,19 @@ In this approach, \citet{BRANKART98} and \citet{RIXEN00} proposed a heuristic st
 Mathematically, according to the developments of Section~\ref{sec:OImethod}, we have:
 
 \begin{align}
-\textrm{Solution OI:} 	&	& \varphi(\mathbf{r}) &=& \underbrace{\mathbf{g}(\mathbf{r})^{T}\mathbf{D}^{-1}}_{(\star)}		&& \mathbf{d}\\
+\textrm{Solution OI:} 	&	& \varphi(\mathbf{r}) &=& \underbrace{\mathbf{g}\transp{(\mathbf{r})}\mathbf{D}^{-1}}_{(\star)}		&& \mathbf{d}\\
 \textrm{Solution VIM:}	&	& \varphi(\mathbf{r}) &=& \underbrace{\mathbf{T_{1}}(\mathbf{r})\mathbf{K}^{-1} \mathbf{T_{2}}(\mathbf{r})}_{(\star\star)} 																								&&\mathbf{d}\\
-\textrm{Error~OI:}  	& 	& e^{2}(\mathbf{r})   &=& \epsilon^{2}(\mathbf{r})-\underbrace{\mathbf{g}(\mathbf{r})^{T}\mathbf{D}^{-1}}_{(\star)}														&&\mathbf{g}(\mathbf{r})	\\		
-\rightarrow \textrm{Error~VIM:}		& 	& e^{2}(\mathbf{r})   &=& \epsilon^{2}(\mathbf{r})-\underbrace{\mathbf{T_{1}}(\mathbf{r})\mathbf{K}^{-1} \mathbf{T_{2}}(\mathbf{r})}_{(\star\star)}		&&\mathbf{g}(\mathbf{r})
+\textrm{Error~OI:}  	& 	& e^{2}(\mathbf{r})   &=& \sigma^{2}(\mathbf{r})-\underbrace{\mathbf{g}\transp{(\mathbf{r})}\mathbf{D}^{-1}}_{(\star)}														&&\mathbf{g}(\mathbf{r})	\\		
+\rightarrow \textrm{Error~VIM:}		& 	& e^{2}(\mathbf{r})   &=& \sigma^{2}(\mathbf{r})-\underbrace{\mathbf{T_{1}}(\mathbf{r})\mathbf{K}^{-1} \mathbf{T_{2}}(\mathbf{r})}_{(\star\star)}		&&\mathbf{g}(\mathbf{r})
 \end{align}
 
 In practice, the data input of the analysis tool for an error calculation is a vector containing the
-covariance of data points ($\mathbf{g}(\mathbf{r})$) with the point in which the error estimate is to be calculated. The covariance vector to be analysed is calculated using the covariance function of an infinite domain. In an infinite domain, the error calculation is then "exact", while for more complicated domains, it is nearly exact far away from boundaries, provided no anisotropic constraint (advection constraint, variable length scale, boundaries, \ldots) is activated. 
+covariance of data points ($\mathbf{g}(\mathbf{r})$) with the point in which the error estimate is to be calculated. The covariance vector to be analysed is calculated using the covariance function $\mathbc{c}$ of an infinite domain in terms of the Bessel function:
+\begin{equation}
+e^{2}(\mathbf{r})   = \sigma^{2}(\mathbf{r})-\underbrace{\mathbf{T_{1}}(\mathbf{r})\mathbf{K}^{-1} \mathbf{T_{2}}(\mathbf{r})}_{(\star\star)}		\mathbf{c}(\mathbf{r})
+\label{eq:kernelbessel}
+\end{equation}
+In an infinite domain, the error calculation is then "exact", while for more complicated domains, it is nearly exact far away from boundaries, provided no anisotropic constraint (advection constraint, variable length scale, boundaries, \ldots) is activated. 
 
 Thus for anisotropic cases, the hybrid error field can provide incoherent results. This is what motivated the evaluation of the real covariance function in \diva.
 
