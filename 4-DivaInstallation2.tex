@@ -12,7 +12,7 @@
 \section{Requirements}
 %---------------------
 
-The basic requirements to run \diva are:
+The basic requirements to compile and run \diva are:
 \begin{enumerate}
 \item A command-line interface. With Linux or Mac, the interface is directly available: it is the shell or terminal. With Windows, it is necessary to install a Unix-like environment such as Cygwin (\url{http://www.cygwin.com/}).
 \item A Fortran 95 compiler, such as:
@@ -69,7 +69,7 @@ The directory tree has the following structure: %\newpage
 \item \directory{DIVA3D/divastripped} is the main working directory at the 2D level. 
 \item \directory{DIVA3D/src} contains the Fortran source code. This is where the compilation has to be done.
 \item[]
-\item \texttt{Doc} contains the link to publications. For \LaTeX users: you find the corresponding \BibTeX entries in the file \texttt{DivaPublications.bib}.
+\item \texttt{Doc} contains the link to publications. For \LaTeX users: you find the corresponding \BibTeX  entries in the file \file{DivaPublications.bib}.
 \item \directory{JRA4/Climatology} is the main working directory at the 3D and 4D levels.
 \end{itemize}
 
@@ -82,7 +82,7 @@ There are two possibilities to obtain the binaries:
 \item Compile the source code.
 \item Copy the provided binaries.
 \end{enumerate}
-The second option is provided for cases where the compilation was not possible, mainly because to missing libraries (e.g., NetCDF). 
+The second option is provided for cases where the compilation was not possible, mainly because of missing libraries (e.g., NetCDF) or Fortran compilers.
 
 \subsection{Compilation\label{sec:compilation}}
 \index{Compilation}
@@ -109,7 +109,7 @@ gfortran
 [charles@gher13 ~]$ nc-config --flibs
 -L/usr/lib -lnetcdff -lnetcdf
 \end{lstlisting}
-Check the options of this command by typing \command{nc-config}, or visit the web page: \url{http://www.unidata.ucar.edu/software/netcdf/workshops/2011/utilities/Nc-config.html}.
+Check the options of this command by typing \command{nc-config}, or visit the web page: \url{http://www.unidata.ucar.edu/software/netcdf/workshops/2011/utilities/Nc-config.html}. If you have installed several versions of the NetCDF libraries, you might find several \command{nc-config} on your system.
 
 
 Then run the compilation script: 
@@ -151,7 +151,7 @@ In the main working directory (\directory{GODIVA\_07\_2012/DIVA3D/divastripped})
 
 \subsection{Basic test}
 
-\command{divatest} creates basic input files (see Chapter~\ref{chap:general}) for details), performs a simple \diva execution and check if the pipes are supported in your operating system (O.S.). The output can be checked using any software for reading NetCDF files. In this case we use ncview (see Chapter~\ref{chap:postprocessing} for details and installation). 
+\command{divatest} creates basic input files (see Chapter~\ref{chap:general} for details), performs a simple \diva execution, checks if \command{awk} is appropriate and checks if the pipes are supported in your operating system (O.S.). If \command{divatest} hangs during the pipe test, it means pipes are not supported (as for some gfortran versions) and you can use a \command{CTRL-C} to exit.  The analysis output can be checked using any software for reading NetCDF files. In this case we use ncview (see Chapter~\ref{chap:postprocessing} for details and installation). 
 
 \begin{lstlisting}[style=Bash]
 [charles@gher13 divastripped]$ divatest
@@ -169,7 +169,7 @@ The results you obtain have to be similar to those of Fig.~\ref{fig:diva_test_re
 \subsection{Large-memory test}
 %-----------------------------
 
-\command{divabigtest} creates input files to simulate a case with a large number of data and a very fine mesh. Again, the results are viewable using the command:
+\command{divabigtest} creates input files to simulate a case with a large number of data and a very fine mesh. Again, the results, obtained after a few minutes, are viewable using the command:
 \begin{lstlisting}[style=Bash]
 [charles@gher13 divastripped]$ ncview output/ghertonetcdf/results.nc
 \end{lstlisting}
