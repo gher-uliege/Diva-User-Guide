@@ -13,7 +13,7 @@ The generation of gridded fields from non-uniformly distributed observations (bo
 
 Mathematically, gridding consists in determining a field $\varphi(\mathbf{r})$ on a regular grid at positions $\mathbf{r}$, using $N_{d}$ measurements located in $\mathbf{r_{j}}, j=1,\ldots, N_{d}$ (Fig.~\ref{gridproblem}).  
 
-In this chapter we consider only two-dimensional cases, but generalization can be done to $3D$ and even $4$D (using "distance" in time, but being aware of autocorrelations as in seasonal signals).
+In this chapter we consider only two-dimensional cases, but generalization can be done to $3$D and even $4$D (using "distance" in time, but being aware of autocorrelations as in seasonal signals).
 
 \begin{figure}[htpb]
 	\centering
@@ -56,7 +56,7 @@ In geosciences and in particular in oceanography, it is frequent to have error o
 
 We have to differentiate \textit{subjective} analysis, for which the way the approximation is performed is decided by hand, and \textit{objective} analysis, which is based on predefined mathematical operations. Note that beyond these two kinds of analysis, \textit{data assimilation} uses in addition physical/biochemical dynamic governing equations. 
 
-Since data assimilation depends on the region and the model and the subjective analysis is not sufficiently objective, the objective analysis is chosen. 
+Since data assimilation depends on the region and the model and the subjective analysis is not sufficiently objective, the objective analysis is chosen here. 
 
 %------------------------------------------
 \subsection{Background field and anomalies}
@@ -74,7 +74,7 @@ The anomalies are assumed to be computed as a linear combination of the data, i.
 \varphi(\mathbf{r}) = \varphi_b(\mathbf{r}) + \sum_{j=1}^{N_d} w_j\, d_j,
 \label{objectiveanal}
 \end{equation}
-where $d_{j}$ is the data anomaly at $\mathbf{r}= \mathbf{r_{j}}$ and $w_j$ is the relative weight of the data $j$. The weighting functions are the new unknowns to determine: once the background field and the weights are known, the field $\varphi$ can be computed at any position $\mathbf{r}$, hence gridding is possible.
+where $d_{j}$ is the data anomaly at $\mathbf{r}= \mathbf{r_{j}}$ and $w_j$ is the relative weight of the data $j$. The weighting functions are the new unknowns to determine: once the background field and the weighting functions are known, the field $\varphi$ can be computed at any position $\mathbf{r}$, hence gridding is possible.
 
 From here on, we will work with anomaly only and therefore formally use $\varphi_{b}=0$.
 
@@ -98,9 +98,9 @@ Because of the multiple sources of error, a perfect fit to data is not advised, 
  
 Before explaining the core of \diva technique, the main principles of \textit{Optimal interpolation} \citep[OI,][]{STOR99,CHILES99} are explained\index{OI}. OI is a popular analysis tool, owing to its ease of use and the error field associated to the analysis \citep[e.g.,][]{SHEN98b,KAPLAN00}. The first references of the method are \citet{GANDIN65} and \citet{BRETHERTON76}.
 
-The idea is to minimise the expected error variance of the analysis. This conditions lead to the determination of the weights $w_j$ \eqref{objectiveanal}), with the assumption that the true anomaly field $\varphi_t$ is one realization out of a zero mean ensemble. 
+The idea is to minimise the expected error variance of the analysis. This conditions lead to the determination of the weights $w_j$ \eqref{objectiveanal}, with the assumption that the true anomaly field $\varphi_t$ is one realization out of a zero mean ensemble. 
 
-Note that \textit{Kriging}\index{Kriging} \citep{KRIGE51,MATHERON63} is an equivalent technique: it uses the same criterion as OI, but with a different mathematical formulation: the weights $w_{i}$ are chosen from the study of the covariance between the values as a function of the distance between them.
+Note that \textit{Kriging}\index{Kriging} \citep{KRIGE51,MATHERON63} is an equivalent technique: it uses the same criterion as OI, but with a different mathematical formulation: the weights $w_{j}$ are chosen from the study of the covariance between the values as a function of the distance between them.
 
 %-------------------------------------
 \subsection{Mathematical formulation}
@@ -115,8 +115,9 @@ $\mathbf{r}$, the vector position.
 
 The principle of OI is to minimize the expected error:
 \begin{equation}
-e^{2}(\mathbf{r}) = \overline{[\varphi(\mathbf{r})-\varphi_{t}(\mathbf{r})]^{2}}.
+e^{2}(\mathbf{r}) = \overline{[\varphi(\mathbf{r})-\varphi_{t}(\mathbf{r})]^{2}}
 \end{equation}
+where $\bar{\quad}$ stands for the statistical average.
 
 Replacing the interpolated anomaly field by a linear combination of the data, we have 
 
@@ -129,14 +130,14 @@ We now have to determine the weights $w_{i}$ that will minimize \eqref{error2}. 
 
 
 \beqn
-e^{2}(\mathbf{r}) &=& \overline{[\mathbf{w}^{T}\mathbf{d}-\varphi_{t}(\mathbf{r})]^{2}} \\
-									&=& \overline{\varphi_{t}(\mathbf{r})^{2}} + \overline{\mathbf{w}^{T}\mathbf{d} \mathbf{d}^{T}\mathbf{w}} - 2 \overline{\varphi_{t}(\mathbf{r}) \mathbf{d}^{T}\mathbf{w} }
+e^{2}(\mathbf{r}) &=& \overline{[\transp{\mathbf{w}}\mathbf{d}-\varphi_{t}(\mathbf{r})]^{2}} \\
+									&=& \overline{\varphi_{t}(\mathbf{r})^{2}} + \overline{\transp{\mathbf{w}}\mathbf{d} \transp{\mathbf{d}}\mathbf{w}} - 2 \overline{\varphi_{t}(\mathbf{r}) \transp{\mathbf{d}}\mathbf{w} }
 \eeqn
 
 We define the \textit{covariance matrix}\index{Covariance}
 
 \[
-\mathbf{D} = \overline{\mathbf{d}\mathbf{d}^{T}},
+\mathbf{D} = \overline{\mathbf{d} \transp{\mathbf{d}}},
 \]
 and the covariance of the data with respect to the real field, which is a function of $\mathbf{r}$:
 
@@ -148,8 +149,8 @@ The expression of the error \eqref{error2} becomes, after some calculation:
 
 \beq
 e^{2}(\mathbf{r}) 
-&=& \overline{\varphi_{t}(\mathbf{r})^{2}} + \mathbf{w}^{T}\mathbf{D}\mathbf{w}-2\mathbf{g}^{T}\mathbf{w} \nonumber\\
-&=&  \overline{\varphi_{t}(\mathbf{r})^{2}}- \mathbf{g}^{T}\mathbf{D}^{-1}\mathbf{g}+(\mathbf{w} - \mathbf{D}^{-1}\mathbf{g})^{T}\mathbf{D}(\mathbf{w} - \mathbf{D}^{-1}\mathbf{g})
+&=& \overline{\varphi_{t}(\mathbf{r})^{2}} + \transp{\mathbf{w}}\mathbf{D}\mathbf{w}-2\transp{\mathbf{g}}\mathbf{w} \nonumber\\
+&=&  \overline{\varphi_{t}(\mathbf{r})^{2}}- \transp{\mathbf{g}}\mathbf{D}^{-1}\mathbf{g}+\transp{(\mathbf{w} - \mathbf{D}^{-1}\mathbf{g})}\mathbf{D}(\mathbf{w} - \mathbf{D}^{-1}\mathbf{g})
 \eeq
 
 of which the minimum is reached when
@@ -161,14 +162,14 @@ of which the minimum is reached when
 The corresponding error value is 
 
 \be
-\min\,e^{2}(\mathbf{r})= \overline{\varphi_{t}(\mathbf{r})^{2}}-\mathbf{g}^{T}\mathbf{D}^{-1}\mathbf{g}
+\min\,e^{2}(\mathbf{r})= \overline{\varphi_{t}(\mathbf{r})^{2}}-\transp{\mathbf{g}}\mathbf{D}^{-1}\mathbf{g}
 \label{eq:theory_error}
 \ee
 
 and the interpolated field is computed as
 
 \be
-\varphi(\mathbf{r}) = \sum_{i=1}^{N_{d}}w_{i}(\mathbf{r})d_{i} = \mathbf{g}^{T}\mathbf{D}^{-1}\mathbf{d}.
+\varphi(\mathbf{r}) = \sum_{i=1}^{N_{d}}w_{i}(\mathbf{r})d_{i} = \transp{\mathbf{g}}\mathbf{D}^{-1}\mathbf{d}.
 \label{eq:theory_field}
 \ee
 
@@ -176,14 +177,14 @@ and the interpolated field is computed as
 \subsubsection{Derivation of the covariances}
 %--------------------------------------------------------
 
-To determine the data covariance matrix, $\mathbf{D}$, and the covariance of the data with the real field, $\mathbf{g}$, the following assumptions are made: 
+To determine the data covariance matrix, $\mathbf{D}$, and the covariance of the data with the real field, $\mathbf{g}$, the following assumptions are generally made: 
 
 \begin{enumerate}
 \item errors $\noise_{i}$ on measurements are not correlated, i.e.,
 \[
-\overline{\noise_{i}\noise_{j}} = \noise^{2}\delta_{ij},
+\overline{\noise_{i}\noise_{j}} = \noise^{2}_i\delta_{ij},
 \]
-where $\noise^{2}$ is the variance of the errors on measurement (i.e., the noise);
+where $\noise^{2}_i$ is the variance of the errors on measurement (i.e., the noise);
 
 \item errors on measurements are not correlated with the real field, i.e.,
 \[
@@ -197,11 +198,13 @@ we deduce:
 
 \beq
 D_{ij} &=& \overline{\varphi_{t}(\mathbf{r_i})\varphi_{t}(\mathbf{r_j})}+\noise^{2}\delta_{ij} \nonumber \\
-									&=& \signal^{2}\,c(\mathbf{r_i},\mathbf{r_j})+ \noise^{2}\delta_{ij},\\
+									&=& \signal^{2}\,c(\mathbf{r_i},\mathbf{r_j})+ \noise_i^{2}\delta_{ij},\\
  g_{i} 	&=& \overline{\varphi_{t}(\mathbf{r})d_{i}}, \nonumber \\
 									&=& \signal^{2}\,c(\mathbf{r},\mathbf{r_i}), 
 \eeq
 where $c(\mathbf{r},\mathbf{r_i})$ is the \textit{correlation function} and $\signal$ is the \textit{signal} of the data.
+
+In the following we write $\matr{D}=\matr{B}+\matr{R}$, where matrix $\matr{B}$ contains the variance of the true field and $\matr{R}$ is the diagonal matrix containing the observational noise.
 
 %---------------------------
 \subsection{Drawbacks of OI}
@@ -217,7 +220,7 @@ As the method requires the inversion of a $N_{d}$-by-$N_{d}$ matrix ($N_{d}$ bei
 
 The quality of OI (and other gridding techniques) relies on the correct specification of the covariances of the observational error and of the background field. The covariance functions used in OI are not restricted (except that the covariance matrices have to be positive-definite and symmetric), allowing for example correlated observational errors. Yet in most cases, covariances between two points are parametrized by simple expressions, such as a Gaussian function depending on the sole distance between the points, leading to isotropic functions, which are not always well adapted to oceanography. Indeed, wich such functions, the propagation of information through islands and continents is enabled. To circumvent this problem, adaptations of the OI scheme are necessary in order to allow the use of anisotropic functions \citep[e.g.,][]{TANDEO11}.
 
-Finally, although OI provides the best analysis in the sense that it gives the minimum expected error, the method has the drawback of not being objective: the covariance of the unknown field, and the standard deviation of observational errors generally have to be chosen subjectively by he user.
+Finally, although OI provides the best analysis in the sense that it gives the minimum expected error, the method has the drawback of not being fully objective: the covariance of the unknown field, and the standard deviation of observational errors generally have to be chosen subjectively by he user.
 
 \section[VIM and its implementation]{The Variational Inverse Method}
 % ---------------------------------------
@@ -234,7 +237,7 @@ This is the reason why VIM resorts to the expertise in efficient finite-element 
 \subsection{Formulation\label{sec:formulation}}
 % ----------------------
 
-We are looking for the field $\varphi$ which minimizes the variational principle:
+We are looking for the field $\varphi$ which minimizes the variational principle over our domain of interest $D$:
 
 \begin{equation}
 J \left[\varphi\right] =\sum_{j=1}^{Nd}\mu_{j}\left[d_{j}-\varphi(x_{j},y_{j})\right]^{2}+
@@ -328,7 +331,7 @@ Normally, interpolation (and extrapolation) works on anomalies with respect to a
 \item no treatment is applied (the data you treat are already anomalies);
 \item the mean of data is subtracted from the data values;
 \item the linear regression (plane) is subtracted;
-\item additional subtracted semi-normed field ($\alpha_0=0$ and large $L$) obtained by two chained \diva executions. Matrix K is decomposed into a norm-related term and a data related term.
+\item additional subtracted semi-normed field ($\alpha_0=0$ and large $L$) obtained by two chained \diva executions. %Matrix K is decomposed into a norm-related term and a data related term.
 \end{itemize}
 
 In particular when no treatment is applied (with $\alpha_0 > 0$), the minimization forces the analysis toward zero when there are no
