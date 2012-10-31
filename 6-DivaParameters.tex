@@ -1,7 +1,7 @@
 \chapter[Determination of analysis parameters]{Determination of analysis parameters \label{chap:analysisparameters}}
 % ----------------------------------------------------------------------------------------
 
-The purpose of this chapter is to describe the tools included in the \diva software and that provide estimates of the analysis parameters: the correlation length $L$ and the signal-to-noise ratio $\snr$. The end of the chapter deals with the automatic quality control of data within the analysis.
+\lettrine[lines=2]{T}{he} purpose of this chapter is to describe the tools included in the \diva software and that provide estimates of the analysis parameters: the correlation length $L$ and the signal-to-noise ratio $\snr$. The end of the chapter deals with the automatic quality control of data within the analysis.
 
 \minitoc
 
@@ -127,9 +127,7 @@ The objective is to optimize the parameter $\snr$ by searching for its value for
 
 If we try to minimize this norm, we will get an infinite signal-to-noise ratio and a perfect data-analysis fit. This is because the analysis at the data point is directly influenced by the corresponding data. 
 
-To avoid this inconvenience, the solution is to calculate the difference of the data value with respect to the analysed field in which the data under investigation was not taken into account. This is called the \textit{Ordinary Cross Validation}. 
-
-To make this estimate robust, the analysis has to be repeated over a large number of data points, increasing the computing cost, so that OCV is generally too expensive to perform.
+To avoid this inconvenience, the solution is to calculate the difference of the data value with respect to the analysed field in which the data under investigation was not taken into account. This is called the \textit{Ordinary Cross Validation} and is, with a practical trick, implemented in \command{divacv}. To make this estimate robust, the analysis has to be repeated over a large number of data points, increasing the computing cost, so that OCV is generally too expensive to perform unless a trick as in \command{divacv} can be used (there the analysis can be done without actually disregarding a data point but by correcting the difference as shown in the next section).
 
 Variants of OCV take out several points at once to calculate error estimates and repeat the exercise several times to make estimates robust.  In \Diva this options are available in \command{divacvrand}. A variant is \command{divacvclasses} in which all data from a given class (e.g. specific year) are set aside and the analysis compared to.
 
