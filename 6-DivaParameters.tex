@@ -10,7 +10,7 @@ The purpose of this chapter is to describe the tools included in the \diva softw
 \section{Determination of the correlation length}
 %------------------------------------------------
 
-The correlation length $L$ translates the distance over which a given data point influences its neighbourhood (Section~\ref{sec:parammeaning}). The method to evaluate $L$ is to fit the theoretical kernel of \eqref{divaformula2} (see Fig.~\ref{kernel1}) to the correlation between data.
+The correlation length $L$ translates the distance over which a given data point influences its neighbourhood (Section~\ref{sec:parammeaning}). The method to evaluate $L$ is to fit the theoretical kernel of \eqref{divaformula2} (see Fig.~\ref{kernel1}) to the correlation between data assuming spatial isotropy and homogeneity in correlations.
 
 \subsection{Illustration}
 
@@ -88,7 +88,7 @@ fixed, but with imperfectly known amplitude. In other words it is often assumed 
 \end{subeqnarray}
 
 where $\hat{ \quad } $ matrices are fixed and non-dimensional, while the field variance $\signal^2$ and the error variance
-$\noise^2$ are imperfectly known.
+$\noise^2$ are imperfectly known, but their sum equal to the data variance (assuming that spatial averaging has a similar effect than statistical averaging, the ergodic hypothesis).
 
 By definition of the average error- and field-variance, we have:
 
@@ -107,7 +107,7 @@ because matrix $\matr{A}$ depends only on $\lambda$:
 \end{equation}
 
 
-Dividing both sides of Eq. \ref{eqcovC} by $\signal^{2}$ and  $\noise^{2}$, we also find that
+Dividing both sides of Eq. \eqref{eqcovC} by $\signal^{2}$ and  $\noise^{2}$, we also find that
 \begin{eqnarray}
 \signal^2 &=& \frac{\snr}{1 + \snr} \frac{ \transp{\vect{d}} \vect{d}}{N},\label{eq:signalsnr}\\
 \noise^2 &=& \frac{1 }{ 1 + \snr} \frac{ \transp{\vect{d}} \vect{d} }{ N},\label{eq:noisesnr}
@@ -119,7 +119,7 @@ so that knowing $\snr$ we can calculate the signal and noise variances from the 
 %-------------------------------------------
 
 \index{Ordinary cross validation}
-The objective is to optimize the parameter $\snr$ by searching for its value for which the analysis has a minimal error. For this reason, we need to find a proxy norm that we will be able to minimize. As the difference of the analysis with the true field is not available, we will work with the difference of the analysed field at the data points with respect to the original data field:
+The objective is to optimize the parameter $\snr$ by searching for its value for which the analysis has a minimal error. For this reason, we need to find a proxy norm that we will be able to minimize. As the difference of the analysis with the true field is not available, we could try to work with the difference of the analysed field at the data points with respect to the original data field:
 
 \begin{equation}
 {\theta_i^2} = {(d_i - \tilde{d}_i)^2}.
@@ -127,9 +127,11 @@ The objective is to optimize the parameter $\snr$ by searching for its value for
 
 If we try to minimize this norm, we will get an infinite signal-to-noise ratio and a perfect data-analysis fit. This is because the analysis at the data point is directly influenced by the corresponding data. 
 
-To avoid this inconvenient, the solution is to calculate the difference of the data value with respect to the analysed field in which the data under investigation was not taken into account. This is called the \textit{Ordinary Cross Validation}. 
+To avoid this inconvenience, the solution is to calculate the difference of the data value with respect to the analysed field in which the data under investigation was not taken into account. This is called the \textit{Ordinary Cross Validation}. 
 
 To make this estimate robust, the analysis has to be repeated over a large number of data points, increasing the computing cost, so that OCV is generally too expensive to perform.
+
+Variants of OCV take out several points at once to calculate error estimates and repeat the exercise several times to make estimates robust.  In \Diva this options are available in \command{divacvrand}. A variant is \command{divacvclasses} in which all data from a given class (e.g. specific year) are set aside and the analysis compared to.
 
 
 \subsection{Generalized Cross Validation (GCV)}
@@ -147,7 +149,7 @@ allows one to keep the data during the analysis and will reduce the computing co
 \subsubsection{Computation of $A_{ii}$}
 % ---------------------------------------
 
-When the matrix $\matr{A}$ is not explicitly calculated, $A_{ii}$ can be obtained by performing an analysis with a vector $\vect{e}_i=(0\,0\ldots\,0\,1\,0\ldots 0)$ (zero on all data locations, except at point $i$, where its value is one). This demands an analysis for every data point in which the estimator is constructed.
+When the matrix $\matr{A}$ is not explicitly calculated, $A_{ii}$ can be obtained by performing an analysis with a vector $\vect{e}_i=(0\,0\ldots\,0\,1\,0\ldots 0)$ (zero on all data locations, except at point $i$, where its value is one). This demands an analysis for every data point in which the estimator is constructed.  
 
 The associated computational cost can be reduced by replacing $A_{ii}$ by the average value and assuming:
 \begin{equation}
@@ -216,6 +218,8 @@ where the weights should, according to \eqref{eq:rcondition} satisfy
 \end{equation}
 
 The $\tilde{w}_i$ are the values provided as optional fourth column in \file{data.dat}.
+
+\command{divacv} uses cross validation with complete calculation of $A_{ii}$, whereas \command{divagcv} uses the approximation $A_{ii} N=\trace{\matr{A}}$.
 
 %------------------------------------------------------
 \section{Quality control (QC) of data\label{secdivaqc}}
@@ -319,7 +323,7 @@ Three scripts are available for the QC:
 \end{description}
 
 
-\subsubsection{\diva GCV}
+\subsubsection{\diva GCV practicals}
 
 In \diva, the matrix $\matr{A}$ is not explicitly constructed, but the product $\matr{A} \vect{x}$ consists simply in the application of the analysis in data locations.
 
