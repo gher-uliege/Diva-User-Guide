@@ -16,22 +16,13 @@ Basically, only three files are needed as input:
 \newpage % 
 
 
-\begin{center}
-\fbox{
-\begin{minipage}{0.7\textwidth}
-\vspace{.25cm}
-\textbf{Convention:} \diva works with decimal numbers\\ 
+\paragraph*{Convention:} \diva works with decimal numbers\\ 
 represented with\quad \textbf{.}\quad  not \quad \textbf{,}
-\vspace{.25cm}
-\end{minipage}
-}
-\end{center}
-
 
 \btips
-Use unix \command{sed} to replace \textbf{,} by \textbf{.}:
+Use unix command \command{sed} to replace \textbf{,} by \textbf{.}:
 \begin{lstlisting}[style=Bash]
-[charles@gher13 Software]$ cat file1.dat | sed s/,/./g > file2.dat
+[charles@gher13 Software] cat file1.dat | sed s/,/./g > file2.dat
 \end{lstlisting}
 
 where: \file{file1.dat} is the old file and \\
@@ -43,42 +34,12 @@ where: \file{file1.dat} is the old file and \\
 Use editor \textsl{vi} to replace \textbf{,} by \textbf{.}:
 
 Simply type:
-\begin{verbatim}
-vi file1.dat
+\begin{lstlisting}[style=Bash]
+[charles@gher13 Software]$ vi file1.dat
 :,$s/,/./g
-\end{verbatim}
+\end{lstlisting}
+
 \etips
-
-%---------------
-\section{Data}
-%----------------
-
-The data file (\file{data.dat}) contains three (or four) columns: 
-\begin{enumerate}
-\item the $x-$coordinate (usually the longitude, but can also be an horizontal distance in $km$, or any coordinate).
-\item the $y-$coordinate (usually the latitude).
-\item the data value.
-\item the weight [optional] 
-\end{enumerate}
-If the number of column is three, the fourth column is assumed to take the value $1$. If there are more than four columns, columns 5 and higher are not used by the software.% (but can be used by the user) .
-
-\begin{exfile}[htpb]
-\begin{footnotesize}
-\texttt{
-25 25  5 1\\
-25 75 10 1\\
-75 75  5 1\\
-75 25 10 1} 
-\end{footnotesize}
-\caption{data.dat\label{ex:data.dat}}
-\end{exfile}
-
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=.45\textwidth]{island_data}
-\caption{Example of a data file and its graphical representation.}
-\end{figure}
 
 
 \section{Contour\label{contourdiva}}
@@ -100,96 +61,114 @@ The contour file (\file{coast.cont}) delimits the region where the analysis has 
 4\\
 0 0\\
 100 0\\
-100 100\\
-0 100\\
+100 80\\
+0 80\\
 4\\
-40 40\\
-40 60\\
-60 60\\
-60 40\\} 
+60 40\\
+80 40\\
+80 60\\
+60 60} 
 \end{footnotesize}
 \caption{coast.dat\label{ex:coast.dat}}
 \end{exfile}
 
 Here, our contour is made up of 2 sub-contours: 
 \begin{itemize}
-\item the first one with 4 points (and four edges): $(0,0)$, $(100,0)$, $(100,100)$ and $(0,100)$. It is the main contour.
+\item the first one with 4 points (and four edges): $(0,0)$, $(100,0)$, $(100,80)$ and $(0,80)$. It is the main contour.
 \item the second one with also 4 points. It is the interior contour (island).
 \end{itemize}
+In realistic application, the contours are more complex: they have more sub-contours (islands, interior seas), and each sub-contour is made up of more points. 
 
 \begin{figure}[H]
 \centering 
-\includegraphics[width=.45\textwidth]{island_contour}
+\includegraphics[width=.5\textwidth,bb=110 268 492 576]{coast_cont_fig}
 \caption{Example of a contour file and its graphical representation.}
+\end{figure}
+
+%---------------
+\section{Data}
+%----------------
+
+The data file (\file{data.dat}) contains three (or four) columns: 
+\begin{enumerate}
+\item the $x-$coordinate (usually the longitude, but can also be an horizontal distance in $km$, or any coordinate).
+\item the $y-$coordinate (usually the latitude).
+\item the data value.
+\item the weight [optional] 
+\end{enumerate}
+\begin{itemize}
+\item If the number of column is three, the fourth column is assumed to take the value $1$. 
+\item If there are more than four columns, columns 5 and higher are not used by the software, except if you want to use the detrending tool (Section~\ref{sec:detrending}). 
+\end{itemize}
+
+\begin{exfile}[htpb]
+\begin{footnotesize}
+\texttt{20 10 3\\
+60 20 -2\\
+30 50 0\\
+40 70 -1\\
+70 70 -2\\
+85 55 4\\
+90 10 2\\
+70 35 -4} 
+\end{footnotesize}
+\caption{data.dat\label{ex:data.dat}}
+\end{exfile}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.55\textwidth,bb=110 268 525 577]{data_dat_fig}
+\caption{Example of a data file and its graphical representation.}
 \end{figure}
 
 
 
-\section[Additional points of analysis]{Locations of additional points where analysis is required (optional)}
-%--------------------------------------------------------------------------------
-
-The file \file{valatxy.coord} is a two-column list of locations where you want the analysis to be performed.  
-
-\begin{exfile}[htpb]
-\begin{footnotesize}
-\texttt{-5 0\\
--4.7436 0\\
--4.4872 0\\
--4.2308 0\\
--3.9744 0\\
--3.7179 0\\
--3.4615 0} 
-\end{footnotesize}
-\caption{valatxy.coord\label{ex:valatxy}}
-\end{exfile}
-
-If there are more than two columns, columns 3 and higher are not used.
 
 \section{Parameters\label{sec:param.par}}
 %-------------------------------------------
 
-The file \file{./input/param.par} determines the main analysis parameters and options of \diva. A clear understanding of is essential for a propoer use of the software. 
+The file \file{./input/param.par} determines the main analysis parameters and options of \diva. A clear understanding of is essential for a proper use of the software. A description of each parameter is provided below the example file.
 
 \begin{exfile}[htpb]
-\begin{footnotesize}
+%\begin{footnotesize}
 \begin{verbatim}
-# Lc: correlation length (in units coherent with your data)
-10
-# icoordchange (=0 if no change of coordinates is to be performed (...)
-1
-# ispec (output files required)
-3
-# ireg (mode selected for background field: 0=null guess;         (...)
-1
-# xori: x-coordinate of the first grid point of the output
-15
-# yori: y-coordinate of the first grid point of the output
-66
-# dx: step of output grid
+# Correlation Length lc
 0.2
-# dy: step of output grid
-0.05
-# nx: number of grid points in the x-direction
-300
-# ny: number of grid points in the y-direction
-300
-# valex (exclusion value)
--999.0
-# snr signal to noise ratio of the whole dataset
-30
-# varbak: variance of the background field. If zero,              (...)
+# icoordchange
 0
+# ispec
+11
+# ireg
+0
+# xori
+0
+# yori
+0
+# dx
+0.02
+# dy
+0.02
+# nx
+51
+#ny
+51
+# valex
+-99
+# snr
+1.0
+# varbak
+1.0
 \end{verbatim}
-\end{footnotesize}
+%\end{footnotesize}
 \caption{param.par\label{paramfile}}
 \end{exfile}
-
 
 
 \subsection{\texttt{Lc}}
 % ------------------------
 
-Global correlation length used for the analysis (see Sec. \ref{sec:parammeaning} for the physical meaning).
+The global correlation length used for the analysis (see Section~\ref{sec:parammeaning} for the physical meaning). It has to be defined as a real positive number. 
 
 \subsection{\texttt{icoordchange}\label{sec:icoord}}
 %---------------------------------------------------
@@ -200,14 +179,14 @@ Specifies the desired type of coordinate system:\\
 \texttt{icoordchange} \begin{minipage}[t]{.7\textwidth} = $0$ if no change is necessary (data position in kilometres);\\
                                                         = $1$ if data positions are given in degrees;\\
                                                         = $2$ if data positions are given in degrees and your domain extends on a wide span of latitude                                                           (uses a cosine projection);\\
-                                                        = $-xscale$ to scale $x$ coordinates by $xscale$ before doing anything ( for vertical                                                              sections)
+                                                        = $-xscale$ to scale $x$ coordinates by a factor $xscale$ before doing anything (for vertical sections: see Section~\ref{sec:cruise})
                       \end{minipage}
                       
                       
 \subsection{\texttt{ispec}}
 %--------------------------
 
-Four base-values specifies the required error outputs:\\
+Four base-values specify the required error outputs:\\
 
 \texttt{ispec}       = 0\qquad: no error field requested\\
 \hphantom{\texttt{ispec}}  = 1\qquad: gridded error field specified by \texttt{xori}, \texttt{yori}, \texttt{nx} and \texttt{ny}; \\
@@ -221,24 +200,24 @@ Then you can combine these four values to obtain several error outputs:
 \texttt{ispec}             = 7 (=1+2+4) \qquad means you want the three error files.
 
 
-For computing errors with the real covariance function, %(Sec. \ref{})
-simply multiply the \texttt{ispec} value by $-1$:
+For computing errors with the real covariance function (Section~\ref{sec:realcovariance}), simply multiply the \texttt{ispec} value by $-1$:
 
 \example\\
 \texttt{ispec}             = -7 \qquad \begin{minipage}[t]{.7\textwidth}{means you want the three error files computed with the help of the real covariance function.}\end{minipage}
 
 
-Finally, a \textit{poor man's} error estimate (quick and underestimated error field) is available by adding $+10$ to the \texttt{ispec} value:
+A \textit{poor man's} error estimate (quick and underestimated error field, Section~\ref{sec:poormans}) is available by adding $+10$ to the \texttt{ispec} value:
 
 \example\\
 \texttt{ispec}             = 16 \qquad \begin{minipage}[t]{.7\textwidth}{means you want errors at data locations and at points listed in \file{valatxy.coord} computed with the \textit{poor man's} error estimate.}\end{minipage}
 
+Finally, adding $+10$ and multiplying \texttt{ispec} by $-1$ means that the error field is computed using the real covariance function and taking into account the boundary effects. 
 
 \subsection{\texttt{ireg}}
 
-Specification of the background field which is subtracted from the data field (Sec. \ref{sec:backgroundfield}).
+Specification of the background field which is subtracted from the data field (Section~\ref{sec:backgroundfield}).
 
-\texttt{ireg}             = 0\qquad: no background field is subtracted (assuming data are already anomalies); \\
+\texttt{ireg}             = 0 \qquad: no background field is subtracted (assuming data are already anomalies); \\
 \hphantom{\texttt{ireg}}  = 1 \qquad: the data mean value is subtracted;\\
 \hphantom{\texttt{ireg}}  = 2 \qquad: the linear regression of the data (plane) is subtracted.
 
@@ -251,20 +230,35 @@ Specification of the background field which is subtracted from the data field (S
 \subsection{\texttt{valex}}
 %-----------------------------
 
-Exclusion value: value used to fill the output matrix when a point corresponds with land.
+Exclusion value: value used to fill the output matrix when a point corresponds with land. Any value is accepted, but the user has to ensure that the exclusion value cannot be a value obtained by the interpolation of the measurements. 
 
 
 \subsection{\texttt{snr}}
 %---------------------------
 
-Signal-to-noise ratio of the whole dataset (Section~\ref{sec:formulation}).
-
+Signal-to-noise ratio of the whole dataset (Section~\ref{sec:formulation}). It has to be defined as a real positive number (as the correlation length).
 
 \subsection{\texttt{varbak}}
 %------------------------------
 
-Variance of the background field.
+Variance of the background field. 
 
+
+\section[Additional points of analysis]{Locations of additional points where analysis is required (optional)}
+%--------------------------------------------------------------------------------
+
+The file \file{valatxy.coord} is a two-column list of locations where you want the analysis to be performed (in addition to the regular grid defined in \file{param.par}).  
+
+\begin{exfile}[htpb]
+\begin{footnotesize}
+\texttt{20 20 0\\
+60 10\\
+40 40} 
+\end{footnotesize}
+\caption{valatxy.coord\label{ex:valatxy}}
+\end{exfile}
+
+If there are more than two columns, columns 3 and higher are not used.
 
 
 \section{Working directories (2-D analysis)}
@@ -295,5 +289,5 @@ For 2 dimension analysis, the main working directory is \directory{divastripped}
 \item[\directory{gnuwork}] contains the scripts for generating the plots with gnuplot. These plots will be located in the sub-folder \directory{plots}.
 \item[\directory{input}] contains the input files presented in this section.
 \item[\directory{divawork}] is the working directory for the mesh generation.
-\item[\texttt{output}] contains the analysis results. In \directory{ghertonetcdf}, one can find the output in NetCDF format (file \file{results.nc}), while \directory{meshvisu} stores the files that describe the mesh.
+\item[\directory{output}] contains the analysis results. In \directory{ghertonetcdf}, one can find the output in NetCDF format (file \file{results.nc}), while \directory{meshvisu} stores the files that describe the mesh.
 \end{description}
