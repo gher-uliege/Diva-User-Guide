@@ -1,7 +1,7 @@
 % DivaPreprocessing
-\chapter{Preparating of the input files\label{Preprocessing}}
+\chapter{Preparation of the input files\label{Preprocessing}}
 
-We describe in this chapter the tools to prepare the various input files presented in Chapter~ \ref{chap:general}. If you already have the input files at your disposal, you way want to go directly to the next chapter.
+We describe in this chapter the tools to prepare the various input files presented in Chapter~\ref{chap:general}. If you already have the input files at your disposal, you way want to go directly to the next chapter.
 
 \minitoc
 
@@ -15,7 +15,7 @@ Topographies are necessary in two cases: first when you work in a vertical plane
 \fbox{
 \begin{minipage}{0.9\textwidth}
 \vspace{.25cm}
-\textbf{Convention:} \diva\, works with the convention that depth are positive under the sea level. This is especially important when creating contours. \matlab\,tools provided with the software create topographies which respect this convention, but in case that you work with topography database that are not described in the following section,  
+\textbf{Convention:} \diva works with the convention that depth are positive under the sea level. This is especially important when creating contours. \matlab\,tools provided with the software create topographies which respect this convention, but in case that you work with topography database that are not described in the following section,  
 \vspace{.25cm}
 \end{minipage}
 }
@@ -39,12 +39,12 @@ awk '{print $2,$1,$3}' infile > outfile
 \subsection{Method 1: conversion from GEBCO topography\label{sec:topogebco}}
 %------------------------------------------------------
 
-Download the complete, global GEBCO One-Minute Grid file (\texttt{90n90s180w180e.zip}) from \url{http://www.bodc.ac.uk/data/online_delivery/gebco/} and unzip it to obtain the file \texttt{GridOne.grd}. Download the software \texttt{GebcoCE\_GridOnly} as well and run it. 
+Download the complete, global GEBCO One-Minute Grid file (\file{90n90s180w180e.zip}) from \url{http://www.bodc.ac.uk/data/online_delivery/gebco/} and unzip it to obtain the file \file{GridOne.grd}. Download the software \texttt{GebcoCE\_GridOnly} as well and run it. 
 
 \subsubsection{Select your area}
 %-------------------------------
 
-Select your region of interest (Fig. \ref{fig:gebco1}), possibly slightly increased to make sure boundaries are well included in the topography. Then select {\tt File->Export Data->Gridded Data}. Chose Ascii longitude-latitude-depth (default). For the longitude range, use {\tt -180:180} for european seas. Note regions you possibly want to mask later by their coordinate ranges.  Use {\tt topo.gebco.asc} as output file name, into a directory where
+Select your region of interest (Fig.~\ref{fig:gebco1}), possibly slightly increased to make sure boundaries are well included in the topography. Then select {\tt File->Export Data->Gridded Data}. Chose Ascii longitude-latitude-depth (default). For the longitude range, use {\tt -180:180} for european seas. Note regions you possibly want to mask later by their coordinate ranges.  Use {\tt topo.gebco.asc} as output file name, into a directory where
 you have your main climatological working place. Push {\tt OK} and be patient. (Fig. \ref{fig:gebco2}). 
 
 \begin{figure}[htpb]
@@ -65,7 +65,7 @@ you have your main climatological working place. Push {\tt OK} and be patient. (
 %\subsubsection{Convert commas into dots}
 %%---------------------------------------
 %
-%Depending on your installation, decimal numbers may be written with commas instead of points in GEBCO gridded file. In order to be compatible with \diva\, convention it is necessary to change the commas into points (see beginning of Chap. \ref{chap:general}).
+%Depending on your installation, decimal numbers may be written with commas instead of points in GEBCO gridded file. In order to be compatible with \diva convention it is necessary to change the commas into points (see beginning of Chap. \ref{chap:general}).
 
 
 \subsubsection{Convert the file into \texttt{gher} format}
@@ -74,10 +74,10 @@ you have your main climatological working place. Push {\tt OK} and be patient. (
 %For the conversion, two possibilities are offered:
 %\begin{enumerate}
 %
-%\item With the bash script \texttt{gebco2diva}: simply copy the files created by the extraction into the \texttt{input} directory with the name \texttt{topo.gebco} and clean the header (\textit{i.e.} eliminate lines of comments); the execution of \texttt{gebco2diva} will provide you with \texttt{topo.grd} and \texttt{TopoInfo.dat} in the \texttt{output} directory.
+%\item With the bash script \command{gebco2diva}: simply copy the files created by the extraction into the \directory{input} directory with the name \file{topo.gebco} and clean the header (i.e., eliminate lines of comments); the execution of \command{gebco2diva} will provide you with \file{topo.grd} and \file{TopoInfo.dat} in the \directory{output} directory.
 %
 %
-%\item The second possibility consist in applying \matlab\, tool \texttt{diva\_topo\_gebco.m} on file \texttt{topo.gebco} in order to convert it into a \diva-usable topography.
+%\item The second possibility consist in applying \matlab\, tool \file{diva\_topo\_gebco.m} on file \file{topo.gebco} in order to convert it into a \diva-usable topography.
 %
 %\end{enumerate}
 
@@ -88,11 +88,11 @@ If you need to mask regions, edit {\tt gebcoprep} and add lines as those put wit
 Once you defined the regions to be masked in this way, execute {\tt gebcoprep}. This will create a file
 {\tt ./input/topo.gebco}, which you can have a look at with the {\tt head} command.
 
-Now you are ready to prepare the gridded topography {\tt topo.grd} from which \diva\, will extract contours. To prepare it,
+Now you are ready to prepare the gridded topography {\tt topo.grd} from which \diva will extract contours. To prepare it,
 copy or move {\tt ./input/topo.gebco} into the diva working directory to have {\tt divastripped/input/topo.gebco}.
 
 The resolution of GEBCO is 1 minute. This might be much too fine for large scale analysis and you can run
-{\tt gebco2diva} with optional arguments {\tt nx ny} to make a grid using only every {\tt nx} point in $x$ direction and {\tt ny} in $y$ direction. If for example you are interested in a \diva\, output resolution that is working at a 100 km scale, {\tt gebco2diva 15 15} would still provide a very fine topography with respect to the scales of interest.
+{\tt gebco2diva} with optional arguments {\tt nx ny} to make a grid using only every {\tt nx} point in $x$ direction and {\tt ny} in $y$ direction. If for example you are interested in a \diva output resolution that is working at a 100 km scale, {\tt gebco2diva 15 15} would still provide a very fine topography with respect to the scales of interest.
 
 Place yourself into the {\tt divastripped} directory. Once you executed {\tt gebco2diva} and a little patience for big files, you should find in {\tt divastripped/output} two files describing the gridded topography: {\tt topo.grd} and {\tt TopoInfo.data}. While the former is a binary file, the latter tells you (via {\tt cat ./output/TopoInfo.dat}) the topology of the grid.
 
@@ -146,7 +146,7 @@ Delimit your region and select "ASCII file" as output (Fig. \ref{fig:nvods2}).
 \end{figure}
 
 
-Put the \texttt{.asc} file into \texttt{divastripped/input/} with the name \texttt{topo.asc} and execute \textcom{dbdb2diva} in the shell. You will get \texttt{topo.grd} and \texttt{TopoInfo.dat} in the \texttt{output} directory. The corresponding topography is drawn on Fig. \ref{fig:topoNaval}.
+Put the \file{.asc} file into \directory{divastripped/input/} with the name \file{topo.asc} and execute \command{dbdb2diva} in the shell. You will get \file{topo.grd} and \file{TopoInfo.dat} in the \directory{output} directory. The corresponding topography is drawn on Fig. \ref{fig:topoNaval}.
 
 
 \begin{figure}[htpb]
@@ -164,7 +164,7 @@ The principle of this method is to apply a \diva analysis to a data file contain
 \subsubsection{Get topography measurements}
 %------------------------------------------
 
-In the present example data points are extracted from \url{http://topex.ucsd.edu/cgi-bin/get_data.cgi} in the same region as the previous case ($9-12^{\circ}W\, \times\, 30-33^{\circ}N$). The output file is composed of three column: \texttt{| longitude | latitude | depth |}, \textit{i.e.} the same format as \texttt{data.dat} files used by \diva. Once the file is downloaded, edit its name in \texttt{topo.dat}. Fig. \ref{fig:guirtopo} shows the individual measurements (coloured dots) in the region of interest. 
+In the present example data points are extracted from \url{http://topex.ucsd.edu/cgi-bin/get_data.cgi} in the same region as the previous case ($9-12^{\circ}W\, \times\, 30-33^{\circ}N$). The output file is composed of three column: \texttt{| longitude | latitude | depth |}, i.e., the same format as \file{data.dat} files used by \diva. Once the file is downloaded, edit its name in \file{topo.dat}. Fig. \ref{fig:guirtopo} shows the individual measurements (coloured dots) in the region of interest. 
 
 
 \begin{figure}[htpb]
@@ -177,10 +177,10 @@ In the present example data points are extracted from \url{http://topex.ucsd.edu
 \subsubsection{Adapt parameters}
 %-------------------------------
 
-As in any \diva analysis, you need to provide parameters concerning the analysis itself and the output grid (file \texttt{param.par}, described extensively in Sec. \ref{sec:param.par}, page \pageref{sec:param.par}). 
+As in any \diva analysis, you need to provide parameters concerning the analysis itself and the output grid (file \file{param.par}, described extensively in Section~\ref{sec:param.par}, page \pageref{sec:param.par}). 
 
 \begin{itemize}
-\item Correlation length is chosen according to the resolution of the gridded topography you extracted, \textit{i.e.} the distance between two measurements.
+\item Correlation length is chosen according to the resolution of the gridded topography you extracted, i.e., the distance between two measurements.
 \item Signal-to-noise ratio is assigned with a large value (typically 100 or more).
 \item \texttt{x/yorigin} are chosen according to the region where you extracted data.
 \item \texttt{dx} and \texttt{dy} are the same as the values you use for your analysis. 
@@ -188,10 +188,10 @@ As in any \diva analysis, you need to provide parameters concerning the analysis
 
 
 
-\subsubsection{Execute \texttt{divatopo}}
+\subsubsection{Execute \command{divatopo}}
 %----------------------------------------
 
-With the two files \texttt{topo.dat} and \texttt{param.par} located in \texttt{divastripped/input/}, type \textcom{divatopo} to launch the analysis. \texttt{divatopo} automatically creates a contour file according to grid parameters taken in \texttt{param.par}. The interpolated field is presented on Fig. \ref{fig:guirtopodiva}. Outputs \texttt{topo.grd} and \texttt{TopoInfo.dat} may then be used to generate contours (see Sec. \ref{sec:contourgen}). 
+With the two files \file{topo.dat} and \file{param.par} located in \directory{divastripped/input/}, type \command{divatopo} to launch the analysis. \command{divatopo} automatically creates a contour file according to grid parameters taken in \file{param.par}. The interpolated field is presented on Fig. \ref{fig:guirtopodiva}. Outputs \file{topo.grd} and \file{TopoInfo.dat} may then be used to generate contours (see Section~\ref{sec:contourgen}). 
 
 
 
@@ -205,11 +205,11 @@ With the two files \texttt{topo.dat} and \texttt{param.par} located in \texttt{d
 \subsection{Method 4: by hand}
 %----------------------
 
-Create a gridded file (in the same format as the analysis fields \texttt{fieldgher.anl}) of topography and call
-it \texttt{topo.grd}. The information on the grid's geographical dimensions are to be placed in \texttt{TopoInfo.dat}.
+Create a gridded file (in the same format as the analysis fields \file{fieldgher.anl}) of topography and call
+it \file{topo.grd}. The information on the grid's geographical dimensions are to be placed in \file{TopoInfo.dat}.
 
 The grid is simply an array ($i=1,\ldots,M$) and ($j=1,\ldots,N$), where the coordinates of the grid nodes are
-$x_i=x_1+(i-1)*dx$, $y_j=y_1+(j-1)*dy$.  The file \texttt{TopoInfo.dat} contains simply
+$x_i=x_1+(i-1)*dx$, $y_j=y_1+(j-1)*dy$.  The file \file{TopoInfo.dat} contains simply
 \begin{verbatim}
 x1
 y1
@@ -220,7 +220,7 @@ N
 \end{verbatim}
 
 
-Look into \texttt{dvdv2diva.f} in \texttt{./src/Fortran/Util/} how to write such files from within a Fortran code.
+Look into \file{dvdv2diva.f} in \directory{./src/Fortran/Util/} how to write such files from within a Fortran code.
 
 
 \section{Creation of contours\label{sec:contourgen}}
@@ -245,16 +245,16 @@ Be aware that some cases (Fig. \ref{divaprob}) are to be avoided, since problems
 }
 \end{figure}
 
-Remember that you can use the tool \texttt{divacck} for checking and thinning of contours.
+Remember that you can use the tool \command{divacck} for checking and thinning of contours.
 
 
 \subsection{From topography\label{sec:contourtopo}}
 %--------------------------------------------------
 
 
-Once you have placed files \texttt{topo.grd} and \texttt{TopoInfo.dat} in directory \texttt{./input}, type \textcom{divacont} in the command line shell. This will generate several coastline files named \texttt{coast.cont.100nn}, where $nn$ corresponds to the $nn^{th}$ level defined in \texttt{contour.depth}. File \texttt{coast.cont} contains the coastline at the surface level ($z=0$).
+Once you have placed files \file{topo.grd} and \file{TopoInfo.dat} in directory \directory{./input}, type \command{divacont} in the command line shell. This will generate several coastline files named \file{coast.cont.100nn}, where $nn$ corresponds to the $nn^{th}$ level defined in \file{contour.depth}. File \file{coast.cont} contains the coastline at the surface level ($z=0$).
 
-As an illustration, we want to have contours from surface to a depth of \mbox{1000 m} every \mbox{200 m}, with \texttt{topo.grd} and \texttt{TopoInfo.dat} created in the Sec. \ref{sec:howtotopo}. To this end we use the following file:
+As an illustration, we want to have contours from surface to a depth of \mbox{1000 m} every \mbox{200 m}, with \file{topo.grd} and \file{TopoInfo.dat} created in the Section~\ref{sec:howtotopo}. To this end we use the following file:
 
 \begin{exfile}[htpb]
 \begin{footnotesize}
@@ -285,16 +285,16 @@ Contours for the specified depths are showed on Fig. \ref{fig:contourdepth}.
 \subsection{Using ODV}
 %---------------------
 
-Tool \texttt{divacoa2cont} allows converting ODV-format coastlines to \diva-format coastlines. Simply copy coastline file in the \texttt{input} directory with the name \texttt{coast.coa} along with a \texttt{param.par} file and type \texttt{divacoa2cont} in the shell. 
+Tool \command{divacoa2cont} allows converting ODV-format coastlines to \diva-format coastlines. Simply copy coastline file in the \directory{input} directory with the name \file{coast.coa} along with a \file{param.par} file and type \command{divacoa2cont} in the shell. 
 
-This provides you the new file \texttt{./input/coast.cont}.
+This provides you the new file \file{./input/coast.cont}.
 
 
 
 \subsection{From a mask}
 %--------------------------
 
-Simply look at \texttt{contourgen.f} and create the mask as you wish. Alternatively you can
+Simply look at \file{contourgen.f} and create the mask as you wish. Alternatively you can
 create a pseudo-topography with adequate pseudo-depth at which you draw the contour.
 
 
@@ -305,80 +305,76 @@ create a pseudo-topography with adequate pseudo-depth at which you draw the cont
 Two key parameters have to be adjusted before running an analysis: the correlation length ($L$) and the signal-to-noise ratio ($\snr$). Several tools are provided in order to help the user for the determination of these parameters.
 
 
-\subsection{\texttt{divafit} \label{sec:divafit}}
+\subsection{\command{divafit} \label{sec:divafit}}
 %------------------------------------------------
 
-The script \texttt{divafit}: uses the data (\texttt{./input/data.dat}) for a direct fitting of the covariance function (see Sec. \ref{sec:kernel}). Note that the fit needs a sufficiently large data set.
+The script \command{divafit}: uses the data (\file{./input/data.dat}) for a direct fitting of the covariance function (see Section~\ref{sec:kernel}). Note that the fit needs a sufficiently large data set.
 
 \subsubsection{Command description}
 %-----------------------------------------
 
-\texttt{divafit} \qquad: performs a fit of the data correlation function based on the whole data set. \\
-\texttt{divafit -r} \qquad: puts the new value of $L$ in \texttt{param.par} in function of the fit.\\
-\texttt{divafit n} \qquad: performs the fit on a sample of \texttt{n*(n-1)/2} couples of data (sub-sampling). 
+\command{divafit} \qquad: performs a fit of the data correlation function based on the whole data set. \\
+\command{divafit -r} \qquad: puts the new value of $L$ in \file{param.par} in function of the fit.\\
+\command{divafit n} \qquad: performs the fit on a sample of \texttt{n*(n-1)/2} couples of data (sub-sampling). 
 
 \examples:\\
-\texttt{divafit -r 100}: performs a fit on $4950$ couples of data and update the file \texttt{param.par}.
+\command{divafit -r 100}: performs a fit on $4950$ couples of data and update the file \file{param.par}.
 
 \btips
-When dealing with very large datasets, using \texttt{divafit} with sub-sampling may save you a large amount of time.
+When dealing with very large datasets, using \command{divafit} with sub-sampling may save you a large amount of time.
 \etips
 
-\textbf{Note:} when using advection constraint and variable $L$, \texttt{divafit} will not provide a very meaningful value.
+\textbf{Note:} when using advection constraint and variable $L$, \command{divafit} will not provide a very meaningful value.
 
 \subsubsection{Output files}
 %---------------------------
 
-In output file \texttt{./output/paramfit.dat}, the best estimates are given and could be used as parameter values for running \diva.
+In output file \file{./output/paramfit.dat}, the best estimates are given and could be used as parameter values for running \diva.
 Estimates of the correlation length are rather robust while those of the signal-to-noise ratio are neither precise nor robust, especially for large values.
 
-Output file \texttt{covariance.dat} is the data-based covariance function (column 1: distance between points, columns 2: covariance, column 3: number of data couples used to estimate the covariance). 
+Output file \file{covariance.dat} is the data-based covariance function (column 1: distance between points, columns 2: covariance, column 3: number of data couples used to estimate the covariance). 
 
-Output file \texttt{covariancefit.dat} allows looking at the fitted covariance function (column 1: distance between points, 
+Output file \file{covariancefit.dat} allows looking at the fitted covariance function (column 1: distance between points, 
 column 2: data-covariance, column 3: fitted covariance).
 
-Finally, file \texttt{param.par.fit} is the original param.par file except that the correlation length has been replaced by the fitted value. 
+Finally, file \file{param.par.fit} is the original \file{param.par} file except that the correlation length has been replaced by the fitted value. 
 
 \textbf{Note:} always have a look at the fit to judge on its quality. %see example ref... divacovafit
 
-\subsection{\texttt{divagcv}}
+\subsection{\command{divagcv}}
 %-------------------------------
 
-The script \texttt{divagcv} exploits \diva\, module (\texttt{gcvfac}), analyzing random fields to assess the generalized cross validator (GCV, see Chap. \ref{gcv} for theoretical developments). The script \texttt{divagcv} is an example of how to minimize the estimator by changing the signal-to-noise ratio ($\snr$) value, but could be adapted to optimize other parameters as well, such as correlation length.
+The script \command{divagcv} exploits \diva module (\texttt{gcvfac}), analysing random fields to assess the generalized cross validator (GCV, see Chap. \ref{gcv} for theoretical developments). The script \command{divagcv} is an example of how to minimize the estimator by changing the signal-to-noise ratio ($\snr$) value, but could be adapted to optimize other parameters as well, such as correlation length.
 
-Input to the module is the number of random estimates required (the larger the value, the more robust the estimator). Default value is 5, unless you change in \texttt{divacalc}. The user has to provide an input file \texttt{./input/gvcsampling.dat} containing the list of values for $\snr$ on which to try the estimator (typically around the values provided by \texttt{divafit}).
+Input to the module is the number of random estimates required (the larger the value, the more robust the estimator). Default value is 5, unless you change in \command{divacalc}. The user has to provide an input file \file{./input/gvcsampling.dat} containing the list of values for $\snr$ on which to try the estimator (typically around the values provided by \command{divafit}).
 
-During the \texttt{divagcv} execution, error-field calculations are disabled to reduce computing time. 
+During the \command{divagcv} execution, error-field calculations are disabled to reduce computing time. 
 
 \btips
-If a mesh already exists (in \texttt{meshgenwork} directory), \texttt{divagcv} disables the \texttt{divamesh} procedure. For this reason, ensure you are working with the adequate mesh.
+If a mesh already exists (in \directory{meshgenwork} directory), \command{divagcv} disables the \command{divamesh} procedure. For this reason, ensure you are working with the adequate mesh.
 \etips
-
-
-
-
 
 \subsubsection{Output files}
 %---------------------------
 
-File \texttt{./output/gcv.dat} contains the GCV estimator (column 1: S/N, column 2: GCV, column 3: data anomaly variance) and \texttt{./output/gcvsnvar.dat} the best new estimate for the S/N and \texttt{VARBAK} parameters.
+File \file{./output/gcv.dat} contains the GCV estimator (column 1: S/N, column 2: GCV, column 3: data anomaly variance) and \file{./output/gcvsnvar.dat} the best new estimate for the S/N and \texttt{VARBAK} parameters.
 
-In \texttt{param.par.gcv}, you find an adapted version of the original \texttt{param.par}.
+In \file{param.par.gcv}, you find an adapted version of the original \file{param.par}.
 
 
 
-\subsection{\texttt{divacv}}
+\subsection{\command{divacv}}
 %-------------------------------
 
-\texttt{divacv} carries out a cross validation, point by point, without new matrix inversions. 
+\command{divacv} carries out a cross validation, point by point, without new matrix inversions. 
 
-\subsection{\texttt{divacvrand}}
+\subsection{\command{divacvrand}}
 %-------------------------------
 
-\texttt{divacv} runs a cross validation by sub-samples of points.
+\command{divacv} runs a cross validation by sub-samples of points.
 
 
-Note that in the present version (\diva-\divaversion), tools  \texttt{divacv} and \texttt{divacvrand}  
+Note that in the present version (\diva-\divaversion), tools  \command{divacv} and \command{divacvrand}  
 do not adapt the error norm to include the relative weights on data. This will be introduced in the next versions.
 
 
@@ -440,7 +436,7 @@ The second line {\bf must} contain x coordinates information
 
 {\tt free-name  column-in-data-file  xmin xmax}. 
 
-Data will be taken if \texttt{x} values are in the range \texttt{xmin-xmax}. If \texttt{xmin=*}, no test on \texttt{xmin} will be performed (\textit{i.e.} all values lower than \texttt{xmax} are taken). Similarly, if \texttt{xmax=*}, no test on \texttt{xmax} is performed.
+Data will be taken if \texttt{x} values are in the range \texttt{xmin-xmax}. If \texttt{xmin=*}, no test on \texttt{xmin} will be performed (i.e., all values lower than \texttt{xmax} are taken). Similarly, if \texttt{xmax=*}, no test on \texttt{xmax} is performed.
 
 \item On the obligatory third line, we have a similar structure for the y coordinate
  
@@ -467,11 +463,11 @@ In addition, if {\tt column-in-data-file} is zero, then relative data weight are
 {\tt free-name column-in-data-file}
 
 Because of the special pattern of time, range in time is not specified by min-max values
-but in a separate file {\tt timeselect.form}. 
+but in a separate file \file{timeselect.form}. 
 If {\tt column-in-data-file} for the time-selection is zero, no selection on dates is performed and all data satisfying the other criteria will be taken. 
 
 \item 
-Any additional line of {\tt select.form} after the sixth will add selection criteria with the same structure
+Any additional line of \file{select.form} after the sixth will add selection criteria with the same structure
 
 {\tt free-name column-in-data-file minval maxval}
 
@@ -483,9 +479,9 @@ The addition criteria can be used to select depth ranges for example or water ma
 In the example {\tt select.form}, temperature data will be extracted west of $-10.4$ degrees longitude, with depth
 of data between 20 and 30.5 meters and salinity values below 39.
 
-The file {\tt timeselect.form} has a similar form than the {\tt select.form} but is only dealing with the allowed
-ranges for years, month, days, hours and minutes (the columns position is defined in {\tt select.form}).
-The selection is done as for {\tt select.form} with {\tt *} standing for no test. 
+The file \file{timeselect.form} has a similar form than the {\tt select.form} but is only dealing with the allowed
+ranges for years, month, days, hours and minutes (the columns position is defined in \file{select.form}).
+The selection is done as for \file{select.form} with {\tt *} standing for no test. 
 In the example, all data from year 1960 on are taken whenever they correspond to October, November or December.
 
 \subsection{Tricks}
@@ -495,7 +491,7 @@ In the example, all data from year 1960 on are taken whenever they correspond to
 \item If you have several ascii input files with different structures, you can create a selection (with wild cards) for each of them that leads to an identical output structure. Then you can concatenate ({\tt cat}) these output files into a singly coherent
 file.
 
-\item If you have a very large data file, instead of running {\tt divaguessforms} on this file, first create a smaller one {\tt head -1000 myfile > testfile} and apply {\tt divaguessforms testfile}.
+\item If you have a very large data file, instead of running \command{divaguessforms} on this file, first create a smaller one {\tt head -1000 myfile > testfile} and apply \command{divaguessforms testfile}.
 
 \item If the spreadheet file is created by an export from ODV, quality flags generally follow the variable to which they correspond. Hence if on the fourth line (variable to analyse) of {\tt select.form} you specify column 12 for example, on line seven of {\tt select.form} you can include 
 
@@ -504,7 +500,10 @@ file.
 to select all data with quality flag value 3.
 
 \item If you just need a few data extractions and prefer a graphical interface, import the data into ODV. Then use the
-{\tt Configuration -> Selection criteria}, make your selection, go into {\tt SURFACE} (or {\tt SECTION}) mode and use the {\tt Export X/Y/Z} tool that produces a {\tt win1.oai} file almost ready for \diva\, input as {\tt data.dat}. You only need to adapt the fourth column so that it includes ones, nothing or relative weights. You can achieve this for example on a command line with {\tt awk '\{print \$1,\$2,\$3,1\}' win1.oai > data.dat}
+{\tt Configuration -> Selection criteria}, make your selection, go into {\tt SURFACE} (or {\tt SECTION}) mode and use the {\tt Export X/Y/Z} tool that produces a \file{win1.oai} file almost ready for \diva input as \file{data.dat}. You only need to adapt the fourth column so that it includes ones, nothing or relative weights. You can achieve this for example on a command line with:
+\begin{lstlisting}[style=Bash]
+[charles@gher13 divastripped]$ awk '\{print \$1,\$2,\$3,1\}' ./input/win1.oai > ./input.data.dat
+\end{lstlisting}
 \end{itemize}
 
 {\bf Note:} The extraction for large data sets with {\tt divaselector} can be time consuming since it is based on non-optimized {\tt awk} coding.
@@ -548,40 +547,44 @@ min 0 60
 \section{Misc}
 %--------------
 
-\subsection{\texttt{divaclean}}
+\subsection{\command{divaclean}}
 %-----------------------------
 
-\texttt{divaclean} cleans up the working directories by removing \texttt{fort.*} files from \texttt{divawork} and \texttt{meshgenwork}, as well as output files from \texttt{output}.
+\command{divaclean} cleans up the working directories by removing \file{fort.*} files from \directory{divawork} and \directory{meshgenwork}, as well as output files from \directory{output}.
 
-\subsection{\texttt{divadataclean}}
+\subsection{\command{divadataclean}}
 %-----------------------------
 
-Script \texttt{divadataclean} takes the input data \texttt{./input/data.dat} and eliminates all data that fall outside the bounding box of the contours (\textit{i.e.} the rectangle containing the analysis mesh). This avoids loading unnecessary large input files. If two additional arguments $n_{1}$ $n_{2}$ are added, data values falling outside the range specified by $n_{1},n_{2}$ are also eliminated.
+Script \command{divadataclean} takes the input data \file{./input/data.dat} and eliminates all data that fall outside the bounding box of the contours (i.e., the rectangle containing the analysis mesh). This avoids loading unnecessary large input files. If two additional arguments $n_{1}$ $n_{2}$ are added, data values falling outside the range specified by $n_{1},n_{2}$ are also eliminated.
 
-\example\\
-\texttt{divadataclean -3 35} \qquad \begin{minipage}[t]{.65\textwidth}removes all data points of which the value is not between $-3$ and $35$.\end{minipage} 
+\example
+\begin{lstlisting}[style=Bash]
+[charles@gher13 divastripped] divadataclean -3 35
+\end{lstlisting}
+will remove all data points of which the value is not between $-3$ and $35$.
 
-The output overwrites \texttt{./input/data.dat} but keeps the original one in \texttt{./\-input/\-data\-.dat\-.full}. The tool should be used just after having loaded the data set (typically after \texttt{divaload}).
+The output overwrites \file{./input/data.dat} but keeps the original one in \directory{./input/} with the name \file{data.dat.full}. The tool should be used just after having loaded the data set (typically after \command{divaload}).
 
-\subsection{\texttt{divaload}\label{sec:divaload}}
+\subsection{\command{divaload}\label{sec:divaload}}
 %--------------------------------------------------
 
-\texttt{divaload} loads input files from the chosen directory into \texttt{divastripped/input/}. You just have to specify the directory where your input files are located (relative or absolute paths). It is assumed that the input files are located in a folder \texttt{input} within the chosen directory.\\
-\examples\\
-\textcom{divaload ./AdriaticTemperature} will load the files from\\
- \texttt{./\-Adriatic\-Temperature/\-input}
+\command{divaload} loads input files from the chosen directory into \directory{divastripped/input/}. You just have to specify the directory where your input files are located (relative or absolute paths). It is assumed that the input files are located in a folder \directory{input} within the chosen directory.
+
+\example
+\begin{lstlisting}[style=Bash]
+[charles@gher13 divastripped] divaload ~/DIVA/test/
+\end{lstlisting}
+will load the files from \directory{\~{}/DIVA/test/input}.
  
-\textcom{divaload c:/data/AdriaticTemperature} will load the files from\\
-\texttt{c:/\-data/\-Adriatic\-Temperature/\-input}
 
 \btips
-When you want to know to which correspond the data present in the input directory, simply read the content of the file \texttt{input/casename}; it indicates the repertory from which you loaded input files with command \texttt{divaload}.
+When you want to know to which correspond the data present in the input directory, simply read the content of the file \file{input/casename}; it indicates the repertory from which you loaded input files with command \command{divaload}.
 \etips
 
 
-\subsection{\texttt{divacck}}
+\subsection{\command{divacck}}
 %-----------------------------
 
-\texttt{divacck} checks your initial contour file \texttt{./output/coast.cont}. In output \texttt{./\-output/\-coast.cont\-.checked} you will find a thinned contour based on the length scale, where the possible couples of identical points are eliminated.
+\command{divacck} checks your initial contour file \file{./output/coast.cont}. In output \file{./\-output/\-coast.cont\-.checked} you will find a thinned contour based on the length scale, where the possible couples of identical points are eliminated.
 
-Application of \texttt{divacck} is normally not necessary if you created the contours with \texttt{divacont}.
+Application of \command{divacck} is normally not necessary if you created the contours with \command{divacont}.

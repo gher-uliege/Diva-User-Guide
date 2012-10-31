@@ -6,12 +6,36 @@ The purpose of this chapter is to describe the tools included in the \diva softw
 \minitoc
 
 
+%------------------------------------------------
 \section{Determination of the correlation length}
 %------------------------------------------------
 
+The correlation length $L$ translates the distance over which a given data point influences its neighbourhood (Section~\ref{sec:parammeaning}). The method to evaluate $L$ is to fit the theoretical kernel of \eqref{divaformula2} (see Fig.~\ref{kernel1}) to the correlation between data.
+
+\subsection{Illustration}
+
+This example employs salinity measurements in the Mediterranean Sea at a depth of 30~m in July, for the 1980-1990 period (Fig.~\ref{fig:diva_oi_09_10030dataval_mesh3}). The data set is built up by exploiting the SeaDataNet portal (\url{http://www.seadatanet.org}) and the World Ocean Database 2009 \citep[WOD09,][]{BOYER09} and contains 1061 data points. 
+
+The regular grid for the analysis extends from 7$^{\circ}$W to 36$^{\circ}$E and from 30$^{\circ}$15'N to 45$^{\circ}$45'N, with a horizontal resolution of about 10~km. Measurements in the Black Sea and the Atlantic Ocean were removed in order to concentrate only on the Mediterranean Sea properties. The land-sea contours are created from the GEBCO bathymetry.
+
+\begin{figure*}[h!]
+\centering
+\includegraphics[width=.9\textwidth,bb=14 254 588 561]{diva_oi_09_10030dataval_mesh3}
+\caption{Finite-element mesh and salinity measurements used for the application.\label{fig:diva_oi_09_10030dataval_mesh3}}
+\end{figure*}
+
+The fit yields the value $L=1.42^{\circ}$ ($\simeq$ 160~km).
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.475\textwidth,bb=106 253 450 575]{Salinity_19502010_0707_10029e_fit}
+\caption{Fit of the data correlation to the theoretical kernel (dashed line). \label{fig:Salinity_19502010_0707_10029e_fit}}
+\end{figure}
 
 \section{Determination of the signal-to-noise ratio}
 %---------------------------------------------------
+
+Once the correlation length is determined, the next step is to estimate the signal-to-noise ratio. 
 
 \subsection{Generalities}
 %------------------------
@@ -111,7 +135,7 @@ To make this estimate robust, the analysis has to be repeated over a large numbe
 \subsection{Generalized Cross Validation (GCV)}
 %----------------------------------------------
 
-According to \cite{CRAVEN78}, modifying the error estimate as follows:
+According to \citet{CRAVEN78}, modifying the error estimate as follows:
 
 \begin{equation}
 {\hat{\theta}_i^2} =  \frac{(d_i - \tilde{d}_i)^2}{(1 - A_{ii})^2}.

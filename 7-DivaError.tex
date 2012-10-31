@@ -37,7 +37,7 @@ To circumvent the main problems (unknown covariance function and repeated analys
 \subsection{The hybrid approach}
 %-------------------------------
 
-In this approach, \cite{BRANKART98} and \cite{RIXEN00} proposed a heuristic statistical error expression for the VIM: in \diva, error fields are calculated by analogy with OI: since analysis in OI is equivalent to analysis with VIM (insofar as the reproducing Kernel of VIM and the covariance function of OI are identical) and since error field of OI equals analysis of covariance fields, error field of VIM equals analysis (by VIM) of covariance fields.
+In this approach, \citet{BRANKART98} and \citet{RIXEN00} proposed a heuristic statistical error expression for the VIM: in \diva, error fields are calculated by analogy with OI: since analysis in OI is equivalent to analysis with VIM (insofar as the reproducing Kernel of VIM and the covariance function of OI are identical) and since error field of OI equals analysis of covariance fields, error field of VIM equals analysis (by VIM) of covariance fields.
 
 Mathematically, according to the developments of Section~\ref{sec:OImethod}, we have:
 
@@ -194,17 +194,8 @@ Overall the cost for the full error calculation is now roughly equivalent to twi
 \section{Comparison between the methods}
 %---------------------------------------
 
-This example employs salinity measurements in the Mediterranean Sea at a depth of 30~m in July, for the 1980-1990 period (Fig.~\ref{fig:diva_oi_09_10030dataval_mesh3}). The data set is built up by exploiting the SeaDataNet portal (\url{http://www.seadatanet.org}) and the World Ocean Database 2009 \citep[WOD09,][]{BOYER09} and contains 1061 data points. 
 
-The regular grid for the analysis extends from 7$^{\circ}$W to 36$^{\circ}$E and from 30$^{\circ}$15'N to 45$^{\circ}$45'N, with a horizontal resolution of about 10~km. Measurements in the Black Sea and the Atlantic Ocean were removed in order to concentrate only on the Mediterranean Sea properties. The land-sea contours are created from the GEBCO bathymetry.
-
-\begin{figure*}[h!]
-\centering
-\includegraphics[width=.9\textwidth,bb=14 254 588 561]{diva_oi_09_10030dataval_mesh3}
-\caption{Finite-element mesh and salinity measurements used for the application.\label{fig:diva_oi_09_10030dataval_mesh3}}
-\end{figure*}
-
-In this example the error is scaled locally by the local variance of the background field $\hat{B}$; yielding relative errors. 
+For this application, we employ the same data as in Section~\ref{} (salinity measurements in the Mediterranean Sea at a depth of 30~m in July, for the 1980-1990 period). Here, the error is scaled locally by the local variance of the background field $\hat{B}$, yielding relative errors. 
 
 The OI field (Fig.~\ref{fig:salinity_error_oi_0707_10030DD}a) shows the effect of the data coverage on the error magnitude. The relative error lies between 40 and 60\% around the regions with a sufficient amount of observations. The largest values ($>80\%$) occur along the south coasts of the Mediterranean Sea, where almost no data are available for the considered period. This means that the analysis obtained in these areas cannot be taken with much confidence.
 

@@ -1,31 +1,32 @@
 % DivaPreprocessing
 \chapter{Running analysis \label{chap:running}}
-%\vspace*{-1cm}
-\lettrine[lines=2, loversize=-0.1, lraise=0.1]{O}{nce} all the input files are prepared, you are ready to create analysed gridded fields. The whole procedure is described in the present chapter.
+
+Once all the input files are prepared, you are ready to create analysed gridded fields. The whole procedure is described in the present chapter.
+
 \minitoc
 
 \section{Running a simple analysis}
 %----------------------------------
 
 
-\subsection{\texttt{divadress}}
+\subsection{\command{divadress}}
 %-----------------------------
 
-The simplest procedure to carry out an analysis with \diva\,is using the command \texttt{divadress}, which performs the four following operations:
+The simplest procedure to carry out an analysis with \diva is using the command \command{divadress}, which performs the four following operations:
 
 \begin{enumerate}
-\item \texttt{divaclean}
-\item \texttt{divamesh}
-\item \texttt{divacalc}
-\item \texttt{divaqcbis}
+\item \command{divaclean}
+\item \command{divamesh}
+\item \command{divacalc}
+\item \command{divaqcbis}
 \end{enumerate}
 
-\subsection{\texttt{divamesh}}
+\subsection{\command{divamesh}}
 %-----------------------------
 
-Generates the finite-element mesh based on contour(s) specified in file \texttt{coast.cont} and correlation length provided in \texttt{param.par}; remember that the correlation length shall have an appropriate value in order to obtain a correct mesh:
+Generates the finite-element mesh based on contour(s) specified in file \file{coast.cont} and correlation length provided in \file{param.par}; remember that the correlation length shall have an appropriate value in order to obtain a correct mesh:
 \begin{itemize}
-\item Contour segments should not be much smaller than finite element length; if your contour is too fine, the tool \texttt{divacck} can be used in order to reduce the contour resolution.
+\item Contour segments should not be much smaller than finite element length; if your contour is too fine, the tool \command{divacck} can be used in order to reduce the contour resolution.
 \item The typical length of a finite element should be smaller than the correlation length, otherwise the grid would be too coarse compared to the signal to resolve.
 \end{itemize}
 
@@ -39,15 +40,12 @@ Generates the finite-element mesh based on contour(s) specified in file \texttt{
 }
 \end{figure}
 
-Note that since version \diva-\divaversion, mesh generation takes into account coordinate change (specified by \texttt{icoord}) so that meshes are
-uniform in the transformed domain. 
-
-
+Note that since version \diva-\divaversion, mesh generation takes into account coordinate change (specified by \texttt{icoord}) so that meshes are uniform in the transformed domain. 
 
 
 \subsubsection{Mesh with different element sizes}
 
-You also have the possibility to create of mesh of which the size of the elements varies over the domain. To this aim, you have to create a \textit{mesh density} file that indicates what length scale has to be applied in a determined region. This file is named \texttt{coast.cont.dens} and has to be placed in \texttt{divastripped/input/}.
+You also have the possibility to create of mesh of which the size of the elements varies over the domain. To this aim, you have to create a \textit{mesh density} file that indicates what length scale has to be applied in a determined region. This file is named \file{coast.cont.dens} and has to be placed in \directory{divastripped/input/}.
 
 We considered the simple island case, of which the contour file given by
 
@@ -70,7 +68,7 @@ We considered the simple island case, of which the contour file given by
 \caption{coast.cont}
 \end{exfile}
 
-We choose a value of $2.5$ for the global mesh (specified in \texttt{param.par}) and define a finer mesh around the island through the following \texttt{coast.cont.dens} file:
+We choose a value of $2.5$ for the global mesh (specified in \file{param.par}) and define a finer mesh around the island through the following \file{coast.cont.dens} file:
 
 \begin{exfile}[htpb]
 \begin{footnotesize}
@@ -86,7 +84,7 @@ We choose a value of $2.5$ for the global mesh (specified in \texttt{param.par})
 \caption{coast.cont.dens}
 \end{exfile}
 
-which means that we want a length scale of 0.125 in the domain defined by by the four points (1 1), (4 1), (4 4), (1 4). Be sure that the domain where you want to have a finer mesh is on the left when following the contour. The mesh generated with these conditions is presented on Fig. \ref{fig:square}.
+which means that we want a length scale of 0.125 in the domain defined by by the four points (1 1), (4 1), (4 4), (1 4). Be sure that the domain where you want to have a finer mesh is on the left when following the contour. The mesh generated with these conditions is presented on Fig.~\ref{fig:square}.
 
 \begin{figure}[htpb]
 \centering
@@ -96,13 +94,13 @@ which means that we want a length scale of 0.125 in the domain defined by by the
 
 
 
-\subsection{\texttt{divacalc}\label{sec:divacalc}}
+\subsection{\command{divacalc}\label{sec:divacalc}}
 %-----------------------------
 
-\texttt{divacalc} is the script that runs the analysis by solving the variational principle over the domain of interest. To work properly, it needs a data file, a parameter file, and a finite-element mesh.
+\command{divacalc} is the script that runs the analysis by solving the variational principle over the domain of interest. To work properly, it needs a data file, a parameter file, and a finite-element mesh.
 
 \btips
-As the mesh generation is often the most time-consuming part of a \diva\,execution, remember that once you have created the mesh, you do need to run \texttt{divadress} each time you want a new analysis, but just \texttt{divacalc}.
+As the mesh generation is often the most time-consuming part of a \diva execution, remember that once you have created the mesh, you do need to run \command{divadress} each time you want a new analysis, but just \command{divacalc}.
 \etips
 
 \begin{figure}[H]
@@ -119,41 +117,37 @@ As the mesh generation is often the most time-consuming part of a \diva\,executi
 % -------------------------
 
 \begin{itemize}
-\item \texttt{fieldgher.anl} and \texttt{errorfieldgher.anl} are respectively the analysis and the error fields (in \texttt{gher} format) on the regular grid specified in \texttt{param.par};
-\item \texttt{fieldascii.anl} and \texttt{errorfieldascii.anl} are the same as \texttt{fieldgher.anl} and \texttt{errorfieldgher.anl}, but in \texttt{ascii} format;
-\item \texttt{valatxyascii.anl} and \texttt{erroratxyascii.anl} give respectively the values of the analysis and the error fields at the points specified in file \texttt{valatxy.coord};
-\item \texttt{fieldatdatapoint.anl} and \texttt{erroratdatapoint.anl} are respectively the analysis and error fields computed at the data points (\textit{i.e.} the points from \texttt{data.dat});
-\item \texttt{results.nc} (located in \texttt{./output/ghertonetcdf}) is a netcdf file containing the gridded analysis and error fields (provided error calculation is switched on).
+\item \file{fieldgher.anl} and \file{errorfieldgher.anl} are respectively the analysis and the error fields (in \texttt{gher} format) on the regular grid specified in \file{param.par};
+\item \file{fieldascii.anl} and \file{errorfieldascii.anl} are the same as \file{fieldgher.anl} and \file{errorfieldgher.anl}, but in \texttt{ascii} format;
+\item \file{valatxyascii.anl} and \file{erroratxyascii.anl} give respectively the values of the analysis and the error fields at the points specified in file \file{valatxy.coord};
+\item \file{fieldatdatapoint.anl} and \file{erroratdatapoint.anl} are respectively the analysis and error fields computed at the data points (\textit{i.e.} the points from \file{data.dat});
+\item \file{results.nc} (located in \directory{./output/ghertonetcdf}) is a NetCDF file containing the gridded analysis and error fields (provided error calculation is switched on).
 \end{itemize}
 
 
 \section{Quality control of data}
 %--------------------------------
 
-According to theoretical developments of Chap. \ref{gcv}, quality control with \diva\, can be performed using to one of the three criteria \eqref{eq:qc1}, \eqref{eq:qc2} or \eqref{eq:qc3}, respectively implemented in \diva\, with \texttt{diva\-qc}, \texttt{diva\-qc\-bis} and \texttt{diva\-qc\-ter}. 
+According to theoretical developments of Chapter~\ref{chap:analysisparameters}, quality control with \diva can be performed using to one of the three criteria \eqref{eq:qc1}, \eqref{eq:qc2} or \eqref{eq:qc3}, respectively implemented in \diva with \command{diva\-qc}, \command{diva\-qc\-bis} and \command{diva\-qc\-ter}. 
 
-\subsection{\texttt{divaqc}}
-%----------------------------
 
-It is the most expensive version of QC, since $A_{ii}$ must be evaluated by analysis of vectors with zeros everywhere, except at the $i^{th}$ position.
 
-\subsection{\texttt{divaqcbis}}
-%------------------------------
+\subsection{Tools}
 
-This version of the QC is quicker, as we replace $A_{ii}$ by its average $\frac{1}{N}\trace{\matr{A}}$.
+There are three tools to perform QC:
+\begin{description}
+\item[\command{divaqc}:] it is the most expensive version of QC, since $A_{ii}$ must be evaluated by analysis of vectors with zeros everywhere, except at the $i^{th}$ position.
+\item[\command{divaqcbis}:] this version of the QC is quicker, as we replace $A_{ii}$ by its average $\frac{1}{N}\trace{\matr{A}}$.
+\item[\command{divaqcter}:] the last criterion implemented is based on the RMS value of the misfit and the generalized cross validator $\Theta$. 
+\end{description}
 
-\subsection{\texttt{divaqcter}}
-%------------------------------
+\subsection{Output files}
 
-The last criterion implemented is based on the RMS value of the misfit and the generalized cross validator $\Theta$. 
-
-\subsubsection{Output files}
-
-The corresponding outputs are given in \texttt{out\-liers.dat}, \texttt{out\-liers\-bis.dat} and \texttt{out\-liers\-ter.dat}.
-The modules \texttt{divaqc*} also generate \texttt{outliers*.normalized.dat}, which contain, in a sorted way (from the most suspect data to less suspect), the possible outliers from the normalized misfits test \eqref{eq:qc4}.
+The corresponding outputs are given in \file{out\-liers.dat}, \file{out\-liers\-bis.dat} and \file{out\-liers\-ter.dat}.
+The modules \command{divaqc*} also generate \file{outliers*.normalized.dat}, which contain, in a sorted way (from the most suspect data to less suspect), the possible outliers from the normalized misfits test \eqref{eq:qc4}.
 
 \btips
-By default, the criterion used in \texttt{divadress} is \texttt{divaqcbis}, but you can change it by editing the file \texttt{divadress} and replacing \texttt{divaqcbis} by one of the other quality test (\texttt{divaqc} or \texttt{divaqcter}).
+By default, the criterion used in \command{divadress} is \command{divaqcbis}, but you can change it by editing the file \command{divadress} and replacing \command{divaqcbis} by one of the other quality test (\command{divaqc} or \command{divaqcter}).
 \etips
 
 
@@ -162,15 +156,15 @@ By default, the criterion used in \texttt{divadress} is \texttt{divaqcbis}, but 
 
 A semi-normed analysis consists of four steps:
 \begin{enumerate}
-\item create a so-called \textit{reference field}, which will act as background field (Sec. \ref{sec:gridding});
+\item create a so-called \textit{reference field}, which will act as background field (Section~\ref{sec:gridding});
 \item subtract the reference field from the data values in order to work with anomalies;
 \item perform an analysis on the anomalies;
 \item reconstruct the field by adding the analysed anomaly field to the background (reference) field.
 \end{enumerate}
 
-These four steps are executed by running script \texttt{divaseminorm} and the implemented tools described hereinafter. Note that the parameters written in the original \texttt{param.par} file will be used during the analysis on the anomalies. Thus it is advised to specify \texttt{ireg}=0, so that no background field will be subtracted from the anomaly. 
+These four steps are executed by running script \command{divaseminorm} and the implemented tools described hereinafter. Note that the parameters written in the original \file{param.par} file will be used during the analysis on the anomalies. Thus it is advised to specify \texttt{ireg}=0, so that no background field will be subtracted from the anomaly. 
 
-\subsection{\texttt{divarefe}}
+\subsection{\command{divarefe}}
 %-----------------------------
 
 This script performs an analysis on your original data, but modify the analysis parameters: $L$ is multiplied by $5$ and $\snr$ by $0.1$. 
@@ -178,36 +172,36 @@ This script performs an analysis on your original data, but modify the analysis 
 \subsubsection{Output files}
 %---------------------------
 
-They are the same as those created through an execution of \texttt{divacalc}, but assigned with a suffix \texttt{.ref}:
-\texttt{fieldgher.anl.ref}, \texttt{fieldascii.anl.ref}, \texttt{valatxyascii.anl.ref} and \texttt{fieldatdatapoint.anl.ref}.
+They are the same as those created through an execution of \command{divacalc}, but assigned with a suffix \file{.ref}:
+\file{fieldgher.anl.ref}, \file{fieldascii.anl.ref}, \file{valatxyascii.anl.ref} and \file{fieldatdatapoint.anl.ref}.
 
 
-\subsection{\texttt{divaanom}}
+\subsection{\command{divaanom}}
 %-----------------------------
 
-The script use file \texttt{fieldatdatapoint.anl.ref} to compute the difference between data and analysed (reference) field to obtain anomalies.
+The script use file \file{fieldatdatapoint.anl.ref} to compute the difference between data and analysed (reference) field to obtain anomalies.
 
 \subsubsection{Output files}
 %---------------------------
 
-File \texttt{data.dat} contains anomalies instead of the original data, while file \texttt{data.dat.full} is the copy of your original data file.
+File \file{data.dat} contains anomalies instead of the original data, while file \file{data.dat.full} is the copy of your original data file.
 
 
-\subsection{\texttt{divacalc}}
+\subsection{\command{divacalc}}
 %-----------------------------
 
-This command was previously described (Sec. \ref{sec:divacalc}). The only difference is that it is applied here on anomalies.
+This command was previously described (Section~\ref{sec:divacalc}). The only difference is that it is applied here on anomalies.
 
 
-\subsection{\texttt{divasumup}}
+\subsection{\command{divasumup}}
 %-----------------------------
 
-\texttt{divasumup} performs the last step of a semi-normed analysis: the sum of background field and analysed anomaly field. 
+\command{divasumup} performs the last step of a semi-normed analysis: the sum of background field and analysed anomaly field. 
 
 \subsubsection{Output files}
 %---------------------------
 
-They are the same as those created through an execution of \texttt{divacalc}. Note that after an execution of \texttt{divasumup}, \texttt{data.dat} contains the original data, while \texttt{data.dat.anom} contains the previously computed anomalies. 
+They are the same as those created through an execution of \command{divacalc}. Note that after an execution of \command{divasumup}, \file{data.dat} contains the original data, while \file{data.dat.anom} contains the previously computed anomalies. 
 
 
 
@@ -217,20 +211,19 @@ They are the same as those created through an execution of \texttt{divacalc}. No
 \subsection{Saving outputs}
 %--------------------------
 
-\texttt{divasave} is designed for saving the outputs in the folder \texttt{output} to the chosen directory.\\
-\examples\\
-\textcom{divasave ./AdriaticTemperature}\\
-\hspace{1cm} will save the files into ./AdriaticTemperature/output\\
-\textcom{divasave c:/data/AdriaticTemperature}\\
-\hspace{1cm} will save the files into c:/data/AdriaticTemperature/output
+\command{divasave} is designed for saving the outputs in the folder \directory{output} to the chosen directory.
+
+\example
+\begin{lstlisting}[style=Bash]
+[charles@gher13 divastripped] divasave ~/DIVA/test/
+\end{lstlisting}
+will save the files into \directory{\~{}/DIVA/test/}
 
 \subsection{Checking of installation}
 %------------------------------------
 
-\texttt{divacheck} makes the comparison of analysis results with reference analysis (for
+\command{divacheck} makes the comparison of analysis results with reference analysis (for
 installation check, compiler option testing or checking of new versions)
-
-
 
 %-------------------------------------------------------------------------------------------
 
@@ -240,9 +233,9 @@ installation check, compiler option testing or checking of new versions)
 
 The input files needed for such analysis are the same as for a basic analysis, except that you need to provide a velocity (or pseudo-velocity) field, specified through the following files:
 \begin{itemize}
-\item {\tt Uvel.dat} and {\tt Vvel.dat}, which contain the two components of the velocity. They have the same format (binary) as {\tt fieldgher.anl}. An example of generation of such files is in the test case {\tt advectiontest}.
-\item {\tt UVinfo.dat}, which specifies the grid on which the velocity field is defined. It has the same format as \texttt{GridInfo.dat} or \texttt{TopoInfo.dat}).
-\item {\tt constraint.dat}, which activates the advection constraint and contains parameters $\theta$ and $\mathcal{A}$. Refer to Chap. \ref{chap:advection} for theoretical details.
+\item \file{Uvel.dat} and \file{Vvel.dat}, which contain the two components of the velocity. They have the same format (binary) as \file{fieldgher.anl}. An example of generation of such files is in the test case {\tt advectiontest}.
+\item \file{UVinfo.dat}, which specifies the grid on which the velocity field is defined. It has the same format as \file{GridInfo.dat} or \file{TopoInfo.dat}).
+\item \file{constraint.dat}, which activates the advection constraint and contains parameters $\theta$ and $\mathcal{A}$. Refer to Chapter~\ref{chap:advection} for theoretical details.
 \end{itemize}
 
 \begin{exfile}[htpb]
@@ -290,8 +283,8 @@ The input files needed for such analysis are the same as for a basic analysis, e
 In this example, we work on a region $[-1,1]\, \times\, [59,61]$ with $L=0.2$ and $\lambda=1$.
  
 
-With no coordinate change (\textit{i.e.} \texttt{icoordchange=0} in \texttt{param.par}), coordinates are taken as such and
-a single point in the center leads to an analysis that is circular when axes on $x$ and $y$ are drawn with equal scales (Fig. \ref{fig:nocoord}).
+With no coordinate change (i.e., \texttt{icoordchange=0} in \file{param.par}), coordinates are taken as such and
+a single point in the center leads to an analysis that is circular when axes on $x$ and $y$ are drawn with equal scales (Fig.~\ref{fig:nocoord}).
 
 \begin{figure}[H]
 \centering
@@ -300,9 +293,9 @@ a single point in the center leads to an analysis that is circular when axes on 
 \end{figure}
 
 
-On the other hand, if coordinate change is \textsl{on} (\textit{i.e.} \texttt{icoordchange=1} in \texttt{param.par}), the analysis is isotropic in the real space.
+On the other hand, if coordinate change is \textsl{on} (i.e., \texttt{icoordchange=1} in \file{param.par}), the analysis is isotropic in the real space.
 
-At $60^{\circ}$ North, a degree E-W covers half the real distance of a degree S-N. On a graph scaled so that $x$ and $y$ are distances, the analysis is again isotropic (this is the desired effect). If you plot the same analysis with $x$ and $y$ axes equally spaced in degrees (as for the previous case), you will obviously get an ellipse (Fig. \ref{fig:coord}, left).
+At $60^{\circ}$ North, a degree E-W covers half the real distance of a degree S-N. On a graph scaled so that $x$ and $y$ are distances, the analysis is again isotropic (this is the desired effect). If you plot the same analysis with $x$ and $y$ axes equally spaced in degrees (as for the previous case), you will obviously get an ellipse (Fig.~\ref{fig:coord}, left).
 
 \begin{figure}[H]
 \centering
@@ -313,7 +306,7 @@ At $60^{\circ}$ North, a degree E-W covers half the real distance of a degree S-
 \end{figure}
 
 
-If we add an advection constraint characterized by $u=v=1 (m/s)$, the case with no coordinate change leads to a signal along the bisector (Fig. \ref{fig:constrnocoord}).
+If we add an advection constraint characterized by $u=v=1 (m/s)$, the case with no coordinate change leads to a signal along the bisector (Fig.~\ref{fig:constrnocoord}).
 
 
 \begin{figure}[H]
@@ -326,7 +319,7 @@ If we add an advection constraint characterized by $u=v=1 (m/s)$, the case with 
 \end{figure}
 
 
-If coordinate change is activated, the advection direction in real space is not any more along the bisector in degrees, but in km (Fig. \ref{fig:constrdegrees}). Note that the advection constraint scales the overall velocity, so that a coordinate change does not change the intensity of the advection constraint, but only its direction.
+If coordinate change is activated, the advection direction in real space is not any more along the bisector in degrees, but in km (Fig.~\ref{fig:constrdegrees}). Note that the advection constraint scales the overall velocity, so that a coordinate change does not change the intensity of the advection constraint, but only its direction.
 
 
 \begin{figure}[H]
@@ -366,10 +359,7 @@ For example, in the grid with \texttt{icoord=0} we can activate diffusion
 
 With no coordinate change, input values are taken as is. To recover a similar (but tilded and boundary modified) solution, we have to change manually the coefficient and divide by $110000$ (degrees to meter scaling) so that the actual Reynolds number remains the same.
 
-
 %--------------------------------------------------------------------------------------------------------
-
-
 
 \section{Summary: typical execution chains}
 %------------------------------------------
@@ -381,9 +371,9 @@ With no coordinate change, input values are taken as is. To recover a similar (b
 It is assumed that all the input files are already prepared and the parameters correctly assigned.
 
 \begin{enumerate}
-\item \texttt{divaload} your\_directory
-\item \texttt{divadress}
-\item \texttt{divasave} your\_directory
+\item \command{divaload} your\_directory
+\item \command{divadress}
+\item \command{divasave} your\_directory
 \end{enumerate}
 
 
@@ -394,11 +384,11 @@ It is assumed that all the input files are already prepared and the parameters c
 You start with correct data and contour file, but with parameters file that needs to be adapted.
 
 \begin{enumerate}
-\item \textcom{divaload your\_directory}
-\item \textcom{divafit -r} \qquad to compute the correlation length and replace its value in \texttt{param.par};
-\item \textcom{divagcv -r} \qquad to compute the signal-to-noise ration and variance of the background field, and replace them in \texttt{param.par};
-\item \textcom{divadress}
-\item \textcom{divasave your\_directory}
+\item \command{divaload your\_directory}
+\item \command{divafit -r} \qquad to compute the correlation length and replace its value in \file{param.par};
+\item \command{divagcv -r} \qquad to compute the signal-to-noise ration and variance of the background field, and replace them in \file{param.par};
+\item \command{divadress}
+\item \command{divasave your\_directory}
 \end{enumerate}
 
 

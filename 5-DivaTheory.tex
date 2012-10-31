@@ -308,7 +308,7 @@ where $\xi=1$ if penalization on the gradients is enforced, $\xi=0$ if no penali
 \subsubsection{Weights on data}
 % -----------------------------
 
-A weight $\mu_i$ can be assigned to each data $d_i$. This weight expresses the confidence you have in a particular data. It is expressed as a function of the signal-to-noise ratio and the correlation length \cite{BRANKART96}: 
+A weight $\mu_i$ can be assigned to each data $d_i$. This weight expresses the confidence you have in a particular data. It is expressed as a function of the signal-to-noise ratio and the correlation length \citep{BRANKART96}: 
 
 \begin{equation}
 \mu=\frac{\sigma^{2}}{\epsilon^{2}} \frac{4 \pi}{L^{2}}
@@ -463,13 +463,13 @@ It can also be used for specifying the covariance for error calculations.% (Sec.
 \subsection{Comparison OI--VIM}
 %-----------------------------------------
 
-\cite{RIXEN00} compared the two methods by testing quasi-synoptic salinity data. Results showed that the main differences between OA and VIM occur in coastal areas and around islands ($\mathcal{O}(0.10)$), whereas the differences range from $-0.01$ to $0.02$ within the domain. The same conclusions were drawn when they compared OI and VIM in the case of climatological data set: both fields were nearly identical, except in the vicinity of the coasts (differences of up to 0.1).
+\citet{RIXEN00} compared the two methods by testing quasi-synoptic salinity data. Results showed that the main differences between OA and VIM occur in coastal areas and around islands ($\mathcal{O}(0.10)$), whereas the differences range from $-0.01$ to $0.02$ within the domain. The same conclusions were drawn when they compared OI and VIM in the case of climatological data set: both fields were nearly identical, except in the vicinity of the coasts (differences of up to 0.1).
 
 A summary of the main characteristics of the two methods is found in Tab.~\ref{tabOAVIM}.
 
 
 \begin{table}[htpb]
-\caption{Statistical equivalence between OI and VIM (from \cite{RIXEN00})\label{tabOAVIM}}
+\caption{Statistical equivalence between OI and VIM (from \citet{RIXEN00})\label{tabOAVIM}}
 \begin{tabular*}{0.99\textwidth}{@{\extracolsep{\fill}}lll}
 \toprule
 											&		OI	& VIM \\
@@ -552,6 +552,6 @@ These topics are described in Chapter~\ref{chap:godiva}.
 \diva is mainly designed to work with in situ data, characterized by a scattered spatial distribution. When dealing with satellite images, the spatial interpolation can be made in a clever way, by using the information contained in the satellite images acquired before in the same region. This idea is implemented in Data INterpolating Empirical Orthogonal Function \citep[DINEOF;][]{BECKERS03,ALVERA05}\index{DINEOF}.
 
 This tool is designed to exploit repeated observations with missing data (e.g., a series of collocated satellite images with clouds). 
-For more details about DINEOF, please consult \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/DINEOF} and the other references describing the method: \cite{ALVERA05,ALVERA07,ALVERA09,BECKERS06}.
+For more details about DINEOF, please consult \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/DINEOF} and the other references describing the method: \citet{ALVERA05,ALVERA07,ALVERA09,BECKERS06}.
 
 

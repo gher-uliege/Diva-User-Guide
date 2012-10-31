@@ -1,0 +1,48 @@
+% This file was made with: LaTeXPiX Beta (Build 2500)
+% Coded by: N.J.H.M. van Beurden
+% Email: beurden@email.com
+% Webpage: http://www.beurden.cjb.net
+\setlength{\unitlength}{0.17mm}
+\begin{picture}(1506,760)(0,-764)
+        \special{color rgb 0 0 0}\allinethickness{0.17mm}\special{sh 0.15}\path(330,-48)(624,-48)(624,-684)(330,-684)(330,-48) % Shade Solid Rectangle
+        \special{color rgb 0 0 0}\allinethickness{0.17mm}\special{sh 0.3}\path(1212,-48)(1506,-48)(1506,-684)(1212,-684)(1212,-48) % Shade Solid Rectangle
+        \special{color rgb 0 0 0}\allinethickness{0.17mm}\special{sh 0.2}\path(624,-48)(918,-48)(918,-684)(624,-684)(624,-48) % Shade Solid Rectangle
+        \special{color rgb 0 0 0}\allinethickness{0.17mm}\special{sh 0.25}\path(918,-48)(1212,-48)(1212,-684)(918,-684)(918,-48) % Shade Solid Rectangle
+        \special{color rgb 0 0 0}\allinethickness{0.17mm}\special{sh 0.1}\path(36,-48)(330,-48)(330,-684)(36,-684)(36,-48) % Shade Solid Rectangle
+        \special{color rgb 0 0 0}\allinethickness{0.51mm}\path(18,-84)(18,-660)\special{sh 1}\path(18,-660)(23,-650)(18,-650)(13,-650)(18,-660) % Plain Solid Arrow
+        \special{color rgb 0 0 0}\put(360,-312){\makebox(210,18)[lc]{{\tt divacck [-r] [-v] }}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(90,-120){\makebox(210,18)[lc]{{\tt divacompile}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(360,-240){\makebox(210,18)[lc]{or {\tt gebco2diva [-r]}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(360,-288){\makebox(210,18)[lc]{or {\tt divacoa2cont [-r]}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(360,-672){\makebox(210,18)[lc]{{\tt divasave mycase}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(90,-144){\makebox(210,18)[lc]{{\tt divamakecheck}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(828,-726){{\tt divadress} = {\tt divaclean + divamesh + divacalc + divaqcbis}.} % Plain Text
+        \special{color rgb 0 0 0}\put(0,-510){\makebox(12,402)[lc]{\turn{270}Execution order\endturn}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\allinethickness{0.51mm}\path(120,-24)(1338,-24)\special{sh 1}\path(1338,-24)(1328,-19)(1328,-24)(1328,-29)(1338,-24) % Plain Solid Arrow
+        \special{color rgb 0 0 0}\put(468,-18){Towards the analysis} % Plain Text
+        \special{color rgb 0 0 0}\allinethickness{0.17mm}\path(36,-90)(1506,-90) % Plain Solid Line
+        \special{color rgb 0 0 0}\put(126,-72){{\Large{Installation}}} % Plain Text
+        \special{color rgb 0 0 0}\put(414,-72){{\Large{Utilities}}} % Plain Text
+        \special{color rgb 0 0 0}\put(666,-72){{\Large{Data treatment}}} % Plain Text
+        \special{color rgb 0 0 0}\put(1302,-72){{\Large{Analysis}}} % Plain Text
+        \special{color rgb 0 0 0}\put(948,-72){{\Large{Parameter estimation}}} % Plain Text
+        \special{color rgb 0 0 0}\put(120,-726){Minimal execution to get an analysis: {\tt divamesh+divacalc}.} % Plain Text
+        \special{color rgb 0 0 0}\put(360,-336){\makebox(210,18)[lc]{{\tt divaclean}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(654,-354){\makebox(210,18)[lc]{{\tt divadataclean [f$_{\min}$   f$_{\max}$]}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(360,-168){\makebox(210,18)[lc]{{\tt divaload mycase}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(936,-408){\makebox(210,18)[lc]{{\tt divafit [n]  [-r]}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(654,-378){\makebox(210,18)[lc]{{\tt divarefe} + {\tt divaanom}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(360,-648){\makebox(210,18)[lc]{{\tt divagnu [f$_{\min}$  f$_{\max}$]}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(936,-480){\makebox(210,18)[lc]{{\tt divagcv [-r]}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(936,-504){\makebox(210,18)[lc]{{\tt divacv [-r]}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(936,-528){\makebox(210,18)[lc]{{\tt divacvrand ns nt  [-r]}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(1242,-582){\makebox(210,18)[lc]{{\tt divasumup}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(1242,-558){\makebox(210,18)[lc]{{\tt divacalc}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(654,-618){\makebox(210,18)[lc]{{\tt divaqc*}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(558,-762){{\tt divaseminorm} = {\tt divarefe + divaanom + divacalc + divasumup}.} % Plain Text
+        \special{color rgb 0 0 0}\put(1242,-438){\makebox(210,18)[lc]{{\tt divamesh}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(360,-264){\makebox(210,18)[lc]{{\tt divacont [-r] }}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(360,-192){\makebox(210,18)[lc]{{\tt divatopo [-r]}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0}\put(360,-216){\makebox(210,18)[lc]{or {\tt dbdb2diva [-r]}}} % Plain FrameBoxed Text
+        \special{color rgb 0 0 0} % Set color to black again (default font color)
+\end{picture}
