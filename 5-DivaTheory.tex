@@ -204,7 +204,7 @@ D_{ij} &=& \overline{\varphi_{t}(\mathbf{r_i})\varphi_{t}(\mathbf{r_j})}+\noise^
 \eeq
 where $c(\mathbf{r},\mathbf{r_i})$ is the \textit{correlation function} and $\signal$ is the \textit{signal} of the data.
 
-In the following we write $\matr{D}=\matr{B}+\matr{R}$, where matrix $\matr{B}$ contains the variance of the true field and $\matr{R}$ is the diagonal matrix containing the observational noise.
+In the following we write $\mathbf{D}=\matr{B}+\matr{R}$, where matrix $\matr{B}$ contains the variance of the true field and $\matr{R}$ is the diagonal matrix containing the observational noise.
 
 %---------------------------
 \subsection{Drawbacks of OI}
@@ -331,7 +331,7 @@ Normally, interpolation (and extrapolation) works on anomalies with respect to a
 \item no treatment is applied (the data you treat are already anomalies);
 \item the mean of data is subtracted from the data values;
 \item the linear regression (plane) is subtracted;
-\item additional subtracted semi-normed field ($\alpha_0=0$ and large $L$) obtained by two chained \diva executions. %Matrix K is decomposed into a norm-related term and a data related term.
+\item additional subtracted semi-normed field ($\alpha_0=0$ and large $L$) obtained by two chained \diva executions. %
 \end{itemize}
 
 In particular when no treatment is applied (with $\alpha_0 > 0$), the minimization forces the analysis toward zero when there are no
@@ -352,10 +352,10 @@ J[\varphi] = \sum_{e=1}^{N_{e}}J_{e}(\varphi_{e}).
 \label{eq:split}
 \ee
 
-In each element the solution is a combination of shape functions (3$^{rd}$ order polynomials) and the continuity between elements is assured by identification of adjacent \textit{connectors}:
+In each element the solution is a combination of shape functions $\mathbf{s}$ (3$^{rd}$ order polynomials) and the continuity between elements is assured by identification of adjacent \textit{connectors}:
 
 \be
-\varphi_{e}(\mathbf{r_e})=\mathbf{q_e}^{T}\mathbf{s}(\mathbf{r_e}),
+\varphi_{e}(\mathbf{r_e})=\transp{\mathbf{q_e}}\mathbf{s}(\mathbf{r_e}),
 \label{eq:connectors}
 \ee
 with $\mathbf{q}$, the connectors (our new unknowns),\\
@@ -364,16 +364,16 @@ with $\mathbf{q}$, the connectors (our new unknowns),\\
 Substituting \eqref{eq:connectors} in \eqref{eq:split} and using the variational principle \eqref{divaformula}, we get
 
 \be
-J_{e}(\mathbf{q_e}) = \mathbf{q_e}^{T}\mathbf{K_e}\mathbf{q_e}-2\mathbf{q_e}^{T} \mathbf{g_{e}}+\sum_{i=1}^{N_{d_{e}}}\mu_{i}d_{i}
+J_{e}(\mathbf{q_e}) = \transp{\mathbf{q_e}}\mathbf{K_e}\mathbf{q_e}-2\transp{\mathbf{q_e}} \mathbf{g_{e}}+\sum_{i=1}^{N_{d_{e}}}\mu_{i}d_{i}
 \label{eq:elements}
 \ee
 where $\mathbf{K_e}$ is the \textit{local stiffness} matrix and\\
-\hphantom{where} $\mathbf{g}$ is a vector which depends on local data.
+\hphantom{where} $\mathbf{g}$ is a vector which depends on local data. Matrix $\mathbf{K}$ is decomposed into a norm-related term and a data related term.
 
 On the whole domain, \eqref{eq:elements} reads
 
 \be
-J(\mathbf{q}) = \mathbf{q}^{T}\mathbf{K}\mathbf{q}-2\mathbf{q_e}^{T} \mathbf{g_{e}}+\sum_{i=1}^{N_{d}}\mu_{i}d_{i},
+J(\mathbf{q}) = \transp{\mathbf{q}}\mathbf{K}\mathbf{q}-2\transp{\mathbf{q_e}} \mathbf{g_{e}}+\sum_{i=1}^{N_{d}}\mu_{i}d_{i},
 \label{eq:domain}
 \ee
 of which the minimum is reached when
@@ -478,8 +478,8 @@ A summary of the main characteristics of the two methods is found in Tab.~\ref{t
 											&		OI	& VIM \\
 \midrule
 Minimization \rule{0pt}{3ex}	& $e^{2}(\mathbf{r})= \overline{ [\varphi(\mathbf{r})-\varphi_{t}(\mathbf{r})]^{2}}$ 	& $J[\varphi]=\sum_{i=1}^{N_d}\mu_{i}[d_{i}-\phi(\mathbf{r_{i}})]^{2}+\left\|\varphi\right\|^{2}$							\\
-Solution						& $\varphi(\mathbf{r})= \mathbf{c}^{T}(\mathbf{r})\mathbf{D}^{-1}\mathbf{d}$			& 
-$\varphi(\mathbf{r})= \mathbf{c}^{T}(\mathbf{r})\mathbf{D}^{-1}\mathbf{d}$												\\
+Solution						& $\varphi(\mathbf{r})= \transp{\mathbf{c}}(\mathbf{r})\mathbf{D}^{-1}\mathbf{d}$			& 
+$\varphi(\mathbf{r})= \transp{\mathbf{c}}(\mathbf{r})\mathbf{D}^{-1}\mathbf{d}$												\\
 Data correlation				& $[\mathbf{D}]_{ij}=\signal^{2} c(\mathbf{r_{i}},\mathbf{r_{j}})+\noise^{2}\delta_{ij}$& $[\mathbf{D}]_{ij}=K(\mathbf{r_i},\mathbf{r_j})+(1/\mu)\delta_{ij}$														\\
 Data-field covariance 			& $[\mathbf{c}]_{i}=\signal^{2} c(\mathbf{r},\mathbf{r_{i}})$							& $[\mathbf{c}]_{i}=K(\mathbf{r},\mathbf{r_{i}})$																			\\
 \bottomrule
