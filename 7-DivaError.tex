@@ -49,9 +49,9 @@ Mathematically, according to the developments of Section~\ref{sec:OImethod}, we 
 \end{align}
 
 In practice, the data input of the analysis tool for an error calculation is a vector containing the
-covariance of data points ($\mathbf{g}(\mathbf{r})$) with the point in which the error estimate is to be calculated. The covariance vector to be analysed is calculated using the covariance function $\mathbc{c}$ of an infinite domain in terms of the Bessel function as shown in \eqref{kernelfunction}:
+covariance of data points ($\mathbf{g}(\mathbf{r})$) with the point in which the error estimate is to be calculated. The covariance vector to be analysed is calculated using the correlation function (or Kernal) $\mathbc{c}$ of an infinite domain in terms of the Bessel function as shown in \eqref{kernelfunction}:
 \begin{equation}
-e^{2}(\mathbf{r})   = \sigma^{2}(\mathbf{r})-\underbrace{\mathbf{T_{1}}(\mathbf{r})\mathbf{K}^{-1} \mathbf{T_{2}}(\mathbf{r})}_{(\star\star)}		\mathbf{c}(\mathbf{r})
+e^{2}(\mathbf{r})   = \sigma^{2}(\mathbf{r})-\underbrace{\mathbf{T_{1}}(\mathbf{r})\mathbf{K}^{-1} \mathbf{T_{2}}(\mathbf{r})}_{(\star\star)}	\sigma^{2}(\mathbf{r})	\mathbf{c}(\mathbf{r})
 \label{eq:kernelbessel}
 \end{equation}
 In an infinite domain, the error calculation is then "exact", while for more complicated domains, it is nearly exact far away from boundaries, provided no anisotropic constraint (advection constraint, variable length scale, boundaries, \ldots) is activated. 
@@ -127,7 +127,7 @@ From there, applying the correction $1/(1-\varphi_0)$, we can use the covariance
 \end{equation}
 then the error is 
 \begin{equation}
-\epsilon_a^2 (\vect{r}) = \sigma^2 \hat{B}(\vect{r},\vect{r}) - \sigma^2 \matr{H} \hat{\vect{b}},
+\e^2 (\vect{r}) = \sigma^2 \hat{B}(\vect{r},\vect{r}) - \sigma^2 \matr{H} \hat{\vect{b}},
 \end{equation}
 where $\hat{B}(\vect{r},\vect{r})$ is the local relative background variance (calculated by \eqref{eq:brr}) and $\hat{\vect{b}}$ is a vector filled according to \eqref{eq:btildco}.
 
@@ -259,9 +259,9 @@ and the sum can be considered an "exact" integral. Hence, we will focus here on 
 Formally, if $\mathbf{x}^a$ is a column vector containing the analysed field values at the grid
 points defining the integration domain, the weighted sum $I$ over this values is
 \begin{equation}
-I~=~(\mathbf{x}^a)^T \mathbf{h}
+I~=~\transp{(\mathbf{x}^a)} \mathbf{h}
 \end{equation}
-where $^{T}$ stands for the transposed vector or matrix and $\mathbf{h}$ is a column vector of the same size as
+where $\transp{\quad}$ stands for the transposed vector or matrix and $\mathbf{h}$ is a column vector of the same size as
 $\mathbf{x}^a$ but whose components are the weight associated with each integration point. The weight is typically the surface associated with
 the integration point. For an integration over a uniform grid, the weights can without loss of generality be unit (the surface dimension can be retrieved at the end by global multiplication). 
 
@@ -279,10 +279,10 @@ On statistical average (noted $< \quad >$), we suppose the analysis is unbiased 
 \end{equation}
 In order to calculate the error variance on the sum, we calculate the expected square distance with respect to the true sum:
 \begin{equation}
-\Delta^2 = < \mathbf{h}^T( {\mathbf{x}^a} - \mathbf{x}^t) ({\mathbf{x}^a} - \mathbf{x}^t )^T \mathbf{h} > = \mathbf{h}^T \, \mathbf{P}^a \, \mathbf{h}
+\Delta^2 = < \transp{\mathbf{h}}( {\mathbf{x}^a} - \mathbf{x}^t) \transp{({\mathbf{x}^a} - \mathbf{x}^t )} \mathbf{h} > = \transp{\mathbf{h}} \, \mathbf{P}^a \, \mathbf{h}
 \label{eq:errorintegral}
 \end{equation}
-where $\mathbf{P}^a = <\mathbf{\epsilon}^a {\mathbf{\epsilon}^a}^T >$ is the error-covariance matrix of the analysis.
+where $\mathbf{P}^a = <\mathbf{\epsilon}^a \transp{\mathbf{\epsilon}^a} >$ is the error-covariance matrix of the analysis.
 We see that the spatial covariances of the analysis-error field are required to calculate the error variance on $I$. Since this
 covariance matrix is not diagonal, it is not sufficient to sum up the local error values of the error fields of $\mathbf{x}^a$. The latter sum would limit
 the double sum of \eqref{eq:errorintegral} to the diagonal terms of $\mathbf{P}^a$.
@@ -292,7 +292,7 @@ the double sum of \eqref{eq:errorintegral} to the diagonal terms of $\mathbf{P}^
 Exploiting the equivalence of \diva and OI, we know that
 
 \begin{equation}
-\mathbf{P}^a ~=~ \mathbf{P} -  \mathbf{C}^T \left( \mathbf{B}+\mathbf{R} \right)^{-1} \mathbf{C}
+\mathbf{P}^a ~=~ \mathbf{P} -  \transp{\mathbf{C}} \left( \mathbf{B}+\mathbf{R} \right)^{-1} \mathbf{C}
 \label{eq:covariance}
 \end{equation}
 where $\mathbf{P}$ is the covariance matrix (size $N_g\times N_g$) of the background field between the $N_g$ grid points under consideration, $\mathbf{B}$ 
@@ -306,13 +306,13 @@ We could calculate the covariances matrices involved exactly (as done for the ex
 Using \eqref{eq:covariance} and \label{eq:errorintegral} we can write
 
  \begin{equation}
- \Delta^2 = \mathbf{h}^T \, \mathbf{P} \, \mathbf{h} - \mathbf{h}^T \underbrace{\mathbf{C}^T \left( \mathbf{B}+\mathbf{R} \right)^{-1}} \, \underbrace{\mathbf{C}  \, \mathbf{h}}
+ \Delta^2 = \transp{\mathbf{h}}\, \mathbf{P} \, \mathbf{h} - \transp{\mathbf{h}} \underbrace{\transp{\mathbf{C}} \left( \mathbf{B}+\mathbf{R} \right)^{-1}} \, \underbrace{\mathbf{C}  \, \mathbf{h}}
  \label{eq:totalerror}
  \end{equation}
  
 The term $\mathbf{C}  \, \mathbf{h}$ is readily interpreted as a columns vector containing $N_d$ elements. Element $j$ is the (weighted) sum of the covariances of all integration points with the data point $j$. The middle term is the analysis operator that provides the analysis on the grid points when providing on input a columns vector of size $N_d$. Hence the recipe to calculate $\Delta^2$ without explicitly forming the error-covariance matrices is the following:
 \begin{itemize}
-\item Perform a double sum on all covariances between grid points to calculate $\mathbf{h}^T \, \mathbf{P} \, \mathbf{h}$.
+\item Perform a double sum on all covariances between grid points to calculate $\transp{\mathbf{h}} \, \mathbf{P} \, \mathbf{h}$.
 \item For the term to subtract, evaluate it starting from the right: form a pseudo-data vector by summing covariances of all grid points with each data point, analyse it and finally sum up the analysis at the grid points.
 \end{itemize}
 
@@ -339,27 +339,28 @@ A second simplified approach makes even stronger assumptions but shows how we ca
 This is probably too severe and we will therefore overestimate the integral error. 
 Here we use a continuous formulation to calculate an approximation of $\Delta$ noted $\tilde{\Delta}$ by starting from the sum expressed as continuous integral
 \begin{equation}
-{\Delta}^2= {1 \over \Delta x^2 \Delta y^2} \int_D \int_D <{\epsilon}^a(x) {\epsilon}^a(x^\prime)> d x^\prime d x 
+{\Delta}^2= {1 \over \Delta x^2 \Delta y^2} \int_D \int_D <{\epsilon}^a(\vect{x}) {\epsilon}^a(\vect{x}^\prime)> d \vect{x}^\prime d \vect{x} 
 \end{equation}
-where $x$ and $x^\prime$ stand for positions in the domain of integration $D$. When we suppose the covariance is isotropic and note $r$ the distance between points
-$x$ and $x^\prime$ we have 
+where $\vect{x}$ and $\vect{x}^\prime$ stand for positions in the domain of integration $D$. When we suppose the covariance is isotropic and note $r$ the distance between points
+$\vect{x}$ and $\vect{x}^\prime$ we have 
 \begin{equation}
-{\Delta}^2= {1 \over \Delta x^2 \Delta y^2} \int_D \int_D <{\epsilon}^a(x) {\epsilon}^a(x) > c(r) d x^\prime d x  
+{\Delta}^2= {1 \over \Delta x^2 \Delta y^2} \int_D \int_D <{\epsilon}^a(\vect{x}) {\epsilon}^a(\vect{x}) > c(r) d \vect{x}^\prime d \vect{x}  
 \end{equation}
 which we can evaluate in polar coordinates the inner integral expanded to infinity to find an approximate value
 \begin{equation}
-\tilde{\Delta}^2= {2 \pi \over \Delta x^2 \Delta y^2} \int_D <{\epsilon}^a(x) {\epsilon}^a(x) > \int_0^{\infty}  r c(r) d r d x
+\tilde{\Delta}^2= {2 \pi \over \Delta x^2 \Delta y^2} \int_D <{\epsilon}^a(\vect{x}) {\epsilon}^a(\vect{x}) > \int_0^{\infty}  r c(r) d r \, d \vect{x}
 \end{equation}
 with the Bessel function for the correlation function $c$ this yields
 \begin{equation}
-\tilde{\Delta}^2= {4 \pi L^2 \over \Delta x^2 \Delta y^2} \int_D <{\epsilon}^a(x) {\epsilon}^a(x) >  d x
+\tilde{\Delta}^2= {4 \pi L^2 \over \Delta x^2 \Delta y^2} \int_D <{\epsilon}^a(\vect{x}) {\epsilon}^a(\vect{x}) >  d \vect{x}
 \end{equation}
 
 If we had used the naive approach of neglecting the spatial covariances, the double sum would have been restricted to a simple sum on diagonal and we would calculated the underestimated error 
 \begin{equation}
-\tilde{\tilde{\Delta}}^2= {1 \over \Delta x \Delta y} \int_D <{\epsilon}^a(x) {\epsilon}^a(x) >  d x.
+\tilde{\tilde{\Delta}}^2= {1 \over \Delta x \Delta y} \int_D <{\epsilon}^a(\vect{x}) {\epsilon}^a(\vect{x}) >  d \vect{x}.
 \end{equation}
 Hence we see that we should apply an inflation factor of $\sqrt{{4 \pi L^2 \over \Delta x \Delta y}}$ on $\tilde{\tilde{\Delta}}$ to get a better estimate of the error standard deviation. In practice  this inflation factor is probably a little too high (we assumed the analysis error to have the same correlation length as the analysis while in reality it is generally smaller and we extended one of the integrals to an infinite domain, adding up more errors).
+
 
 
 \subsection{Use}
@@ -369,7 +370,7 @@ All approaches were implemented into \command{divaintegral}. If there is a file\
 Otherwise it will be created (and put in the \directory{./output}), based on the analysis on the output grid. This files must contain $x,y,val,1,h$. If the file did not exist but was created, it will pass through an execution of \command{divaintegral}. 
 \command{divaintegral} can be edited by the user to chose special points for the integration (for example only those points for which the analysis is positive, or points that fall in a given square etc). 
 
-When {\textit ispec } is negative, the full covariance calculation will be used. When {\textit ispec } is positive, the hybrid covariance calculation will be used.
+When {\it ispec } is negative, the full covariance calculation will be used. When {\it ispec } is positive, the hybrid covariance calculation will be used.
 
 When called with the optional argument \texttt{-naive}, it also calculates the simple sum of the diagonal term of the analysis error variance. The error field itself is calculated with the methods specified by \texttt{ispec}. 
 
