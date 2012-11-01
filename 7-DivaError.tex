@@ -367,10 +367,10 @@ Hence we see that we should apply an inflation factor of $\sqrt{{4 \pi L^2 \over
 
 All approaches were implemented into \command{divaintegral}. If there is a file\\ 
 \file{./input/integrationpoints.dat}, it will be used.
-Otherwise it will be created (and put in the \directory{./output}), based on the analysis on the output grid. This files must contain $x,y,val,1,h$. If the file did not exist but was created, it will pass through an execution of \command{divaintegral}. 
+Otherwise it will be created (and put in the \directory{./output}), based on the analysis on the output grid. This files must contain \texttt{x,y,val,1,h}. If the file did not exist but was created, it will pass through an execution of \command{divaintegral}. 
 \command{divaintegral} can be edited by the user to chose special points for the integration (for example only those points for which the analysis is positive, or points that fall in a given square etc). 
 
-When {\it ispec } is negative, the full covariance calculation will be used. When {\it ispec } is positive, the hybrid covariance calculation will be used.
+When {\tt ispec } is negative, the full covariance calculation will be used. When {\tt ispec } is positive, the hybrid covariance calculation will be used.
 
 When called with the optional argument \texttt{-naive}, it also calculates the simple sum of the diagonal term of the analysis error variance. The error field itself is calculated with the methods specified by \texttt{ispec}. 
 
@@ -399,11 +399,11 @@ Note that the tool is not designed for use with the poor man's error calculation
 \item \texttt{gridpointlist.a} creates a list of wet points of the analysis grid. 
 
 Input: \texttt{fort.20} gridded gher file, \texttt{fort.21} corresponding to \file{GridInfo.dat}.\\ 
-Output: \texttt{fort.22} list of points with value of analysis on wet points only (x,y,val,1,1).
+Output: \texttt{fort.22} list of points with value of analysis on wet points only (\texttt{x,y,val,1,1}).
 
 \item \texttt{erroronintegrals.a} calculates the double sum on background covariance and prepares the pseudo-data (sum of covariances of all grid points with a  data point).
 
-Input: \texttt{fort.10} list of grid points for the integral (including third column for value of field), \texttt{fort.11} data file, \texttt{fort.5} scale lc datacol.\\
+Input: \texttt{fort.10} list of grid points for the integral (including third column for value of field), \texttt{fort.11} data file, \texttt{fort.5} with \texttt{scale lc datacol}.\\
 Output: \texttt{fort.14} double sum, \texttt{fort.12} pseudo-data vector.
 \end{itemize}
 

@@ -156,7 +156,7 @@ vector indicating the direction in which correlation is to be increased.
 Hence it could be for example, topography gradients rotated by $90$ degrees 
 or density gradients rotated by 90 degrees if we respectively assume across depth-contour movements are more 
 difficult (and hence data correlation decreased) or across frontal movements more difficult (and hence correlation length 
-across fronts decreased).
+across fronts decreased). This idea is implemented in \command{divaUVtopo} which generates a "velocity" field along isobath.
 
 The advection constraint therefore allows any known anisotropy in the correlations to be included into the analysis. We notice that the vector field does not need to be divergence free.
 
@@ -238,10 +238,10 @@ Poor man error field is really bad for these cases.
 %Test with just source and no data, but sufficient decay and diffusion and large L
 
 
-\begin{itemize}
-\item Checks to do (because of changes in data location and data sorting in parallel with source location and source sorting): no sources, source outside of mesh, several sources, more sources than data, data out of mesh etc
-\item check why 1/L$^2$ in parameter of functional ?? Simply because original version is in dimensional form and in this case one has to add $1/L^2$ the dimensionless version
-\end{itemize}
+% \begin{itemize}
+% \item Checks to do (because of changes in data location and data sorting in parallel with source location and source sorting): no sources, source outside of mesh, several sources, more sources than data, data out of mesh etc
+% \item check why 1/L$^2$ in parameter of functional ?? Simply because original version is in dimensional form and in this case one has to add $1/L^2$ the dimensionless version
+% \end{itemize}
 
 %-------------------
 \subsection{Example}
@@ -275,7 +275,7 @@ Poor man error field is really bad for these cases.
 
 When analysing climatological data, one is very often faced with data sets that have heterogeneous coverage in time and/or in space. This can lead to misinterpretations of the analysis, if for example there have been much more measurements during a specially warm year than during other years. It is also not uncommon that there are much less cruise data sets in stormy periods than in calm periods. \index{Detrending}
 
-Here we present a method to deal with such problems by defining \textit{classes}.
+Here we present a method to deal with such problems by defining \textit{classes} and \textit{groups}.
 
 A \textit{group} is simply one way of subdividing the data into different members. For example a group can be based on years and 
 the classes are 1995, 1996, 1997 if we are looking at this period. Another group could be based on seasons and classes could be winter, spring, summer and autumn.
@@ -283,15 +283,15 @@ the classes are 1995, 1996, 1997 if we are looking at this period. Another group
 \subsection{Theory}
 %------------------
 
-In the function to be minimised by \diva, there is a data-analysis misfit term :
+In the functional to be minimised by \diva, there is a data-analysis misfit term :
 \begin{equation}
 \sum_{i=1}^{N_{d}} =  \mu_i \left[ d_i - \varphi(x_i,y_i) \right]^2
 \end{equation}
 where $\mu_i$ is the data weight on data $d_i$ found in location $x_i,y_i$. The solution of the minimisation is the analysed field $\varphi(x,y)$.
 
 
-If we define one group, each data point is in one and only one class of this group. Hence
-when calculating the misfit in the minimisation part of \diva , we include now an (unknown) trend value for each class ($d_{C_1}, d_{C_2} ...$).
+If we define one group, each data point is in one and only one class $C_j$ of this group. Hence
+when calculating the misfit in the minimisation part of \diva , we include now an (unknown) trend value for each class ($d_{C_1}, d_{C_2} ...$):
 
 \begin{equation}
 \sum_{i\in C_1} \mu_i \left[ d_i -d_{C_1}- \varphi(x_i,y_i) \right]^2 + \sum_{i\in C_2} \mu_i \left[ d_i -d_{C_2}- \varphi(x_i,y_i) \right]^2 + ...
@@ -303,7 +303,7 @@ If we assume we know the function $\varphi(x,y)$, minimisation with respect to e
 d_{C_1} ~=~{ \sum_{i\in C_1} \mu_i \left[ d_i - \varphi(x_i,y_i) \right] \over \sum_{i\in C_1} \mu_i }
 \end{equation}
 and similarly for the other classes. Hence we see that the trend for each class is the weighted misfit of the class with respect to the overall analysis.
-The problem is of course the $\varphi$ is not known since it is also the result of the minimisation process. However, we can iterate and start with an analysis without detrending. Then, using the field of $\varphi$, we can calculate a first guess of the trends in each group and subtract if from the original data. 
+The problem is of course that $\varphi$ is not known since it is also the result of the minimisation process. However, we can iterate and start with an analysis without detrending. Then, using the field of $\varphi$, we can calculate a first guess of the trends in each group and subtract if from the original data. 
 Then a new analysis can be performed, the trends recalculated and so on until convergence.
 
 
@@ -339,9 +339,7 @@ If the detrending is included in a 3-D loop, with the same groups and classes de
 \begin{equation}
 \sum_{i\in C_j} \mu_i \left[ d_i -d_{C_j}- \varphi(x_i,y_i) \right]^2 + \alpha_j (d_{C_j})^2 + \beta^+ (d^+_{C_j}- d_{C_j})^2 + \beta^- (d^-_{C_j}- d_{C_j})^2
 \end{equation}
-where the coefficient $\alpha_j$ regularizes the trend amplitude.
-
-where $^+$ refers to the value in the layer above and $^-$ to the layer below. Obviously, the solution of this problem will involve tridiagonal solvers. For the lowest and uppermost layer, we can simply assume a zero gradient for the trends.
+where the coefficient $\beta_j^*$ regularize the trend differences between layers and where $^+$ refers to the value in the layer above and $^-$ to the layer below. Obviously, the solution of this problem will involve tridiagonal solvers. For the lowest and uppermost layer, we can simply assume a zero gradient for the trends.
 
 If $N_j$ is the number of points with non-zero weights, we can define
 \begin{equation}
@@ -352,13 +350,17 @@ and a proposed scaling for regularization constants is
 \alpha_j = \bar{\mu}_j \sqrt{N_j}.
 \end{equation}
 
-\paragraph{Check} so that error estimate on variance is included.
 
 Similarly, the $ \beta$ can be scaled based on the two layers involved
 
 \begin{equation}
 \beta^+_j = { (\bar{\mu}^+_j N_j^+ + \bar{\mu}_j N_j) \over (N_j^++N_j) }
 \end{equation}
+
+
+This regularisation is not yet implemented. Either done at 3D level or simply allow iterative 3D filtering as now but with weights $\beta$ as described here !
+
+
 
 
 %---------------
@@ -380,7 +382,7 @@ column 8 contains 1 for points that have a density below 1025~kg/m$^3$, 2 for po
 \end{itemize}
 
 Execute \command{divadetrend ngroups [niterations]}. The parameter {\tt ngroups} specifies that the first {\tt ngroups} will be used for the detrending.
-(You might create for exemple 5 groups and try with detrending on the first one only using \command{divadetrend 1}. The optional parameter {\tt niterations} tells how many iterations are to be performed for the detrending. Default value is 10 iterations.
+(You might create for exemple 5 groups and try with detrending on the first one only using \command{divadetrend 1}). The optional parameter {\tt niterations} tells how many iterations are to be performed for the detrending. Default value is 10 iterations.
 
 \subsubsection{Outputs}
 \file{./output/rmsmisfit.dat} contains the evolution during the iterations of the misfit (after detrending). It should decrease if the detrending works well.  \file{trends.all.1.dat} deals with group 1 and contains on column 1 the class number and on columns 2 the final trend value associated with it. Columns 3 and 4 correspond to the next to last iteration and the last columns to the first iteration.
@@ -426,10 +428,10 @@ and we call \command{divadetrend 3}, columns \texttt{8 5 7} will be used in this
 \file{./examples/Trends} contains data sampled from a spatial pattern over which was added a seasonal cycle, daily cycle and inter-annual variations. Groups are years, month and hours. Look at Matlab file \file{pseudodata.m} how the data were generated and look how \command{diva\-detrend} is able to reconstruct the time variations. Also look at the analysed field, with and without detrending.
 
 
-\subsection{Future developments}	%  = things to do!
+% \subsection{Future developments}	%  = things to do!
 
-Prepare detrending with global south-north gradient (for seasonal cycle). Use variance to diagnose which type of function?
-Include exclusion value to avoid needing eliminating data (simply put weights zero for land points).
+% Prepare detrending with global south-north gradient (for seasonal cycle). Use variance to diagnose which type of function?
+% Include exclusion value to avoid needing eliminating data (simply put weights zero for land points).
 
-For the 3-D version, pack data of all layers in one file with separation by valex valex valex. (same for analysis): No, since loop 3D, direct access to files without fort.* involvement? On the other hand, in 2-D better to stick with old approach. 
-Check if hierarchical approach is well implemented, seems so, with additional zero average of trends? 
+% For the 3-D version, pack data of all layers in one file with separation by valex valex valex. (same for analysis): No, since loop 3D, direct access to files without fort.* involvement? On the other hand, in 2-D better to stick with old approach. 
+% Check if hierarchical approach is well implemented, seems so, with additional zero average of trends? 
