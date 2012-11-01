@@ -332,15 +332,10 @@ cost function associated with data in class $C_j$ as follows
 \begin{equation}
 \sum_{i\in C_j} \mu_i \left[ d_i -d_{C_j}- \varphi(x_i,y_i) \right]^2 + \alpha_j (d_{C_j})^2
 \end{equation}
-where the coefficient $\alpha_j$ regularizes the trend amplitude.
-
-If the detrending is included in a 3-D loop, with the same groups and classes defined in each layer, we can further request that the values of the trends in a given layer are not too far from those in the surrounding layers and modify the norm as
-
+where the coefficient $\alpha_j$ regularizes the trend amplitude and
 \begin{equation}
-\sum_{i\in C_j} \mu_i \left[ d_i -d_{C_j}- \varphi(x_i,y_i) \right]^2 + \alpha_j (d_{C_j})^2 + \beta^+ (d^+_{C_j}- d_{C_j})^2 + \beta^- (d^-_{C_j}- d_{C_j})^2
+d_{C_1} ~=~{ \sum_{i\in C_1} \mu_i \left[ d_i - \varphi(x_i,y_i) \right] \over \sum_{i\in C_1} \mu_i + \alpha_i}
 \end{equation}
-where the coefficient $\beta_j^*$ regularize the trend differences between layers and where $^+$ refers to the value in the layer above and $^-$ to the layer below. Obviously, the solution of this problem will involve tridiagonal solvers. For the lowest and uppermost layer, we can simply assume a zero gradient for the trends.
-
 If $N_j$ is the number of points with non-zero weights, we can define
 \begin{equation}
 \bar{\mu}_j = {1 \over N_j} \sum_{i\in C_j} \mu_i
@@ -349,6 +344,17 @@ and a proposed scaling for regularization constants is
 \begin{equation}
 \alpha_j = \bar{\mu}_j \sqrt{N_j}.
 \end{equation}
+This jhas been implemented.
+
+
+
+If the detrending is included in a 3-D loop, with the same groups and classes defined in each layer, we can further request that the values of the trends in a given layer are not too far from those in the surrounding layers and modify the norm as
+
+\begin{equation}
+\sum_{i\in C_j} \mu_i \left[ d_i -d_{C_j}- \varphi(x_i,y_i) \right]^2 + \alpha_j (d_{C_j})^2 + \beta^+ (d^+_{C_j}- d_{C_j})^2 + \beta^- (d^-_{C_j}- d_{C_j})^2
+\end{equation}
+where the coefficient $\beta_j^*$ regularize the trend differences between layers and where $^+$ refers to the value in the layer above and $^-$ to the layer below. Obviously, the solution of this problem will involve tridiagonal solvers. For the lowest and uppermost layer, we can simply assume a zero gradient for the trends.
+
 
 
 Similarly, the $ \beta$ can be scaled based on the two layers involved
@@ -358,7 +364,7 @@ Similarly, the $ \beta$ can be scaled based on the two layers involved
 \end{equation}
 
 
-This regularisation is not yet implemented. Either done at 3D level or simply allow iterative 3D filtering as now but with weights $\beta$ as described here !
+This regularisation between layers is not yet implemented. Either done at 3D level or simply allow iterative 3D filtering as now but with weights $\beta$ as described here !
 
 
 
