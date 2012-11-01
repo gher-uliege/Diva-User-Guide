@@ -49,9 +49,9 @@ Mathematically, according to the developments of Section~\ref{sec:OImethod}, we 
 \end{align}
 
 In practice, the data input of the analysis tool for an error calculation is a vector containing the
-covariance of data points ($\mathbf{g}(\mathbf{r})$) with the point in which the error estimate is to be calculated. The covariance vector to be analysed is calculated using the correlation function (or Kernal) $\mathbc{c}$ of an infinite domain in terms of the Bessel function as shown in \eqref{kernelfunction}:
+covariance of data points ($\mathbf{g}(\mathbf{r})$) with the point in which the error estimate is to be calculated. The covariance vector to be analysed is calculated using the correlation function (or Kernel) $\mathbc{c}$ of an infinite domain in terms of the Bessel function as shown in \eqref{kernelfunction}:
 \begin{equation}
-e^{2}(\mathbf{r})   = \sigma^{2}(\mathbf{r})-\underbrace{\mathbf{T_{1}}(\mathbf{r})\mathbf{K}^{-1} \mathbf{T_{2}}(\mathbf{r})}_{(\star\star)}	\sigma^{2}(\mathbf{r})	\mathbf{c}(\mathbf{r})
+e^{2}(\mathbf{r})   = \sigma^{2}(\mathbf{r})-\sigma^{2}(\mathbf{r}) \underbrace{\mathbf{T_{1}}(\mathbf{r})\mathbf{K}^{-1} \mathbf{T_{2}}(\mathbf{r})}_{(\star\star)}		\mathbf{c}(\mathbf{r})
 \label{eq:kernelbessel}
 \end{equation}
 In an infinite domain, the error calculation is then "exact", while for more complicated domains, it is nearly exact far away from boundaries, provided no anisotropic constraint (advection constraint, variable length scale, boundaries, \ldots) is activated. 
