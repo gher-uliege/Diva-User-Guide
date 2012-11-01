@@ -69,7 +69,7 @@ The directory tree has the following structure: %\newpage
 \item \directory{DIVA3D/divastripped} is the main working directory at the 2D level. 
 \item \directory{DIVA3D/src} contains the Fortran source code. This is where the compilation has to be done.
 \item[]
-\item \texttt{Doc} contains the link to publications. For \LaTeX users: you find the corresponding \BibTeX  entries in the file \file{DivaPublications.bib}.
+\item \directory{Doc} contains the link to publications. For \LaTeX users: you find the corresponding \BibTeX  entries in the file \file{DivaPublications.bib}.
 \item \directory{JRA4/Climatology} is the main working directory at the 3D and 4D levels.
 \end{itemize}
 
@@ -151,7 +151,7 @@ In the main working directory (\directory{GODIVA\_07\_2012/DIVA3D/divastripped})
 
 \subsection{Basic test}
 
-\command{divatest} creates basic input files (see Chapter~\ref{chap:general} for details), performs a simple \diva execution, checks if \command{awk} is appropriate and checks if the pipes are supported in your operating system (O.S.). If \command{divatest} hangs during the pipe test, it means pipes are not supported (as for some gfortran versions) and you can use a \command{CTRL-C} to exit.  The analysis output can be checked using any software for reading NetCDF files. In this case we use ncview (see Chapter~\ref{chap:postprocessing} for details and installation). 
+\command{divatest} creates basic input files (see Chapter~\ref{chap:general} for details), performs a simple \diva execution, checks if \command{awk} is appropriate and checks if the pipes are supported in your operating system (O.S.). If \command{divatest} hangs during the pipe test, it means pipes are not supported (as for some gfortran versions) and you can use a \command{CTRL-C} to exit. The analysis output can be checked using any software for reading NetCDF files. In this case we use ncview (see Chapter~\ref{chap:postprocessing} for details and installation). 
 
 \begin{lstlisting}[style=Bash]
 [charles@gher13 divastripped]$ divatest
@@ -255,5 +255,4 @@ and should be close to Fig.~\ref{fig:diva_bigtest_results}.
 %Apply the conversion from dos-like to unix-like line endings on every \diva\texttt{ascii} file and set the permissions of the executables (\texttt{*.a} files) to 755. 
 %
 %
-%
-%
+

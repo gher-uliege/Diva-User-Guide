@@ -10,10 +10,98 @@
 \section{\diva-on-web}
 %---------------------
 
+The idea behind \diva-on-web is to provide the possibility to user to perform interpolations with \diva without having to install it on their machine. The web interface suits to single analysis with a relatively low number of data. For climatologies, which requires the repetition of numerous analysis, the use of \diva is necessary.
+
+The server is accessible at: \url{http://gher-diva.phys.ulg.ac.be/web-vis/diva.html} and a complete description is found in \citet{BARTH10}.
+
+
+\subsection{Implementation}
+
+The web interface of \diva is based on OpenLayer (\url{http://openlayers.org/}) and is OGC-compliant (Open Geospatial Consortium, \url{http://www.opengeospatial.org/}). The server is a 2 quad-core Xeon E5420 running under Linux. The server and client software are available under GPL. The Web Map Server use \texttt{Python} language along with the plotting packages \texttt{matplotlib} (\url{http://matplotlib.org/}) and \texttt{basemap} (\url{http://matplotlib.org/basemap/}). 
+
+\begin{figure}[htpb]
+	\centering
+	\parbox{.5\textwidth}{
+		\includegraphics[width=.45\textwidth,bb=166  289 440 564]{gridding}
+		}\parbox{.5\textwidth}{
+		\caption{Gridding problem: the blue dots indicate data positions, while the nodes of the grid  are the points where the field has to be determined.\label{gridproblem}}
+		}
+\end{figure}
+
+\subsection{A complete example}
+
+The steps to follow to obtain an analysed field is the following
+
+\begin{enumerate}
+\item Upload your data file (see Section~\ref{sec:dataformat} for the correct file format). \hfill (Fig.~\ref{fig:divaonweb1})
+\item Define the analysis grid. \hfill (Fig.~\ref{fig:divaonweb2})
+\item Select the analysis parameters. \hfill (Fig.~\ref{fig:divaonweb3})\\
+The script \command{divafit} provides an estimate for the correlation length \hfill (Fig.~\ref{fig:divaonweb4})
+\item Perform the analysis.\hfill (Fig.~\ref{fig:divaonweb5})
+\end{enumerate}
+
+\begin{figure}[H]
+\centering 
+\includegraphics[width=.75\textwidth]{divaonweb1}
+\caption{Upload of data.\label{fig:divaonweb1}}
+\end{figure}
+
+\begin{figure}[H]
+\centering 
+\includegraphics[width=.75\textwidth]{divaonweb2}
+\caption{Grid coordinates.\label{fig:divaonweb2}}
+\end{figure}
+
+\begin{figure}[H]
+\centering 
+\includegraphics[width=.75\textwidth]{divaonweb3}
+\caption{Parameters selection.\label{fig:divaonweb3}}
+\end{figure}
+
+\begin{figure}[H]
+\centering 
+\includegraphics[width=.5\textwidth]{divaonweb4}
+\caption{Visual results of \command{divafit}.\label{fig:divaonweb4}}
+\end{figure}
+
+\begin{figure}[H]
+\centering 
+\includegraphics[width=.75\textwidth]{divaonweb5}
+\caption{Analysis and mask based on relative error.\label{fig:divaonweb5}}
+\end{figure}
+
+The outputs are available in various formats (Fig.~\ref{fig:divaonweb6}): NetCDF, Matlab (or Octave) file, Keyhole Markup Language (KML) and other image formats. 
+
+\begin{figure}[H]
+\centering 
+\includegraphics[width=.75\textwidth]{divaonweb6}
+\caption{\label{fig:divaonweb6}}
+\end{figure}
+
+\subsection{Conditions of use}
+%-----------------------------
+
+
+\begin{itemize}
+\item Open to all users without registration.
+\item CPU time and the number of observations is limited per user, in order to guarantee availability to all.
+\end{itemize}
+
 
 \section{Ocean Data View}
 %------------------------
 
+reference to ODV user guide and Reiner
+
+
+\begin{figure}[H]
+\centering 
+\includegraphics[width=.75\textwidth]{odvdiva1}
+\caption{\label{fig:divaonweb6}}
+\end{figure}
 
 \section{Matlab toolbox}
-%-----------------------------
+%------------------------
+
+Link to the package +
+figures (presented in diva workshop and SDN annual meeting
