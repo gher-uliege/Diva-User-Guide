@@ -129,7 +129,7 @@ If we try to minimize this norm, we will get an infinite signal-to-noise ratio a
 
 To avoid this inconvenience, the solution is to calculate the difference of the data value with respect to the analysed field in which the data under investigation was not taken into account. This is called the \textit{Ordinary Cross Validation} and is, with a practical trick, implemented in \command{divacv}. To make this estimate robust, the analysis has to be repeated over a large number of data points, increasing the computing cost, so that OCV is generally too expensive to perform unless a trick as in \command{divacv} can be used (there the analysis can be done without actually disregarding a data point but by correcting the difference as shown in the next section).
 
-Variants of OCV take out several points at once to calculate error estimates and repeat the exercise several times to make estimates robust.  In \Diva this options are available in \command{divacvrand}. A variant is \command{divacvclasses} in which all data from a given class (e.g. specific year) are set aside and the analysis compared to.
+Variants of OCV take out several points at once to calculate error estimates and repeat the exercise several times to make estimates robust.  In \diva this options are available in \command{divacvrand}. A variant is \command{divacvclasses} in which all data from a given class (e.g. specific year) are set aside and the analysis compared to.
 
 
 \subsection{Generalized Cross Validation (GCV)}
