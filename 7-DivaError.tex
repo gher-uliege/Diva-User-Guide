@@ -49,7 +49,7 @@ Mathematically, according to the developments of Section~\ref{sec:OImethod}, we 
 \end{align}
 
 In practice, the data input of the analysis tool for an error calculation is a vector containing the
-covariance of data points ($\mathbf{g}(\mathbf{r})$) with the point in which the error estimate is to be calculated. The covariance vector to be analysed is calculated using the covariance function $\mathbc{c}$ of an infinite domain in terms of the Bessel function:
+covariance of data points ($\mathbf{g}(\mathbf{r})$) with the point in which the error estimate is to be calculated. The covariance vector to be analysed is calculated using the covariance function $\mathbc{c}$ of an infinite domain in terms of the Bessel function as shown in \eqref{kernelfunction}:
 \begin{equation}
 e^{2}(\mathbf{r})   = \sigma^{2}(\mathbf{r})-\underbrace{\mathbf{T_{1}}(\mathbf{r})\mathbf{K}^{-1} \mathbf{T_{2}}(\mathbf{r})}_{(\star\star)}		\mathbf{c}(\mathbf{r})
 \label{eq:kernelbessel}
@@ -151,7 +151,7 @@ Let us assume that the error is requested at $N_{c}$ locations (sparse points or
 
 \subsection{Poor man's estimate}
 
-An analysis is performed on a vector filled with constant covariance $\sigma^{2}$. As the vector of covariances is filled with identical values $\sigma^{2}$, the error is assessed for all the $N_{c}$ locations with the same analysis. Since the matrix to be inverted for the analysis (the stiffness matrix $\matr{K}$, \eqref{eq:feminversion}) is already factorized\footnote{$\mathsf{LU}$ decomposition or factorization: the matrix is written as the product of a lower triangular matrix $\mathsf{L}$ and an upper triangular matrix $\mathsf{U}$.}, the additional cost is almost zero because a single analysis is needed.   
+An analysis is performed on a vector filled with constant covariance $\sigma^{2}$. As the vector of covariances is filled with identical values $\sigma^{2}$, the error is assessed for all the $N_{c}$ locations with the same analysis. Since the matrix to be inverted for the analysis (the stiffness matrix $\matr{K}$, \eqref{eq:solution}) is already factorized\footnote{$\mathsf{LU}$ decomposition or factorization: the matrix is written as the product of a lower triangular matrix $\mathsf{L}$ and an upper triangular matrix $\mathsf{U}$.}, the additional cost is almost zero because a single analysis is needed.   
 
 \subsection{Hybrid method} 
 
@@ -163,7 +163,7 @@ For each of the $N_c$ points in which the error is to be evaluated, an additiona
 
 To save computing time, a nice mathematical property was discovered and exploited: performing an analysis that differs only by one data point from a previous analysis can be performed using an already existing matrix factorization. In this case, the generation of all covariances (always changing only one data point) can be performed with a cost similar to a single error analysis with prescribed mathematical covariance functions.
 
-To explain the method, let us suppose that we have constructed and inverted the stiffness matrix $\matr{K_0}$ for the same problem without any data point (as explained in Section~\ref{sec:finiteelements}, $\matr{K_0}$ has a component that is related to the smoothness constraint, not to the data). Then, adding a single data point with unit value at location $i$ would demand the solution of 
+To explain the method, let us suppose that we have constructed and inverted the stiffness matrix $\matr{K_0}$ for the same problem without any data point (as explained in Section~\ref{sec:finiteelements}), $\matr{K_0}$ has a component that is related to the smoothness constraint, not to the data). Then, adding a single data point with unit value at location $i$ would demand the solution of 
 
 \begin{equation}
 \left( \matr{K}_0 + \mu_i \matr{S}_i \transp{\matr{S}}_i \right) \vect{q} ~=~ \mu_i \matr{S}_i.
@@ -200,7 +200,7 @@ Overall the cost for the full error calculation is now roughly equivalent to twi
 %---------------------------------------
 
 
-For this application, we employ the same data as in Section~\ref{} (salinity measurements in the Mediterranean Sea at a depth of 30~m in July, for the 1980-1990 period). Here, the error is scaled locally by the local variance of the background field $\hat{B}$, yielding relative errors. 
+For this application, we employ the same data as in Section~\ref{sec:medseaex} (salinity measurements in the Mediterranean Sea at a depth of 30~m in July, for the 1980-1990 period). Here, the error is scaled locally by the local variance of the background field $\hat{B}$, yielding relative errors. 
 
 The OI field (Fig.~\ref{fig:salinity_error_oi_0707_10030DD}a) shows the effect of the data coverage on the error magnitude. The relative error lies between 40 and 60\% around the regions with a sufficient amount of observations. The largest values ($>80\%$) occur along the south coasts of the Mediterranean Sea, where almost no data are available for the considered period. This means that the analysis obtained in these areas cannot be taken with much confidence.
 
