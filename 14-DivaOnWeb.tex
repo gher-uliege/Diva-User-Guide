@@ -108,6 +108,49 @@ Ocean Data View \citep[ODV,][]{SCHLITZER02} is a software for the analysis and v
 \section{Matlab toolbox}
 %------------------------
 
-\index{Matlab}
-Link to the package +
+The \diva Matlab toolbox is an interface to perform 2-D analysis without having to compile the whole code and to type command in a shell. 
+
+\subsection{Installation}
+%------------------------
+
+Download the package from: \url{http://modb.oce.ulg.ac.be/mediawiki/upload/divaformatlab.zip}
+and unzip the archive:
+\begin{lstlisting}[style=Bash]
+[charles@gher13 Software]$ wget http://modb.oce.ulg.ac.be/mediawiki/upload/divaformatlab.zip
+...
+[charles@gher13 Software]$ unzip divaformatlab.zip
+\end{lstlisting}
+
+The structure is the following:
+\begin{lstlisting}[style=Bash]
+[charles@gher13 Software] tree
+.
+|-- README
+|-- divagrid.m
+|-- linux_binaries
+|   |-- contourgen.exe
+|   |-- diva.exe
+|   `-- generopt.exe
+|-- testdivagrid.m
+`-- windows_binaries
+    |-- contourgen.exe
+    |-- diva.exe
+    `-- generopt.exe
+
+2 directories, 9 files
+\end{lstlisting}
+
+The main file is \file{divagrid.m}, while \file{testdivagrid.m} provides a few example of how the function can be used.
+Directories \directory{linux\_binaries} and \directory{windows\_binaries}
+ %%%%%%%%%%%%%%%% to continue here
+\subsection{Usage}
+
+The syntax \file{divagrid.m} is close to matlabs \texttt{griddata} function, but has additional parameters.
+
+To run, divagrid.m must be in the matlab path as well as
+contourgen.exe
+generopt.exe
+diva.exe
+
+
 figures (presented in diva workshop and SDN annual meeting
