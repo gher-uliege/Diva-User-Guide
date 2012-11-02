@@ -148,7 +148,7 @@ Simply type \textcom{divamesh} to perform the mesh generation. All the parameter
 \subsection{Generalized Cross Validation}
 %-------------------------------------
 
-Generalized Cross Validation (GCV) provides you with improved estimates of parameters (see Chap. \ref{gcv} for a detailed description of the method). You need to provide an input file \texttt{gvcsampling.dat} (see example file \ref{gcvsampling}) containing a list of values for the signal-to-noise ratio on which you want to try the estimator.
+Generalized Cross Validation (GCV) provides you with improved estimates of parameters (see Chapter~\ref{chap:analysisparameters} for a detailed description of the method). You need to provide an input file \texttt{gvcsampling.dat} (see example file \ref{gcvsampling}) containing a list of values for the signal-to-noise ratio on which you want to try the estimator.
 
 Type \textcom{divagcv} to perform the GCV on these values. Optimal values for the parameters are given in \texttt{gcvsnvar.dat} (example file \ref{gcvsnvar}). You can then modify \texttt{param.par} (example file \ref{paramfileCL2}) according to these values before performing an analysis. Note that in our example we also modified parameters for the output grid to have a analysis with a better resolution.
 
