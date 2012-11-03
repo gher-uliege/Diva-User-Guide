@@ -62,6 +62,7 @@ Since data assimilation depends on the region and the model and the subjective a
 \subsection{Background field and anomalies}
 %------------------------------------------
 
+\index{Background field}
 The field $\varphi(\mathbf{r})$ can be decomposed as the sum of a \textit{background field} \index{Background field} $\varphi_b$ and an anomaly $\varphi'$: 
 \begin{equation}
  \varphi(\mathbf{r}) = \varphi_b(\mathbf{r}) + \varphi'(\mathbf{r}).
@@ -82,6 +83,7 @@ From here on, we will work with anomaly only and therefore formally use $\varphi
 \subsection{Noise on data}
 % ------------------------
 
+\index{Noise}
 When measuring a field, there is always an uncertainty on the value obtained (whatever the instrument and the field). \textit{Noise} \index{Noise} does not only take into account \textit{instrumental} error (which is generally low), but also:
 \begin{itemize}
 \item the \textit{representativeness} errors, meaning that what one measures is not always what ones intends to analyse):\\
@@ -225,6 +227,7 @@ Finally, although OI provides the best analysis in the sense that it gives the m
 \section[VIM and its implementation]{The Variational Inverse Method}
 % ---------------------------------------
 
+\index{VIM}
 The Variational Inverse Method (VIM\index{VIM}) was initially designed for climatology purposes: in that case, vertical profiles have high vertical resolution and sufficient profiles for all seasons, but have an irregular horizontal coverage \citep{BRASSEUR96}. Thus a spatial analysis on horizontal planes is needed. 
 
 Relatively large number of data points in each plane penalizes Optimal Interpolation (OI) methods, because these methods require the inversion of a $N_{d}$-by-$N_{d}$ matrix, \textit{i.e.} a number of operations proportional to $N_{d}^{3}$ (see Tab.~\ref{tabdata} and eq. \ref{eq:theory_error}).
@@ -325,6 +328,7 @@ to apply a different relative weight to each point.
 \subsubsection{Background field\label{sec:backgroundfield}}
 % ---------------------------------------------------------
 
+\index{Background field}
 Normally, interpolation (and extrapolation) works on anomalies with respect to a background field (Eq. \ref{background}). \diva allows you to work with different background fields:
 
 \begin{itemize}
@@ -413,7 +417,7 @@ K(r)=\left(\frac{r}{L}\right)K_{1}\left(\frac{r}{L}\right),
 \end{equation}
 
 where $r$ is the Euclidean distance,\\ 
-\hphantom{where} $L$ is the correlation length and \\
+\hphantom{where} $L$ is the correlation length \index{Correlation length} and \\
 \hphantom{where} $K_{1}$ is the modified Bessel function \citep[][page 359]{ABRAMOWITZ64}.
 
 %\footnote{The \textit{modified Bessel's equation} is the differential equation of order 1. 
@@ -457,10 +461,7 @@ In an infinite domain, the correlation function was shown to be proportional to 
 
 The Kernel function can be used to calibrate \diva parameters ($\alpha_0, \alpha_1, \mu$) so as to fit observed covariance functions. This principle is used by the tool \command{divafit} which helps one to estimate the correlation length (see Section~\ref{sec:divafit}).
 
-It can also be used for specifying the covariance for error calculations.% (Sec. \ref{}).
-
-
-
+It can also be used for specifying the covariance for error calculations (Chapter~\ref{chap:error}).
 
 
 \subsection{Comparison OI--VIM}
@@ -502,7 +503,7 @@ Table~\ref{tabdata} compares characteristics of different spatial interpolation 
 \item the treatment of anisotropy. 
 \end{itemize} 
 
-All the methods compared here are base on a minimisation of the error estimate except the Cressman method. OI and VIM are similar methods: they use the same control parameters and require similar a priori information. To work in 3-D and in multivariate mode, VIM needs a few adaptations. 
+All the methods compared here are base on a minimisation of the error estimate except the Cressman method \citep{CRESSMAN59}. OI and VIM are similar methods: they use the same control parameters and require similar a priori information. To work in 3-D and in multivariate mode, VIM needs a few adaptations. 
 The main difference concerns the number of operations, which is almost independent on the number of data for VIM.
 
 \begin{table}[htpb]
@@ -542,9 +543,9 @@ In the base formulation of \diva, the cost function contains a term relative to 
 \subsection{Multi-dimensional analysis}
 %--------------------------------------
 
-In order to perform three-dimension analysis (horizontal coordinates and depth), the solution is to applying successive analysis in horizontal layers, from the deeper to the shallower layer. A set of scripts (\texttt{diva3D*}) are designed to perform such analysis in an automatic way.
+In order to perform three-dimension analysis (horizontal coordinates and depth), the solution is to applying successive analysis in horizontal layers, from the deeper to the shallower layer. A set of scripts (\command{diva3D*}) are designed to perform such analysis in an automatic way.
 
-However, the reconstruction of three-dimensional fields of temperature and salinity by stacking of layers of analysed fields may leads to unstable density fields. An algorithm has been implemented in \diva in order to remove these instabilities.
+However, the reconstruction of three-dimensional fields of temperature and salinity by stacking of layers of analysed fields may lead to unstable density fields. An algorithm has been implemented in \diva in order to remove these instabilities.
 
 These topics are described in Chapter~\ref{chap:godiva}.
 
