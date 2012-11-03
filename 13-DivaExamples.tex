@@ -16,7 +16,7 @@ We present here a complete case treated with the CL version and its additional t
 \subsection{Preparation of the input files\label{prep}}
 %-----------------------------------------------------
 
-To perform an analysis with the CL version, you will need: a contour file (\texttt{coast.cont}), a data file (\texttt{data.dat}), a list of run parameters (\texttt{param.par}) and the locations of the points where you want to know the value of the analyzed field (\texttt{valatxy.coord}). Examples of these files are given in Chap. \ref{chap:general}.
+To perform an analysis with the CL version, you will need: a contour file (\file{coast.cont}), a data file (\texttt{data.dat}), a list of run parameters (\texttt{param.par}) and the locations of the points where you want to know the value of the analyzed field (\texttt{valatxy.coord}). Examples of these files are given in Chap. \ref{chap:general}.
 
 What we recommend is to create a new directory (let us call it \texttt{case1}) for each case you will treat and within this directory, two sub-directories name input and output. The four input files are then placed in \texttt{case1/input/}. 
 
@@ -24,9 +24,9 @@ Let us assume that you created \texttt{case1} in diva-\divaversion. To copy them
 
 \vspace{.25cm}
 
-\textcom{divaload ../case1}
+\command{divaload ../case1}
 
-For the present example, we will use a subset of data contained in the MEDAR database (see Fig. \ref{dataplotCL}). 
+For the present example, we will use a subset of data contained in the MEDAR database (see Fig.~\ref{dataplotCL}). 
 
 \begin{figure}[htpb]
 \centering
@@ -76,13 +76,13 @@ For the present example, we will use a subset of data contained in the MEDAR dat
 \subsection{Parameters fit}
 %------------------------------
 
-Type \textcom{divafit} to have a first guess of the parameters $\snr$ and $L$. You will get the output files \texttt{covariance.dat}, \texttt{covariancefit.dat} and  \texttt{paramfit.dat}  (shown hereafter). 
+Type \command{divafit} to have a first guess of the parameters $\snr$ and $L$. You will get the output files \texttt{covariance.dat}, \texttt{covariancefit.dat} and  \texttt{paramfit.dat}  (shown hereafter). 
 
 The first file contains distances between points, the covariance and the number of data couples used to estimate the covariance; the second file contains the distance between points, the data-covariance and the fitted covariance. 
 
 In \texttt{paramfit.dat}, you will find estimates for the correlation length $L$ and for the signal-to-noise ratio $\snr$. You can replace the old values of $\snr$ and $L$ in \texttt{param.par} by the new ones from \texttt{paramfit.dat}.
 
-If you want the new $L$ value to be automatically replaced, type \textcom{divafit -r}.
+If you want the new $L$ value to be automatically replaced, type \command{divafit -r}.
 
 \begin{exfile}[H]
 \begin{footnotesize}
@@ -104,7 +104,7 @@ Correlation length (in degrees latitude)
 \subsection{Contour checking}
 %--------------------------------
 
-If you want to check the contour file you want to use to generate the mesh, type \textcom{divacck}. The output \texttt{coast.cont.checked} is a thinned contour based on the length scale.
+If you want to check the contour file you want to use to generate the mesh, type \command{divacck}. The output \texttt{coast.cont.checked} is a thinned contour based on the length scale.
 
 %\begin{figure}[htpb]
 %\centering
@@ -116,13 +116,13 @@ If you want to check the contour file you want to use to generate the mesh, type
 %\end{figure}
 
 Then simply copy the new contour into the \texttt{input} directory:\\
-\textcom{cp ./output/coast.cont.checked ./input/contour.cont}\\
+\command{cp ./output/coast.cont.checked ./input/contour.cont}\\
 
 
 \subsection{Mesh creation}
 %------------------------------
 
-Simply type \textcom{divamesh} to perform the mesh generation. All the parameters needed by \diva\, are contained in \texttt{coast.cont}, \texttt{param.par} and \texttt{coast.cont.dens} if you work with a non-uniform mesh.
+Simply type \command{divamesh} to perform the mesh generation. All the parameters needed by \diva\, are contained in \texttt{coast.cont}, \texttt{param.par} and \texttt{coast.cont.dens} if you work with a non-uniform mesh.
 %
 %
 %\begin{figure}[htpb]
@@ -150,7 +150,7 @@ Simply type \textcom{divamesh} to perform the mesh generation. All the parameter
 
 Generalized Cross Validation (GCV) provides you with improved estimates of parameters (see Chapter~\ref{chap:analysisparameters} for a detailed description of the method). You need to provide an input file \texttt{gvcsampling.dat} (see example file \ref{gcvsampling}) containing a list of values for the signal-to-noise ratio on which you want to try the estimator.
 
-Type \textcom{divagcv} to perform the GCV on these values. Optimal values for the parameters are given in \texttt{gcvsnvar.dat} (example file \ref{gcvsnvar}). You can then modify \texttt{param.par} (example file \ref{paramfileCL2}) according to these values before performing an analysis. Note that in our example we also modified parameters for the output grid to have a analysis with a better resolution.
+Type \command{divagcv} to perform the GCV on these values. Optimal values for the parameters are given in \texttt{gcvsnvar.dat} (example file \ref{gcvsnvar}). You can then modify \texttt{param.par} (example file \ref{paramfileCL2}) according to these values before performing an analysis. Note that in our example we also modified parameters for the output grid to have a analysis with a better resolution.
 
 
 \begin{exfile}[H]
@@ -221,7 +221,7 @@ If zero, no error fields are produced. If one, relative errors are obtained
 \subsection{Analysis}
 %-----------------
 
-\diva\, analysis is executed by typing \textcom{divacalc}. It not only provides the analyzed field, but also the error field if $\texttt{varbak}$ is not equal to zero. Results are presented in Figs. \ref{analysisCL1} and \ref{analysisCL1}.
+\diva\, analysis is executed by typing \command{divacalc}. It not only provides the analyzed field, but also the error field if $\texttt{varbak}$ is not equal to zero. Results are presented in Figs. \ref{analysisCL1} and \ref{analysisCL1}.
 
 \begin{figure}[htpb]
 \centering

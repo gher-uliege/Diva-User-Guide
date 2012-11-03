@@ -17,20 +17,20 @@ We consider it is up to the user to utilize his favourite drawing tools for repr
 \textsl{Gnuplot} is a free portable command-line driven interactive data and function plotting utility, available for various platforms (\url{http://www.gnuplot.info/}). We provide some routines for plotting \diva inputs and outputs (data, contour, mesh, analysis etc) with the help of this tool.
 
 \begin{tips}
-Plots provided by \gnuplot\, are made to help the user to have a quick look at the results, immediately after the execution. However, these plots are not always suitable for publications or diffusion. The user is invited to create his own post-processing tools, for example appealing to the existing \matlab\, routines.
+Plots provided by \gnuplot are made to help the user to have a quick look at the results, immediately after the execution. However, these plots are not always suitable for publications or diffusion. The user is invited to create his own post-processing tools, for example appealing to the existing Matlab routines.
 \end{tips}
 
 
 \subsubsection{Installation}
 %---------------------------
 
-\gnuplot\, can be easily downloaded for windows systems on the web page \url{http://www.gnuplot.info}. For Cygwin users, there are two possibilities:
+\gnuplot can be easily downloaded for windows systems on the web page \url{http://www.gnuplot.info}. For Cygwin users, there are two possibilities:
 
 \begin{enumerate}
 
 \item you do not have X Windows System installed: in this case, it is advised to only install \texttt{wgnuplot}, available at\\
 \url{http://downloads.sourceforge.net/gnuplot/gp422win32.zip} for version 4.22.\\
-Once you have downloaded it, just unzip the folder in the location of your choice (provided it is located on the path of your system). The \gnuplot\, window is activated either by typing \texttt{wgnuplot} in the Cygwin shell, or by creating a short-cut on your desktop to the executable \texttt{wgnuplot.exe}
+Once you have downloaded it, just unzip the folder in the location of your choice (provided it is located on the path of your system). The \gnuplot\, window is activated either by typing \command{wgnuplot} in the Cygwin shell, or by creating a short-cut on your desktop to the executable \texttt{wgnuplot.exe}
 
 
 \begin{figure}[htpb]
@@ -42,7 +42,7 @@ Once you have downloaded it, just unzip the folder in the location of your choic
 }
 \end{figure}
 
-\item X Windows System is already installed: run again the Cygwin \texttt{setup.exe} (for downloading and updating your Cygwin installation); in the "Select Packages" screen, look for the "Math" entry, select \gnuplot\, and choose "`install". Once this installation is finished, \gnuplot\, is launched from a XWin (obtained after typing \texttt{startx}) window by typing \texttt{gnuplot}.
+\item X Windows System is already installed: run again the Cygwin \command{setup.exe} (for downloading and updating your Cygwin installation); in the "Select Packages" screen, look for the "Math" entry, select \gnuplot\, and choose "`install". Once this installation is finished, \gnuplot\, is launched from a XWin (obtained after typing \texttt{startx}) window by typing \texttt{gnuplot}.
 
 \begin{figure}[htpb]
 \centering
@@ -59,9 +59,9 @@ Once you have downloaded it, just unzip the folder in the location of your choic
 \subsubsection{Utilization}
 %-------------------------
 
-Compile the Fortran sources (\texttt{forgnuplot$\cdots$ .f}) if necessary and place the executables into \texttt{./diva-\divaversion/bin.}
+Compile the Fortran sources (\file{forgnuplot$\cdots$ .f}) if necessary and place the executables into \texttt{./diva-\divaversion/bin.}
 
-In directory divastripped/gnuwork/, edit \texttt{divaplot} so that the \texttt{gplot} indicates the correct path to your \gnuplot\, executable.
+In directory \directory{divastripped/gnuwork/}, edit \command{divaplot} so that the \texttt{gplot} indicates the correct path to your \gnuplot\, executable.
 \example\\
 \begin{verbatim}
 #====================================================
@@ -238,7 +238,7 @@ and can be utilized directly after installation.
 
 \textsl{Ncview} (Linux and Windows + Cygwin) is available at\\
 \url{http://meteora.ucsd.edu/~pierce/ncview_home_page.html}\\
-but requires the netcdf library to be compiled with your own system configuration.
+but requires the NetCDF library to be compiled with your own system configuration.
 
 
 \subsubsection{Installation under Cygwin}
@@ -248,25 +248,31 @@ Install and build the last NetCDF version for Unix: download the latest release 
 
 \begin{itemize}
 \item Copy \url{http://www.unidata.ucar.edu/downloads/netcdf/netcdf-3_6_2/index.jsp}  into directory of your choice
-\item Unzip the folder  and type \\
-\textcom{
-./configure\\
-make check\\
+\item Unzip the folder  and type:
+\begin{lstlisting}[style=Bash]
+[charles@gher13 Software]
+./configure
+...
+make check..
+...
 make install
-}
+\end{lstlisting}
 
-\item download \textsl{Ncview} and unzip the folder
+\item download \texttt{Ncview} and unzip the folder
 \item type\\ 
-\textcom{
-./configure\\
-make\\
-make install\\
-}
+\begin{lstlisting}[style=Bash]
+[charles@gher13 Software]
+./configure
+...
+make 
+...
+make install
+\end{lstlisting}
 
 \item type \texttt{startx} (check if you have installed \texttt{Xfree}) and in the newly opened window, type\\
 \texttt{ncview name\_of\_the\_file.nc}
 
-\item if the procedure is correctly followed, you should obtain windows similar to Fig. \ref{fig:ncview}.
+\item if the procedure is correctly followed, you should obtain windows similar to Fig.~\ref{fig:ncview}.
 \end{itemize}
 
 \begin{figure}[htpb]
