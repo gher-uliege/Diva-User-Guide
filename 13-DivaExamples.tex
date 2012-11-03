@@ -8,7 +8,7 @@ A few examples with real data are described in this chapter. They can act as mod
 
 \newpage
 
-\section{Complete example with the CL version}
+\section{Complete example}
 %---------------------------------------------------
 
 We present here a complete case treated with the CL version and its additional tools.
@@ -77,6 +77,7 @@ For the present example, we will use a subset of data contained in the MEDAR dat
 \subsection{Parameters fit}
 %------------------------------
 
+\index{Correlation length}
 Type \command{divafit} to have a first guess of the parameters $\snr$ and $L$. You will get the output files \texttt{covariance.dat}, \file{covariancefit.dat} and  \file{paramfit.dat}  (shown hereafter). 
 
 The first file contains distances between points, the covariance and the number of data couples used to estimate the covariance; the second file contains the distance between points, the data-covariance and the fitted covariance. 
@@ -123,6 +124,7 @@ Then simply copy the new contour into the \texttt{input} directory:\\
 \subsection{Mesh creation}
 %------------------------------
 
+\index{Mesh}
 Simply type \command{divamesh} to perform the mesh generation. All the parameters needed by \diva are contained in \file{coast.cont}, \file{param.par} and \file{coast.cont.dens} if you work with a non-uniform mesh.
 %
 %
@@ -146,12 +148,13 @@ Simply type \command{divamesh} to perform the mesh generation. All the parameter
 \end{figure}
 
 
-\subsection{Generalized Cross Validation}
+\subsection{Generalisxed Cross Validation}
 %-------------------------------------
 
-Generalized Cross Validation (GCV) provides you with improved estimates of parameters (see Chapter~\ref{chap:analysisparameters} for a detailed description of the method). You need to provide an input file \texttt{gvcsampling.dat} (see example file \ref{gcvsampling}) containing a list of values for the signal-to-noise ratio on which you want to try the estimator.
+\index{Generalised cross validation}
+GCV provides you with improved estimates of parameters (see Chapter~\ref{chap:analysisparameters} for a detailed description of the method). You need to provide an input file \file{gvcsampling.dat} (see example file \ref{gcvsampling}) containing a list of values for the signal-to-noise ratio on which you want to try the estimator.
 
-Type \command{divagcv} to perform the GCV on these values. Optimal values for the parameters are given in \texttt{gcvsnvar.dat} (example file \ref{gcvsnvar}). You can then modify \texttt{param.par} (example file \ref{paramfileCL2}) according to these values before performing an analysis. Note that in our example we also modified parameters for the output grid to have a analysis with a better resolution.
+Type \command{divagcv} to perform the GCV on these values. Optimal values for the parameters are given in \file{gcvsnvar.dat} (example file \ref{gcvsnvar}). You can then modify \file{param.par} (example file \ref{paramfileCL2}) according to these values before performing an analysis. Note that in our example we also modified parameters for the output grid to have a analysis with a better resolution.
 
 
 \begin{exfile}[H]
@@ -227,14 +230,14 @@ If zero, no error fields are produced. If one, relative errors are obtained
 \begin{figure}[htpb]
 \centering
 \includegraphics[width=.75\textwidth]{medar_analysis}
-\caption{Analyzed salinity field with the parameters from \texttt{divagcv}.\label{analysisCL1}}
+\caption{Analyzed salinity field with the parameters from \command{divagcv}.\label{analysisCL1}}
 \end{figure}
 
 
 \begin{figure}[htpb]
 \centering
 \includegraphics[width=.75\textwidth]{medar_error}
-\caption{Error field and data locations with the parameters from \texttt{divagcv}.\label{errorCL1}}
+\caption{Error field and data locations with the parameters from \command{divagcv}.\label{errorCL1}}
 \end{figure}
 
 
@@ -287,7 +290,7 @@ We present hereinafter a complete example for this type of interpolation.
 \subsection{Creation of the contour}
 %------------------------------------
 
-Generally the contour generation is easier in this case, since the transect cannot cross islands. Let us consider a transect that follows the track presented on Fig.\ref{fig:data}. The first step is to extract topography, which acts as a boundary of our domain. Methods for getting a topography are detailed in Section~\ref{sec:howtotopo}. For the horizontal axes, we worked with the distance computed with respect to the starting position of the cruise. Other choices are possible, \textit{i.e.} degrees of longitude or latitude, distance from a reference point\ldots
+Generally the contour generation is easier in this case, since the transect cannot cross islands. Let us consider a transect that follows the track presented on Fig.\ref{fig:data}. The first step is to extract topography, which acts as a boundary of our domain. Methods for getting a topography are detailed in Section~\ref{sec:howtotopo}. For the horizontal axes, we worked with the distance computed with respect to the starting position of the cruise. Other choices are possible, i.e., degrees of longitude or latitude, distance from a reference point\ldots
 
 \begin{figure}[htpb]
 \centering
@@ -327,6 +330,8 @@ Generally the contour generation is easier in this case, since the transect cann
 
 %As a first try we want to work with the correlation length provided by the tool \texttt{divafit}, but the tool is not able to provide us with a value of the correlation length because of the difference in length scales.
 
+
+\index{Mesh}
 Since in physical oceanography, vertical length scales (100-1000\,m) are much smaller than horizontal length scales (100-1000\,km), an improvement is  made if we take into account this anisotropy. To this end we need estimates of $L_{x}$ and $L_{y}$, the horizontal and vertical length scales, respectively.
 
 
@@ -398,12 +403,12 @@ The track of the cruise (Fig. \ref{fig:transectprofiles}) follows a trajectory o
 \subsection{Contour creation}
 %-------------------------
 
-We have to convert degrees of longitude into kilometers to be coherent with the units, since the depth cannot be expressed in degrees. To this end, we used \matlab\,function \texttt{distance}, which calculates the \textit{great circle distances} between two points on the surface of a sphere.  
+We have to convert degrees of longitude into kilometres to be coherent with the units, since the depth cannot be expressed in degrees. To this end, we used \matlab function \file{distance.m}, which calculates the \textit{great circle distances} between two points on the surface of a sphere.  
 
 \subsubsection{Extraction of topography}
 %------------------------------------
 
-We extract topography with the help of \matlab\, function  \texttt{m\_tbase}, which uses $5-$minute TerrainBase database. But any other source of topography suits.
+We extract topography with the help of \matlab function  \file{m\_tbase.m}, which uses $5-$minute TerrainBase database. But any other source of topography suits.
 				
 \begin{figure}[H]
 \centering
@@ -424,9 +429,9 @@ We extract topography with the help of \matlab\, function  \texttt{m\_tbase}, wh
 \subsubsection{Computation of length scales}
 %----------------------------------------
 
-Similarly to the previous case, we compute horizontal and vertical length scales in order to take into account the domain anisotropy. Fig. \ref{fig:anisotropy} illustrates the difference between horizontal and vertical scales, as we represented the data within the domain with axes graduated in kilometers.
+Similarly to the previous case, we compute horizontal and vertical length scales in order to take into account the domain anisotropy. Fig. \ref{fig:anisotropy} illustrates the difference between horizontal and vertical scales, as we represented the data within the domain with axes graduated in kilometres.
 
-For $L_x$ and $L_y$, the same definitions as in Sec. \ref{sec:meshscale} are used. We find
+For $L_x$ and $L_y$, the same definitions as in Section~\ref{sec:meshscale} are used. We find
 
 \beqn
 L_x &=& 156.76\,km, \\
@@ -437,7 +442,7 @@ L_y &=& 204.40\,m, \\
 \begin{figure}[htpb]
 \centering
 \includegraphics[width=.75\textwidth]{anisotropy}
-\caption{Data with axes in kilometers.\label{fig:anisotropy}}
+\caption{Data with axes in kilometres.\label{fig:anisotropy}}
 \end{figure}
 
 
@@ -445,11 +450,12 @@ L_y &=& 204.40\,m, \\
 \subsubsection{Computation of correlation length}
 %---------------------------------------------
 
+\index{Correlation length}
 Correlation length is estimated with the help of \texttt{divafit}, which gives us:
 
 \[L=0.433\,km.\]
 
-We generate the mesh (Fig.\ref{fig:trans_mesh}) with this value.
+We generate the mesh (Fig.~\ref{fig:trans_mesh}) with this value.
 
 \begin{figure}[H]
 \centering
@@ -469,7 +475,7 @@ We generate the mesh (Fig.\ref{fig:trans_mesh}) with this value.
 %to specify where we want the output. 
 
 To be coherent with the scaling we made with the contour, we also have to consider scaled coordinates when specifying the output locations. 
-Working in this coordinate system, we carry out an analysis with the following values (in kilometers):
+Working in this coordinate system, we carry out an analysis with the following values (in kilometres):
 
 \beqn
 \texttt{xori} &=& 0\\
@@ -478,19 +484,19 @@ Working in this coordinate system, we carry out an analysis with the following v
 \texttt{dy} &=& 0.002,\\
 \eeqn
 
-which gives us a  $809\, \times\, 299$ point grid. Results are presented on Figs. \ref{fig:transectanalysis} and \ref{fig:transanalysiszoom}
+which gives us a  $809\, \times\, 299$ point grid. Results are presented on Figs.~\ref{fig:transectanalysis} and \ref{fig:transanalysiszoom}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.75\textwidth]{TransAtlant_analysis2}
-\caption{Analyzed field.\label{fig:transectanalysis}}
+\caption{Analysed field.\label{fig:transectanalysis}}
 \end{figure}
 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.75\textwidth]{TransAtlant_analysis_zoom2}
-\caption{Analyzed field between 500 m and sea surface.\label{fig:transanalysiszoom}}
+\caption{Analysed field between 500 m and sea surface.\label{fig:transanalysiszoom}}
 \end{figure}
 
 
@@ -500,6 +506,7 @@ which gives us a  $809\, \times\, 299$ point grid. Results are presented on Figs
 %-----------------------------------------
 
 
+\index{Advection}
 In this example, data points are located on a regular grid with alternate values of $-1$ and $+1$. An analysis with isotropic OI yields the field shown in Fig.~\ref{fig:medregiso}: we obtain a pattern of alternating circular isolines on the whole domain (land is treated as it was sea). The analysis with \diva shows the influence of coastlines, as differences between the two cases are more obvious near coasts (Fig \ref{fig:medregtopo}).  
 
 \begin{figure}[H]
@@ -521,7 +528,7 @@ In this example, data points are located on a regular grid with alternate values
 }
 \end{figure}
 
-An illustration of the advection constraint is also presented: the velocity field is shown in Fig. \ref{fig:medsea_vel} and the analysis produces the field of Fig. \ref{fig:medsea_adv}.
+An illustration of the advection constraint is also presented: the velocity field is shown in Fig.~\ref{fig:medsea_vel} and the analysis produces the field of Fig. \ref{fig:medsea_adv}.
 
 \begin{figure}[H]
 \centering

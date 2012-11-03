@@ -34,7 +34,7 @@ The fit yields the value $L=1.42^{\circ}$ ($\simeq$ 160~km).
 
 \section{Determination of the signal-to-noise ratio}
 %---------------------------------------------------
-
+\index{Signal-to-noise ratio}
 Once the correlation length is determined, the next step is to estimate the signal-to-noise ratio. 
 
 \subsection{Generalities}
@@ -132,9 +132,10 @@ To avoid this inconvenience, the solution is to calculate the difference of the 
 Variants of OCV take out several points at once to calculate error estimates and repeat the exercise several times to make estimates robust.  In \diva this options are available in \command{divacvrand}. A variant is \command{divacvclasses} in which all data from a given class (e.g. specific year) are set aside and the analysis compared to.
 
 
-\subsection{Generalized Cross Validation (GCV)}
+\subsection{Generalised cross validation (GCV)}
 %----------------------------------------------
 
+\index{Generalised cross validation}
 According to \citet{CRAVEN78}, modifying the error estimate as follows:
 
 \begin{equation}
@@ -208,7 +209,7 @@ Defining the diagonal matrix $\matr{W} = \diag(w_i)$, the generalized cross vali
 \label{eq:gcvbis}
 \end{equation}
 
-where the weights should, according to \eqref{eq:rcondition} satisfy
+where the weights should, according to \eqref{eq:rcondition}, satisfy
 
 \begin{equation}
 \sum_i \frac{1 }{w_i} = N.
@@ -223,6 +224,7 @@ The $\tilde{w}_i$ are the values provided as optional fourth column in \file{dat
 \section{Quality control (QC) of data\label{secdivaqc}}
 %------------------------------------------------------
 
+\index{Quality control}
 Having defined the generalized cross validator, we look for a criterion that will allow the user to reject or accept a given data. Note that this QC is performed based on the analysis itself and shall be preceded by an a priori QC on the data (e.g., range of values, gradients, etc). 
 
 \subsection{Quality criteria}
@@ -282,7 +284,6 @@ Hence we can detect points qualified as outliers if they satisfy the inequality
 \end{equation}
  
 This normalized version of quality control to some extent corrects for inaccurate estimation of the expected misfits $\Delta$.
-
 
 
 

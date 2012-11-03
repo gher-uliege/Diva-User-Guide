@@ -5,9 +5,9 @@ The input files required by \diva for simple 2-D analysis are described here.
 Basically, only three files are needed as input:
 
 \begin{enumerate}
-\item a file containing the data (\texttt{data.dat})
-\item the specification of the domain of analysis (\texttt{coast.cont}) and 
-\item the list of the parameters used during the analysis (\texttt{param.par}).
+\item a file containing the data (\file{data.dat})
+\item the specification of the domain of analysis (\file{coast.cont}) and 
+\item the list of the parameters used during the analysis (\file{param.par}).
 \end{enumerate}
 
 
@@ -50,12 +50,10 @@ List of all \command{diva*} with small description of action associated and clas
 Note that \command{dv*} are normally not to be used directly by users but are exploited by the main \diva scripts \command{diva*}.
 
 
-
-
-
 \section{Contour\label{contourdiva}}
 %--------------------------------------
 
+\index{Contours}
 The contour file (\file{coast.cont}) delimits the region where the analysis has to be performed, i.e., it specifies the boundary between land and sea. The file is defined this way:
 \begin{enumerate}
 \item The first line indicates the number of contours ($M$) in the region of interest.
@@ -100,6 +98,7 @@ In realistic application, the contours are more complex: they have more sub-cont
 \section{Data\label{sec:dataformat}}
 %----------------
 
+\index{Data}
 The data file (\file{data.dat}) contains three (or four) columns: 
 \begin{enumerate}
 \item the $x-$coordinate (usually the longitude, but can also be an horizontal distance in $km$, or any coordinate).
@@ -139,6 +138,7 @@ The data file (\file{data.dat}) contains three (or four) columns:
 \section{Parameters\label{sec:param.par}}
 %-------------------------------------------
 
+\index{Parameters}
 The file \file{./input/param.par} determines the main analysis parameters and options of \diva. A clear understanding of is essential for a proper use of the software. A description of each parameter is provided below the example file.
 
 \begin{exfile}[htpb]
@@ -179,7 +179,7 @@ The file \file{./input/param.par} determines the main analysis parameters and op
 \subsection{\texttt{Lc}}
 % ------------------------
 
-The global correlation length used for the analysis (see Section~\ref{sec:parammeaning} for the physical meaning). It has to be defined as a real positive number. 
+The global correlation length \index{Correlation length} used for the analysis (see Section~\ref{sec:parammeaning} for the physical meaning). It has to be defined as a real positive number. 
 
 \subsection{\texttt{icoordchange}\label{sec:icoord}}
 %---------------------------------------------------
@@ -204,7 +204,7 @@ Four base-values specify the required error outputs:\\
 \hphantom{\texttt{ispec}}  = 2\qquad: errors at data locations;\\
 \hphantom{\texttt{ispec}}  = 4\qquad: errors at locations listed in \file{valatxy.coord}.
 
-Then you can combine these four values to obtain several error outputs:
+Then you can combine these four values to obtain several error outputs: \index{Error}
 
 \examples\\
 \texttt{ispec}             = 3 (=1+2)\hphantom{+4} \qquad \begin{minipage}[t]{.7\textwidth}means you want gridded error field as well as errors at data locations;\end{minipage}\\ 
@@ -247,7 +247,7 @@ Exclusion value: value used to fill the output matrix when a point corresponds w
 \subsection{\texttt{snr}}
 %---------------------------
 
-Signal-to-noise ratio of the whole dataset (Section~\ref{sec:formulation}). It has to be defined as a real positive number (as the correlation length).
+Signal-to-noise ratio of the whole dataset (Section~\ref{sec:formulation}). It has to be defined as a real positive number (as the correlation length).\index{Signal-to-noise ratio}
 
 \subsection{\texttt{varbak}}
 %------------------------------
@@ -277,7 +277,7 @@ If there are more than two columns, columns 3 and higher are not used.
 
 For 2 dimension analysis, the main working directory is \directory{divastripped}. Inside it, we have:
 \begin{lstlisting}[style=Bash]
-[charles@gher13 divastripped]$ tree -d -L 2
+[charles@gher13 divastripped] tree -d -L 2
 .
 |-- divawork
 |   `-- sub
@@ -301,5 +301,4 @@ For 2 dimension analysis, the main working directory is \directory{divastripped}
 \item[\directory{input}] contains the input files presented in this section.
 \item[\directory{divawork}] is the working directory for the mesh generation.
 \item[\directory{output}] contains the analysis results. In \directory{ghertonetcdf}, one can find the output in NetCDF format (file \file{results.nc}), while \directory{meshvisu} stores the files that describe the mesh.
->>>>>>> .r3008
 \end{description}

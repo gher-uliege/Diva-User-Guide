@@ -14,7 +14,7 @@ This chapter is dedicated to the description of these programs, in order to allo
 The Fortran programs are sorted according to their purpose: 
 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 Fortran]$ tree -d -L 1
+[charles@gher13 Fortran] tree -d -L 1
 .
 |-- Calc
 |-- Extensions
@@ -195,6 +195,8 @@ In the code, \texttt{xori} and \texttt{yori} are defined by $x_i=$ \texttt{xori}
 
 \subsection[NetCDF output]{NetCDF output [\directory{src/Fortran/NC}]}
 
+
+\index{NetCDF}
 Three files allow getting an output in NetCDF format:\\ 
 \file{netcdfoutputfield.f}, \file{netcdfoutputerror.f}, \file{netcdfoutput.f}. 
 
@@ -207,7 +209,7 @@ The two first routines write the analysed and the error fields in two different 
  .5\\
 100\\
 100
-\caption{GridInfo.dat}
+\caption{\file{GridInfo.dat}}
 \end{exfile}
 
 

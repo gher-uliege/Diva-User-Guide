@@ -11,6 +11,7 @@ We present problems encountered by users and when possible, the solution for sol
 \subsection{Where can I get the latest \diva version?}
 %--------------------------------------------------
 
+\index{Download}
 The latest stable version if available at \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/DIVA#How_to_get_the_code.3F}. 
 
 %Another possibility is to check the page \url{http://modb.oce.ulg.ac.be/viewsvn/}, which contains the svn repository.
@@ -18,7 +19,7 @@ The latest stable version if available at \url{http://modb.oce.ulg.ac.be/mediawi
 \subsection{What value for parameter \texttt{ireg }should I choose for a semi-normed analysis}
 %----------------------------------------------------------------------------------------------
 
-
+\index{Semi-normed analysis}
 The best option is to choose \texttt{ireg} = 0.
 
 
@@ -61,7 +62,7 @@ Where does it come from: This problem arises from the fact that you request the 
 \subsubsection{\answer}
 %--------------------------------------
 Internally \diva makes some coordinates changes and therefore roundings on boundary positions. The decision of a point falls in the domain or not can therefore be very sensitive
-to rounding if you place a request for analysis "exactly" on the boundary. In real situations, this very rarely happens, but when you use synthetic test cases, use contours and analysis points which do not coincide (look at \file{divatest} how the contour is made to avoid falling on the grid points of the analysis).
+to rounding if you place a request for analysis "exactly" on the boundary. In real situations, this very rarely happens, but when you use synthetic test cases, use contours and analysis points which do not coincide (look at \command{divatest} how the contour is made to avoid falling on the grid points of the analysis).
 
 
 
@@ -69,8 +70,8 @@ to rounding if you place a request for analysis "exactly" on the boundary. In re
 \subsection{How can one create monthly analysis where the reference field is the annual analysis?}
 %----------------------------------------------------------------------------------------------
 
-
-The latest version of \command{divaanom} is able to use an existing reference field. This field should be present as a binary file in the output directory with the name \texttt{fieldgher.anl.ref}, and the \texttt{GridInfo.dat} file should be present in \texttt{output/ghertonetcdf/} directory.
+\index{Background field}
+The latest version of \command{divaanom} is able to use an existing reference field. This field should be present as a binary file in the output directory with the name \file{fieldgher.anl.ref}, and the \file{GridInfo.dat} file should be present in \directory{output/ghertonetcdf/} directory.
 
 An execution of \command{divaanom} will provide you with \texttt{data.dat} which contains anomalies with respect to your reference field (annual analysis in this case). Then you can work with \texttt{data.dat} as usual. 
 
@@ -80,7 +81,7 @@ In summary the steps to follow are:
 
 \begin{enumerate} 
 \item apply \command{divadress} to the annual data (after the optimisation of the parameters),
-\item copy the output \texttt{fieldgher.anl} with the name \texttt{fieldgher.anl.ref},
+\item copy the output \file{fieldgher.anl} with the name \file{fieldgher.anl.ref},
 \item for each month:
 \begin{enumerate}
 \item copy the corresponding data file into the input directory,
@@ -110,7 +111,7 @@ Along with the description of the problem, if possible, add the input files that
 \subsection{How can I run \diva on a multi-processor machine?}
 %------------------------------------------------------------
 
-The best option is to copy the whole directory \texttt{divastripped} in the directory in which it is located, but with a different name (\textit{e.g.} \texttt{divastripped2}, or \texttt{divastripped\_username1}). The you can run \diva analysis separately in these directories. 
+The best option is to copy the whole directory \directory{divastripped} in the directory in which it is located, but with a different name (\textit{e.g.} \directory{divastripped2}, or \directory{divastripped\_username1}). The you can run \diva analysis separately in these directories. 
 
 
 \begin{figure}[htpb]
@@ -231,7 +232,7 @@ Then use script \command{divacompile} to get the new executables (see Sec. \ref{
 \subsection{Undefined references to NetCDF routines\label{sec:error_netcdf}}
 %------------------------------------------------------------------------------------------------
 
-
+\index{NetCDF}
 \begin{figure}[htpb]
 \centering
 \includegraphics[width=.80\textwidth]{error_netcdf}
@@ -347,7 +348,7 @@ Same as problem \ref{sec:error_resource}.
 \subsection{Problem with contour generation}
 %------------------------------------------
 
-See Fig. \ref{error:cont}.
+See Fig.~\ref{error:cont}.
 
 \begin{figure}[htpb]
 \centering
@@ -371,7 +372,7 @@ parameter(nm=5000000)
 \subsubsection{Additional information}
 %----------------------------------
 
-As the default value of \texttt{nm} is already large, you may also consider working with a topography with lower resolution. This should avoid the creation of of a great number of very small contours (\textit{e.g.} Fig. \ref{fig:smallcont}), which will not necessarily add quality to your analysis.
+As the default value of \texttt{nm} is already large, you may also consider working with a topography with lower resolution. This should avoid the creation of of a great number of very small contours (e.g. Fig.~\ref{fig:smallcont}), which will not necessarily add quality to your analysis.
 
 
 \begin{figure}[htpb]
@@ -407,14 +408,14 @@ The most frequent reason is that the \texttt{param.par} file has been modified d
 \begin{figure}[htpb]
 \centering
 \includegraphics[width=.80\textwidth]{error_parampar}
-\caption{File \texttt{param.par} resulting from an interruption of \command{divagcv}.\label{fig:errorparampar}}
+\caption{File \file{param.par} resulting from an interruption of \command{divagcv}.\label{fig:errorparampar}}
 \end{figure}
 
 \subsubsection{\answer}
 %--------------------------------------
 
 
-Simply edit \textsc{param.par} to write the correct values of \texttt{nx} and \texttt{ny}, then run again \command{divacalc} (or \command{divadress}) to have an analysis on the desired grid.
+Simply edit \file{param.par} to write the correct values of \texttt{nx} and \texttt{ny}, then run again \command{divacalc} (or \command{divadress}) to have an analysis on the desired grid.
 
 
 
@@ -505,7 +506,7 @@ This problem was observed when decimal numbers were written with commas instead 
 \subsubsection{\answer}
 %--------------------------------------
 
-Simply convert the decimal separator (\textit{e.g.} using the commands described in the beginning of Chap. \ref{chap:general}).
+Simply convert the decimal separator (e.g. using the commands described in the beginning of Chapter~\ref{chap:general}).
 
 
 \subsubsection{Additional information}
@@ -528,7 +529,7 @@ in the scripts employing \texttt{awk}.
 
 \section{Older Problems}
 
-The following problems should not appear anymore in the latest version of \diva. Should you encounter them, please let use know.
+The following problems should not appear any more in the latest version of \diva. Should you encounter them, please let use know.
 
 %--------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -564,15 +565,15 @@ The analysed fields has stripes of $NaN$ values.
 \begin{figure}[htpb]
 \centering
 \includegraphics[width=.45\textwidth]{error_stripes}\includegraphics[width=.45\textwidth]{error_stripes3}
-\caption{Examples of \diva outputs with random zones of $NaN$. \label{fig:error_stripes}}
+\caption{Examples of \diva outputs with random zones of $NaN$.\label{fig:error_stripes}}
 \end{figure}
 
 \subsubsection{\question}
 %--------------------------------------
 
-This problem comes from a too aggressive optimisation to create executable \texttt{diva.a}, although during the compilation, no warning or error was detected.  
+This problem comes from a too aggressive optimisation to create executable \texttt{diva.a}, although during the compilation, no warning or error was issued.  
 
 \subsubsection{\answer}
 %--------------------------------------
 
-This problem has been fixed in latest version of \diva. However, if you are still using older versions and get this kind of outputs, you can avoid them by changing the compilation flags and compile the source again. The recommended change is to use \texttt{'-O0'} flags instead of \texttt{'-O3'} (optimization flags) when compiling the sources located in the \texttt{Fortran/Calc/} directory.
+This problem has been fixed in latest version of \diva. However, if you are still using older versions and get this kind of outputs, you can avoid them by changing the compilation flags and compile the source again. The recommended change is to use \texttt{'-O0'} flags instead of \texttt{'-O3'} (optimization flags) when compiling the sources located in the \directory{Fortran/Calc/} directory.

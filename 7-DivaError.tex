@@ -14,7 +14,8 @@ The analysis performed with the optimised parameters should have the lowest glob
 \item the noise on the data: the more uncertainties we have on the data, the higher will be the error field.
 \end{enumerate}
 
-OI (Sections~\ref{sec:OImethod}) allows the simultaneous derivation of analysis and error fields:
+
+OI (Sections~\ref{sec:OImethod}) \index{OI} allows the simultaneous derivation of analysis and error fields:
 \be
 e^{2}(\mathbf{r}) = \sigma^{2}(\mathbf{r})-\transp{\mathbf{g}(\mathbf{r})}\mathbf{D}^{-1}  \mathbf{g}(\mathbf{r}),
 \label{eq:erroroi}
@@ -37,7 +38,7 @@ To circumvent the main problems (unknown covariance function and repeated analys
 \subsection{The hybrid approach}
 %-------------------------------
 
-In this approach, \citet{BRANKART98} and \citet{RIXEN00} proposed a heuristic statistical error expression for the VIM: in \diva, error fields are calculated by analogy with OI: since analysis in OI is equivalent to analysis with VIM (insofar as the reproducing Kernel of VIM and the covariance function of OI are identical) and since error field of OI equals analysis of covariance fields, error field of VIM equals analysis (by VIM) of covariance fields.
+In this approach, \citet{BRANKART98} and \citet{RIXEN00} proposed a heuristic statistical error expression for the VIM: in \diva, error fields are calculated by analogy with OI: since analysis in OI is equivalent to analysis with VIM (insofar as the reproducing Kernel of VIM and the covariance function of OI are identical) and since error field of OI equals analysis of covariance fields, error field of VIM equals analysis (by VIM) of covariance fields.\index{VIM}
 
 Mathematically, according to the developments of Section~\ref{sec:OImethod}, we have:
 
@@ -49,7 +50,7 @@ Mathematically, according to the developments of Section~\ref{sec:OImethod}, we 
 \end{align}
 
 In practice, the data input of the analysis tool for an error calculation is a vector containing the
-covariance of data points ($\mathbf{g}(\mathbf{r})$) with the point in which the error estimate is to be calculated. The covariance vector to be analysed is calculated using the correlation function (or Kernel) $\mathbf{c}$ of an infinite domain in terms of the Bessel function as shown in \eqref{kernelfunction}:
+covariance of data points ($\mathbf{g}(\mathbf{r})$) with the point in which the error estimate is to be calculated. The covariance vector to be analysed is calculated using the correlation function (or Kernel\index{Kernel function}) $\mathbf{c}$ of an infinite domain in terms of the Bessel function as shown in \eqref{kernelfunction}:
 \begin{equation}
 e^{2}(\mathbf{r})   = \sigma^{2}(\mathbf{r})-\sigma^{2}(\mathbf{r}) \underbrace{\mathbf{T_{1}}(\mathbf{r})\mathbf{K}^{-1} \mathbf{T_{2}}(\mathbf{r})}_{(\star\star)}		\mathbf{c}(\mathbf{r})
 \label{eq:kernelbessel}

@@ -10,7 +10,7 @@ This chapter shows how additional dynamical constraints (advection, diffusion, s
 \section{Adding advection to the cost function}
 %---------------------------------
 
-Activating an advection constraint on the tracers is done by adding a term to the norm of the field $\varphi$ \eqref{divaformula2}, leading to
+Activating an advection \index{Advection}constraint on the tracers is done by adding a term to the norm of the field $\varphi$ \eqref{divaformula2}, leading to
 
 \begin{equation}
 \tilde{J}= J(\varphi) + \frac{\theta}{U^2 L^2} \int_{\tilde{D}}\left[
@@ -69,7 +69,7 @@ where $s_i$ are the shape functions of the element
 \subsection{Advection alone}
 %------------------------------
 
-Fig. \ref{fig:solidrot} shows an example of a single data point in\, $(0.7,60)$ with unit value in a solid 
+Figure~\ref{fig:solidrot} shows an example of a single data point in\, $(0.7,60)$ with unit value in a solid 
 rotation (centred in $(0,60)$). In the absence of diffusion, up and downwind are identical (covariance 
 counts).
 
@@ -83,7 +83,7 @@ rotation. \label{fig:solidrot}}
 \end{figure}
 
 
-Without advection (Fig. \ref{fig:norot}), the across velocity scale remains and isotropy is 
+Without advection (Fig.~\ref{fig:norot}), the across velocity scale remains and isotropy is 
 recovered (except for boundary effect on the right side).
 
 \begin{figure}[H]
@@ -115,7 +115,7 @@ along front and keeps across front correlation length.
 \subsection{Advection and diffusion}
 %--------------------------------------
 
-Adding diffusion makes possible the distinction between up and downwind 
+Adding diffusion \index{Diffusion} makes possible the distinction between up and downwind 
 direction (Fig.~\ref{fig:solidrotp}): in this case, higher values are found upwind of the data 
 location: this is natural, because the data is observed and \diva tries to 
 infer the field that explains the sample. This requests higher values 
@@ -168,7 +168,7 @@ The advection constraint therefore allows any known anisotropy in the correlatio
 %--------------------------------------
 \section{Adding linear sink(s) and local source(s)}
 %--------------------------------------
-
+\index{Sinks and sources}
 With the more complete equation
 
 \begin{equation}
@@ -444,4 +444,3 @@ and we call \command{divadetrend 3}, columns \texttt{8 5 7} will be used in this
 
 % For the 3-D version, pack data of all layers in one file with separation by valex valex valex. (same for analysis): No, since loop 3D, direct access to files without fort.* involvement? On the other hand, in 2-D better to stick with old approach. 
 % Check if hierarchical approach is well implemented, seems so, with additional zero average of trends? 
->>>>>>> .r3008

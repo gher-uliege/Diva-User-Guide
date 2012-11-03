@@ -233,7 +233,8 @@ Look into \file{dvdv2diva.f} in \directory{./src/Fortran/Util/} how to write suc
 \section{Creation of contours\label{sec:contourgen}}
 %-------------------------------------------------
 
-As seen in first chapter, a relevant asset of \diva is the fact that it takes into account real coastlines and topography of the region of interest. We explain hereinafter the techniques to produce a correct coastline file, of which the description is provided in Sec.  \ref{contourdiva}.
+\index{Contours}
+As seen in first chapter, a relevant asset of \diva is the fact that it takes into account real coastlines and topography of the region of interest. We explain hereinafter the techniques to produce a correct coastline file, of which the description is provided in Section~\ref{contourdiva}.
 
 
 \subsection{By hand}
@@ -241,7 +242,7 @@ As seen in first chapter, a relevant asset of \diva is the fact that it takes in
 
 The first possibility is to build your file \textit{by hand}: having at your disposal the location of different points of the coast (longitude, latitude), simply create a file containing $M$ contours, with the $i-th$ contour having being made up of $N_{i}$ points ($i=1,2,\ldots, N$). 
 
-Be aware that some cases (Fig. \ref{divaprob}) are to be avoided, since problems arise during the mesh generation when crossings occur in the contour. Also note that, as contours are automatically closed by \diva, the segment joining the first and the last points may generate errors. 
+Be aware that some cases (Fig.~\ref{divaprob}) are to be avoided, since problems arise during the mesh generation when crossings occur in the contour. Also note that, as contours are automatically closed by \diva, the segment joining the first and the last points may generate errors. 
 
 
 \begin{figure}[H]
@@ -292,6 +293,7 @@ Contours for the specified depths are showed on Fig. \ref{fig:contourdepth}.
 \subsection{Using ODV}
 %---------------------
 
+\index{Ocean Data View}
 Tool \command{divacoa2cont} allows converting ODV-format coastlines to \diva-format coastlines. Simply copy coastline file in the \directory{input} directory with the name \file{coast.coa} along with a \file{param.par} file and type \command{divacoa2cont} in the shell. 
 
 This provides you the new file \file{./input/coast.cont}.
@@ -315,6 +317,7 @@ Two key parameters have to be adjusted before running an analysis: the correlati
 \subsection{\command{divafit} \label{sec:divafit}}
 %------------------------------------------------
 
+\index{Correlation length}
 The script \command{divafit}: uses the data (\file{./input/data.dat}) for a direct fitting of the covariance function (see Section~\ref{sec:kernel}). Note that the fit needs a sufficiently large data set.
 
 \subsubsection{Command description}
@@ -351,6 +354,7 @@ Finally, file \file{param.par.fit} is the original \file{param.par} file except 
 \subsection{\command{divagcv}}
 %-------------------------------
 
+\index{Signal-to-noise ratio}\index{Generalised cross validation}
 The script \command{divagcv} exploits \diva module (\texttt{gcvfac}), analysing random fields to assess the generalized cross validator (GCV, see Chapter~\ref{chap:analysisparameters} for theoretical developments). The script \command{divagcv} is an example of how to minimize the estimator by changing the signal-to-noise ratio ($\snr$) value, but could be adapted to optimize other parameters as well, such as correlation length.
 
 Input to the module is the number of random estimates required (the larger the value, the more robust the estimator). Default value is 5, unless you change in \command{divacalc}. The user has to provide an input file \file{./input/gvcsampling.dat} containing the list of values for $\snr$ on which to try the estimator (typically around the values provided by \command{divafit}).
@@ -429,6 +433,7 @@ When you want to know to which correspond the data present in the input director
 \subsection{\command{divacck}}
 %-----------------------------
 
+\index{Contours}
 \command{divacck} checks your initial contour file \file{./output/coast.cont}. In output \file{./\-output/\-coast.cont\-.checked} you will find a thinned contour based on the length scale, where the possible couples of identical points are eliminated.
 
 Application of \command{divacck} is normally not necessary if you created the contours with \command{divacont}.

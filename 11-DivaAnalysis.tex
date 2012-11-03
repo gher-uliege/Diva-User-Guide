@@ -24,6 +24,8 @@ The simplest procedure to carry out an analysis with \diva is using the command 
 \subsection{\command{divamesh}}
 %-----------------------------
 
+\index{Finite-elements}
+\index{Mesh}
 Generates the finite-element mesh based on contour(s) specified in file \file{coast.cont} and correlation length provided in \file{param.par}; remember that the correlation length shall have an appropriate value in order to obtain a correct mesh:
 \begin{itemize}
 \item Contour segments should not be much smaller than finite element length; if your contour is too fine, the tool \command{divacck} can be used in order to reduce the contour resolution.
@@ -121,13 +123,14 @@ As the mesh generation is often the most time-consuming part of a \diva executio
 \item \file{fieldascii.anl} and \file{errorfieldascii.anl} are the same as \file{fieldgher.anl} and \file{errorfieldgher.anl}, but in \texttt{ascii} format;
 \item \file{valatxyascii.anl} and \file{erroratxyascii.anl} give respectively the values of the analysis and the error fields at the points specified in file \file{valatxy.coord};
 \item \file{fieldatdatapoint.anl} and \file{erroratdatapoint.anl} are respectively the analysis and error fields computed at the data points (\textit{i.e.} the points from \file{data.dat});
-\item \file{results.nc} (located in \directory{./output/ghertonetcdf}) is a NetCDF file containing the gridded analysis and error fields (provided error calculation is switched on).
+\item \file{results.nc} (located in \directory{./output/ghertonetcdf}) is a NetCDF \index{NetCDF} file containing the gridded analysis and error fields (provided error calculation is switched on).
 \end{itemize}
 
 
 \section{Quality control of data}
 %--------------------------------
 
+\index{Quality control}
 According to theoretical developments of Chapter~\ref{chap:analysisparameters}, quality control with \diva can be performed using to one of the three criteria \eqref{eq:qc1}, \eqref{eq:qc2} or \eqref{eq:qc3}, respectively implemented in \diva with \command{diva\-qc}, \command{diva\-qc\-bis} and \command{diva\-qc\-ter}. 
 
 
@@ -154,6 +157,7 @@ By default, the criterion used in \command{divadress} is \command{divaqcbis}, bu
 \section{Running a semi-normed analysis}
 %---------------------------------------
 
+\index{Semi-normed analysis}
 A semi-normed analysis consists of four steps:
 \begin{enumerate}
 \item create a so-called \textit{reference field}, which will act as background field (Section~\ref{sec:gridding});
@@ -231,6 +235,7 @@ installation check, compiler option testing or checking of new versions)
 \section{Analysis with advection constraint activated}
 %---------------------------------------------------
 
+\index{Advection}
 The input files needed for such analysis are the same as for a basic analysis, except that you need to provide a velocity (or pseudo-velocity) field, specified through the following files:
 \begin{itemize}
 \item \file{Uvel.dat} and \file{Vvel.dat}, which contain the two components of the velocity. They have the same format (binary) as \file{fieldgher.anl}. An example of generation of such files is in the test case {\tt advectiontest}.
@@ -282,7 +287,6 @@ The input files needed for such analysis are the same as for a basic analysis, e
 
 In this example, we work on a region $[-1,1]\, \times\, [59,61]$ with $L=0.2$ and $\lambda=1$.
  
-
 With no coordinate change (i.e., \texttt{icoordchange=0} in \file{param.par}), coordinates are taken as such and
 a single point in the center leads to an analysis that is circular when axes on $x$ and $y$ are drawn with equal scales (Fig.~\ref{fig:nocoord}).
 
