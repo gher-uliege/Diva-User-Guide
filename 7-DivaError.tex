@@ -1,6 +1,6 @@
 \chapter{Error computation\label{chap:error}}
-\vspace*{-1cm}
-\lettrine[lines=2, loversize=-0.1, lraise=0.1]{T}{his} chapter presents the different methods that allows the computation of the error field associated to the analysis.  
+
+This chapter presents the different methods for computing the error field associated to the analysis, as well as the error resulting from the calculation of the integral of a field over a domain.
 
 \minitoc
 
@@ -252,6 +252,8 @@ itself is then just a sum of the values at the grid points covering the integrat
 grid-cell surface. Hence we do not consider here the additional approximation brought by replacing a continuous integral by
 a discrete sum. Indeed, generally the output grid is fine compared to the scales of interest
 and the sum can be considered an "exact" integral. Hence, we will focus here on the error on a discrete sum of the analysed field.
+
+An application of this theory is found in \citet{YARI12}, where the authors estimate transports through the Strait of Otranto (Adriatic Sea) using \diva and the calculation of integrals.
 
 \subsection{Theory}
 %------------------
