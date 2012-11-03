@@ -17,11 +17,18 @@ We present here a complete case treated with the CL version and its additional t
 \subsection{Preparation of the input files\label{prep}}
 %-----------------------------------------------------
 
-To perform an analysis with the CL version, you will need: a contour file (\file{coast.cont}), a data file (\file{data.dat}), a list of run parameters (\file{param.par}) and the locations of the points where you want to know the value of the analysed field (\file{valatxy.coord}). Examples of these files are given in Chapter~\ref{chap:general}.
+To perform an analysis, you will need:
+\begin{itemize}
+\item a contour file (\file{coast.cont}),
+\item a data file (\file{data.dat}), 
+\item a list of run parameters (\file{param.par}) and 
+\item the locations of the points where you want to know the value of the analysed field (\file{valatxy.coord}).
+\end{itemize}
+Examples of these files are given in Chapter~\ref{chap:general}.
 
-What we recommend is to create a new directory (let us call it \texttt{case1}) for each case you will treat and within this directory, two sub-directories name input and output. The four input files are then placed in \texttt{case1/input/}. 
+We recommend to create a new directory (let us call it \directory{case1}) for each case you will treat and within this directory, two sub-directories name input and output. The four input files are then placed in \directory{case1/input/}. 
 
-Let us assume that you created \texttt{case1} in diva-\divaversion. To copy them into the \texttt{diva\-stripped/\-input} directory, use the command: 
+Let us assume that you created \directory{case1} in \directory{\textasciitilde/Examples/}. To copy them into the \directory{diva\-stripped/\-input/} directory, use the command: 
 
 \vspace{.25cm}
 
@@ -70,7 +77,7 @@ For the present example, we will use a subset of data contained in the MEDAR dat
 1
 \end{verbatim}
 \end{footnotesize}
-\caption{First version of \texttt{param.par}\label{paramfileCL}}
+\caption{First version of \file{param.par}\label{paramfileCL}}
 \end{exfile}
 
 
@@ -78,11 +85,11 @@ For the present example, we will use a subset of data contained in the MEDAR dat
 %------------------------------
 
 \index{Correlation length}
-Type \command{divafit} to have a first guess of the parameters $\snr$ and $L$. You will get the output files \texttt{covariance.dat}, \file{covariancefit.dat} and  \file{paramfit.dat}  (shown hereafter). 
+Type \command{divafit} to have a first guess of the parameters $\snr$ and $L$. You will get the output files \file{covariance.dat}, \file{covariancefit.dat} and  \file{paramfit.dat}  (shown hereafter). 
 
 The first file contains distances between points, the covariance and the number of data couples used to estimate the covariance; the second file contains the distance between points, the data-covariance and the fitted covariance. 
 
-In \texttt{paramfit.dat}, you will find estimates for the correlation length $L$ and for the signal-to-noise ratio $\snr$. You can replace the old values of $\snr$ and $L$ in \texttt{param.par} by the new ones from \texttt{paramfit.dat}.
+In \file{paramfit.dat}, you will find estimates for the correlation length $L$ and for the signal-to-noise ratio $\snr$. You can replace the old values of $\snr$ and $L$ in \file{param.par} by the new ones from \file{paramfit.dat}.
 
 If you want the new $L$ value to be automatically replaced, type \command{divafit -r}.
 
@@ -98,7 +105,7 @@ Correlation length (in degrees latitude)
  For information: correlation length in km is  308.738007
 \end{verbatim}
 \end{footnotesize}
-\caption{\texttt{paramfit.dat}}
+\caption{\file{paramfit.dat}}
 \end{exfile}
 
 
@@ -106,7 +113,7 @@ Correlation length (in degrees latitude)
 \subsection{Contour checking}
 %--------------------------------
 
-If you want to check the contour file you want to use to generate the mesh, type \command{divacck}. The output \texttt{coast.cont.checked} is a thinned contour based on the length scale.
+If you want to check the contour file you want to use to generate the mesh, type \command{divacck}. The output \file{coast.cont.checked} is a thinned contour based on the length scale.
 
 %\begin{figure}[htpb]
 %\centering
@@ -117,7 +124,7 @@ If you want to check the contour file you want to use to generate the mesh, type
 %}
 %\end{figure}
 
-Then simply copy the new contour into the \texttt{input} directory:\\
+Then simply copy the new contour into the \directory{input} directory:\\
 \command{cp ./output/coast.cont.checked ./input/contour.cont}\\
 
 
@@ -169,7 +176,7 @@ Type \command{divagcv} to perform the GCV on these values. Optimal values for th
 100
 \end{verbatim}
 \end{footnotesize}
-\caption{\texttt{gvcsampling.dat}. \label{gcvsampling}}
+\caption{\file{gvcsampling.dat}. \label{gcvsampling}}
 \end{exfile}
 
 
@@ -180,7 +187,7 @@ Type \command{divagcv} to perform the GCV on these values. Optimal values for th
   68.7858658   2.05896711
 \end{verbatim}
 \end{footnotesize}
-\caption{\texttt{gcvsnvar.dat}. \label{gcvsnvar}}
+\caption{\file{gcvsnvar.dat}. \label{gcvsnvar}}
 \end{exfile}
 
 
@@ -219,7 +226,7 @@ If zero, no error fields are produced. If one, relative errors are obtained
 2.05896711
 \end{verbatim}
 \end{footnotesize}
-\caption{Adapted version of \texttt{param.par}\label{paramfileCL2}}
+\caption{Adapted version of \file{param.par}\label{paramfileCL2}}
 \end{exfile}
 
 \subsection{Analysis}
@@ -347,10 +354,7 @@ L_{y} &=& 55\,m,\\
 	r   &=& 0.0125.
 \end{eqnarray*}
 
-
-
-
-We then compute the length scale with the help of \texttt{divafit} and generate a new mesh, showed on Fig. \ref{fig:mesh}. 
+We then compute the length scale with the help of \command{divafit} and generate a new mesh, showed on Fig.~\ref{fig:mesh}. 
 
 \begin{figure}[H]
 \centering
@@ -361,14 +365,14 @@ We then compute the length scale with the help of \texttt{divafit} and generate 
 \subsubsection{Use of negative \texttt{icoordchange}}
 %-------------------------------------------
 
-A more direct way to do the previous operation consists in changing the value of \texttt{icoord\-change} in file \texttt{param.par}: by assigning a negative value to this parameter, we apply a scaling on the $x$ coordinate (Sec. \ref{sec:icoord}). In the present case we would put\, \texttt{icoordchange = -0.0125}. Then the classical \diva operations can be done.
+A more direct way to do the previous operation consists in changing the value of \texttt{icoord\-change} in file \file{param.par}: by assigning a negative value to this parameter, we apply a scaling on the $x$ coordinate (Sec. \ref{sec:icoord}). In the present case we would put\, \texttt{icoordchange = -0.0125}. Then the classical \diva operations can be done.
 
 
 
 \subsection{Analysis}
 %--------------------
 
-Once the mesh is created, the analysis is straightforward. The only thing to be aware of is the specification of the domain in file \texttt{param.par}: as we worked with scaled coordinates when generating the mesh, we have to do the same when specifying \texttt{x/yorigin} and \texttt{dx/y}. After the analysis, we may simply multiply the $x$ coordinate by $r$ to recover the original values. The results are presented on Fig. \ref{fig:analysis}.  
+Once the mesh is created, the analysis is straightforward. The only thing to be aware of is the specification of the domain in file \file{param.par}: as we worked with scaled coordinates when generating the mesh, we have to do the same when specifying \texttt{x/yorigin} and \texttt{dx/y}. After the analysis, we may simply multiply the $x$ coordinate by $r$ to recover the original values. The results are presented on Fig. \ref{fig:analysis}.  
 
  
 \begin{figure}[htpb]
@@ -451,7 +455,7 @@ L_y &=& 204.40\,m, \\
 %---------------------------------------------
 
 \index{Correlation length}
-Correlation length is estimated with the help of \texttt{divafit}, which gives us:
+Correlation length is estimated with the help of \command{divafit}, which gives us:
 
 \[L=0.433\,km.\]
 

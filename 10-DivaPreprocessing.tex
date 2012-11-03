@@ -278,7 +278,7 @@ As an illustration, we want to have contours from surface to a depth of \mbox{10
 \caption{contour.depth\label{contourdepth}}
 \end{exfile}
 
-Contours for the specified depths are showed on Fig. \ref{fig:contourdepth}.
+Contours for the specified depths are showed on Fig.~\ref{fig:contourdepth}.
 
 
 \begin{figure}[htpb]
@@ -287,7 +287,7 @@ Contours for the specified depths are showed on Fig. \ref{fig:contourdepth}.
 \includegraphics[width=.33\textwidth]{Ghir_contour_0}\includegraphics[width=.33\textwidth]{Ghir_contour_500}\includegraphics[width=.33\textwidth]{Ghir_contour_1000}\\
 \includegraphics[width=.33\textwidth]{Ghir_contour_1500}\includegraphics[width=.33\textwidth]{Ghir_contour_2000}\includegraphics[width=.33\textwidth]{Ghir_contour_2500}
 
-\caption{Contour generated every 500 m from surface to -2500 m.\label{fig:contourdepth}}
+\caption{Contour generated every 500~m from surface to -2500~m.\label{fig:contourdepth}}
 \end{figure}
 
 \subsection{Using ODV}
@@ -342,10 +342,19 @@ When dealing with very large datasets, using \command{divafit} with sub-sampling
 In output file \file{./output/paramfit.dat}, the best estimates are given and could be used as parameter values for running \diva.
 Estimates of the correlation length are rather robust while those of the signal-to-noise ratio are neither precise nor robust, especially for large values.
 
-Output file \file{covariance.dat} is the data-based covariance function (column 1: distance between points, columns 2: covariance, column 3: number of data couples used to estimate the covariance). 
+Output file \file{covariance.dat} is the data-based covariance function:
+\begin{description}
+\item[column 1:] distance between points,
+\item[column 2:] covariances, 
+\item[column 3:] number of data couples used to estimate the covariance. 
+\end{description} 
 
-Output file \file{covariancefit.dat} allows looking at the fitted covariance function (column 1: distance between points, 
-column 2: data-covariance, column 3: fitted covariance).
+Output file \file{covariancefit.dat} allows looking at the fitted covariance function:
+\begin{description}
+\item[column 1:] distance between points, 
+\item[column 2:] data-covariance, 
+\item[column 3:] fitted covariance.
+\end{description} 
 
 Finally, file \file{param.par.fit} is the original \file{param.par} file except that the correlation length has been replaced by the fitted value. 
 
@@ -368,7 +377,13 @@ If a mesh already exists (in \directory{meshgenwork} directory), \command{divagc
 \subsubsection{Output files}
 %---------------------------
 
-File \file{./output/gcv.dat} contains the GCV estimator (column 1: S/N, column 2: GCV, column 3: data anomaly variance) and \file{./output/gcvsnvar.dat} the best new estimate for the S/N and \texttt{VARBAK} parameters.
+File \file{./output/gcv.dat} contains the GCV estimator:
+\begin{description}
+\item[column 1:] signal-to-noise ratio, 
+\item[column 2:] GCV,
+\item[column 3:] data anomaly variance.
+\end{description}  
+and \file{./output/gcvsnvar.dat} the best new estimate for the S/N and \texttt{VARBAK} parameters.
 
 In \file{param.par.gcv}, you find an adapted version of the original \file{param.par}.
 
@@ -388,10 +403,7 @@ In \file{param.par.gcv}, you find an adapted version of the original \file{param
 Note that in the present version (\diva-\divaversion), tools  \command{divacv} and \command{divacvrand}  
 do not adapt the error norm to include the relative weights on data. This will be introduced in the next versions.
 
-
-
-%---------------------------------------------
-
+%--------------
 \section{Misc}
 %--------------
 
@@ -422,7 +434,7 @@ The output overwrites \file{./input/data.dat} but keeps the original one in \dir
 \begin{lstlisting}[style=Bash]
 [charles@gher13 divastripped] divaload ~/DIVA/test/
 \end{lstlisting}
-will load the files from \directory{\~{}/DIVA/test/input}.
+will load the files from \directory{\textasciitilde/DIVA/test/input}.
  
 
 \btips

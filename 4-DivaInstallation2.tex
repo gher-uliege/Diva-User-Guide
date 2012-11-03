@@ -9,6 +9,8 @@
 
 \newpage
 
+
+
 \section{Requirements}
 %---------------------
 
@@ -35,7 +37,7 @@ For a quick visualization of the results, a software able to read and display th
 \section{Download and extraction of the archive}
 %-----------------------------------------
 \index{Download}
-Select a directory on your local disk (here we install in a directory \directory{\~{}/Software/}) where you want install \diva and download the archive available at \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/DIVA#How_to_get_the_code.3F}.
+Select a directory on your local disk (here we install in a directory \directory{\textasciitilde/Software/}) where you want install \diva and download the archive available at \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/DIVA#How_to_get_the_code.3F}.
 
 \begin{lstlisting}[style=Bash]
 [charles@gher13 ~]$ cd Software/
@@ -102,7 +104,7 @@ nclib=/usr/local/lib/netcdf3ifort/libnetcdf.a
 ...
 \end{verbatim}
 
-If your installation knows the \command{nc-config} command, the compiler and the options for the NetCDF library will be detected automatically during the compilation. If you want to check before compilation, type:
+If your installation knows the \command{nc-config} command, the compiler and the options for the NetCDF \index{NetCDF} library will be detected automatically during the compilation. If you want to check before compilation, type:
 \begin{lstlisting}[style=Bash]
 [charles@gher13 ~]$ nc-config --fc
 gfortran
@@ -114,7 +116,7 @@ Check the options of this command by typing \command{nc-config}, or visit the we
 
 Then run the compilation script: 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 Fortran]$ divacompileall
+[charles@gher13 Fortran] divacompileall
 \end{lstlisting}
 and check the content of the log file (\file{compilation.log}). You should obtain something similar to that:
 \begin{verbatim}
@@ -140,7 +142,7 @@ Binaries are located in directory:
 
 If the compilation failed, go in the \directory{GODIVA\_07\_2012/DIVA3D/bin/} directory and copy directly the binaries available in the sub-directories. For example for Windows with the Cygwin tool:
 \begin{lstlisting}[style=Bash]
-[charles@gher13 bin]$ cp -f cygwin/* .
+[charles@gher13 bin] cp -f cygwin/* .
 \end{lstlisting}
 
 \section{Run tests\label{sec:divatest}}
@@ -150,6 +152,7 @@ In the main working directory (\directory{GODIVA\_07\_2012/DIVA3D/divastripped})
 
 
 \subsection{Basic test}
+
 
 \command{divatest} creates basic input files (see Chapter~\ref{chap:general} for details), performs a simple \diva execution, checks if \command{awk} is appropriate and checks if the pipes are supported in your operating system (O.S.). If \command{divatest} hangs during the pipe test, it means pipes are not supported (as for some gfortran versions) and you can use a \command{CTRL-C} to exit. The analysis output can be checked using any software for reading NetCDF files. In this case we use ncview (see Chapter~\ref{chap:postprocessing} for details and installation). 
 
@@ -171,7 +174,7 @@ The results you obtain have to be similar to those of Fig.~\ref{fig:diva_test_re
 
 \command{divabigtest} creates input files to simulate a case with a large number of data and a very fine mesh. Again, the results, obtained after a few minutes, are viewable using the command:
 \begin{lstlisting}[style=Bash]
-[charles@gher13 divastripped]$ ncview output/ghertonetcdf/results.nc
+[charles@gher13 divastripped] ncview output/ghertonetcdf/results.nc
 \end{lstlisting}
 and should be close to Fig.~\ref{fig:diva_bigtest_results}.
 

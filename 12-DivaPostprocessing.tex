@@ -13,6 +13,7 @@ We consider it is up to the user to utilize his favourite drawing tools for repr
 \subsection{Gnuplot\label{sec:visugnuplot}}
 %-------------------------------------------
 
+\index{Gnuplot}
 \textsl{Gnuplot} is a free portable command-line driven interactive data and function plotting utility, available for various platforms (\url{http://www.gnuplot.info/}). We provide some routines for plotting \diva inputs and outputs (data, contour, mesh, analysis etc) with the help of this tool.
 
 \begin{tips}
@@ -58,9 +59,9 @@ Once you have downloaded it, just unzip the folder in the location of your choic
 \subsubsection{Utilization}
 %-------------------------
 
-Compile the Fortran sources (\file{forgnuplot$\cdots$ .f}) if necessary and place the executables into \texttt{./diva-\divaversion/bin.}
+Compile the Fortran sources (\file{forgnuplot*.f}) if necessary and place the executables into \directory{DIVA3D/bin/}.
 
-In directory \directory{divastripped/gnuwork/}, edit \command{divaplot} so that the \texttt{gplot} indicates the correct path to your \gnuplot\, executable.
+In directory \directory{divastripped/gnuwork/}, edit \command{divaplot} so that the \texttt{gplot} indicates the correct path to your \gnuplot executable.
 \example\\
 \begin{verbatim}
 #====================================================
@@ -69,8 +70,8 @@ gplot=/cygdrive/c/cygwin/usr/gnuplot/bin/wgnuplot.exe
 #====================================================
 \end{verbatim}
 
-From \texttt{divastripped}, after running an analysis, type \texttt{divagnu}: this will create the figures in directory \texttt{gnuwork/plots/}.
-Note that \texttt{divagnu}\, will try to create all the possible figures, even if the corresponding script was not run, \textit{e.g.} plot of outliers when no outlier detection was performed. This is why so many error messages are written on the screen, but you do not have to take them into account.
+From \directory{divastripped}, after running an analysis, type \command{divagnu}: this will create the figures in directory \directory{gnuwork/plots/}.
+Note that \command{divagnu} will try to create all the possible figures, even if the corresponding script was not run, e.g., plot of outliers when no outlier detection was performed. This is why so many error messages are written on the screen, but you do not have to take them into account.
  %necessary for the plot inside the directory \texttt{./divastripped/gnuwork}
 
 %From within gnuplot (Fig. \ref{fig:gnuplotwindows}): place yourself in the \texttt{gnuwork} directory and type:
@@ -142,7 +143,7 @@ In most of the cases, you should only edit \texttt{diva\_start.m}, where you wil
            
 \item the path of your result and plot directories:\\
 
-\texttt{dir.name} = name of your  \begin{minipage}[t]{3cm}    input/output \\  divaload/divasave \end{minipage}  directories called with\\
+\texttt{dir.name} = name of your  \begin{minipage}[t]{3cm}    input/output \\  \command{divaload}/\command{divasave} \end{minipage}  directories called with\\
 \texttt{dir.figures} = where you want figures to be saved.
 
 \item the prefix of the figure names:\\  
@@ -237,6 +238,7 @@ and can be utilized directly after installation.
 \subsection{Ncview}
 %------------------
 
+\index{Ncview}
 \textsl{Ncview} (Linux and Windows + Cygwin) is available at\\
 \url{http://meteora.ucsd.edu/~pierce/ncview_home_page.html}\\
 but requires the NetCDF library to be compiled with your own system configuration.
