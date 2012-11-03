@@ -1,6 +1,7 @@
 %DivaExamples
 \chapter{Realistic examples\label{chap:examples}}
 
+
 A few examples with real data are described in this chapter. They can act as model for users who needs to perform such kind of analysis. 
 
 \minitoc
@@ -16,7 +17,7 @@ We present here a complete case treated with the CL version and its additional t
 \subsection{Preparation of the input files\label{prep}}
 %-----------------------------------------------------
 
-To perform an analysis with the CL version, you will need: a contour file (\file{coast.cont}), a data file (\texttt{data.dat}), a list of run parameters (\texttt{param.par}) and the locations of the points where you want to know the value of the analyzed field (\texttt{valatxy.coord}). Examples of these files are given in Chap. \ref{chap:general}.
+To perform an analysis with the CL version, you will need: a contour file (\file{coast.cont}), a data file (\file{data.dat}), a list of run parameters (\file{param.par}) and the locations of the points where you want to know the value of the analysed field (\file{valatxy.coord}). Examples of these files are given in Chapter~\ref{chap:general}.
 
 What we recommend is to create a new directory (let us call it \texttt{case1}) for each case you will treat and within this directory, two sub-directories name input and output. The four input files are then placed in \texttt{case1/input/}. 
 
@@ -76,7 +77,7 @@ For the present example, we will use a subset of data contained in the MEDAR dat
 \subsection{Parameters fit}
 %------------------------------
 
-Type \command{divafit} to have a first guess of the parameters $\snr$ and $L$. You will get the output files \texttt{covariance.dat}, \texttt{covariancefit.dat} and  \texttt{paramfit.dat}  (shown hereafter). 
+Type \command{divafit} to have a first guess of the parameters $\snr$ and $L$. You will get the output files \texttt{covariance.dat}, \file{covariancefit.dat} and  \file{paramfit.dat}  (shown hereafter). 
 
 The first file contains distances between points, the covariance and the number of data couples used to estimate the covariance; the second file contains the distance between points, the data-covariance and the fitted covariance. 
 
@@ -122,7 +123,7 @@ Then simply copy the new contour into the \texttt{input} directory:\\
 \subsection{Mesh creation}
 %------------------------------
 
-Simply type \command{divamesh} to perform the mesh generation. All the parameters needed by \diva\, are contained in \texttt{coast.cont}, \texttt{param.par} and \texttt{coast.cont.dens} if you work with a non-uniform mesh.
+Simply type \command{divamesh} to perform the mesh generation. All the parameters needed by \diva are contained in \file{coast.cont}, \file{param.par} and \file{coast.cont.dens} if you work with a non-uniform mesh.
 %
 %
 %\begin{figure}[htpb]
@@ -221,7 +222,7 @@ If zero, no error fields are produced. If one, relative errors are obtained
 \subsection{Analysis}
 %-----------------
 
-\diva\, analysis is executed by typing \command{divacalc}. It not only provides the analyzed field, but also the error field if $\texttt{varbak}$ is not equal to zero. Results are presented in Figs. \ref{analysisCL1} and \ref{analysisCL1}.
+\diva analysis is executed by typing \command{divacalc}. It not only provides the analysed field, but also the error field if $\texttt{varbak}$ is not equal to zero. Results are presented in Figs.~\ref{analysisCL1} and \ref{analysisCL1}.
 
 \begin{figure}[htpb]
 \centering
@@ -242,7 +243,7 @@ If zero, no error fields are produced. If one, relative errors are obtained
 %\subsection{Quality control}
 %%%------------------------
 %
-%Three \diva\, modules are dedicated to quality control and detection of outliers. Criteria to detect outliers are presented in Sec. \ref{secdivaqc}. We tried the three modules on our dataset with the parameters taken from file \ref{paramfileCL2}.
+%Three \diva modules are dedicated to quality control and detection of outliers. Criteria to detect outliers are presented in Sec. \ref{secdivaqc}. We tried the three modules on our dataset with the parameters taken from file \ref{paramfileCL2}.
 
 
 %\begin{figure}[H]
@@ -276,9 +277,9 @@ If zero, no error fields are produced. If one, relative errors are obtained
 \section{Analysis of profiles from a cruise\label{sec:cruise}}
 %-----------------------------------------------------------------
 
-Usually \diva\, is used in horizontal planes and the coordinate system deals with longitude and latitude. One may also want to use \diva\, for interpolating data obtained during a campaign, \textit{i.e.} several profiles along a determinate trajectory. In this case, the user will work in vertical planes: $x-$coordinate will be a (curvilinear) distance and y-coordinate will be the depth.
+Usually \diva is used in horizontal planes and the coordinate system deals with longitude and latitude. One may also want to use \diva for interpolating data obtained during a campaign, i.e., several profiles along a determinate trajectory. In this case, the user will work in vertical planes: $x-$coordinate will be a (curvilinear) distance and y-coordinate will be the depth.
 
-In horizontal planes, domains are physically limited by coastlines, while in vertical planes, the boundaries will be the sea surface and the bottom. The domain will be closed by artificial vertical lines, for example lines that originate from the first and last stations of the cruise (Fig. \ref{fig:data}(b)).
+In horizontal planes, domains are physically limited by coastlines, while in vertical planes, the boundaries will be the sea surface and the bottom. The domain will be closed by artificial vertical lines, for example lines that originate from the first and last stations of the cruise (Fig.~\ref{fig:data}(b)).
 
 We present hereinafter a complete example for this type of interpolation.
 
@@ -286,7 +287,7 @@ We present hereinafter a complete example for this type of interpolation.
 \subsection{Creation of the contour}
 %------------------------------------
 
-Generally the contour generation is easier in this case, since the transect cannot cross islands. Let us consider a transect that follows the track presented on Fig.\ref{fig:data}. The first step is to extract topography, which acts as a boundary of our domain. Methods for getting a topography are detailed in Sec. \ref{sec:howtotopo}. For the horizontal axes, we worked with the distance computed with respect to the starting position of the cruise. Other choices are possible, \textit{i.e.} degrees of longitude or latitude, distance from a reference point\ldots
+Generally the contour generation is easier in this case, since the transect cannot cross islands. Let us consider a transect that follows the track presented on Fig.\ref{fig:data}. The first step is to extract topography, which acts as a boundary of our domain. Methods for getting a topography are detailed in Section~\ref{sec:howtotopo}. For the horizontal axes, we worked with the distance computed with respect to the starting position of the cruise. Other choices are possible, \textit{i.e.} degrees of longitude or latitude, distance from a reference point\ldots
 
 \begin{figure}[htpb]
 \centering
@@ -355,7 +356,7 @@ We then compute the length scale with the help of \texttt{divafit} and generate 
 \subsubsection{Use of negative \texttt{icoordchange}}
 %-------------------------------------------
 
-A more direct way to do the previous operation consists in changing the value of \texttt{icoord\-change} in file \texttt{param.par}: by assigning a negative value to this parameter, we apply a scaling on the $x$ coordinate (Sec. \ref{sec:icoord}). In the present case we would put\, \texttt{icoordchange = -0.0125}. Then the classical \diva\,operations can be done.
+A more direct way to do the previous operation consists in changing the value of \texttt{icoord\-change} in file \texttt{param.par}: by assigning a negative value to this parameter, we apply a scaling on the $x$ coordinate (Sec. \ref{sec:icoord}). In the present case we would put\, \texttt{icoordchange = -0.0125}. Then the classical \diva operations can be done.
 
 
 
@@ -414,7 +415,7 @@ We extract topography with the help of \matlab\, function  \texttt{m\_tbase}, wh
 %\subsubsection{Contour check}
 %%-------------------------
 %
-%\diva\,tool \texttt{divacck} allows us to be sure we do not have any crossing or any identical points in the domain. 
+%\diva tool \command{divacck} allows us to be sure we do not have any crossing or any identical points in the domain. 
 %
 
 \subsection{Mesh} 
@@ -499,7 +500,7 @@ which gives us a  $809\, \times\, 299$ point grid. Results are presented on Figs
 %-----------------------------------------
 
 
-In this example, data points are located on a regular grid with alternate values of $-1$ and $+1$. An analysis with isotropic OI yields the field shown in Fig. \ref{fig:medregiso}: we obtain a pattern of alternating circular isolines on the whole domain (land is treated as it was sea). The analysis with \diva\, shows the influence of coastlines, as differences between the two cases are more obvious near coasts (Fig \ref{fig:medregtopo}).  
+In this example, data points are located on a regular grid with alternate values of $-1$ and $+1$. An analysis with isotropic OI yields the field shown in Fig.~\ref{fig:medregiso}: we obtain a pattern of alternating circular isolines on the whole domain (land is treated as it was sea). The analysis with \diva shows the influence of coastlines, as differences between the two cases are more obvious near coasts (Fig \ref{fig:medregtopo}).  
 
 \begin{figure}[H]
 \centering
@@ -516,7 +517,7 @@ In this example, data points are located on a regular grid with alternate values
 \parbox{.6\textwidth}{
 \includegraphics[width=.55\textwidth]{medregtopo}
 }\parbox{.4\textwidth}{
-\caption{\diva\, (with coastal effect).\label{fig:medregtopo} }
+\caption{\diva (with coastal effect).\label{fig:medregtopo} }
 }
 \end{figure}
 
@@ -536,7 +537,7 @@ An illustration of the advection constraint is also presented: the velocity fiel
 \parbox{.6\textwidth}{
 \includegraphics[width=.55\textwidth]{medregadv}
 }\parbox{.4\textwidth}{
-\caption{\diva\, with advection (on full grid, no direct topography, but indirect 
+\caption{\diva with advection (on full grid, no direct topography, but indirect 
 via advection).\label{fig:medsea_adv}}
 }
 \end{figure}
@@ -547,7 +548,7 @@ via advection).\label{fig:medsea_adv}}
 \parbox{.6\textwidth}{
 \includegraphics[width=.55\textwidth]{medregadvtopo}
 }\parbox{.4\textwidth}{
-\caption{\diva\, with topography and advection.}
+\caption{\diva with topography and advection.}
 }
 \end{figure}
 

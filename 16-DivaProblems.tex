@@ -8,12 +8,12 @@ We present problems encountered by users and when possible, the solution for sol
 
 \section{FAQ}
 
-\subsection{Where can I get the latest \diva\,version?}
+\subsection{Where can I get the latest \diva version?}
 %--------------------------------------------------
 
-The latest stable version if available at \url{http://modb.oce.ulg.ac.be/projects/1/diva} If you already have a version installed, it is sometimes possible to update it using the packages \texttt{diva-4.x.yto4.x2.y2.source.tar.gz}, where (x,y) denotes the version you have, and (x2,y2) the version to which you will update. 
+The latest stable version if available at \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/DIVA#How_to_get_the_code.3F}. 
 
-Another possibility is to check the page \url{http://modb.oce.ulg.ac.be/viewsvn/}, which contains the svn repository.
+%Another possibility is to check the page \url{http://modb.oce.ulg.ac.be/viewsvn/}, which contains the svn repository.
 
 \subsection{What value for parameter \texttt{ireg }should I choose for a semi-normed analysis}
 %----------------------------------------------------------------------------------------------
@@ -32,7 +32,7 @@ by 10)
 these data points
 
 \item \command{divacalc}: performs a diva analysis with the parameters you put in
-param.par, on the data anomaly. This is why you should choose ireg=0: you
+\file{param.par}, on the data anomaly. This is why you should choose ireg=0: you
 are working with anomalies, thus no need to subtract any background field.
 
 \item \command{divasumup}: reconstruction of the analysed field by summing the reference
@@ -49,7 +49,7 @@ The analysed fields has points of $NaN$ values.
 \begin{figure}[htpb]
 \centering
 \includegraphics[width=.45\textwidth]{error_stripes_bound}\includegraphics[width=.45\textwidth]{error_stripes_bound_corr}
-\caption{Examples of \diva\,outputs with zones of $NaN$ at boundaries. For the right the solution to the problem was applied \label{fig:error_stripes}}
+\caption{Examples of \diva outputs with zones of $NaN$ at boundaries. For the right the solution to the problem was applied \label{fig:error_stripes}}
 \end{figure}
 
 \subsubsection{\question}
@@ -107,10 +107,10 @@ Any suggestion concerning the development of the software is welcome. Simply sen
 
 Along with the description of the problem, if possible, add the input files that generated the problem as well, so that we can run the case and check if the issue is machine-dependent. 
 
-\subsection{How can I run \diva\, on a multi-processor machine?}
+\subsection{How can I run \diva on a multi-processor machine?}
 %------------------------------------------------------------
 
-The best option is to copy the whole directory \texttt{divastripped} in the directory in which it is located, but with a different name (\textit{e.g.} \texttt{divastripped2}, or \texttt{divastripped\_username1}). The you can run \diva\,analysis separately in these directories. 
+The best option is to copy the whole directory \texttt{divastripped} in the directory in which it is located, but with a different name (\textit{e.g.} \texttt{divastripped2}, or \texttt{divastripped\_username1}). The you can run \diva analysis separately in these directories. 
 
 
 \begin{figure}[htpb]
@@ -175,7 +175,7 @@ export \texttt{PATH=\$PATH:.}
 
 End of lines in Unix and Windows files are different, and this causes problems when switching from a system to the other. Typically if you visualize a Windows-end-of-line file under Unix, you will see end of lines with the symbol \verb|^M| or \verb|\r|. When reading such files, scripts get in trouble because they expect to read numbers, but they find characters.
 
-\textbf{Note:} strange behaviours of \diva\,are often related to this topic, therefore always be aware of this possible problem before undertaking more complex actions.
+\textbf{Note:} strange behaviours of \diva are often related to this topic, therefore always be aware of this possible problem before undertaking more complex actions.
 
 \begin{figure}[htpb]
 \centering
@@ -296,7 +296,7 @@ Note that maximal allowable values for these parameters depends on your compiler
 \subsubsection{\question}
 %---------------------
 
-The memory allocation is not sufficient for the \diva\,to be executed in the case you consider. This message may appear either during the mesh generation (the required mesh is too fine considering the size of the domain) or during the resolution itself (\textit{i.e.} \command{divacalc}).
+The memory allocation is not sufficient for the \diva to be executed in the case you consider. This message may appear either during the mesh generation (the required mesh is too fine considering the size of the domain) or during the resolution itself (\textit{i.e.} \command{divacalc}).
 
 \subsubsection{\answer}
 %-------------------
@@ -433,13 +433,13 @@ Simply edit \textsc{param.par} to write the correct values of \texttt{nx} and \t
 
 The problem arises probably because you have a computer with little RAM.
 
-\diva\, uses a memory allocation for the largest problem encountered. This 
+\diva uses a memory allocation for the largest problem encountered. This 
 translates in Windows to a request of virtual memory of around 1.3Gb.
 During execution, the real memory used can be much smaller than that and 
 the problem actually fit in real memory, even if you have less than 1Gb RAM.
 
 The only problem is that if your Windows virtual memory (the swap file) 
-is not big enough, \diva\, will not execute.
+is not big enough, \diva will not execute.
 
 
 \subsubsection{\answer}
@@ -456,7 +456,7 @@ settings -> advanced -> change
 \end{verbatim}
 
 Put there a virtual memory (swap file) of 2Gb (initial and maximum) and 
-\diva\, should run. 
+\diva should run. 
 
 
 Other solution consists of recompiling with lower \texttt{nrea} value (see problem \ref{sec:error_compile}).
@@ -540,7 +540,7 @@ The value of the Jacobian determinant is zero (Fig. \ref{fig:error_jacobian}).
 \centering
 \includegraphics[width=.80\textwidth]{error_jacobian}\\
 \includegraphics[width=.80\textwidth]{error_jacobian2}
-\caption{Examples of \diva\,execution with problem with the Jacobian matrix. \label{fig:error_jacobian}}
+\caption{Examples of \diva execution with problem with the Jacobian matrix. \label{fig:error_jacobian}}
 \end{figure}
 
 \subsubsection{\question}
@@ -564,7 +564,7 @@ The analysed fields has stripes of $NaN$ values.
 \begin{figure}[htpb]
 \centering
 \includegraphics[width=.45\textwidth]{error_stripes}\includegraphics[width=.45\textwidth]{error_stripes3}
-\caption{Examples of \diva\,outputs with random zones of $NaN$. \label{fig:error_stripes}}
+\caption{Examples of \diva outputs with random zones of $NaN$. \label{fig:error_stripes}}
 \end{figure}
 
 \subsubsection{\question}
