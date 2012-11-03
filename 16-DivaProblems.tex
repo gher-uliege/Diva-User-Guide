@@ -41,6 +41,31 @@ and anomaly fields.
 \end{enumerate}
 
 
+\subsection{Analysed field with white boxes near boundaries}
+%------------------------------------------
+
+The analysed fields has points of $NaN$ values.
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.45\textwidth]{error_stripes_bound}\includegraphics[width=.45\textwidth]{error_stripes_bound_corr}
+\caption{Examples of \diva\,outputs with zones of $NaN$ at boundaries. For the right the solution to the problem was applied \label{fig:error_stripes}}
+\end{figure}
+
+\subsubsection{\question}
+%--------------------------------------
+Where does it come from: This problem arises from the fact that you request the analysis almost exactly on the boundary: 
+
+
+
+\subsubsection{\answer}
+%--------------------------------------
+Internally \diva makes some coordinates changes and therefore roundings on boundary positions. The decision of a point falls in the domain or not can therefore be very sensitive
+to rounding if you place a request for analysis "exactly" on the boundary. In real situations, this very rarely happens, but when you use synthetic test cases, use contours and analysis points which do not coincide (look at \file{divatest} how the contour is made to avoid falling on the grid points of the analysis).
+
+
+
+
 \subsection{How can one create monthly analysis where the reference field is the annual analysis?}
 %----------------------------------------------------------------------------------------------
 
@@ -359,53 +384,8 @@ As the default value of \texttt{nm} is already large, you may also consider work
 \end{figure}
  
 
-%--------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Jacobian matrix with null determinant}
-%------------------------------------------
-
-The value of the Jacobian determinant is zero (Fig. \ref{fig:error_jacobian}).
-\begin{figure}[htpb]
-\centering
-\includegraphics[width=.80\textwidth]{error_jacobian}\\
-\includegraphics[width=.80\textwidth]{error_jacobian2}
-\caption{Examples of \diva\,execution with problem with the Jacobian matrix. \label{fig:error_jacobian}}
-\end{figure}
-
-\subsubsection{\question}
-%--------------------------------------
-
-This messages comes from a problem in the mesh generation: some of the triangular elements are too deformed and generate a null value for the determinant. Then the solver cannot work, since it needs to inverse the Jacobian matrix.
-
-
-\subsubsection{\answer}
-%--------------------------------------
-
-This problem was fixed in latest versions of \diva. 
-
-
-%-------------------------------------------------------------------------------
-
-\subsection{Analysed field with white stripes}
-%------------------------------------------
-
-The analysed fields has stripes of $NaN$ values.
-
-\begin{figure}[htpb]
-\centering
-\includegraphics[width=.45\textwidth]{error_stripes}\includegraphics[width=.45\textwidth]{error_stripes3}
-\caption{Examples of \diva\,outputs with random zones of $NaN$. \label{fig:error_stripes}}
-\end{figure}
-
-\subsubsection{\question}
-%--------------------------------------
-
-This problem comes from a too aggressive optimisation to create executable \texttt{diva.a}, although during the compilation, no warning or error was detected.  
-
-\subsubsection{\answer}
-%--------------------------------------
-
-This problem has been fixed in latest version of \diva. However, if you are still using older versions and get this kind of outputs, you can avoid them by changing the compilation flags and compile the source again. The recommended change is to use \texttt{'-O0'} flags instead of \texttt{'-O3'} (optimization flags) when compiling the sources located in the \texttt{Fortran/Calc/} directory.
+%
 
 
 
@@ -546,5 +526,53 @@ Remark: in latest versions of the code, this bug was fixed by adding
 in the scripts employing \texttt{awk}.
 
 
+\section{Older Problems}
+
+The following problems should not appear anymore in the latest version of \diva. Should you encounter them, please let use know.
+
+%--------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Jacobian matrix with null determinant}
+%------------------------------------------
+
+The value of the Jacobian determinant is zero (Fig. \ref{fig:error_jacobian}).
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.80\textwidth]{error_jacobian}\\
+\includegraphics[width=.80\textwidth]{error_jacobian2}
+\caption{Examples of \diva\,execution with problem with the Jacobian matrix. \label{fig:error_jacobian}}
+\end{figure}
+
+\subsubsection{\question}
+%--------------------------------------
+
+This messages comes from a problem in the mesh generation: some of the triangular elements are too deformed and generate a null value for the determinant. Then the solver cannot work, since it needs to inverse the Jacobian matrix.
 
 
+\subsubsection{\answer}
+%--------------------------------------
+
+This problem was fixed in latest versions of \diva. 
+
+-------------------------------------------------------------------------------
+
+\subsection{Analysed field with white stripes}
+%------------------------------------------
+
+The analysed fields has stripes of $NaN$ values.
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.45\textwidth]{error_stripes}\includegraphics[width=.45\textwidth]{error_stripes3}
+\caption{Examples of \diva\,outputs with random zones of $NaN$. \label{fig:error_stripes}}
+\end{figure}
+
+\subsubsection{\question}
+%--------------------------------------
+
+This problem comes from a too aggressive optimisation to create executable \texttt{diva.a}, although during the compilation, no warning or error was detected.  
+
+\subsubsection{\answer}
+%--------------------------------------
+
+This problem has been fixed in latest version of \diva. However, if you are still using older versions and get this kind of outputs, you can avoid them by changing the compilation flags and compile the source again. The recommended change is to use \texttt{'-O0'} flags instead of \texttt{'-O3'} (optimization flags) when compiling the sources located in the \texttt{Fortran/Calc/} directory.
