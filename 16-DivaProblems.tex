@@ -42,6 +42,58 @@ and anomaly fields.
 \end{enumerate}
 
 
+\subsection{How can I use \diva in R, Matlab, IDL, Ferret or any other software}
+
+There are basically two ways:
+
+\subsubsection{a) Using special binaries and preparing {\tt fort.*} files for \diva}
+
+This approach has been taken in the incorporation of \diva into ODV and in the matlab function in \url{http://modb.oce.ulg.ac.be/mediawiki/upload/divaformatlab.zip}
+
+It requires some time (you can try to understand the matlab function so see how to prepare the files and recover results), but has the advantage that you do not need to install \diva, compilers, netCDF or cygwin. It also avoids creation of large subdirectory trees for \diva. 
+
+
+
+\subsubsection{b) Using a full \diva installation and preparation of normal \diva input files}
+
+In this case you must have installed the \diva package and have access to either directly unix shells or the cygwin shells. 
+
+You also need to prepare a shell script. You can call it whatever you want let's say \command{mydivacall} and it contains the instructions you want to execute with \diva. So typically what you would type in the command-line session when trying to make the analysis.
+
+\begin{exfile}[htpb]
+\begin{footnotesize}
+\begin{verbatim}
+#!/bin/bash
+export LC_ALL=C
+PATH=$PATH:.
+cd /home
+pwd
+echo This is a test
+echo Hello Diva world
+...
+# Then go into the divastripped directory and run the scripts you want
+\end{verbatim}
+\end{footnotesize}
+\caption{mydivacall\label{ex:mydivacall}}
+\end{exfile}
+
+
+
+Then your program has to prepare all input files exactly as for a normal \diva execution. Once this is done, your program needs to make a system call (look at the documentation of your program on how to do it). On a Unix machine you would then simply include a command like
+
+\command{call system("/home/<path>/mydivacall")}
+
+For a cygwin system it is more complicated:
+
+\command{call system("c:$\backslash$cygwin$\backslash$bin$\backslash$bash.exe --login -i -c c:/<path>/mydivacall")}
+
+Once the script execution is finished, you can read the diva output files with your program and continue to do whatever you want.
+
+
+
+
+
+
 \subsection{Analysed field with white boxes near boundaries}
 %------------------------------------------
 
