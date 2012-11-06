@@ -14,12 +14,26 @@ We consider it is up to the user to utilize his favourite drawing tools for repr
 %-------------------------------------------
 
 \index{Gnuplot}
-\textsl{Gnuplot} is a free portable command-line driven interactive data and function plotting utility, available for various platforms (\url{http://www.gnuplot.info/}). We provide some routines for plotting \diva inputs and outputs (data, contour, mesh, analysis etc) with the help of this tool.
+\textsl{Gnuplot} is a free portable command-line driven interactive data and function plotting utility, available for various platforms (\url{http://www.gnuplot.info/}). We provide some routines for plotting \diva inputs and outputs (data, contour, mesh, analysis etc) with the help of this tool. Running \command{divagnu} makes plots in \textttt{png} format. 
 
 \begin{tips}
 Plots provided by \gnuplot are made to help the user to have a quick look at the results, immediately after the execution. However, these plots are not always suitable for publications or diffusion. The user is invited to create his own post-processing tools, for example appealing to the existing Matlab routines.
 \end{tips}
 
+\begin{tips}
+If you need larger fonts, on some systems they are available and you can edit the plotting program \file{gnuwork$\backslash$divaplotall}
+and replace the driver definition by
+\begin{tiny}
+\begin{verbatim}
+echo set terminal png transparent giant font system 14 size 1920,1540 crop \#ffffff >> bidon
+\end{verbatim}
+\end{tiny}
+\end{tips}
+
+\begin{tips}
+If you do not need all plots but only a few (eg. analysis, error and coastline) of them you can edit the plotting program \file{gnuwork$\backslash$divaplotall} and replace the script line \texttt{for i in \`ls diva\_*\`} by
+\end{tips}
+\texttt{for i in diva\_analysis diva\_error diva\_coastline}
 
 \subsubsection{Installation}
 %---------------------------
