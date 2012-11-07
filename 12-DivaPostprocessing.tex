@@ -73,9 +73,10 @@ Once you have downloaded it, just unzip the folder in the location of your choic
 \subsubsection{Utilization}
 %-------------------------
 
-Compile the Fortran sources (\file{forgnuplot*.f}) if necessary and place the executables into \directory{DIVA3D/bin/}.
 
-In directory \directory{divastripped/gnuwork/}, edit \command{divaplot} so that the \texttt{gplot} indicates the correct path to your \gnuplot executable.
+Normally Fortran sources (\file{forgnuplot*.f}) have been compiled during the \diva installations and executables placed into \directory{DIVA3D/bin/}.
+
+In directory \directory{divastripped/gnuwork/}, edit \command{divaplotall}  and adapt the header so that  \texttt{gplot} indicates the correct path to your \gnuplot executable.
 \example\\
 \begin{verbatim}
 #====================================================
