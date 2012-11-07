@@ -324,8 +324,7 @@ The \texttt{diva.a} executable requires to much memory to work. This error comes
 
 \subsubsection{\answer}
 %--------------------------------------
-
-The solution is the same as case \ref{sec:error_compile}: recompile the sources after reducing the values of parameters \texttt{nrea} and \texttt{nent} in file \texttt{./src/Fortran/Calc/divainc.h}:
+First try to cancel all unnecessary tasks runing on your machine, possibly rebooting. This will clean up the system and free up ressources. If this is not sufficient, the solution is the same as case \ref{sec:error_compile}: recompile the sources after reducing the values of parameters \texttt{nrea} and \texttt{nent} in file \texttt{./src/Fortran/Calc/divainc.h}:
 \begin{verbatim}
       PARAMETER(nrea=25000000)
       PARAMETER(nent=25000000)
