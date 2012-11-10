@@ -1,7 +1,7 @@
-\chapter{Description of the input files\label{chap:general}}
+\chapter{Scripts, input files and directories\label{chap:general}}
 %-----------------------------------------------------------
 
-The input files required by \diva for simple 2-D analysis are described here. 
+This chapter starts with the description of the scripts used by \diva, then input files required for simple 2-D analysis are presented here. 
 Basically, only three files are needed as input:
 
 \begin{enumerate}
@@ -46,11 +46,48 @@ Simply type:
 \section{List of 2-D tools}
 %-------------------------
 
-List of all \command{diva*} with small description of action associated and classification (pre-processing, parameter optimisation, etc)
-Note that \command{dv*} are normally not to be used directly by users but are exploited by the main \diva scripts \command{diva*}.
+\begin{description}
+\item[divaanom:] computes the difference between the data and the provided reference field. 
+\item[divabestguess:] provides estimates for the correlation length and the signal-to-noise ratio with methods chosen according to the number od data.
+\item[divabigtest:] performs a test with a very large number of data points.
+\item[divacalc:] performs the \diva analysis.
 
+\item[divacck:] check the consistency of the initial contour file.
+\item[divaclean:] cleans up the working directories by removing \file{fort.*} files from \directory{divawork} and \directory{meshgenwork}, as well as output files from \directory{output}.
+\item[divacoa2cont:] converting ODV-format coastlines to \diva-format coastlines.
+\item[divacont:] creates the coutours from a given bathymetry and a selected depth levels.
+\item[divacont2grid :]
+\item[divacpme :]
+\item[divacv:]
+\item[divacvclasses :]
+\item[divacvrand:]
+\item[divadataclean:]
+\item[divadatacoverage:]
+\item[divadetrend :]
+\item[divadress:]
+\item[divaexerr :]
+\item[divafit:]
+\item[divagcv:]
+\item[divagcvalex:]
+\item[divagnu:]
+\item[divaguesssn :]
+\item[divaintegral:]
+\item[divaload:]
+\item[divamesh:]
+\item[divamultivar :]
+\item[divaqc:]
+\item[divaqcbis:]
+\item[divaqcter:]
+\item[divarefe:]
+\item[divasave:]
+\item[divaseminorm:]
+\item[divasnbygrid:] 
+\item[divasumup:] performs the last step of a semi-normed analysis: the sum of background field and analysed anomaly field.
+\end{description}
 
-\section{Contour\label{contourdiva}}
+\section{Input files}
+
+\subsection{Contour\label{contourdiva}}
 %--------------------------------------
 
 \index{Contours}
@@ -95,7 +132,7 @@ In realistic application, the contours are more complex: they have more sub-cont
 \end{figure}
 
 %---------------
-\section{Data\label{sec:dataformat}}
+\subsection{Data\label{sec:dataformat}}
 %----------------
 
 \index{Data}
@@ -135,7 +172,7 @@ The data file (\file{data.dat}) contains three (or four) columns:
 
 
 
-\section{Parameters\label{sec:param.par}}
+\subsection{Parameters\label{sec:param.par}}
 %-------------------------------------------
 
 \index{Parameters}
@@ -176,12 +213,12 @@ The file \file{./input/param.par} determines the main analysis parameters and op
 \end{exfile}
 
 
-\subsection{\texttt{Lc}}
+\subsubsection{\texttt{Lc}}
 % ------------------------
 
 The global correlation length \index{Correlation length} used for the analysis (see Section~\ref{sec:parammeaning} for the physical meaning). It has to be defined as a real positive number. 
 
-\subsection{\texttt{icoordchange}\label{sec:icoord}}
+\subsubsection{\texttt{icoordchange}\label{sec:icoord}}
 %---------------------------------------------------
 
 
@@ -194,7 +231,7 @@ Specifies the desired type of coordinate system:\\
                       \end{minipage}
                       
                       
-\subsection{\texttt{ispec}}
+\subsubsection{\texttt{ispec}}
 %--------------------------
 
 Four base-values specify the required error outputs:\\
@@ -224,7 +261,7 @@ A \textit{poor man's} error estimate (quick and underestimated error field, Sect
 
 Finally, adding $+10$ and multiplying \texttt{ispec} by $-1$ means that the error field is computed using the real covariance function and taking into account the boundary effects. 
 
-\subsection{\texttt{ireg}}
+\subsubsection{\texttt{ireg}}
 
 Specification of the background field which is subtracted from the data field (Section~\ref{sec:backgroundfield}).
 
@@ -232,30 +269,30 @@ Specification of the background field which is subtracted from the data field (S
 \hphantom{\texttt{ireg}}  = 1 \qquad: the data mean value is subtracted;\\
 \hphantom{\texttt{ireg}}  = 2 \qquad: the linear regression of the data (plane) is subtracted.
 
-\subsection{\texttt{xori/yori, nx/ny}}
+\subsubsection{\texttt{xori/yori, nx/ny}}
 
 \texttt{xori/yori} indicate the coordinates of the first grid point while \texttt{nx/ny} indicate the number of grid points in \texttt{x/y} directions.
 
 
 
-\subsection{\texttt{valex}}
+\subsubsection{\texttt{valex}}
 %-----------------------------
 
 Exclusion value: value used to fill the output matrix when a point corresponds with land. Any value is accepted, but the user has to ensure that the exclusion value cannot be a value obtained by the interpolation of the measurements. 
 
 
-\subsection{\texttt{snr}}
+\subsubsection{\texttt{snr}}
 %---------------------------
 
 Signal-to-noise ratio of the whole dataset (Section~\ref{sec:formulation}). It has to be defined as a real positive number (as the correlation length).\index{Signal-to-noise ratio}
 
-\subsection{\texttt{varbak}}
+\subsubsection{\texttt{varbak}}
 %------------------------------
 
 Variance of the background field. 
 
 
-\section[Additional points of analysis]{Locations of additional points where analysis is required (optional)}
+\subsection[Additional points of analysis]{Locations of additional points where analysis is required (optional)}
 %--------------------------------------------------------------------------------
 
 The file \file{valatxy.coord} is a two-column list of locations where you want the analysis to be performed (in addition to the regular grid defined in \file{param.par}).  

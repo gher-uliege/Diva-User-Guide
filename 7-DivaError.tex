@@ -118,7 +118,7 @@ Near the boundary, data points influence more easily the analysis because rigidi
 \begin{figure}[htpb]
 \centering
 \includegraphics[width=.7\textwidth,bb=66 206 510 630]{fig4_kernel_bceffect}
-\caption{Analysis in a square domain $[-5,5]\times[-5,5]$ with a point at the centre and another at $(-4.5,0)$. The signal-to-noise ratio $\snr=1$ for both cases. Note the larger analysis value near the boundary, indicating a larger background variance.
+\caption[Analysis in a square domain $[-5,5]\times[-5,5]$ with a point at the centre and another at $(-4.5,0)$.]{Analysis in a square domain $[-5,5]\times[-5,5]$ with a point at the centre and another at $(-4.5,0)$. The signal-to-noise ratio $\snr=1$ for both cases. Note the larger analysis value near the boundary, indicating a larger background variance.
 \label{fig:fig4_kernel_bceffect}}
 \end{figure} 
  
@@ -378,7 +378,7 @@ When {\tt ispec } is negative, the full covariance calculation will be used. Whe
 When called with the optional argument \texttt{-naive}, it also calculates the simple sum of the diagonal term of the analysis error variance. The error field itself is calculated with the methods specified by \texttt{ispec}. 
 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 divastripped]$ divaintegral -naive
+[charles@gher13 divastripped] divaintegral -naive
 \end{lstlisting}
 
 The output files generated are:
@@ -401,20 +401,20 @@ Note that the tool is not designed for use with the poor man's error calculation
 
 \item \texttt{gridpointlist.a} creates a list of wet points of the analysis grid. 
 
-Input: \texttt{fort.20} gridded gher file, \texttt{fort.21} corresponding to \file{GridInfo.dat}.\\ 
-Output: \texttt{fort.22} list of points with value of analysis on wet points only (\texttt{x,y,val,1,1}).
+Input: \file{fort.20} gridded gher file, \file{fort.21} corresponding to \file{GridInfo.dat}.\\ 
+Output: \file{fort.22} list of points with value of analysis on wet points only (\texttt{x,y,val,1,1}).
 
 \item \texttt{erroronintegrals.a} calculates the double sum on background covariance and prepares the pseudo-data (sum of covariances of all grid points with a  data point).
 
-Input: \texttt{fort.10} list of grid points for the integral (including third column for value of field), \texttt{fort.11} data file, \texttt{fort.5} with \texttt{scale lc datacol}.\\
-Output: \texttt{fort.14} double sum, \texttt{fort.12} pseudo-data vector.
+Input: \file{fort.10} list of grid points for the integral (including third column for value of field), \file{fort.11} data file, \file{fort.5} with \texttt{scale lc datacol}.\\
+Output: \file{fort.14} double sum, \file{fort.12} pseudo-data vector.
 \end{itemize}
 
 For exact covariance functions, 
 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 divastripped]$ divacalc -pfsum
+[charles@gher13 divastripped] divacalc -pfsum
 \end{lstlisting}
 
-is executed, which allows the use the full suite of \diva parameters (including for example advection constraint). Internally, as we need the covariance of all integral points with all integral points and data locations, we provide to {\tt divacalc -pfsum} in input "data" which are the integration points and ask in addition values in a list of points (which are the original data location).
+is executed, which allows the use the full suite of \diva parameters (including for example advection constraint). Internally, as we need the covariance of all integral points with all integral points and data locations, we provide to \command{ divacalc -pfsum} in input "data" which are the integration points and ask in addition values in a list of points (which are the original data location).
 
