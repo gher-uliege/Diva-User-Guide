@@ -344,7 +344,7 @@ and a proposed scaling for regularization constants is
 \begin{equation}
 \alpha_j = \bar{\mu}_j \sqrt{N_j}.
 \end{equation}
-This jhas been implemented.
+This has been implemented.
 
 
 
@@ -355,18 +355,13 @@ If the detrending is included in a 3-D loop, with the same groups and classes de
 \end{equation}
 where the coefficient $\beta_j^*$ regularize the trend differences between layers and where $^+$ refers to the value in the layer above and $^-$ to the layer below. Obviously, the solution of this problem will involve tridiagonal solvers. For the lowest and uppermost layer, we can simply assume a zero gradient for the trends.
 
-
-
 Similarly, the $ \beta$ can be scaled based on the two layers involved
 
 \begin{equation}
 \beta^+_j = { (\bar{\mu}^+_j N_j^+ + \bar{\mu}_j N_j) \over (N_j^++N_j) }
 \end{equation}
 
-
-This regularisation between layers is not yet implemented. Either done at 3D level or simply allow iterative 3D filtering as now but with weights $\beta$ as described here !
-
-
+This regularisation between layers is not yet implemented. Either done at 3-D level or simply allow iterative 3-D filtering as now but with weights $\beta$ as described here !
 
 
 %---------------
@@ -434,13 +429,44 @@ and we call \command{divadetrend 3}, columns \texttt{8 5 7} will be used in this
 
 \subsection{Example}
 
-\file{./examples/Trends} contains data sampled from a spatial pattern over which was added a seasonal cycle, daily cycle and inter-annual variations. Groups are years, month and hours. Look at Matlab file \file{pseudodata.m} how the data were generated and look how \command{diva\-detrend} is able to reconstruct the time variations. Also look at the analysed field, with and without detrending.
+The example located in \directory{Examples/Trends/} contains data sampled from a spatial pattern (sin-cosine structure) over which was added: 
+\begin{itemize}
+\item a seasonal cycle, 
+\item a daily cycle and 
+\item inter-annual variations.
+\end{itemize}
 
+Groups are years, month and hours. Matlab file \file{pseudodata.m} can be used to generated such a data file. The comparison between analysed field without and with detrending option is shown in Fig.~\ref{fig:detrend1}: on the left-hand side, the sin-cosine structure is visible, but perturbed by the various cycles superimposed on it. After the detrending, the structure is perfectly recovered.
+
+\begin{figure}[htpb]
+\centering
+\subfigure[]{
+\includegraphics[width=.475\textwidth,bb=136 270 504 575]{analysis_nodetrend}
+}\subfigure[]{
+\includegraphics[width=.475\textwidth,bb=136 270 504 575]{analysis_detrend}
+}
+\caption[Example of a reconstruction without and with detrending.]{Example of a reconstruction without (a) and with detrending (b). Note the difference in the color bars.\label{fig:detrend1}}
+\end{figure}
+
+Along with the field without trend, the \command{divadetrend} tool also provides the trend for each group (Fig.~\ref{fig:detrend2}).
+
+\begin{figure}[htpb]
+\centering
+\subfigure[Inter-annual]{
+\includegraphics[width=.475\textwidth,bb=100 270 490 575]{example_detrend1}
+}\subfigure[Seasonal]{
+\includegraphics[width=.475\textwidth,bb=100 270 490 575]{example_detrend2}
+}
+\subfigure[Daily]{
+\includegraphics[width=.475\textwidth,bb=100 270 490 575]{example_detrend3}
+}
+\caption{Trends obtained from the data using the detrending tool.\label{fig:detrend2}}
+\end{figure}
 
 % \subsection{Future developments}	%  = things to do!
 
 % Prepare detrending with global south-north gradient (for seasonal cycle). Use variance to diagnose which type of function?
 % Include exclusion value to avoid needing eliminating data (simply put weights zero for land points).
 
-% For the 3-D version, pack data of all layers in one file with separation by valex valex valex. (same for analysis): No, since loop 3D, direct access to files without fort.* involvement? On the other hand, in 2-D better to stick with old approach. 
+% For the 3-D version, pack data of all layers in one file with separation by valex valex valex. (same for analysis): No, since loop 3-D, direct access to files without fort.* involvement? On the other hand, in 2-D better to stick with old approach. 
 % Check if hierarchical approach is well implemented, seems so, with additional zero average of trends? 
