@@ -46,46 +46,73 @@ Simply type:
 \section{List of 2-D tools}
 %-------------------------
 
-\begin{description}
-\item[divaanom:] computes the difference between the data and the provided reference field. 
-\item[divabestguess:] provides estimates for the correlation length and the signal-to-noise ratio with methods chosen according to the number od data.
-\item[divabigtest:] performs a test with a very large number of data points.
-\item[divacalc:] performs the \diva analysis.
+\subsection{Operations on data}
 
-\item[divacck:] check the consistency of the initial contour file.
-\item[divaclean:] cleans up the working directories by removing \file{fort.*} files from \directory{divawork} and \directory{meshgenwork}, as well as output files from \directory{output}.
-\item[divacoa2cont:] converting ODV-format coastlines to \diva-format coastlines.
-\item[divacont:] creates the coutours from a given bathymetry and a selected depth levels.
-\item[divacont2grid :]
-\item[divacpme :]
-\item[divacv:]
-\item[divacvclasses :]
-\item[divacvrand:]
-\item[divadataclean:]
-\item[divadatacoverage:]
-\item[divadetrend :]
-\item[divadress:]
-\item[divaexerr :]
-\item[divafit:]
-\item[divagcv:]
-\item[divagcvalex:]
-\item[divagnu:]
-\item[divaguesssn :]
-\item[divaintegral:]
-\item[divaload:]
-\item[divamesh:]
-\item[divamultivar :]
-\item[divaqc:]
-\item[divaqcbis:]
-\item[divaqcter:]
-\item[divarefe:]
-\item[divasave:]
-\item[divaseminorm:]
-\item[divasnbygrid:] 
-\item[divasumup:] performs the last step of a semi-normed analysis: the sum of background field and analysed anomaly field.
+\begin{description}
+\item[\command{divaanom}:] computes the difference between the data and the provided reference field. 
+\item[\command{divadataclean}:] eliminates all data that fall outside the bounding box of the contours.
+\item[\command{divadatacoverage}:] 
 \end{description}
 
+
+\subsection{Parameter estimation}
+
+\begin{description}
+\item[\command{divabestguess}:] provides estimates for the correlation length and the signal-to-noise ratio with methods chosen according to the number of data.
+\item[\command{divacv}:] performs ordinary cross-validation.
+\item[\command{divacvclasses}:] performs ordinary cross-validation by setting aside all data from a given class (e.g., specific year) and comparing the analysis to them.
+\item[\command{divacvrand}:] performs cross-validation by taking out several points at once to calculate error estimates and repeat the exercise several times to make estimates robust.
+\item[\command{divafit}:] estimates the correlation length by fitting the data correlation function to the theoretical kernel. \index{Correlation length}
+\item[\command{divagcv}:] estimates the signal-to-noise ratio by performing a generalised cross-validation.\index{Signal-to-noise ratio}
+\item[\command{divagcvalex}:] 
+\item[\command{divaguesssn}:] 
+\item[\command{divasnbygrid}:] creates a grid with noise level and data weights.
+\end{description}
+
+\subsection{Contours and mesh}
+
+\begin{description}
+\item[\command{divacc}:] check the consistency of the initial contour file.
+\item[\command{divacoa2cont}:] converting ODV-format coastlines to \diva-format coastlines.
+\item[\command{divacont}:] creates the contours from a given bathymetry and a selected depth levels.
+\item[\command{divacont2grid}:] translate contours into gridded format.
+\item[\command{divamesh}:] generates the finite-element mesh.
+\end{description}
+
+\subsection{Analysis}
+
+\begin{description}
+\item[\command{divabigtest}:] performs a test with a very large number of data points.
+\item[\command{divacalc}:] performs the \diva analysis.
+\item[\command{divadetrend}:] performs an analysis with the detrending option activated.
+\item[\command{divadress}:] performs a complete analysis: cleaning (divaclean), mesh generation (divamesh), analysis (divacalc), outliers detection (divaqcbis) and outliers removal (dvoutlierclean)
+\item[\command{divaintegral}:] compute the integral of the treated variable of the considered domain.
+\item[\command{divamultivar}:] performs an analysis with the multivariate approach.
+\item[\command{divarefe}:] computes a reference field with a semi-normed analysis with an increased value for $L$.
+\item[\command{divaseminorm}:] performs an analysis with a semi-normed reference field: computes the reference field (\command{divarefe}), computes the anomalies with respect to the reference field (\command{divaanom}), makes the analysis (\command{divacalc}) and add the reference field to the obtained analysis (\command{divasumup}).
+\item[\command{divasumup}:] performs the last step of a semi-normed analysis: the sum of background field and analysed anomaly field.
+\end{description}
+
+\subsection{Quality control and error field}
+
+\begin{description}
+\item[\command{divacpme}:] computes de the clever poor man's error.
+\item[\command{divaexerr}:] advanced method to compute the exact error field.
+\item[\command{divaqc}, \command{divaqcbis}, \command{divaqcter}:] performs quality control on data (see Section~\ref{secdivaqc}).
+\end{description}
+
+\subsection{Misc}
+
+\begin{description}
+\item[\command{divaclean}:] cleans up the working directories by removing \file{fort.*} files from \directory{divawork} and \directory{meshgenwork}, as well as output files from \directory{output}.
+\item[\command{divagnu}:] prepares the plot of outputs using Gnuplot.
+\item[\command{divaload}:] load the input files from a given directory.
+\item[\command{divasave}:] saves the output files in a given directory.
+\end{description}
+
+%--------------------
 \section{Input files}
+%--------------------
 
 \subsection{Contour\label{contourdiva}}
 %--------------------------------------
