@@ -96,9 +96,9 @@ Other routines related to \diva calculation:
 
 Files related to the generation of coastlines:
 \begin{description}
-\item[\file{contourgen.f}]: check the format of an existing contour file (no repeated points, no crossing, contour not too fine).
+\item[\file{contourcheck.f}]: check the format of an existing contour file (no repeated points, no crossing, contour not too fine).
 \item[\file{contourgen.f}]: create contours based on topography;
-\item[\file{coa2conf.f}]: go from ODV \file{.coa} files (see documentation of ODV) to \diva \file{coast.cont} files, using a resolution comparable to the specified gridded output of \command{divacalc}.
+\item[\file{coa2cont.f}]: go from ODV \file{.coa} files (see documentation of ODV) to \diva \file{coast.cont} files, using a resolution comparable to the specified gridded output of \command{divacalc}.
 \end{description}
 
 Files related to mesh generation:
@@ -112,7 +112,7 @@ Files related to mesh generation:
 \subsection[Pipetest]{Pipetest [\directory{src/Fortran/Pipetest}]}
 % -----------------------------------------------------------
 
-File \file{piperw.f} checks if \textit{pipes} are supported by your \diva installation. Pipes support is automatically tested when you run \command{divatest} (Section~\ref{sec:divatest}).
+File \file{piperw.f} checks if \textit{pipes} are supported by your \diva installation. Pipes support is automatically tested when you run \command{divatest} (Section~\ref{sec:divatest}). Issues with pipes were observed with some versions of the gfortran compiler.
 
 \subsection[Utilities]{Utilities [\directory{src/Fortran/Util}]}
 % -----------------------------------------------------------

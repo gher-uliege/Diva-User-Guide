@@ -1,7 +1,7 @@
 \chapter{Problems\ldots and solutions!}
 %--------------------------------------
 
-We present problems encountered by users and when possible, the solution for solving it \footnote{If you encounter problems/bugs not presented in the following pages, please send a bug-report to one of the author with a description of the problem and a screen-capture if possible}. 
+We present problems encountered by users and when possible, the solution for solving it.
 
 \minitoc
 
@@ -16,23 +16,49 @@ The latest stable version if available at \url{http://modb.oce.ulg.ac.be/mediawi
 
 %Another possibility is to check the page \url{http://modb.oce.ulg.ac.be/viewsvn/}, which contains the svn repository.
 
+\subsection{How to report a bug or a problem?}
+
+The preferred option is to send a message to the \diva user group on google (url{}). This has two advantages over emails:
+\begin{enumerate}
+\item The questions is directly sent to all the \diva developers.
+\item The issues previously solved are archived and available for other users.
+\end{enumerate}
+
+Along with a small description of the problem, add relevant informations that would help us solving your issue:
+\begin{itemize}
+\item the version of \diva you are using,
+\item your operating system (O. S.),
+\item your options for compiling the code (check file \file{compilation.log} in directory \directory{DIVA3D/src/Fortran/}.
+\end{itemize}
+If the problem can be reproduced at the 2-D level (i.e., working in the directory \directory{divastripped}), add the input files that generated the problem as well, so that we can check if the issue is machine-dependent. 
+
+To know your O. S. you can type in the shell:
+
+\begin{lstlisting}[style=Bash]
+MacBook-Pro-de-GHER:divastripped gherulg$ uname -a
+Darwin MacBook-Pro-de-GHER.local 11.3.0 Darwin Kernel Version 11.3.0: Thu Jan 12 18:47:41 PST 2012; root:xnu-1699.24.23~1/RELEASE_X86_64 x86_64
+\end{lstlisting}
+
+\subsection{How to register to the user group?}
+
+
+
+
 \subsection{What value for parameter \texttt{ireg }should I choose for a semi-normed analysis}
 %----------------------------------------------------------------------------------------------
 
 \index{Semi-normed analysis}
 The best option is to choose \texttt{ireg} = 0.
 
-
-In fact, \command{divaseminorm} performs four operations:
+The command \command{divaseminorm} performs four operations:
 \begin{enumerate}
 \item \command{divarefe} = computing a reference fields with large value for $L$ (your
-value multiplied by 5) and low signal-to-noise ration (your value divided
-by 10)
+value multiplied by 5) and low signal-to-noise ratio (your value divided by 10)
 
-\item \command{divaanom}: difference between your data and the reference fields at
+\item \command{divaanom}: difference between your data values and the reference field at
 these data points
 
-\item \command{divacalc}: performs a diva analysis with the parameters you put in
+\item \command{divacalc}: performs a \diva analysis with the parameters you put in
 \file{param.par}, on the data anomaly. This is why you should choose ireg=0: you
 are working with anomalies, thus no need to subtract any background field.
 
@@ -48,15 +74,14 @@ There are basically two ways:
 
 \subsubsection{a) Using special binaries and preparing {\tt fort.*} files for \diva}
 
-This approach has been taken in the incorporation of \diva into ODV and in the matlab function in \url{http://modb.oce.ulg.ac.be/mediawiki/upload/divaformatlab.zip}
+This approach has been taken in the incorporation of \diva into ODV\index{Ocean Data View} and in the matlab\index{Matlab} function in \url{http://modb.oce.ulg.ac.be/mediawiki/upload/divaformatlab.zip}
 
-It requires some time (you can try to understand the matlab function so see how to prepare the files and recover results), but has the advantage that you do not need to install \diva, compilers, netCDF or cygwin. It also avoids creation of large subdirectory trees for \diva. 
-
+It requires some time (you can try to understand the matlab function to see how to prepare the files and recover the results), but has the advantage that you do not need to install \diva, compilers, netCDF or cygwin. It also avoids creation of large subdirectory trees for \diva. 
 
 
 \subsubsection{b) Using a full \diva installation and preparation of normal \diva input files}
 
-In this case you must have installed the \diva package and have access to either directly unix shells or the cygwin shells. 
+In this case you must have installed the \diva package and have access to either directly unix or cygwin shells. \index{Cygwin}
 
 You also need to prepare a shell script. You can call it whatever you want let's say \command{mydivacall} and it contains the instructions you want to execute with \diva. So typically what you would type in the command-line session when trying to make the analysis.
 
@@ -77,8 +102,6 @@ echo Hello Diva world
 \caption{mydivacall\label{ex:mydivacall}}
 \end{exfile}
 
-
-
 Then your program has to prepare all input files exactly as for a normal \diva execution. Once this is done, your program needs to make a system call (look at the documentation of your program on how to do it). On a Unix machine you would then simply include a command like
 
 \command{call system("/home/<path>/mydivacall")}
@@ -89,7 +112,7 @@ For a cygwin system it is more complicated:
 
 Once the script execution is finished, you can read the diva output files with your program and continue to do whatever you want.
 
-
+% add a link to the web page that explain that
 
 
 
@@ -97,7 +120,7 @@ Once the script execution is finished, you can read the diva output files with y
 \subsection{Analysed field with white boxes near boundaries}
 %------------------------------------------
 
-The analysed fields has points of $NaN$ values.
+The analysed fields has points of \textit{not-a-number} ($NaN$) values.
 
 \begin{figure}[htpb]
 \centering
@@ -107,7 +130,8 @@ The analysed fields has points of $NaN$ values.
 
 \subsubsection{\question}
 %--------------------------------------
-Where does it come from: This problem arises from the fact that you request the analysis almost exactly on the boundary: 
+
+This problem arises from the fact that you request the analysis almost exactly on the boundary.
 
 
 
@@ -125,7 +149,7 @@ to rounding if you place a request for analysis "exactly" on the boundary. In re
 \index{Background field}
 The latest version of \command{divaanom} is able to use an existing reference field. This field should be present as a binary file in the output directory with the name \file{fieldgher.anl.ref}, and the \file{GridInfo.dat} file should be present in \directory{output/ghertonetcdf/} directory.
 
-An execution of \command{divaanom} will provide you with \texttt{data.dat} which contains anomalies with respect to your reference field (annual analysis in this case). Then you can work with \texttt{data.dat} as usual. 
+An execution of \command{divaanom} will provide you with \file{data.dat} which contains anomalies with respect to your reference field (annual analysis in this case). Then you can work with \file{data.dat} as usual. 
 
 The last step is to apply \command{divasumup} to reconstruct the field by summing the anomaly analysis and the reference field.
 
@@ -152,18 +176,13 @@ In summary the steps to follow are:
 \subsection{How to contribute to the development?}
 %----------------------------------------------
 
-Any suggestion concerning the development of the software is welcome. Simply send a description of what improvements/tools you would like to see and we will check if this could be added to the general distribution.
+Any suggestion concerning the development of the software is welcome. Simply send a description of what improvements/tools you would like to see and we will check if this could be easily added to the general distribution.
 
-
-\subsection{How to report a problem/bug?} 
-%-------------------------------------
-
-Along with the description of the problem, if possible, add the input files that generated the problem as well, so that we can run the case and check if the issue is machine-dependent. 
 
 \subsection{How can I run \diva on a multi-processor machine?}
 %------------------------------------------------------------
 
-The best option is to copy the whole directory \directory{divastripped} in the directory in which it is located, but with a different name (\textit{e.g.} \directory{divastripped2}, or \directory{divastripped\_username1}). The you can run \diva analysis separately in these directories. 
+The best option is to copy the whole directory \directory{divastripped} in the directory in which it is located, but with a different name (e.g.,  \directory{divastripped2}, or \directory{divastripped\_username1}). The you can run \diva analysis separately in these directories. 
 
 
 \begin{figure}[htpb]
@@ -226,7 +245,7 @@ export \texttt{PATH=\$PATH:.}
 \subsubsection{\question}
 %--------------------------------------
 
-End of lines in Unix and Windows files are different, and this causes problems when switching from a system to the other. Typically if you visualize a Windows-end-of-line file under Unix, you will see end of lines with the symbol \verb|^M| or \verb|\r|. When reading such files, scripts get in trouble because they expect to read numbers, but they find characters.
+End of lines in Unix and Windows files are different, and this causes problems when switching from a system to the other. Typically if you visualize a Windows-end-of-line file under Unix, you will see end of lines with the symbol \verb|^M| or \verb|\r|. When reading such files, scripts get in trouble because they expect to read numbers, but instead they find characters.
 
 \textbf{Note:} strange behaviours of \diva are often related to this topic, therefore always be aware of this possible problem before undertaking more complex actions.
 
@@ -245,8 +264,7 @@ Working on a individual file, the command\\
 \command{dos2unix -U name\_of\_the\_file}
 
 does the conversion between Windows and Unix end of lines.
-If you have to perform the conversion on a large number of files, use the script \command{divados2unix} located in \texttt{diva-\divaversion}.
-
+When working with GODIVA, the transformation is automatically done on all the files.
 
 
 \subsection{Compilation problems\label{sec:error_compile}}
@@ -262,17 +280,17 @@ If you have to perform the conversion on a large number of files, use the script
 \subsection{\question}
 %--------------------------------------
 
-The array $S$ defined in the various programs located in \texttt{./src/Fortran/Calc/} are too large to be handled by your compiler. 
+The array $S$ defined in the various programs located in \directory{./src/Fortran/Calc/} are too large to be handled by your compiler. 
 
 
 \subsubsection{\answer}
 %--------------------------------------
 
-You need to recompile the sources after reducing the values of parameter \texttt{nrea} in file \texttt{./src/Fortran/Calc/divainc.h}:
+You need to recompile the sources after reducing the values of parameter \texttt{nrea} in file \file{./src/Fortran/Calc/divainc.h}:
 \begin{verbatim}
       PARAMETER(nrea=150000000)
 \end{verbatim}
-Then use script \command{divacompile} to get the new executables (see Sec. \ref{sec:compilation}). If you get the same error message, reduce again the value of \texttt{nrea}.
+Then use script \command{divacompile} to get the new executables (see Section~\ref{sec:compilation}). If you get the same error message, reduce again the value of \texttt{nrea}.
 
 \begin{figure}[htpb]
 \centering
@@ -294,7 +312,7 @@ Then use script \command{divacompile} to get the new executables (see Sec. \ref{
 \subsubsection{\question}
 %--------------------------------------
 
-The NetCDF library, required for compiling of \texttt{netcdf\-output.f}, \texttt{netcdf\-output\-field.f} and \texttt{netcdf\-output\-error.f}, is not compatible with your compiler, or not found by the linker.
+The NetCDF library, required for compiling of \file{netcdf\-output.f}, \texttt{netcdf\-output\-field.f} and \texttt{netcdf\-output\-error.f}, is not compatible with your compiler, or not found by the linker.
 
 \subsubsection{\answer}
 %--------------------------------------
@@ -324,7 +342,7 @@ The \texttt{diva.a} executable requires to much memory to work. This error comes
 
 \subsubsection{\answer}
 %--------------------------------------
-First try to cancel all unnecessary tasks runing on your machine, possibly rebooting. This will clean up the system and free up ressources. If this is not sufficient, the solution is the same as case \ref{sec:error_compile}: recompile the sources after reducing the values of parameters \texttt{nrea} and \texttt{nent} in file \texttt{./src/Fortran/Calc/divainc.h}:
+First try to cancel all unnecessary tasks running on your machine, possibly rebooting. This will clean up the system and free up resources. If this is not sufficient, the solution is the same as case \ref{sec:error_compile}: recompile the sources after reducing the values of parameters \texttt{nrea} and \texttt{nent} in file \file{./src/Fortran/Calc/divainc.h}:
 \begin{verbatim}
       PARAMETER(nrea=25000000)
       PARAMETER(nent=25000000)
@@ -348,7 +366,7 @@ Note that maximal allowable values for these parameters depends on your compiler
 \subsubsection{\question}
 %---------------------
 
-The memory allocation is not sufficient for the \diva to be executed in the case you consider. This message may appear either during the mesh generation (the required mesh is too fine considering the size of the domain) or during the resolution itself (\textit{i.e.} \command{divacalc}).
+The memory allocation is not sufficient for the \diva to be executed in the case you consider. This message may appear either during the mesh generation (the required mesh is too fine considering the size of the domain) or during the resolution itself (i.e., \command{divacalc}).
 
 \subsubsection{\answer}
 %-------------------
@@ -361,11 +379,11 @@ The solution is nearly the same as the previous case: you need to compile the so
 In some uncommon cases, you may not be able to find values of \texttt{nrea} and \texttt{nent} that will allow you to avoid both problems \ref{sec:error_resource} and \ref{sec:error_allocation}. In these cases, the recommended solution consists of:
 \begin{enumerate}
 \item Find the highest values of \texttt{nrea} and \texttt{nent} that allow you not to have message error \ref{sec:error_allocation};
-\item Generate a mesh with a value 3-5 times larger than the correlation length you want to use for the resolution; this can be done be simply editing file \texttt{./input/param.par}, changing the value of correlation length, and run \command{divamesh};
-\item Once the mesh is generated, edit again \texttt{param.par} and assign the correct value to the correlation length, and run an analysis with \command{divacalc}.
+\item Generate a mesh with a value 3-5 times larger than the correlation length you want to use for the resolution; this can be done be simply editing file \file{./input/param.par}, changing the value of correlation length, and run \command{divamesh};
+\item Once the mesh is generated, edit again \file{param.par} and assign the correct value to the correlation length, and run an analysis with \command{divacalc}.
 \end{enumerate}
 
-This procedure should help you to save memory otherwise used for the finite-element mesh. Working with a coarser mesh will not affect excessively your results.
+This procedure should help you to save memory otherwise used for the finite-element mesh. Working with a coarser mesh will not affect excessively your results.\index{Finite-elements}
 
 
 
@@ -410,12 +428,12 @@ See Fig.~\ref{error:cont}.
 \subsubsection{\question}
 %---------------------
 
-The number of contours created from a given topography (Sec. \ref{sec:contourtopo}) is too high. 
+The number of contours created from a given topography (Section~\ref{sec:contourtopo}) is too high. 
 
 \subsubsection{\answer}
 %-------------------
 
-Modify the first line of \texttt{contourgen.f} (located in \texttt{./src/Fortran/Mesh/}) and increase the value of \texttt{nm}:
+Modify the first line of \file{contourgen.f} (located in \directory{./src/Fortran/Mesh/}) and increase the value of \texttt{nm}:
 \begin{verbatim}
 parameter(nm=5000000)
 \end{verbatim}
@@ -453,8 +471,7 @@ After the execution of \command{divacalc}, you get very small input files, with 
 \subsubsection{\question}
 %--------------------------------------
 
-The most frequent reason is that the \texttt{param.par} file has been modified during the execution of (Generalised) Cross Validation \footnote{To save computational time \texttt{nx} and \texttt{ny} are set to $1$, since the analysis at every grid points is not necessary.} and the process was interrupted before it ends, leaving a parameter file similar to \ref{fig:errorparampar}.
-
+The most frequent reason is that the \file{param.par} file has been modified during the execution of (Generalised) Cross Validation\index{Generalised Cross Validation} and the process was interrupted before it ends, leaving a parameter file similar to \ref{fig:errorparampar}. Note that in order to save computational time, \texttt{nx} and \texttt{ny} are set to $1$, since the analysis at every grid points is not necessary.
 
 \begin{figure}[htpb]
 \centering
@@ -476,8 +493,6 @@ Simply edit \file{param.par} to write the correct values of \texttt{nx} and \tex
 
 \subsection{Windows runs out of virtual memory during diva execution}
 %------------------------------------------
-
-
 
 
 \subsection{\question}
@@ -503,15 +518,15 @@ make DIVA work you can simply increase the virtual memory of Windows by
 changing the windows settings. As administrator:\\
 
 \begin{verbatim}
-my computer right click -> properties -> advanced -> performance -> 
-settings -> advanced -> change
+my computer   right click
+ -> properties  -> advanced -> performance
+ -> settings -> advanced -> change
 \end{verbatim}
 
 Put there a virtual memory (swap file) of 2Gb (initial and maximum) and 
 \diva should run. 
 
-
-Other solution consists of recompiling with lower \texttt{nrea} value (see problem \ref{sec:error_compile}).
+Other solution consists of recompiling with lower \texttt{nrea} value (see problem~\ref{sec:error_compile}).
 
 
 
@@ -563,7 +578,7 @@ Simply convert the decimal separator (e.g. using the commands described in the b
 \subsubsection{Additional information}
 %-----------------------------------
 
-The behaviour of \texttt{awk} is susceptible to change the points into commas when used in \command{awkfilter} or other routines. To fix the problem, simply replaced
+The behaviour of \texttt{awk} is susceptible to change the points into commas when used in \command{awkfilter} or other routines. To fix the problem, simply replace
 
 \texttt{gawk}
 
@@ -578,7 +593,7 @@ Remark: in latest versions of the code, this bug was fixed by adding
 in the scripts employing \texttt{awk}.
 
 
-\section{Older Problems}
+\section{Older problems}
 
 The following problems should not appear any more in the latest version of \diva. Should you encounter them, please let use know.
 
@@ -616,7 +631,7 @@ The analysed fields has stripes of $NaN$ values.
 \begin{figure}[htpb]
 \centering
 \includegraphics[width=.45\textwidth]{error_stripes}\includegraphics[width=.45\textwidth]{error_stripes3}
-\caption{Examples of \diva outputs with random zones of $NaN$.\label{fig:error_stripes}}
+\caption{Examples of \diva outputs with random zones of $NaN$.\label{fig:error_stripes2}}
 \end{figure}
 
 \subsubsection{\question}

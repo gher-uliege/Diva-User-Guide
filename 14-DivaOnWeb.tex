@@ -93,17 +93,17 @@ The outputs are available in various formats (Fig.~\ref{fig:divaonweb6}): NetCDF
 %------------------------
 
 \index{Ocean Data View}
-Ocean Data View \citep[ODV,][]{SCHLITZER02} is a software for the analysis and visualization of oceanographic data. Among the numerous possibilities ODV, we find the production of gridded fields based on the original data. Three methods are offered \citep{SCHLITZER12}: 
+Ocean Data View \citep[ODV,][]{SCHLITZER02} is a tool for the analysis and visualization of oceanographic data. Among the numerous possibilities ODV, we find the production of gridded fields based on the original data. Three methods are offered \citep{SCHLITZER12}: 
 \begin{enumerate}
-\item Quick gridding, a weighted averaging algorithm optimized for speed, adapted for situations with millions data points.
-\item VG gridding, a more sophisticated weighted averaging algorithm.
+\item \textit{Quick gridding}, a weighted averaging algorithm optimized for speed, adapted for situations with millions data points.
+\item \textit{VG gridding}, a more sophisticated weighted averaging algorithm.
 \item \diva gridding.
 \end{enumerate}
 
 \begin{figure}[H]
 \centering 
 \includegraphics[width=.95\textwidth]{odvdiva1}
-\caption{Example of VG gridding and \diva gridding with ODV (from \citet{SCHLITZER12}).\label{fig:divaonweb6}}
+\caption{Example of VG gridding and \diva gridding with ODV (from \citet{SCHLITZER12}).\label{fig:divaodv}}
 \end{figure}
 
 \section{Matlab toolbox}
@@ -125,7 +125,7 @@ and unzip the archive:
 
 The structure is the following:
 \begin{lstlisting}[style=Bash]
-[charles@gher13 Software] tree
+[charles@gher13 Software]$ tree
 .
 |-- README
 |-- divagrid.m
@@ -150,10 +150,12 @@ Directories \directory{linux\_binaries} and \directory{windows\_binaries}
 
 The syntax \file{divagrid.m} is close to matlab \file{griddata.m} function, but has additional parameters.
 
-To run, divagrid.m must be in the matlab path as well as
-contourgen.exe
-generopt.exe
-diva.exe
+To run \diva with matlab, \file{divagrid.m} has to be in the matlab path as well as the three executables:
+\begin{itemize}
+\item \texttt{contourgen.exe}
+\item \texttt{generopt.exe}
+\item \texttt{diva.exe}
+\end{itemize}
 
 
 figures (presented in diva workshop and SDN annual meeting
