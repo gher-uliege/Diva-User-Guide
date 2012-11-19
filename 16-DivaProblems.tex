@@ -1,14 +1,14 @@
 \chapter{Problems\ldots and solutions!}
 %--------------------------------------
 
-We present problems encountered by users and when possible, the solution for solving it.
+This chapter contains a list of Frequently Asked Questions concerning many aspects of \diva as well as a list of solved issues or bugs.
 
 \minitoc
 
 
 \section{FAQ}
 
-\subsection{Where can I get the latest \diva version?}
+\subsection{Where can I find the latest version?}
 %--------------------------------------------------
 
 \index{Download}
@@ -42,30 +42,6 @@ Darwin MacBook-Pro-de-GHER.local 11.3.0 Darwin Kernel Version 11.3.0: Thu Jan 12
 \subsection{How to register to the user group?}
 
 
-
-
-\subsection{What value for parameter \texttt{ireg }should I choose for a semi-normed analysis}
-%----------------------------------------------------------------------------------------------
-
-\index{Semi-normed analysis}
-The best option is to choose \texttt{ireg} = 0.
-
-The command \command{divaseminorm} performs four operations:
-\begin{enumerate}
-\item \command{divarefe} = computing a reference fields with large value for $L$ (your
-value multiplied by 5) and low signal-to-noise ratio (your value divided by 10)
-
-\item \command{divaanom}: difference between your data values and the reference field at
-these data points
-
-\item \command{divacalc}: performs a \diva analysis with the parameters you put in
-\file{param.par}, on the data anomaly. This is why you should choose ireg=0: you
-are working with anomalies, thus no need to subtract any background field.
-
-\item \command{divasumup}: reconstruction of the analysed field by summing the reference
-and anomaly fields.
-
-\end{enumerate}
 
 
 \subsection{How can I use \diva in R, Matlab, IDL, Ferret or any other software}
@@ -106,39 +82,40 @@ Then your program has to prepare all input files exactly as for a normal \diva e
 
 \command{call system("/home/<path>/mydivacall")}
 
-For a cygwin system it is more complicated:
+For a Cygwin system it is more complicated:
 
 \command{call system("c:$\backslash$cygwin$\backslash$bin$\backslash$bash.exe --login -i -c c:/<path>/mydivacall")}
+
+%\begin{lstlisting}[style=Bash]
+%call system("c:cygwin\bin\bash.exe --login -i -c c:/<path>/mydivacall")
+%\end{lstlisting}
 
 Once the script execution is finished, you can read the diva output files with your program and continue to do whatever you want.
 
 % add a link to the web page that explain that
 
+\subsection{What value for parameter \texttt{ireg} should I choose for a semi-normed analysis}
+%----------------------------------------------------------------------------------------------
 
+\index{Semi-normed analysis}
+The best option is to choose \texttt{ireg} = 0.
 
+The command \command{divaseminorm} performs four operations:
+\begin{enumerate}
+\item \command{divarefe} = computing a reference fields with large value for $L$ (your
+value multiplied by 5) and low signal-to-noise ratio (your value divided by 10)
 
-\subsection{Analysed field with white boxes near boundaries}
-%------------------------------------------
+\item \command{divaanom}: difference between your data values and the reference field at
+these data points
 
-The analysed fields has points of \textit{not-a-number} ($NaN$) values.
+\item \command{divacalc}: performs a \diva analysis with the parameters you put in
+\file{param.par}, on the data anomaly. This is why you should choose ireg=0: you
+are working with anomalies, thus no need to subtract any background field.
 
-\begin{figure}[htpb]
-\centering
-\includegraphics[width=.45\textwidth]{error_stripes_bound}\includegraphics[width=.45\textwidth]{error_stripes_bound_corr}
-\caption{Examples of \diva outputs with zones of $NaN$ at boundaries. For the right the solution to the problem was applied \label{fig:error_stripes}}
-\end{figure}
+\item \command{divasumup}: reconstruction of the analysed field by summing the reference
+and anomaly fields.
 
-\subsubsection{\question}
-%--------------------------------------
-
-This problem arises from the fact that you request the analysis almost exactly on the boundary.
-
-
-
-\subsubsection{\answer}
-%--------------------------------------
-Internally \diva makes some coordinates changes and therefore roundings on boundary positions. The decision of a point falls in the domain or not can therefore be very sensitive
-to rounding if you place a request for analysis "exactly" on the boundary. In real situations, this very rarely happens, but when you use synthetic test cases, use contours and analysis points which do not coincide (look at \command{divatest} how the contour is made to avoid falling on the grid points of the analysis).
+\end{enumerate}
 
 
 
@@ -192,17 +169,25 @@ The best option is to copy the whole directory \directory{divastripped} in the d
 \end{figure}
 
 
+%--------------------------------------------
 \section{Error messages}
+%--------------------------------------------
+
+
 
 \subsection{"Command not found" message}
 %------------------------------------
 
+\begin{lstlisting}[style=Bash]
+MacBook-Pro-de-GHER:divastripped gherulg$ divatest
+-bash: divatest: command not found
+\end{lstlisting}
 
-\begin{figure}[htpb]
-\centering
-\includegraphics[width=.80\textwidth]{problempath}
-\caption{Error message when a command is not found.}
-\end{figure}
+%\begin{figure}[htpb]
+%\centering
+%\includegraphics[width=.80\textwidth]{problempath}
+%\caption{Error message when a command is not found.}
+%\end{figure}
 
 \subsubsection{\question}
 %--------------------------------------
@@ -231,6 +216,31 @@ export \texttt{PATH=\$PATH:.}
 
 %----------------------------------------------------------------------------------------------
 
+\subsection{Analysed field with white boxes near boundaries}
+%------------------------------------------
+
+The analysed fields has points of \textit{not-a-number} ($NaN$) values.
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.45\textwidth]{error_stripes_bound}\includegraphics[width=.45\textwidth]{error_stripes_bound_corr}
+\caption{Examples of \diva outputs with zones of $NaN$ at boundaries. For the right the solution to the problem was applied \label{fig:error_stripes}}
+\end{figure}
+
+\subsubsection{\question}
+%--------------------------------------
+
+This problem arises from the fact that you request the analysis almost exactly on the boundary.
+
+
+
+\subsubsection{\answer}
+%--------------------------------------
+
+Internally \diva makes some coordinates changes and therefore roundings on boundary positions. The decision of a point falls in the domain or not can therefore be very sensitive
+to rounding if you place a request for analysis "exactly" on the boundary. In real situations, this very rarely happens, but when you use synthetic test cases, use contours and analysis points which do not coincide (look at \command{divatest} how the contour is made to avoid falling on the grid points of the analysis).
+
+
 
 \subsection{Command-line scripts not working}
 %-----------------------------------------
@@ -245,7 +255,7 @@ export \texttt{PATH=\$PATH:.}
 \subsubsection{\question}
 %--------------------------------------
 
-End of lines in Unix and Windows files are different, and this causes problems when switching from a system to the other. Typically if you visualize a Windows-end-of-line file under Unix, you will see end of lines with the symbol \verb|^M| or \verb|\r|. When reading such files, scripts get in trouble because they expect to read numbers, but instead they find characters.
+End of lines in Unix,  Windows and Mac files are different, and this causes problems when switching from a system to the other. Typically if you visualize a Windows-end-of-line file under Unix, you will see ends of line with symbols such as \verb|^M| or \verb|\r|. When reading such files, scripts get in trouble because they expect to read numbers, but instead they find characters.
 
 \textbf{Note:} strange behaviours of \diva are often related to this topic, therefore always be aware of this possible problem before undertaking more complex actions.
 
@@ -261,10 +271,13 @@ End of lines in Unix and Windows files are different, and this causes problems w
 
 Working on a individual file, the command\\
 
-\command{dos2unix -U name\_of\_the\_file}
+\command{dos2unix  name\_of\_the\_file}
 
-does the conversion between Windows and Unix end of lines.
-When working with GODIVA, the transformation is automatically done on all the files.
+does the conversion between Windows and Unix end of lines. According to the Linux distribution, \command{dos2unix} may requires options to perfom the conversion. For example with Mandriva 2012, it is necessary to add the option \texttt{-U}:\\
+
+\command{dos2unix  -U name\_of\_the\_file}
+
+When working with GODIVA, the transformation is automatically done on all the files. \command{dos2unix} is available using the package manager, but sometimes with the name \texttt{fromdos}.
 
 
 \subsection{Compilation problems\label{sec:error_compile}}
