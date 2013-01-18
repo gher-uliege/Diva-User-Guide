@@ -9,7 +9,7 @@ This chapter describes the theory behind the \diva interpolation method and comp
 \section{The gridding problem\label{gridding}}
 %----------------------------------------------
 
-The generation of gridded fields from non-uniformly distributed observations (both in space and time) is a frequent concern in geosciences. Similarly to \citet{OOYAMA87}, we will refer to an \textit{analysis} or \textit{analysed field} as "the estimation of a continuous spatial field of a given variable from a set of discrete measurements". The range of applications is wide, going from model initializations to validation exercises  or simple plotting purposes. 
+The generation of gridded fields from non-uniformly distributed observations (both in space and time) is a frequent concern in geosciences. Similarly to \citet{OOYAMA87}, we will refer to an \textit{analysis} or \textit{analysed field} as "\textit{the estimation of a continuous spatial field of a given variable from a set of discrete measurements}". The range of applications is wide, going from model initialization to validation exercises or simple plotting purposes. 
 
 Mathematically, gridding consists in determining a field $\varphi(\mathbf{r})$ on a regular grid at positions $\mathbf{r}$, using $N_{d}$ measurements located in $\mathbf{r_{j}}, j=1,\ldots, N_{d}$ (Fig.~\ref{gridproblem}).  
 
@@ -28,13 +28,11 @@ In this chapter we consider only two-dimensional cases, but generalization can b
 \subsection{Interpolation versus approximation}
 %----------------------------------------------
 
-For solving the gridding problem, two main techniques have to be distinguished:
+For obtaining a field on a regular grid, two main techniques have to be distinguished:
 
 \begin{enumerate}
 
-\item The \textit{interpolation}, which implies a strict passage of the solution through the points of data. Physically, this means that one assumes that there is no error on the data. 
-
-% Among the methods of interpolation, let us mention: the linear, cubic, inverse distance, optimal interpolations, the \textit{kriging}, \ldots
+\item The \textit{interpolation}, which implies a strict passage of the solution through the points of data. Physically, this means that one assumes that there is no error on the data. Among the methods of interpolation, let us mention: the linear, cubic, inverse distance, optimal interpolations, the \textit{kriging}, \ldots
 
 \item The \textit{approximation} (or \textit{analysis}) provides a solution smoother than the one given by interpolation: in this case, the solution does not necessarily have to contain all the data points. The solution is close to the data points, so its shape is still influenced by the data. This technique allows taking into account errors on data, as well as to treat multiple data with different values at the same location. 
 \end{enumerate}
@@ -42,9 +40,9 @@ For solving the gridding problem, two main techniques have to be distinguished:
 \begin{figure}[htpb]
 	\centering
 	\parbox{.5\textwidth}{
-		\includegraphics[width=.35\textwidth]{approx}
+		\includegraphics[width=.35\textwidth,bb= 0 0 385 147]{approximation}
 		}\parbox{.5\textwidth}{
-		\caption[Interpolation vs. approximation.]{Interpolation provides a solution that goes across all the data points, while the approximation has only to be "close" to the measurements, but with a relative "smoothness".}
+		\caption[Interpolation vs. approximation.]{Interpolation (black line) provides a solution that goes across all the data points, while the approximation (grey line) has only to be "close" to the measurements, but with a relative "smoothness".}
 		}
 \end{figure}
 
@@ -234,7 +232,7 @@ Relatively large number of data points in each plane penalizes Optimal Interpola
 
 This is the reason why VIM resorts to the expertise in efficient finite-element solvers.
 
-\diva stands for \textit{Data-Interpolating Variational Analysis} and is the implementation of VIM. It is designed to solve 2-D differential or variational problems of elliptic type with a finite element method.
+\diva stands for \textit{Data-Interpolating Variational Analysis} and is the implementation of VIM. It is designed to solve 2-D differential or variational problems of elliptic type with a finite-element method.
 
 
 \subsection{Formulation\label{sec:formulation}}
@@ -349,12 +347,20 @@ Because the field to analyse is only defined in the water, the minimization also
 
 Thus the grid generation has to be consistent with the coasts existing in the considered region. The corresponding mathematical problem is referred to the \textit{Constrained Triangulation}. %More details about the FEM will be given in section \ref{femgrid}.
 
-To solve Eq. (\ref{divaformula}), the real domain is split into a mesh of $N_e$ finite elements:
+To solve Eq.~(\ref{divaformula}), the real domain is split into a mesh of $N_e$ triangular finite-elements (Fig.~\ref{fig:FDVelement}):
 
 \be
 J[\varphi] = \sum_{e=1}^{N_{e}}J_{e}(\varphi_{e}).
 \label{eq:split}
 \ee
+
+\begin{figure}[htpb]
+	\centering
+	\parbox{.6\textwidth}{
+		\includegraphics[width=.55\textwidth,bb= 0 0 299 165]{FDVelement}
+		}\parbox{.4\textwidth}{
+		\caption[Triangular elements used for the mesh.]{Triangular elements used for the mesh. This kind of elements are referred to as \emph{"Fraeijs de Veubeke"} elements, see \citet{BRASSEUR94} for details. One triangular element is made up of 3 sub-triangles and has a total of  12~degrees of freedom.\label{fig:FDVelement}}}
+\end{figure}
 
 In each element the solution is a combination of shape functions $\mathbf{s}$ (3$^{rd}$ order polynomials) and the continuity between elements is assured by identification of adjacent \textit{connectors}:
 
@@ -445,19 +451,21 @@ Figure~\ref{kernel1} shows both the exact solution (\ref{kernelfunction}) and th
 
 In an infinite domain, the correlation function was shown to be proportional to the Kernel of the VIM norm.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=.75\textwidth,bb=148 269 507 577]{results_test1}
-%%\includegraphics[width=.75\textwidth]{singlepointanalysis}
-\caption{Analysis of a single data point with high signal-to-noise ration and no background field.\label{singleanalysis}}
+\begin{figure}[htpb]
+	\centering
+	\parbox{.6\textwidth}{
+		\includegraphics[width=.55\textwidth,bb=148 269 507 577]{results_test1}
+		}\parbox{.4\textwidth}{
+		\caption{Analysis of a single data point with high signal-to-noise ration and no background field.\label{singleanalysis}}}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=.75\textwidth]{kernelf}
-\caption[Kernel function.]{Kernel function is given in red, while the blue curve comes from the analysis of a single point.\label{kernel1}}
+\begin{figure}[htpb]
+	\centering
+	\parbox{.6\textwidth}{
+		\includegraphics[width=.55\textwidth,bb=73 253 487 575]{kernelf}
+		}\parbox{.4\textwidth}{
+		\caption{The theoretical Kernel function is given in red, while the black curve comes from the analysis of a single point with a unit value.\label{kernel1}}}
 \end{figure}
-
 
 The Kernel function can be used to calibrate \diva parameters ($\alpha_0, \alpha_1, \mu$) so as to fit observed covariance functions. This principle is used by the tool \command{divafit} which helps one to estimate the correlation length (see Section~\ref{sec:divafit}).
 
