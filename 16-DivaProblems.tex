@@ -565,48 +565,11 @@ Simply close the application(s) that open the files of the concerned directory.
 
 
 
-\subsection{"Corrupted data file" message}
-%------------------------------------
-
-
-\begin{figure}[htpb]
-\centering
-\includegraphics[width=.80\textwidth]{corrupted_file}
-\caption{Error message during the reading of the data file.}
-\end{figure}
-
-\subsubsection{\question}
-%--------------------------------------
-
-
-This problem was observed when decimal numbers were written with commas instead of points.
-
-
-\subsubsection{\answer}
-%--------------------------------------
-
-Simply convert the decimal separator (e.g. using the commands described in the beginning of Chapter~\ref{chap:general}).
-
-
-\subsubsection{Additional information}
-%-----------------------------------
-
-The behaviour of \texttt{awk} is susceptible to change the points into commas when used in \command{awkfilter} or other routines. To fix the problem, simply replace
-
-\texttt{gawk}
-
-by
-
-\texttt{LC\_ALL=C gawk}.
-
-Remark: in latest versions of the code, this bug was fixed by adding 
-
-\texttt{export LC\_ALL=C}
-
-in the scripts employing \texttt{awk}.
 
 
 \section{Older problems}
+%------------------------
+
 
 The following problems should not appear any more in the latest version of \diva. Should you encounter them, please let use know.
 
@@ -656,3 +619,44 @@ This problem comes from a too aggressive optimisation to create executable \text
 %--------------------------------------
 
 This problem has been fixed in latest version of \diva. However, if you are still using older versions and get this kind of outputs, you can avoid them by changing the compilation flags and compile the source again. The recommended change is to use \texttt{'-O0'} flags instead of \texttt{'-O3'} (optimization flags) when compiling the sources located in the \directory{Fortran/Calc/} directory.
+
+
+\subsection{"Corrupted data file" message}
+%------------------------------------
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.80\textwidth]{corrupted_file}
+\caption{Error message during the reading of the data file.}
+\end{figure}
+
+\subsubsection{\question}
+%--------------------------------------
+
+
+This problem was observed when decimal numbers were written with commas instead of points.
+
+
+\subsubsection{\answer}
+%--------------------------------------
+
+Simply convert the decimal separator (e.g. using the commands described in the beginning of Chapter~\ref{chap:general}).
+
+
+\subsubsection{Additional information}
+%-----------------------------------
+
+The behaviour of \texttt{awk} is susceptible to change the points into commas when used in \command{awkfilter} or other routines. To fix the problem, simply replace
+
+\texttt{gawk}
+
+by
+
+\texttt{LC\_ALL=C gawk}.
+
+Remark: in latest versions of the code, this bug was fixed by adding 
+
+\texttt{export LC\_ALL=C}
+
+in the scripts employing \texttt{awk}.
