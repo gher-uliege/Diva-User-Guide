@@ -11,6 +11,8 @@ We describe in this chapter the tools to prepare the various input files present
 \index{Topography}
 Topographies are necessary in two cases: first when you work in a vertical plane and want to interpolate several profiles from a cruise; second is when you need contour files at different depths to perform analysis. We describe here two techniques to get a topography file compatible with \diva.
 
+Basically, the procedure consists in changing the format of a topography file and making it readable by \diva. The methods presented in this Section correspond to different data bases of topography. 
+
 
 \begin{center}
 \fbox{
@@ -82,7 +84,7 @@ you have your main climatological working place. Push {\tt OK} and be patient. (
 %
 %\end{enumerate}
 
-Go into Cygwin (or into Linux mode) and place yourself in the main directory of your climatology production. You should have a big {\tt topogebco.asc} file on which you can apply
+Go into Cygwin (or into Linux mode) and place yourself in the main directory of your climatology production. You should have a big \file{topogebco.asc} file on which you can apply
 
 \begin{lstlisting}[style=Bash]
 [charles@gher13 input] head -20 topogebco.asc
@@ -90,24 +92,32 @@ Go into Cygwin (or into Linux mode) and place yourself in the main directory of 
 
 to see if the file was created correctly. You also should have a \command{gebcoprep} file. If not, copy the \file{gebcoprep.example} file as \command{gebcoprep}.
 
-If you need to mask regions, edit \command{gebcoprep} and add lines as those put with {\tt \#awk} followed by {\tt \#mv bidon}. They should be self explaining and allow excluding regions that are defined by relationships between longitude and latitude. (Example: {\tt ($2 > 57.0+0.6*$1) {x=-10.} } means that regions where latitude is larger than \texttt{57+0.6*longitude} will be masked). Then execute \command{gepcoprep} and be {\bf very} patient when working on large domains. Normally you do not to repeat this step a lot of times.
+If you need to mask regions, edit \command{gebcoprep} and add lines as those put with {\tt \#awk} followed by {\tt \#mv bidon}. They should be self explaining and allow excluding regions that are defined by relationships between longitude and latitude. 
 
-Once you defined the regions to be masked in this way, execute \command{gebcoprep}. This will create a file
-\file{./input/topo.gebco}, which you can have a look at with the \command{head} command.
+\example {\tt ($2 > 57.0+0.6*$1) {x=-10.} } means that regions where latitude is larger than \texttt{57+0.6*longitude} will be masked.
+
+Once you defined the regions to be masked in this way, execute \command{gebcoprep}. When working on large domains, the computation time can be very long. However, this step has not to be repeated a lot of times. The execution of \command{gebcoprep} will create an ascii file called 
+\file{./input/topo.gebco}.
 
 Now you are ready to prepare the gridded topography \file{topo.grd} from which \diva will extract contours. To prepare it,
 copy or move \file{./input/topo.gebco} into the diva working directory to have \file{divastripped/input/topo.gebco}.
 
-The resolution of GEBCO is 1 minute. This might be much too fine for large scale analysis and you can run
-{\tt gebco2diva} with optional arguments {\tt nx ny} to make a grid using only every {\tt nx} point in $x$ direction and {\tt ny} in $y$ direction. If for example you are interested in a \diva output resolution that is working at a 100 km scale, {\tt gebco2diva 15 15} would still provide a very fine topography with respect to the scales of interest.
+The best resolution offered by GEBCO is 30-arc seconds, which might be much too fine for large scale analysis. To avoid that, run
+\command{gebco2diva} with optional arguments {\tt nx ny} to make a grid using only every {\tt nx} point in $x-$direction and {\tt ny} in $y-$direction. For example, if you are interested in a \diva output resolution that is working at a 100 km scale, \command{gebco2diva}{\tt 15 15} would still provide a very fine topography with respect to the scales of interest.
 
-Place yourself into the {\tt divastripped} directory. Once you executed {\tt gebco2diva} and a little patience for big files, you should find in {\tt divastripped/output} two files describing the gridded topography: {\tt topo.grd} and {\tt TopoInfo.data}. While the former is a binary file, the latter tells you (via {\tt cat ./output/TopoInfo.dat}) the topology of the grid.
+In the \directory{divastripped} directory, the execution if \command{gebco2diva} will generate two files in \directory{divastripped/output/} for describing the topography:
+\begin{description}
+\item[\file{topo.grd}:] a binary file containing the gridded topography.
+\item[\file{TopoInfo.dat}:] a ascii file describing the topology of the grid and similar to \file{GridInfo.dat}.
+\end{description}
+
+
+
 
 
 You can further check the two files by copying them into the {\tt divastripped/input} directory and executing {\tt divacont} and {\tt divagnu}. If results seem right, you can save the files {\tt TopoInfo.data} and {\tt topo.grd} into your main data directory, to be used with {\tt divacont} on all levels defined by {\tt contour.depth}.
 
 If everything is stable, you can erase {\tt topogebco.asc} and {\tt topo.gebco} to save disk space. 
-
 
 \begin{figure}[htpb]
 \centering
@@ -115,8 +125,77 @@ If everything is stable, you can erase {\tt topogebco.asc} and {\tt topo.gebco} 
 \caption{Topography from GEBCO one-minute topography.\label{fig:topoGebco3}}
 \end{figure}
 
-\subsection{Method 2: conversion of data from Topography Extractor\label{sec:toponavy}}
+
+\subsection{Method 2: interpolation of individual topography measurements\label{sec:topotopex}}
+%-------------------------------------------------------------------------
+
+The principle of this method is to apply a \diva analysis to a data file containing depths at various locations.
+
+\subsubsection{Get topography measurements}
+%------------------------------------------
+
+In the present example data points are extracted from \url{http://topex.ucsd.edu/cgi-bin/get_data.cgi} in the same region as the previous case ($9-12^{\circ}W\, \times\, 30-33^{\circ}N$). The output file is composed of three column: \texttt{| longitude | latitude | depth |}, i.e., the same format as \file{data.dat} files used by \diva. Once the file is downloaded, edit its name in \file{topo.dat}. Fig. \ref{fig:guirtopo} shows the individual measurements (coloured dots) in the region of interest. 
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.75\textwidth]{Ghir_topo_points}
+\caption{Individual measurements of depths.\label{fig:guirtopo}}
+\end{figure}
+
+
+\subsubsection{Adapt parameters}
+%-------------------------------
+
+As in any \diva analysis, you need to provide parameters concerning the analysis itself and the output grid (file \file{param.par}, described extensively in Section~\ref{sec:param.par}, page \pageref{sec:param.par}). 
+
+\begin{itemize}
+\item Correlation length is chosen according to the resolution of the gridded topography you extracted, i.e., the distance between two measurements.
+\item Signal-to-noise ratio is assigned with a large value (typically 100 or more).
+\item \texttt{x/yorigin} are chosen according to the region where you extracted data.
+\item \texttt{dx} and \texttt{dy} are the same as the values you use for your analysis. 
+\end{itemize}
+
+
+
+\subsubsection{Execute \command{divatopo}}
+%----------------------------------------
+
+With the two files \file{topo.dat} and \file{param.par} located in \directory{divastripped/input/}, type \command{divatopo} to launch the analysis. \command{divatopo} automatically creates a contour file according to grid parameters taken in \file{param.par}. The interpolated field is presented on Fig. \ref{fig:guirtopodiva}. Outputs \file{topo.grd} and \file{TopoInfo.dat} may then be used to generate contours (see Section~\ref{sec:contourgen}). 
+
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.75\textwidth]{Ghir_topo_topex}
+\caption{Interpolated topography.\label{fig:guirtopodiva}}
+\end{figure}
+
+
+\subsection{Method 3: by hand}
+%----------------------
+
+Create a gridded file (in the same format as the analysis fields \file{fieldgher.anl}) of topography and call
+it \file{topo.grd}. The information on the grid's geographical dimensions are to be placed in \file{TopoInfo.dat}.
+
+The grid is simply an array ($i=1,\ldots,M$) and ($j=1,\ldots,N$), where the coordinates of the grid nodes are
+$x_i=x_1+(i-1)*dx$, $y_j=y_1+(j-1)*dy$.  The file \file{TopoInfo.dat} contains simply
+\begin{verbatim}
+x1
+y1
+dx
+dy
+M
+N
+\end{verbatim}
+
+
+Look into \file{dvdv2diva.f} in \directory{./src/Fortran/Util/} how to write such files from within a Fortran code.
+
+\subsection{Deprecated method: conversion of data from Topography Extractor\label{sec:toponavy}}
 %------------------------------------------------------------------
+
+This DBDB-B topography is not available any more, hence the method described below cannot be used. It is kept in this manual for archival purposes.
 
 \subsubsection{Select your area}
 %-------------------------------
@@ -163,71 +242,6 @@ Put the \file{.asc} file into \directory{divastripped/input/} with the name \fil
 \end{figure}
 
 
-\subsection{Method 3: interpolation of individual topography measurements\label{sec:topotopex}}
-%-------------------------------------------------------------------------
-
-The principle of this method is to apply a \diva analysis to a data file containing depths at various locations.
-
-\subsubsection{Get topography measurements}
-%------------------------------------------
-
-In the present example data points are extracted from \url{http://topex.ucsd.edu/cgi-bin/get_data.cgi} in the same region as the previous case ($9-12^{\circ}W\, \times\, 30-33^{\circ}N$). The output file is composed of three column: \texttt{| longitude | latitude | depth |}, i.e., the same format as \file{data.dat} files used by \diva. Once the file is downloaded, edit its name in \file{topo.dat}. Fig. \ref{fig:guirtopo} shows the individual measurements (coloured dots) in the region of interest. 
-
-
-\begin{figure}[htpb]
-\centering
-\includegraphics[width=.75\textwidth]{Ghir_topo_points}
-\caption{Individual measurements of depths.\label{fig:guirtopo}}
-\end{figure}
-
-
-\subsubsection{Adapt parameters}
-%-------------------------------
-
-As in any \diva analysis, you need to provide parameters concerning the analysis itself and the output grid (file \file{param.par}, described extensively in Section~\ref{sec:param.par}, page \pageref{sec:param.par}). 
-
-\begin{itemize}
-\item Correlation length is chosen according to the resolution of the gridded topography you extracted, i.e., the distance between two measurements.
-\item Signal-to-noise ratio is assigned with a large value (typically 100 or more).
-\item \texttt{x/yorigin} are chosen according to the region where you extracted data.
-\item \texttt{dx} and \texttt{dy} are the same as the values you use for your analysis. 
-\end{itemize}
-
-
-
-\subsubsection{Execute \command{divatopo}}
-%----------------------------------------
-
-With the two files \file{topo.dat} and \file{param.par} located in \directory{divastripped/input/}, type \command{divatopo} to launch the analysis. \command{divatopo} automatically creates a contour file according to grid parameters taken in \file{param.par}. The interpolated field is presented on Fig. \ref{fig:guirtopodiva}. Outputs \file{topo.grd} and \file{TopoInfo.dat} may then be used to generate contours (see Section~\ref{sec:contourgen}). 
-
-
-
-\begin{figure}[htpb]
-\centering
-\includegraphics[width=.75\textwidth]{Ghir_topo_topex}
-\caption{Interpolated topography.\label{fig:guirtopodiva}}
-\end{figure}
-
-
-\subsection{Method 4: by hand}
-%----------------------
-
-Create a gridded file (in the same format as the analysis fields \file{fieldgher.anl}) of topography and call
-it \file{topo.grd}. The information on the grid's geographical dimensions are to be placed in \file{TopoInfo.dat}.
-
-The grid is simply an array ($i=1,\ldots,M$) and ($j=1,\ldots,N$), where the coordinates of the grid nodes are
-$x_i=x_1+(i-1)*dx$, $y_j=y_1+(j-1)*dy$.  The file \file{TopoInfo.dat} contains simply
-\begin{verbatim}
-x1
-y1
-dx
-dy
-M
-N
-\end{verbatim}
-
-
-Look into \file{dvdv2diva.f} in \directory{./src/Fortran/Util/} how to write such files from within a Fortran code.
 
 
 \section{Creation of contours\label{sec:contourgen}}
