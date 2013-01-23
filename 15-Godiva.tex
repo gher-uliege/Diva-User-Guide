@@ -9,17 +9,16 @@ The working directory to performs 4D-analyses is: \directory{GODIVA\_2013/JRAx/C
 
 \section{Climatology definition}
 
-The Climatologies to be produced are first defined by the mean of three files:
-
+The climatologies to be produced are first defined by the mean of three files:
 
 \begin{center}
 \begin{tabular}{ll}\hline
 \file{varlist}: & one column file, where each line defines the short name of a variable \\
- &  (see example \ref{varlistexp}).\\
+ &  (see example~\ref{varlistexp}).\\
 \file{yearlist}:& one column file, where the lines define the time period of years  over\\
- & which the climatologies (of the variables) are performed (see example \ref{yearlistexp}). \\
+ & which the climatologies (of the variables) are performed (see example~\ref{yearlistexp}). \\
 \file{monthlist}: & one column file, where the lines define the time period in the year\\
- &  for which the climatologies (of the variables) are performed (see example \ref{monthlistexp}). \\
+ &  for which the climatologies (of the variables) are performed (see example~\ref{monthlistexp}). \\
 \hline
 \end{tabular}
 \end{center}
@@ -165,7 +164,7 @@ Input data preparation consists in the following actions:
 
 \begin{itemize}
 \item Data set for extraction.
-\item Boundary lines and coastlines generation and  ``Advection'' field generation.
+\item Boundary lines and coastlines generation and Advection field generation.
 \item Data cleaning on mesh, outliers elimination from data sets and generation of Relative Length fields.
 \item Parameters optimisation and reference fields generation.
 \end{itemize}
@@ -474,7 +473,7 @@ To perform \diva 4D analyses with advection constraint and/or using reference fi
 
 \subsubsection{Using advection constraint and/or reference field }
 
-The advection constraint and/or reference fields usage actions are activated by the corresponding flag values in \file{constandrefe} file (see example \ref{expconsreff}).
+The advection constraint and/or reference fields usage actions are activated by the corresponding flag values in \file{constandrefe} file (see example~\ref{expconsreff}).
 The advection constraint option is activated when the corresponding flag value is equal to $1$. 
 The use of reference fields option is activated when the corresponding flag value is equal to $1$, in this case a year period  and month period codes must be provided in the corresponding lines.
 
@@ -526,7 +525,7 @@ The outputs are placed in \directory{output/3Danalysis/} and are the same as of 
 %\caption{Content of \directory{output/3Danalysis/}}
 \end{figure}
 
-{\bf The 4D variable analysis netcdf file contains the diva analysis of the variable and a set of variable related information fields: relative error and error standard deviation fields, variable masked (using two relative error thresholds) fields, deepest values of the variable field and the related masked fields. It contains also fields of information about data distribution and outliers as well as fields of correlation length and signal to noise ratio parameters.} %(see \ref{4Dncfile})
+{\bf The 4D variable analysis NetCDF file contains the diva analysis of the variable and a set of variable related information fields: relative error and error standard deviation fields, variable masked (using two relative error thresholds) fields, deepest values of the variable field and the related masked fields. It contains also fields of information about data distribution and outliers as well as fields of correlation length and signal to noise ratio parameters.} %(see \ref{4Dncfile})
 
 \item[The 3D analysis files:] in NetCDF and GHER binary format.
 
@@ -579,12 +578,12 @@ The outputs are placed in \directory{output/3Danalysis/} and are the same as of 
 
 \item[A subdirectory \directory{Meshes}:] it contains the mesh files, so that they can be re-used for other applications.
 
-\item[Log and metadata files:] Two log files and  a text metadata file are generated:
+\item[Log and metadata files:] Two log files and a text metadata file are generated:
 %\vspace{-0.5cm}
 \begin{itemize}
-\item  \file{var.Metainfo.txt}: All the information about domain, grid, varaible, and run parameters.
+\item \file{var.Metainfo.txt}: All the information about domain, grid, variable, and run parameters.
 \item \file{var.$yyyyzzzz.mmnn$.Fortran.log}: Log file of fortran binaries run.
-\item  \file{var.$yyyyzzzz.mmnn$.diva3D.log}: Log file of shell scripts execution.
+\item \file{var.$yyyyzzzz.mmnn$.diva3D.log}: Log file of shell scripts execution.
 \end{itemize}
 
 \end{description}
@@ -592,12 +591,9 @@ The outputs are placed in \directory{output/3Danalysis/} and are the same as of 
 \pagebreak 
 %\vspace{0.5cm}
 
-\subsection{{\tt driver} file: actions and flag values}
+\subsection{{\tt driver} file: actions and flag values\label{driverflags}}
 
-\label{driverflags}
-
-All actions performed by \file{divadoall} are prescribed in the file \file{driver} through flag values. In this section all possible actions and corresponding flag values are listed:
-
+All actions performed by \command{divadoall} are prescribed in the file \file{driver} through flag values. In this section all possible actions and corresponding flag values are listed:
 
 \begin{itemize}
 \item {\bf Data extraction}: Possible flag values: $0$,$1$,$-1$ and $-10$. If you activate the data extraction (flag value $\neq 0$) in the \file{driver} file, the execution of \command{divadoall} will run the \command{divaselectorODV4} automatically, including interpolation to the levels specified in {\tt contour.depth}. Data will be extracted from the ODV spreadsheat file(s) specified in \file{datasource}. Command \command{divaselectorODV4} will recognises if the data export to ODV file was done with depths (in meters) or it was done with pressure (in dbar) vertical coordinate, you can either choose to map it as if they were meters or apply the \citet{SAUNDERS81} correction. Choose flag $=-1$ to use pressure coordinate and assume they are meters, and flag value $=-10$ to use pressure coordinates and transform to meters by using the Saunders approach.
@@ -666,7 +662,7 @@ There are a few controls you can apply for these gnuplot plots:
 \begin{itemize}
 \item[*] \file{VAR.bounds}: contains the lower and upper bounds during the plotting for the variable {\tt VAR} (which is one of the variable names found in {\tt varlist}) 
 \item[*] \file{VAR.pal}: contains the color palette for the same variable.
-\item[*] \file{plotboundingbox.dat}: contains the box for plotting. This is typically used to plot only the region of interest, without overlapping regions with other climatologies (the numerical fields include the overlapping regions, only the plotting is limited with the {\tt plotboundingbox.dat} file).
+\item[*] \file{plotboundingbox.dat}: contains the box for plotting. This is typically used to plot only the region of interest, without overlapping regions with other climatologies (the numerical fields include the overlapping regions, only the plotting is limited with the \file{plotboundingbox.dat} file).
 \end{itemize}
 {\bf Note}: the gnuplot colorbars use a scale that is actually remapped to the bounds found in {\tt VAR.bound}. Example:
 if your colorbar definition goes from 0 to 10 and the {\tt VAR} bounds are from 0 and 100, a value of 50 in the variable analysed will use the color found in the colorbar definition at value 5. To help you designing a specially adapted color bar lets say for salinity, it is therefore a good idea to define the colorbar with the same bounds as those in \file{VAR.bounds}.
@@ -674,6 +670,6 @@ if your colorbar definition goes from 0 to 10 and the {\tt VAR} bounds are from 
 {\bf Note}: for adapting the color palette, file \file{gnuplotcolornames} contains a list of pre-existing colors and their hexadecimal codes you can use instead of names.
 
 \item {\bf Detrending} Possible flag values are $0$ and $n$: the action is activated when choosing flag value an integer $n$ $>0$. The chosen value $n$ must be equal or smaller to groups number in data files.\par
-{\bf Note}: If you use \command{divadoall} (or \command{divaselectorODV4}) to extract data and create data input files, columns 5, 6 ,7 and 8 contain respectively groups years, month, days and hours (1 for the first year in the selection etc).
+{\bf Note}: If you use \command{divadoall} (or \command{divaselectorODV4}) to extract data and create data input files, columns 5, 6 ,7 and 8 contain respectively groups years, months, days and hours (1 for the first year in the selection etc).
 \end{itemize}
 

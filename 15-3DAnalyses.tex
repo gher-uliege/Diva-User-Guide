@@ -364,7 +364,7 @@ The working directory for running a 3D \diva analysis is  \directory{DIVA3D/diva
 
 \subsection{Coast contour files generation \label{contgeneration}}
 
-To generate coast contour files for all the levels of which depth is present in the \file{contour.depth} file in the \directory{divastripped/input}, one has to choose the flag number $1$ or $3$ in the \file{3Dinfo} file and provide as input in \directory{divastripped/input} a bathymetry file of the area of interest. the input bathymetry file may be an ascii  \file{topo.dat} or a GHER format binary file  \file{topo.grd} and the related \file{TopoInfo.dat} as described in Section~\ref{sec:contourtopo}. A \file{param.par} file is also needed, and can be placed in the  \directory{divastripped/input} input directory.
+To generate coast contour files for all the levels of which depth is present in the \file{contour.depth} file in the \directory{divastripped/input}, one has to choose the flag number $1$ or $3$ in the \file{3Dinfo} file and provide as input in \directory{divastripped/input} a bathymetry file of the area of interest. the input bathymetry file may be an ascii \file{topo.dat} or a GHER format binary file \file{topo.grd} and the related \file{TopoInfo.dat} as described in Section~\ref{sec:contourtopo}. A \file{param.par} file is also needed, and can be placed in the \directory{divastripped/input} input directory.
 
 The resulting coast contour files (\file{coast.cont.$1xxxx$}) are placed in the subdirectory \linebreak \directory{input/divaparam/}. If the chosen flag number for contour generation in the \file{3Dinfo} file is $3$, advection constraint files (anisotropic correlations along topography) are generated as well, and placed in \file{input/divaUVcons} subdirectory).
 
@@ -388,7 +388,7 @@ The resulting coast contour files (\file{coast.cont.$1xxxx$}) are placed in the 
 
 \subsection{Data sets cleaning}
 
-All data sets provided in \directory{DIVA3D/divastripped/input/divadata/} can be cleaned from data points outside the mesh and also if desired from ``suspected'' outliers. Choose a flag number corresponding to the desired action for data sets cleaning in the \file{3Dinfo} file. A \file{param.par} file is also needed, and can be placed in the  \directory{divastripped/input/} input directory.
+All data sets provided in \directory{DIVA3D/divastripped/input/divadata/} can be cleaned from data points outside the mesh and also if desired from ``suspected'' outliers. Choose a flag number corresponding to the desired action for data sets cleaning in the \file{3Dinfo} file. A \file{param.par} file is also needed, and can be placed in the \directory{divastripped/input/} input directory.
 
 At this stage, field of scaling factors to the correlation length can be generated on the basis of data distribution, and for the levels corresponding to each data set (see Section~\ref{sec:3Dinfo}).
 
@@ -452,19 +452,19 @@ The minimum input files for performing a \diva 3D analysis consists in:
 \item[*] one \file{param.par} file put in  \directory{divastripped/input/} directory or in\\ 
 \directory{divastripped/input/divaparam/} subdirectory.
 \end{itemize}
-\item data sets for all considered levels \file{var.$1xxxx$} files in  \directory{divadata} subdirectory.
+\item data sets for all considered levels \file{var.$1xxxx$} files in \directory{divadata} subdirectory.
 \end{itemize}
 
 
 \btips
- If for a level (or all levels) \file{param.par.var.$1xxxx$} is not present, one default \file{param.par}  file must be placed in the \file{divaparam} subdirectory or in the input directory.
+If for a level (or all levels) \file{param.par.var.$1xxxx$} is not present, one default \file{param.par} file must be placed in the \file{divaparam} subdirectory or in the input directory.
 \etips
 
 \subsubsection{ Using relative length files:}
 
 If more than one relative length files are available, they must be  named and numbered following the variable and level to which they correspond as \file{RL.var.$1xxxx$}, and must be provided in the \directory{input/divaparam/} subdirectory. One default file \file{RL.dat} may be placed in  \directory{input/divaparam} subdirectory to be used for the levels for which relative length files are missing. One \file{RLinfo.dat} ascii file (grid info file) must be placed with the relative length files (binary GHER format)
 
-If only one \file{RL.dat} file of relative length is used, it must be placed in  the \directory{divaparam} subdirectory or in the \file{input} directory.
+If only one \file{RL.dat} file of relative length is used, it must be placed in the \directory{divaparam} subdirectory or in the \file{input} directory.
 
 \begin{center}
 \fbox{
@@ -477,22 +477,22 @@ If only one \file{RL.dat} file of relative length is used, it must be placed in 
 \end{center}
 
 
-\subsubsection{Using advection constraint}
-\label{advconstuse}
+\subsubsection{Using advection constraint\label{advconstuse}}
 
+To perform 3D analysis with avection constraint, the files \file{UVinfo.var.$1xxxx$},\linebreak \file{Uvel.var.$1xxxx$}, \file{Vvel.var.$1xxxx$}, must be then placed in \directory{input/divaUVcons/} subdirectory. The advection constraint is activated when a \file{constraint.dat} file is present in the \directory{input} directory (see Section~\ref{ex:constraint.dat}). If one wants to use different advection parameters $\theta$ and $\mathcal{A}$ (see Section~\ref{sec:advection}) a two column \file{3Dconstraint} file must be placed in \directory{input/divaparam} subdirectory where each line contains the advection parameters for the corresponding level number.
 
-To perform 3D analysis with  ``avection''  constraint, the files \file{UVinfo.var.$1xxxx$},\linebreak \file{Uvel.var.$1xxxx$}, \file{Vvel.var.$1xxxx$},  must be then placed in \file{input/divaUVcons/} subdirectory. The advection constraint is activated when a \file{constraint.dat} file is present in the \file{input} directory (see Section~\ref{ex:constraint.dat}). If one wants to use different advection parameters $\theta$ and $\mathcal{A}$ (see \ref{sec:advection}) a two column \file{3Dconstraint} file must be placed in \directory{input/divaparam} subdirectory where each line contains the advection parameters for the corresponding level number.
+If \file{UVinfo} files are identical for all the levels, only one file \file{UVinfo.dat} may be placed in the \directory{input} directory or in the \directory{input/divaUVcons} subdirectory.
 
-If \file{UVinfo} files are identical for all the levels, only one file \file{UVinfo.dat} may be placed in the \file{input} directory or in the \directory{input/divaUVcons} subdirectory.\\
- If for some levels, the pair of files \file{Uvel.var.$1xxxx$}, \file{Vvel.var.$1xxxx$} (or \file{Uvel.$1xxxx$}, \file{Vvel.$1xxxx$}) is not available, A default \file{Uvel.dat} and \file{Vvel.dat} files must be placed in the \directory{input/divaUVcons/} subdirectory as well as a \file{UVinfo.dat} if using different \file{UVinfo} files.\\
- If for all levels, the same advection files are used, only  \file{Uvel.dat}, \file{Vvel.dat} and \file{UVinfo.dat} may be placed in the \directory{input/divaUVcons/} subdirectory or simply in the \directory{input} directory.
+If for some levels, the pair of files \file{Uvel.var.$1xxxx$}, \file{Vvel.var.$1xxxx$} (or \file{Uvel.$1xxxx$}, \file{Vvel.$1xxxx$}) is not available, A default \file{Uvel.dat} and \file{Vvel.dat} files must be placed in the \directory{input/divaUVcons/} subdirectory as well as a \file{UVinfo.dat} if using different \file{UVinfo} files.
+
+If for all levels, the same advection files are used, only \file{Uvel.dat}, \file{Vvel.dat} and \file{UVinfo.dat} may be placed in the \directory{input/divaUVcons/} subdirectory or simply in the \directory{input} directory.
 
 
 \begin{center}
 \fbox{
 \begin{minipage}{0.9\textwidth}
 \vspace{.25cm}
-\textbf{Convention:} The advection constraint is activated when a \underline{\file{3Dconstraint}} file is present in the \directory{divaparam} subdirectory or a  \underline{\file{constraint.dat}} is present in the \directory{input} directory.
+\textbf{Convention:} The advection constraint is activated when a \underline{\file{3Dconstraint}} file is present in the \directory{divaparam} subdirectory or a \underline{\file{constraint.dat}} is present in the \directory{input} directory.
 \vspace{.25cm}
 \end{minipage}
 }
@@ -564,11 +564,10 @@ The outputs are placed in \directory{output/3Danalysis/} and consist of:
 \caption{Content of \directory{output/3Danalysis/}}
 \end{figure}
 
-{\bf The 3D variable analysis netcdf file contains the diva analysis of the variable and a set of variable related information fields: relative error and error standard deviation fields, variable masked (using two relative error thresholds) fields, deepest values of the variable field and the related masked fields. It contains also fields of information about data distribution and outliers as well as fields of correlation length and signal to noise ratio parameters.} %(see \ref{3Dncfile})
+{\bf The 3D variable analysis NetCDF file contains the diva analysis of the variable and a set of variable related information fields: relative error and error standard deviation fields, variable masked (using two relative error thresholds) fields, deepest values of the variable field and the related masked fields. It contains also fields of information about data distribution and outliers as well as fields of correlation length and signal to noise ratio parameters.} %(see \ref{3Dncfile})
 
 
 \item[A subdirectory \directory{Fields}] containing all the \diva 2D output files for all levels:
-
 
 \begin{figure}[H]
 \centering
@@ -596,7 +595,7 @@ The outputs are placed in \directory{output/3Danalysis/} and consist of:
 
 \item[Log files] Two log files are generated:
 \begin{itemize}
-\item  \file{diva.log}: Log file of fortran binaries run in \directory{output/.}
+\item  \file{diva.log}: Log file of fortran binaries run in \directory{./output/}
 \item  \file{var.diva3D.log}: Log file of shell scripts execution in \directory{output/3Danalysis}.
 \end{itemize}
 
