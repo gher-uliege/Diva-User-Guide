@@ -526,6 +526,7 @@ The outputs are placed in \directory{output/3Danalysis/} and are the same as of 
 %\caption{Content of \directory{output/3Danalysis/}}
 \end{figure}
 
+{\bf The 4D variable analysis netcdf file contains the diva analysis of the variable and a set of variable related information fields: relative error and error standard deviation fields, variable masked (using two relative error thresholds) fields, deepest values of the variable field and the related masked fields. It contains also fields of information about data distribution and outliers as well as fields of correlation length and signal to noise ratio parameters.} %(see \ref{4Dncfile})
 
 \item[The 3D analysis files:] in NetCDF and GHER binary format.
 
@@ -578,6 +579,13 @@ The outputs are placed in \directory{output/3Danalysis/} and are the same as of 
 
 \item[A subdirectory \directory{Meshes}:] it contains the mesh files, so that they can be re-used for other applications.
 
+\item[Log and metadata files:] Two log files and  a text metadata file are generated:
+%\vspace{-0.5cm}
+\begin{itemize}
+\item  \file{var.Metainfo.txt}: All the information about domain, grid, varaible, and run parameters.
+\item \file{var.$yyyyzzzz.mmnn$.Fortran.log}: Log file of fortran binaries run.
+\item  \file{var.$yyyyzzzz.mmnn$.diva3D.log}: Log file of shell scripts execution.
+\end{itemize}
 
 \end{description}
 

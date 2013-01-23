@@ -2,7 +2,7 @@
 
 \diva  can be used to perform 3D-analysis  for a given variable in an oceanic basin. In this case \diva tools are generally applied to successive horizontal layers at different depths of the basin. The resulting 2D-field analyses are gathered in 3D binary and NetCDF files.
 
-The working directory to performs 3D-analyses is the same as for 2D-analyses: \directory{GODIVA\_xx\_2012/DIVA3D/divastripped}.
+The working directory to perform 3D-analyses is the same as for 2D-analyses: \linebreak \directory{GODIVA\_xx\_2012/DIVA3D/divastripped}.
 
 %\newpage % 
 
@@ -11,7 +11,7 @@ The working directory to performs 3D-analyses is the same as for 2D-analyses: \d
 \section{Input subdirectories}
 %----------------
 
-As described before, to perform a 2D-analysis, one need to provide a set of input files in the  \directory{DIVA3D/divastripped/input/} directory. For 3D analysis, the input files are provided in subdirectories of the input directory and in the input directory.
+As described before, to perform a 2D-analysis, one need to provide a set of input files in the  \directory{DIVA3D/divastripped/input/} subdirectory. For 3D analysis, the input files are provided in subdirectories of the input directory and in the input directory.
 
 \subsection[DIVA3D/divastripped/input/divadata subdirectory]{\directory{DIVA3D/divastripped/input/divadata/} subdirectory}
 
@@ -435,7 +435,7 @@ To perform parameters optimisation, one can place a default \file{param.par} wit
 
 \section{Performing 3D analyses: \texttt{diva3Ddress}}
 
-\subsection{A simple analysis}
+\subsection{A simple analysis: input files}
 
 \subsubsection{Input files in \directory{divastripped/input/}}
 
@@ -541,7 +541,7 @@ To perform \diva 3D analysis with detrending of data, a \file{detrendinfo} file 
 To run \diva to perform a 3D analysis, one has simply to run the shell script file \command{diva3Ddress} in \directory{divastripped}. \diva 3D analysis outputs are normal analysis of a variable or reference fields, depending on the chosen flag number for analysis in the \file{3Dinfo} (see Section~\ref{sec:3Dinfo}).
 
 
-\subsubsection{\diva 3D analysis outputs}
+\subsection{\diva 3D analysis outputs}
 
 The outputs are placed in \directory{output/3Danalysis/} and consist of:
 
@@ -563,6 +563,8 @@ The outputs are placed in \directory{output/3Danalysis/} and consist of:
 }
 \caption{Content of \directory{output/3Danalysis/}}
 \end{figure}
+
+{\bf The 3D variable analysis netcdf file contains the diva analysis of the variable and a set of variable related information fields: relative error and error standard deviation fields, variable masked (using two relative error thresholds) fields, deepest values of the variable field and the related masked fields. It contains also fields of information about data distribution and outliers as well as fields of correlation length and signal to noise ratio parameters.} %(see \ref{3Dncfile})
 
 
 \item[A subdirectory \directory{Fields}] containing all the \diva 2D output files for all levels:
@@ -592,5 +594,10 @@ The outputs are placed in \directory{output/3Danalysis/} and consist of:
 
 \item[A subdirectory \directory{Meshes}:] it contains the mesh files, so that they can be re-used for other applications.
 
+\item[Log files] Two log files are generated:
+\begin{itemize}
+\item  \file{diva.log}: Log file of fortran binaries run in \directory{output/.}
+\item  \file{var.diva3D.log}: Log file of shell scripts execution in \directory{output/3Danalysis}.
+\end{itemize}
 
 \end{description}
