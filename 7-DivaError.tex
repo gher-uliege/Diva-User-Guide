@@ -20,7 +20,7 @@ OI (Sections~\ref{sec:OImethod}) \index{OI} allows the simultaneous derivation o
 e^{2}(\mathbf{r}) = \sigma^{2}(\mathbf{r})-\transp{\mathbf{g}(\mathbf{r})}\mathbf{D}^{-1}  \mathbf{g}(\mathbf{r}),
 \label{eq:erroroi}
 \ee
-where $\sigma^{2}$ is the local variance of the background field. This equality highlights that the error is provided by the analysis of a pseudo-data array containing covariances $\mathbf{g}(\mathbf{r})$. 
+where $\sigma^{2}$ is the local variance of the background field. This equality highlights that the error is provided by the analysis of a pseudo-data array containing covariances\index{Covariance} $\mathbf{g}(\mathbf{r})$. 
 
 However, in principle, a new analysis has to be performed for each point $\mathbf{r}$ in which the error is requested and then is not adapted for large data sets. On the contrary, the error calculation in \diva is not trivial since the covariance functions are never explicitly specified. We will see in the next sections how \diva computes this error field.
 
@@ -33,7 +33,7 @@ According to the data sets, the type of analysis (with/without dynamical constra
 \subsection{The poor man's estimate\label{sec:poormans}}
 %-------------------------------------------------------
 
-To circumvent the main problems (unknown covariance function and repeated analysis), \citet{BRASSEUR94} estimated the error by analysing a vector of "covariances" with constant $\sigma^2$. As all "covariances" are identical, the error can be assessed in all locations with the same analysis. The advantage is the fast calculation, but the drawback is a systematic underestimation of the actual errors, since the error reduction by the overestimated covariances \eqref{eq:erroroi} is also overestimated. The poor man's error field is a very efficient way to assess data-coverage and determine the regions where the analysis cannot be trusted.
+To circumvent the main problems (unknown covariance function and repeated analysis), \citet{BRASSEUR94} estimated the error by analysing a vector of "covariances" with constant $\sigma^2$. As all covariances are identical, the error can be assessed in all locations with the same analysis. The advantage is the fast calculation, but the drawback is a systematic underestimation of the actual errors, since the error reduction by the overestimated covariances \eqref{eq:erroroi} is also overestimated. The poor man's error field is a very efficient way to assess data-coverage and determine the regions where the analysis cannot be trusted.
 
 \subsection{The hybrid approach}
 %-------------------------------
@@ -152,7 +152,7 @@ Let us assume that the error is requested at $N_{c}$ locations (sparse points or
 
 \subsection{Poor man's estimate}
 
-An analysis is performed on a vector filled with constant covariance $\sigma^{2}$. As the vector of covariances is filled with identical values $\sigma^{2}$, the error is assessed for all the $N_{c}$ locations with the same analysis. Since the matrix to be inverted for the analysis (the stiffness matrix $\matr{K}$, \eqref{eq:solution}) is already factorized\footnote{$\mathsf{LU}$ decomposition or factorization: the matrix is written as the product of a lower triangular matrix $\mathsf{L}$ and an upper triangular matrix $\mathsf{U}$.}, the additional cost is almost zero because a single analysis is needed.   
+An analysis is performed on a vector filled with constant covariance $\sigma^{2}$. As the vector of covariances is filled with identical values $\sigma^{2}$, the error is assessed for all the $N_{c}$ locations with the same analysis. Since the matrix to be inverted for the analysis (the stiffness\index{Stiffness matrix} matrix $\matr{K}$, \eqref{eq:solution}) is already factorized\footnote{$\mathsf{LU}$ decomposition or factorization: the matrix is written as the product of a lower triangular matrix $\mathsf{L}$ and an upper triangular matrix $\mathsf{U}$.}, the additional cost is almost zero because a single analysis is needed.   
 
 \subsection{Hybrid method} 
 
@@ -416,5 +416,5 @@ For exact covariance functions,
 [charles@gher13 divastripped] divacalc -pfsum
 \end{lstlisting}
 
-is executed, which allows the use the full suite of \diva parameters (including for example advection constraint). Internally, as we need the covariance of all integral points with all integral points and data locations, we provide to \command{ divacalc -pfsum} in input "data" which are the integration points and ask in addition values in a list of points (which are the original data location).
+is executed, which allows the use of the full suite of \diva parameters (including for example advection constraint). Internally, as we need the covariance of all integral points with all integral points and data locations, we provide to \command{divacalc -pfsum} in input "data" which are the integration points and ask in addition values in a list of points (which are the original data location).
 

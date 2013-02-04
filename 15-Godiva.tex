@@ -2,7 +2,7 @@
 
 \diva can be used to produce climatologies for a given variable in an oceanic basin. In this case \diva 3D tools are used to produce for successive climatological time periods, 3D climatological analyses on the basin. The resulting climatologies are gathered in 4D binary files GHER format and NetCDF.
 
-The working directory to performs 4D-analyses is: \directory{GODIVA\_2013/JRAx/Climatology}.
+The working directory to performs 4D-analyses is: \directory{GODIVA\_mm\_yyyy/JRAx/Climatology}.
 
 \minitoc
 
@@ -84,33 +84,33 @@ Salinity
 \section{\diva 4D Climatology performance}
 %-----------------------------------------
 
-All \diva shell scripts files for climatologies (or 4D-analyses) production are located in \par \directory{GODIVA\_2013/JRAx/Climatology}. This directory has its proper subdirectories \directory{input} where input data and files are placed, and \directory{output} where \diva outputs are stored.
+All \diva shell scripts files for climatologies (or 4D-analyses) production are located in \par \directory{GODIVA\_mm\_yyyy/JRAx/Climatology}. This directory has its proper subdirectories \directory{input} where input data and files are placed, and \directory{output} where \diva outputs are stored.
 
 The main shell script file for climatologies performance is \command{divadoall}. The actions that one can perform when running \command{divadoall} are:
 
 \subsection{Actions performed by \file{divadoall} }
 
 \begin{itemize}
-\item Depths data sets extraction.
+\item Extraction of data at selected depth levels.
 \item Boundary lines and coastlines generation (contour files).
-\item Advection field (based on coast lines) generation.
+\item Advection field generation based on coastlines.
 \item Data cleaning on mesh.
-\item Outliers elimination from data sets.
-\item Generation of Relative Length fields.
+\item Elimination of outliers from data sets.
+\item Generation of relative length fields.
 \item Optimization of the correlation length parameter (for each data set).
-\item Optimization of the signal to noise ratio parameter (for each data set).
-\item Calculation of variable (semi normed) reference fields.
+\item Optimization of the signal-to-noise ratio parameter (for each data set).
+\item Calculation of variable (semi-normed) reference fields.
 \item Performance of variable analysis fields using the following options:
 \begin{itemize}
 \item analysis without option (normal variational analysis),
 \item analysis using a reference fields,
-\item analysis using ``advection'' constraint,
+\item analysis using advection constraint,
 \item analysis with data transformation,
 \item analysis using reference fields for each level calculated on bases of mixed data from three  neighbouring levels,
-\item analysis using a ``filtered'' mean background field: all levels mean are first calculated an vertically filtered before being used  3D analyses.
+\item analysis using a filtered mean background field: all levels mean are first calculated an vertically filtered before being used  3D analyses.
 \end{itemize}
 \item Gnuplot plots production.
-\item Performances of analysis using data detrending method.
+\item Analysis with detrending method.
 \end{itemize}
 
 \centerline{
@@ -125,7 +125,7 @@ The main shell script file for climatologies performance is \command{divadoall}.
 {\bf Note:}
 \begin{itemize}
 \item[*] When data extraction is activated in the \file{driver}, the execution is made for all levels found in \file{contour.depth} file provided in the subdirectory \file{input}. It is also taking into account a minimum number of data in a layer with regard to the corresponding flag value given in \file{driver}.
-\item[*] When ``boundary lines and coastlines'' generation is activated in the \file{driver}, the execution is made for all levels found in \file{contour.depth} file provided in the subdirectory \directory{input}.
+\item[*] When boundary lines and coastlines' generation is activated in the \file{driver}, the execution is made for all levels found in \file{contour.depth} file provided in the subdirectory \directory{input}.
 \item[*] When parameters optimisation and/or analysis is activated, the execution is made for the levels between the values chosen for the lower and upper level numbers and takes into account the bound values (maximum and minimum) prescribed in the \file{driver}.
 \end{itemize}
 
@@ -164,7 +164,7 @@ Input data preparation consists in the following actions:
 
 \begin{itemize}
 \item Data set for extraction.
-\item Boundary lines and coastlines generation and Advection field generation.
+\item Boundary lines and coastlines generation and advection field generation.
 \item Data cleaning on mesh, outliers elimination from data sets and generation of Relative Length fields.
 \item Parameters optimisation and reference fields generation.
 \end{itemize}
@@ -339,7 +339,7 @@ number of groups for data detrending, 0 if no detrending.
 
 \section{Production of Climatologies}
 
-\diva 4D allows the production of climatologies based on simple \diva data analysis or based on \diva analysis using different option as in \diva\ 3D:
+\diva 4D allows the production of climatologies based on simple \diva data analysis or based on \diva analysis using different option as in \diva 3D:
 
 \begin{itemize}
 \item relative length files
@@ -368,7 +368,7 @@ More options available in \diva 4D are:
 {\bf Note:} These options are activated with a specific flag values in the \file{driver}.
 
 
-\subsection{ Inputs for climatologies production}
+\subsection{Inputs for production of climatologies}
 
 \centerline{\underline{\bf{ in \directory{climatology} directory}}}
 
@@ -450,7 +450,7 @@ Author e-mail address (or contact person to report problems)
 \subsection{Advection constraint and reference field files}
 
 
-To perform \diva 4D analyses with advection constraint and/or using reference fields, the advection constraint and reference field files must be provided in the corresponding subdirectory  \directory{divarefe\_all} and \directory{divaUVcon\_all} in \directory{input} directory (see Sections~\ref{divarefeuse} and \ref{advconstuse}).
+To perform \diva 4D analyses with advection constraint and/or using reference fields, the advection constraint and reference field files must be provided in the corresponding subdirectory \directory{divarefe\_all} and \directory{divaUVcon\_all} in \directory{input} directory (see Sections~\ref{divarefeuse} and \ref{advconstuse}).
 
 
 {\bf Note:} 
@@ -510,7 +510,7 @@ The outputs are placed in \directory{output/3Danalysis/} and are the same as of 
 
 \begin{description}
 
-\item[The 4D analysis files:] in NetCDF and GHER binary format.
+\item[The 4D analysis files:] in NetCDF\index{NetCDF} and GHER binary format.
 
 
 \begin{figure}[H]
@@ -525,7 +525,7 @@ The outputs are placed in \directory{output/3Danalysis/} and are the same as of 
 %\caption{Content of \directory{output/3Danalysis/}}
 \end{figure}
 
-{\bf The 4D variable analysis NetCDF file contains the diva analysis of the variable and a set of variable related information fields: relative error and error standard deviation fields, variable masked (using two relative error thresholds) fields, deepest values of the variable field and the related masked fields. It contains also fields of information about data distribution and outliers as well as fields of correlation length and signal to noise ratio parameters.} %(see \ref{4Dncfile})
+{\bf The 4D variable analysis NetCDF file contains the diva analysis of the variable and a set of variable related information fields: relative error and error standard deviation fields, variable masked (using two relative error thresholds) fields, deepest values of the variable field and the related masked fields. It contains also fields of information about data distribution and outliers as well as fields of correlation length and signal-to-noise ratio parameters.} %(see \ref{4Dncfile})
 
 \item[The 3D analysis files:] in NetCDF and GHER binary format.
 
@@ -602,7 +602,7 @@ If there is a \file{qflist} file, the selection with \file{divaselectorODV4} wil
 
 {\bf Note:} you can specify several ODV4 spreadsheet files as input files, one file name (or full path) per line in \file{datasource} file, {\it they must have the same variables naming convention, depth coordinates and quality flags conventions}.
 
-\item {\bf Boundary lines and coastlines generation}: Possible flag values are $0$, $1$, $2$ and $3$. When this action is activated (flag $\geq 1$), you must provide in the \directory{input} directory the files \file{TopoInfo.dat} and  \file{topo.grd} in addition to {\tt contour.depth} file.
+\item {\bf Boundary lines and coastlines generation}: Possible flag values are $0$, $1$, $2$ and $3$. When this action is activated (flag $\geq 1$), you must provide in the \directory{input} directory the files \file{TopoInfo.dat} and  \file{topo.grd} in addition to \file{contour.depth} file.
               \begin{itemize}
                 \item[*] $=1$ if contour files are to be generated,
                 \item[*] $=2$ if advection constraint (Anisotropic correlation along topography) files are to be generated from  \texttt{topo.grd},
@@ -622,16 +622,16 @@ If there is a \file{qflist} file, the selection with \file{divaselectorODV4} wil
 \item {\bf Parameter optimization}: Possible flag values are $0$, $1$, $2$, $3$, $-1$, $-2$, $-3$, $10$, $-10$, $30$ and $-30$:
               \begin{itemize}
                 \item[*] $=1$ if correlation length parameters are to be estimated,
-                \item[*] $=2$ if signal to noise ratio ($S/N$) parameters are to be estimated,
+                \item[*] $=2$ if signal-to-noise ratio ($S/N$) parameters are to be estimated,
                 \item[*] $=-1$ if correlation length parameters are to be estimated and vertically filtered,
-                \item[*] $=-2$ if signal to noise ratio ($S/N$) parameters are to be estimated and vertically filtered,
-                \item[*] $=3$ if both  correlation length and  signal to noise ratio parameters are to be estimated,
-                \item[*] $=-3$ if both  correlation length and  signal to noise ratio parameters are to be estimated and vertically filtered,
+                \item[*] $=-2$ if signal-to-noise ratio ($S/N$) parameters are to be estimated and vertically filtered,
+                \item[*] $=3$ if both  correlation length and  signal-to-noise ratio parameters are to be estimated,
+                \item[*] $=-3$ if both  correlation length and  signal-to-noise ratio parameters are to be estimated and vertically filtered,
 
                 \item[*] $=10$ if correlation length parameters are to be estimated using data mean distance as a minimum,
                 \item[*] $=-10$ if correlation length parameters are to be estimated using data mean distance as a minimum and vertically filtered,
-                \item[*] $=30$ if both  correlation length and  signal to noise ratio parameters are to be estimated using data mean distance as a minimum (for $CL$),
-                \item[*] $=-30$ if both  correlation length and  signal to noise ratio parameters are to be estimated using data mean distance as a minimum (for $CL$), and both parameters vertically filtered.
+                \item[*] $=30$ if both  correlation length and signal-to-noise ratio parameters are to be estimated using data mean distance as a minimum (for $L$),
+                \item[*] $=-30$ if both  correlation length and signal-to-noise ratio parameters are to be estimated using data mean distance as a minimum (for $L$), and both parameters vertically filtered.
 % and generated relative length fields (for $S/N$)
               \end{itemize}
 

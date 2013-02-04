@@ -117,7 +117,7 @@ The principle of OI is to minimize the expected error:
 \begin{equation}
 e^{2}(\mathbf{r}) = \overline{[\varphi(\mathbf{r})-\varphi_{t}(\mathbf{r})]^{2}}
 \end{equation}
-where $\bar{\quad}$ stands for the statistical average.
+where the bar $\bar{\quad}$ stands for the statistical average.
 
 Replacing the interpolated anomaly field by a linear combination of the data, we have 
 
@@ -204,7 +204,7 @@ D_{ij} &=& \overline{\varphi_{t}(\mathbf{r_i})\varphi_{t}(\mathbf{r_j})}+\noise^
 \eeq
 where $c(\mathbf{r},\mathbf{r_i})$ is the \textit{correlation function} and $\signal$ is the \textit{signal} of the data.
 
-In the following we write $\mathbf{D}=\matr{B}+\matr{R}$, where matrix $\matr{B}$ contains the variance of the true field and $\matr{R}$ is the diagonal matrix containing the observational noise.
+In the following, we write $\matr{D}=\matr{B}+\matr{R}$, where matrix $\matr{B}$ contains the variance of the true field and $\matr{R}$ is the diagonal matrix containing the observational noise.
 
 %---------------------------
 \subsection{Drawbacks of OI}
@@ -216,9 +216,9 @@ There are two main drawbacks when using OI, as detailed in the following paragra
 \item The specification of the covariances.
 \end{itemize}
 
-As the method requires the inversion of a $N_{d}$-by-$N_{d}$ matrix ($N_{d}$ being the number of data), it is not adapted for situations with large number of observations (number of operations proportional to $N_{d}^{3}$). Moreover the method does not always produce the theoretical optimum, specially when the number of data is not sufficient and the covariances are not correctly specified \citep[e.g.,][]{RIXEN00,GOMIS01}. Some adaptations have been made to the OI scheme to improve the numerical efficiency \citep[e.g.,][]{HARTMAN08,ZHANG10}.
+As the method requires the inversion of a $N_{d} \times N_{d}$ matrix ($N_{d}$ being the number of data), it is not adapted for situations with large number of observations (number of operations proportional to $N_{d}^{3}$). Moreover the method does not always produce the theoretical optimum, specially when the number of data is not sufficient and the covariances are not correctly specified \citep[e.g.,][]{RIXEN00,GOMIS01}. Some adaptations have been made to the OI scheme to improve the numerical efficiency \citep[e.g.,][]{HARTMAN08,ZHANG10}.
 
-The quality of OI (and other gridding techniques) relies on the correct specification of the covariances of the observational error and of the background field. The covariance functions used in OI are not restricted (except that the covariance matrices have to be positive-definite and symmetric), allowing for example correlated observational errors. Yet in most cases, covariances between two points are parametrized by simple expressions, such as a Gaussian function depending on the sole distance between the points, leading to isotropic functions, which are not always well adapted to oceanography. Indeed, wich such functions, the propagation of information through islands and continents is enabled. To circumvent this problem, adaptations of the OI scheme are necessary in order to allow the use of anisotropic functions \citep[e.g.,][]{TANDEO11}.
+The quality of OI (and other gridding techniques) relies on the correct specification of the covariances of the observational error and of the background field. The covariance\index{Covariance} functions used in OI are not restricted (except that the covariance matrices have to be positive-definite and symmetric), allowing for example correlated observational errors. Yet in most cases, covariances between two points are parametrized by simple expressions, such as a Gaussian function depending on the sole distance between the points, leading to isotropic functions, which are not always well adapted to oceanography. Indeed, wich such functions, the propagation of information through islands and continents is enabled. To circumvent this problem, adaptations of the OI scheme are necessary in order to allow the use of anisotropic functions \citep[e.g.,][]{TANDEO11}.
 
 Finally, although OI provides the best analysis in the sense that it gives the minimum expected error, the method has the drawback of not being fully objective: the covariance of the unknown field, and the standard deviation of observational errors generally have to be chosen subjectively by he user.
 
@@ -228,9 +228,9 @@ Finally, although OI provides the best analysis in the sense that it gives the m
 \index{VIM}
 The Variational Inverse Method (VIM\index{VIM}) was initially designed for climatology purposes: in that case, vertical profiles have high vertical resolution and sufficient profiles for all seasons, but have an irregular horizontal coverage \citep{BRASSEUR96}. Thus a spatial analysis on horizontal planes is needed. 
 
-Relatively large number of data points in each plane penalizes Optimal Interpolation (OI) methods, because these methods require the inversion of a $N_{d}$-by-$N_{d}$ matrix, \textit{i.e.} a number of operations proportional to $N_{d}^{3}$ (see Tab.~\ref{tabdata} and eq. \ref{eq:theory_error}).
+Relatively large number of data points in each plane penalizes Optimal Interpolation (OI) methods, because these methods require the inversion of a $N_{d}\timesN_{d}$ matrix (see Tab.~\ref{tabdata} and eq. \ref{eq:theory_error}).
 
-This is the reason why VIM resorts to the expertise in efficient finite-element solvers.
+This is the reason why VIM resorts to the expertise in efficient finite-element solvers\index{Finite-elements}.
 
 \diva stands for \textit{Data-Interpolating Variational Analysis} and is the implementation of VIM. It is designed to solve 2-D differential or variational problems of elliptic type with a finite-element method.
 
@@ -333,7 +333,7 @@ Normally, interpolation (and extrapolation) works on anomalies with respect to a
 \item no treatment is applied (the data you treat are already anomalies);
 \item the mean of data is subtracted from the data values;
 \item the linear regression (plane) is subtracted;
-\item additional subtracted semi-normed field ($\alpha_0=0$ and large $L$) obtained by two chained \diva executions. %
+\item additional subtracted semi-normed field ($\alpha_0=0$ and large $L$) obtained by two consecutive \diva executions. %
 \end{itemize}
 
 In particular when no treatment is applied (with $\alpha_0 > 0$), the minimization forces the analysis toward zero when there are no
@@ -368,7 +368,7 @@ In each element the solution is a combination of shape functions $\mathbf{s}$ (3
 \varphi_{e}(\mathbf{r_e})=\transp{\mathbf{q_e}}\mathbf{s}(\mathbf{r_e}),
 \label{eq:connectors}
 \ee
-with $\mathbf{q}$, the connectors (our new unknowns),\\
+with $\mathbf{q}$, the connectors \index{Connectors}(our new unknowns),\\
 \hphantom{with} $\mathbf{r_e}$, the position in a local coordinate system.
 
 Substituting \eqref{eq:connectors} in \eqref{eq:split} and using the variational principle \eqref{divaformula}, we get
@@ -377,7 +377,7 @@ Substituting \eqref{eq:connectors} in \eqref{eq:split} and using the variational
 J_{e}(\mathbf{q_e}) = \transp{\mathbf{q_e}}\mathbf{K_e}\mathbf{q_e}-2\transp{\mathbf{q_e}} \mathbf{g_{e}}+\sum_{i=1}^{N_{d_{e}}}\mu_{i}d_{i}
 \label{eq:elements}
 \ee
-where $\mathbf{K_e}$ is the \textit{local stiffness} matrix and\\
+where $\mathbf{K_e}$ is the \textit{local stiffness} matrix\index{Stiffness matrix} and\\
 \hphantom{where} $\mathbf{g}$ is a vector which depends on local data. Matrix $\mathbf{K}$ is decomposed into a norm-related term and a data related term.
 
 On the whole domain, \eqref{eq:elements} reads
@@ -537,7 +537,7 @@ DINEOF   &  ($\bullet$)     & $\bullet$ &  $\bullet$ & $N_a^{5/4}$   & $\bullet$
 
 The correlation length can be estimated, based on the dataset itself. The method performs a least-square fit of the data covariance function with a theoretical function. 
 
-The signal-to-noise ratio $\snr=\frac{\signal^{2}}{\noise^{2}}$ is estimated with a Generalized Cross-Validation (GCV). GCV allows estimating global errors and calibration of the analysis parameters. 
+The signal-to-noise ratio $\snr=\signal^{2}/\noise^{2}$ is estimated with a Generalized Cross-Validation (GCV). GCV allows estimating global errors and calibration of the analysis parameters. 
 
 The tools will be further explained in Chapter~\ref{chap:analysisparameters}.
  
@@ -554,7 +554,7 @@ In order to perform three-dimension analysis (horizontal coordinates and depth),
 
 However, the reconstruction of three-dimensional fields of temperature and salinity by stacking of layers of analysed fields may lead to unstable density fields. An algorithm has been implemented in \diva in order to remove these instabilities.
 
-These topics are described in Chapter~\ref{chap:godiva}.
+These topics are addressed in Part~\ref{part:godiva}.
 
 
 \subsection{DINEOF\label{sec:DINEOF}}

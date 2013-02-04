@@ -43,7 +43,7 @@ The connector values themselves are found as the solution of the minimization pr
 \left( \matr{K}_s + \matr{K}_d \right) \vect{q} = \vect{g}
 \end{equation}
 
-The stiffness matrix $\matr{K}=\matr{K}_s + \matr{K}_d$ is composed by the different terms related to the derivatives ($\matr{K}_s$) and a final term related to the location of data:
+The stiffness matrix\index{Stiffness matrix} $\matr{K}=\matr{K}_s + \matr{K}_d$ is composed by the different terms related to the derivatives ($\matr{K}_s$) and a final term related to the location of data:
 \begin{equation}
 \matr{K}_d ~=~ \sum_{i=1}^{N_d} \mu_i \matr{S}_i \transp{\matr{S}}_i
 \end{equation}
@@ -212,7 +212,7 @@ Each source (unit= unit of tracer by unit time), is spread over sub-element in w
 \item
 Source file \file{sources.dat} similar to data file. Read in a similar way and sources sorted in a similar way also (which needed some adaptations)
 \item Files modified
-\file{solver.f constr.f divainc.h datapr.f divacalc}
+\file{solver.f constr.f divainc.h datapr.f} \command{divacalc}
 \item File added: \file{sourcepr.f}
 \item \file{constraint.dat} can now contain a third optional parameter which is $\gamma$.
 \end{itemize}
