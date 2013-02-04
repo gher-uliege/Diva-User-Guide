@@ -31,8 +31,9 @@ We recommend to create a new directory (let us call it \directory{case1}) for ea
 Let us assume that you created \directory{case1} in \directory{\textasciitilde/Examples/}. To copy them into the \directory{diva\-stripped/\-input/} directory, use the command: 
 
 \vspace{.25cm}
-
-\command{divaload ../case1}
+\begin{lstlisting}[style=Bash]
+bash-3.2$ divaload ../case1
+\end{lstlisting}
 
 For the present example, we will use a subset of data contained in the MEDAR database (see Fig.~\ref{dataplotCL}). 
 
@@ -91,7 +92,11 @@ The first file contains distances between points, the covariance and the number 
 
 In \file{paramfit.dat}, you will find estimates for the correlation length $L$ and for the signal-to-noise ratio $\snr$. You can replace the old values of $\snr$ and $L$ in \file{param.par} by the new ones from \file{paramfit.dat}.
 
-If you want the new $L$ value to be automatically replaced, type \command{divafit -r}.
+If you want the new $L$ value to be automatically replaced, type 
+
+\begin{lstlisting}[style=Bash]
+bash-3.2$ divafit -r
+\end{lstlisting}
 
 \begin{exfile}[H]
 \begin{footnotesize}

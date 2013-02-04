@@ -31,9 +31,12 @@ echo set terminal png transparent giant font system 14 size 1920,1540 crop \#fff
 \end{tips}
 
 \begin{tips}
-If you do not need all plots but only a few (eg. analysis, error and coastline) of them you can edit the plotting program \file{gnuwork$\backslash$divaplotall} and replace the script line \texttt{for i in \`ls diva\_*\`} by
+If you do not need all plots but only a few (eg. analysis, error and coastline) of them you can edit the plotting program \file{gnuwork$\backslash$divaplotall} and replace the script line \verb#for i in `ls diva_*`# 
+
+by
 \end{tips}
-\texttt{for i in diva\_analysis diva\_error diva\_coastline}
+
+\verb#for i in diva_analysis diva_error diva_coastline#
 
 \subsubsection{Installation}
 %---------------------------
@@ -77,6 +80,7 @@ Once you have downloaded it, just unzip the folder in the location of your choic
 Normally Fortran sources (\file{forgnuplot*.f}) have been compiled during the \diva installations and executables placed into \directory{DIVA3D/bin/}.
 
 In directory \directory{divastripped/gnuwork/}, edit \command{divaplotall}  and adapt the header so that  \texttt{gplot} indicates the correct path to your \gnuplot executable.
+
 \example\\
 \begin{verbatim}
 #====================================================
