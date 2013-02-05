@@ -346,8 +346,6 @@ and a proposed scaling for regularization constants is
 \end{equation}
 This has been implemented.
 
-
-
 If the detrending is included in a 3-D loop, with the same groups and classes defined in each layer, we can further request that the values of the trends in a given layer are not too far from those in the surrounding layers and modify the norm as
 
 \begin{equation}
@@ -355,14 +353,13 @@ If the detrending is included in a 3-D loop, with the same groups and classes de
 \end{equation}
 where the coefficient $\beta_j^*$ regularize the trend differences between layers and where $^+$ refers to the value in the layer above and $^-$ to the layer below. Obviously, the solution of this problem will involve tridiagonal solvers. For the lowest and uppermost layer, we can simply assume a zero gradient for the trends.
 
-Similarly, the $ \beta$ can be scaled based on the two layers involved
+Similarly, the $\beta$ can be scaled based on the two layers involved
 
 \begin{equation}
 \beta^+_j = { (\bar{\mu}^+_j N_j^+ + \bar{\mu}_j N_j) \over (N_j^++N_j) }
 \end{equation}
 
 This regularisation between layers is not yet implemented. Either done at 3-D level or simply allow iterative 3-D filtering as now but with weights $\beta$ as described here !
-
 
 %---------------
 \subsection{Use}
@@ -386,7 +383,8 @@ Execute \command{divadetrend ngroups [niterations]}. The parameter {\tt ngroups}
 (You might create for exemple 5 groups and try with detrending on the first one only using \command{divadetrend 1}). The optional parameter {\tt niterations} tells how many iterations are to be performed for the detrending. Default value is 10 iterations.
 
 \subsubsection{Outputs}
-\file{./output/rmsmisfit.dat} contains the evolution during the iterations of the misfit (after detrending). It should decrease if the detrending works well.  \file{trends.all.1.dat} deals with group 1 and contains on column 1 the class number and on columns 2 the final trend value associated with it. Columns 3 and 4 correspond to the next to last iteration and the last columns to the first iteration.
+\file{./output/rmsmisfit.dat} contains the evolution during the iterations of the misfit (after detrending). It should decrease if the detrending works well.  
+\file{trends.all.1.dat} deals with group 1 and contains on column 1 the class number and on columns 2 the final trend value associated with it. Columns 3 and 4 correspond to the next to last iteration and the last columns to the first iteration.
 
 \command{divagnu} produces plots for the trend in each group.
 

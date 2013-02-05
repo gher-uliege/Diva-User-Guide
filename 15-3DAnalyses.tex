@@ -11,11 +11,11 @@ The working directory to perform 3D-analyses is the same as for 2D-analyses: \li
 \section{Input subdirectories}
 %----------------
 
-As described before, to perform a 2D-analysis, one needs to provide a set of input files in the  \directory{DIVA3D/divastripped/input/} subdirectory. For 3D-analysis, the input files are provided in subdirectories of the input directory and in the input directory.
+As described before, to perform a 2D-analysis, one needs to provide a set of input files in the \directory{DIVA3D/divastripped/input/} subdirectory. For 3D-analysis, the input files are provided in subdirectories of the input directory and in the input directory.
 
-\subsection[DIVA3D/divastripped/input/divadata subdirectory]{\directory{DIVA3D/divastripped/input/divadata/} subdirectory}
+\subsection[divadata subdirectory]{divadata subdirectory}
 
-In this directory all (horizontal 2D) data sets to be analysed are provided, and named with regard to the variable name and the depth level number.
+In \directory{DIVA3D/divastripped/input/divadata/}  all the horizontal 2D data sets to be analysed are provided and named with regard to the variable name and the depth level number.
 
 \begin{center}
 \fbox{
@@ -46,15 +46,13 @@ In this subdirectory, data density files related to data set files are stored:
 
 
 \btips
-
- Density files are automatically generated when performing an analysis.
-
+Density files are automatically generated when performing an analysis.
 \etips
 
-\subsection[DIVA3D/divastripped/input/divaparam directory]{\directory{DIVA3D/divastripped/input/divaparam/} subdirectory}
+\subsection{divaparam subdirectory}
 %--------------------------------------
 
-In this directory are placed the \file{param.par} and \file{coast.cont} files, as well as all other input files related to \diva parametrisation. The \file{coast.cont} files are named following the corresponding level depth number. \file{param.par} files can be named following the  corresponding variable name and the level depth number or only the level depth number:
+In \directory{DIVA3D/divastripped/input/divaparam/} are placed the \file{param.par} and \file{coast.cont} files, as well as all other input files related to \diva parametrisation. The \file{coast.cont} files are named following the corresponding level depth number. \file{param.par} files can be named following the  corresponding variable name and the level depth number or only the level depth number:
 
 
 \begin{center}
@@ -74,8 +72,7 @@ Levels must be numbered from the bottom (lowest $xxxx$) to the top level (highes
 \end{center}
 
 
-
-\subsubsection[input/divaparam content description]{\directory{input/divaparam/} content description}
+\subsubsection{\directory{input/divaparam/} content description}
 
 It may contain the following files:\par
 
@@ -113,9 +110,10 @@ The advection constraint files are placed in the \directory{input/divaUVcons} su
 \end{description}
 
 
-\subsection{More \directory{DIVA3D/divastripped/input/} input subdirectories}
+\subsection{More input subdirectories}
 %--------------------------------------
 
+The directory \directory{DIVA3D/divastripped/input/} may also contents other subdirectories, as described below.
 
 \subsubsection{\directory{divaUVcons}}
 
@@ -148,7 +146,7 @@ It may contain the following files:
 
 \subsubsection{\directory{divarefe}}
 
-This subdirectory is located in the \directory{divastripped/input/} directory, and contains reference field files which can be used by \diva as background for the analyses. This files can be semi normed reference field files produced  previously by \diva.
+This subdirectory is located in the \directory{divastripped/input/} directory, and contains reference field files which can be used by \diva as background for the analyses\index{Background field}. This files can be semi normed reference field files produced  previously by \diva.
 
 It may contain the following files:\par
 
@@ -173,7 +171,7 @@ It may contain the following files:\par
 
 \subsubsection{\directory{divamesh}}
 
-This subdirectory is located in the \directory{divastripped/input} directory, and contains mesh files which can be used by \diva instead of generating a new ones. This files can be produced  previously by \diva in a preprocessing' step .
+This subdirectory is located in the \directory{divastripped/input} directory, and contains mesh files which can be used by \diva instead of generating a new ones. This files can be produced  previously by \diva in a preprocessing step .
 
 It may contain the following files:\par
 
@@ -197,8 +195,7 @@ It may contain the following files:\par
 \section{Input info files: \texttt{contour.depth} \& \texttt{3Dinfo}}
 %----------------
 
-In order to be able to use the three dimensional features of \diva one has to provide two info-files in the \directory{DIVA3D/divastripped/input/} input directory:
-
+In order to use the three dimensional features of \diva, one has to provide two info-files in the \directory{DIVA3D/divastripped/input/} input directory:
 
 \vspace{0.5cm}
 \centerline{
@@ -282,9 +279,9 @@ The information file \file{3Dinfo} must be placed in the \directory{input} direc
 \item {\bf Parameter optimization}: Possible flag values are $0$, $1$, $2$, $3$, $-1$, $-2$, $-3$, $10$, $-10$, $30$ and $-30$:
               \begin{itemize}
                 \item[*] $=1$ if correlation length parameters are to be estimated,
-                \item[*] $=2$ if signal-to-noise ratio ($S/N$) parameters are to be estimated,
+                \item[*] $=2$ if signal-to-noise ratio ($\snr$) parameters are to be estimated,
                 \item[*] $=-1$ if correlation length parameters are to be estimated and vertically filtered,
-                \item[*] $=-2$ if signal-to-noise ratio ($S/N$) parameters are to be estimated and vertically filtered,
+                \item[*] $=-2$ if signal-to-noise ratio ($\snr$) parameters are to be estimated and vertically filtered,
                 \item[*] $=3$ if both  correlation length and  signal-to-noise ratio parameters are to be estimated,
                 \item[*] $=-3$ if both  correlation length and  signal-to-noise ratio parameters are to be estimated and vertically filtered,
 
@@ -292,7 +289,7 @@ The information file \file{3Dinfo} must be placed in the \directory{input} direc
                 \item[*] $=-10$ if correlation length parameters are to be estimated using data mean distance as a minimum and vertically filtered,
                 \item[*] $=30$ if both  correlation length and  signal-to-noise ratio parameters are to be estimated using data mean distance as a minimum (for $L$),
                 \item[*] $=-30$ if both  correlation length and  signal-to-noise ratio parameters are to be estimated using data mean distance as a minimum (for $L$), and both parameters vertically filtered.
-% and generated relative length fields (for $S/N$)
+% and generated relative length fields (for $\snr$)
               \end{itemize}
 
 \item {\bf Perform analysis}: Possible flag values are $0$, $1$ and $2$:
@@ -408,7 +405,7 @@ At this stage, field of scaling factors to the correlation length can be generat
 
 \subsection{Parameters optimisation}
 
-The estimation of analysis parameters (see Chapter~\ref{chap:analysisparameters}) can be done for all levels using \command{diva3Ddress}. It is possible to optimise one or more parameter for a range of levels with different options (see Section~\ref{sec:3Dinfo}). The parameters which can be optimised are correlation length $L$, signal-to-noise ratio $S/N$ and the error variance background $VARBAK$. The parameters optimisation can be done within a range of bounds (a maximum and a minimum). The bounds can be prescribed for all levels in the \file{3Dfile} (see Section~\ref{sec:3Dinfo}) or varying with levels by giving the list of bound in files \file{CLminmax} and/or \file{SNminmax}.
+The estimation of analysis parameters (see Chapter~\ref{chap:analysisparameters}) can be done for all levels using \command{diva3Ddress}. It is possible to optimise one or more parameter for a range of levels with different options (see Section~\ref{sec:3Dinfo}). The parameters which can be optimised are correlation length $L$, signal-to-noise ratio $\snr$ and the error variance background $VARBAK$. The parameters optimisation can be done within a range of bounds (a maximum and a minimum). The bounds can be prescribed for all levels in the \file{3Dfile} (see Section~\ref{sec:3Dinfo}) or varying with levels by giving the list of bound in files \file{CLminmax} and/or \file{SNminmax}.
 
 To perform parameters optimisation, one can place a default \file{param.par} with an approximated values for correlation length ($L$), signal-to-noise ratio ($snr$) and variance ($VARBAK$) parameter values, in \directory{input/divaparam/} (or \directory{input}) directory). If parameter bounds are desired for each considered level, one can place a bound file corresponding to the parameter(s) to be optimised (\file{CLminmax} and/or \file{SNminmax}) in \directory{input/divaparam/}, or prescribe a general one in \file{3Dinfo} file. Choose the appropriate flag value in the \file{3Dinfo} file (see Section~\ref{sec:3Dinfo}). The 3D analysis parameter optimisation output is a set of \file{param.par} indexed following the variable name and the corresponding level, and summary files of estimated parameters before and/or after vertical filtering.
 
@@ -464,7 +461,7 @@ If only one \file{RL.dat} file of relative length is used, it must be placed in 
 \fbox{
 \begin{minipage}{0.9\textwidth}
 \vspace{.25cm}
-\textbf{Convention:} When a \underline{\file{RLinfo.dat}} file is present in the \directory{divaparam} subdirectory or in the \directory{input} directory, \diva will perform 3D analysis using relative length files.\\
+\textbf{Convention:} When a \file{RLinfo.dat} file is present in the \directory{divaparam} subdirectory or in the \directory{input} directory, \diva will perform 3D analysis using relative length files.\\
 \vspace{.25cm}
 \end{minipage}
 }
@@ -486,7 +483,7 @@ If for all levels, the same advection files are used, only \file{Uvel.dat}, \fil
 \fbox{
 \begin{minipage}{0.9\textwidth}
 \vspace{.25cm}
-\textbf{Convention:} The advection constraint is activated when a \underline{\file{3Dconstraint}} file is present in the \directory{divaparam} subdirectory or a \underline{\file{constraint.dat}} is present in the \directory{input} directory.
+\textbf{Convention:} The advection constraint is activated when a \file{3Dconstraint} file is present in the \directory{divaparam} subdirectory or a \file{constraint.dat} is present in the \directory{input} directory.
 \vspace{.25cm}
 \end{minipage}
 }
@@ -558,7 +555,7 @@ The outputs are placed in \directory{output/3Danalysis/} and consist of:
 \caption{Content of \directory{output/3Danalysis/}}
 \end{figure}
 
-{\bf The 3D variable analysis NetCDF file contains the diva analysis of the variable and a set of variable related information fields: relative error and error standard deviation fields, variable masked (using two relative error thresholds) fields, deepest values of the variable field and the related masked fields. It contains also fields of information about data distribution and outliers as well as fields of correlation length and signal-to-noise ratio parameters.} %(see \ref{3Dncfile})
+The 3D variable analysis NetCDF file contains the diva analysis of the variable and a set of variable related information fields: relative error and error standard deviation fields, variable masked (using two relative error thresholds) fields, deepest values of the variable field and the related masked fields. It contains also fields of information about data distribution and outliers as well as fields of correlation length and signal-to-noise ratio parameters. %(see \ref{3Dncfile})
 
 
 \item[A subdirectory \directory{Fields}] containing all the \diva 2D output files for all levels:
@@ -589,8 +586,8 @@ The outputs are placed in \directory{output/3Danalysis/} and consist of:
 
 \item[Log files] Two log files are generated:
 \begin{itemize}
-\item  \file{diva.log}: Log file of fortran binaries run in \directory{./output/}
-\item  \file{var.diva3D.log}: Log file of shell scripts execution in \directory{output/3Danalysis}.
+\item \file{diva.log}: Log file of Fortran binaries run in \directory{./output/}
+\item \file{var.diva3D.log}: Log file of shell scripts execution in \directory{output/3Danalysis/}.
 \end{itemize}
 
 \end{description}
