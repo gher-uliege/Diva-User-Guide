@@ -6,7 +6,7 @@ This chapter describes the theory behind the \diva interpolation method and comp
 \minitoc
 
 
-\section{The gridding problem\label{gridding}}
+\section[Data gridding]{Data gridding\label{gridding}}
 %----------------------------------------------
 
 The generation of gridded fields from non-uniformly distributed observations (both in space and time) is a frequent concern in geosciences. Similarly to \citet{OOYAMA87}, we will refer to an \textit{analysis} or \textit{analysed field} as "\textit{the estimation of a continuous spatial field of a given variable from a set of discrete measurements}". The range of applications is wide, going from model initialization to validation exercises or simple plotting purposes. 
@@ -20,7 +20,7 @@ In this chapter we consider only two-dimensional cases, but generalization can b
 	\parbox{.5\textwidth}{
 		\includegraphics[width=.45\textwidth,bb=166  289 440 564]{gridding}
 		}\parbox{.5\textwidth}{
-		\caption[Schema of the gridding problem.]{Schema of the gridding problem: the blue dots indicate data positions, while the nodes of the grid  are the points where the field has to be determined.\label{gridproblem}}
+		\caption[Schema of the data gridding.]{Schema of the data gridding: the blue dots indicate data positions, while the nodes of the grid are the points where the field has to be determined.\label{gridproblem}}
 		}
 \end{figure}
 
@@ -93,7 +93,7 @@ e.g., data from a cruise \citep{RIXEN01}.
 Because of the multiple sources of error, a perfect fit to data is not advised, and the noise on the measurements has to be considered during the analysis.
 
 %-------------------------------------------------------------
-\section{The Optimal Interpolation method\label{sec:OImethod}}
+\section[Optimal Interpolation]{The Optimal Interpolation method\label{sec:OImethod}}
 %-------------------------------------------------------------
  
 Before explaining the core of \diva technique, the main principles of \textit{Optimal interpolation} \citep[OI,][]{STOR99,CHILES99} are explained\index{OI}. OI is a popular analysis tool, owing to its ease of use and the error field associated to the analysis \citep[e.g.,][]{SHEN98b,KAPLAN00}. The first references of the method are \citet{GANDIN65} and \citet{BRETHERTON76}.
@@ -222,7 +222,7 @@ The quality of OI (and other gridding techniques) relies on the correct specific
 
 Finally, although OI provides the best analysis in the sense that it gives the minimum expected error, the method has the drawback of not being fully objective: the covariance of the unknown field, and the standard deviation of observational errors generally have to be chosen subjectively by he user.
 
-\section[VIM and its implementation]{The Variational Inverse Method}
+\section[The Variational Inverse Method]{The Variational Inverse Method and its implementation}
 % ---------------------------------------
 
 \index{VIM}
@@ -530,7 +530,7 @@ DINEOF   &  ($\bullet$)     & $\bullet$ &  $\bullet$ & $N_a^{5/4}$   & $\bullet$
 \section{Additional tools}
 % ------------------------
 
-\diva software is provided with additional tools designed for parameters adjustment, quality control of results and other physical constraints in the analysis.
+\diva software is provided with additional tools designed for parameters adjustment, quality control of data and application of physical constraints on the analysis.
 
 \subsection{Automatic estimation of analysis parameters}
 %-------------------------------------------------------

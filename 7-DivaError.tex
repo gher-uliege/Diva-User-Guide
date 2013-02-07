@@ -4,9 +4,9 @@ This chapter presents the different methods for computing the error field associ
 
 \minitoc
 
-%---------------------
+%------------------
 \section{Introduction}
-%---------------------
+%------------------
 
 The analysis performed with the optimised parameters should have the lowest global error, as measured by \eqref{eq:gcvbis}. Nevertheless, the spatial distribution of the error is also of interest for any interpolation or analysis method, since it gives the user an indication of the reliability of the results. The error field is expected to be affected by:
 \begin{enumerate}
@@ -164,7 +164,7 @@ For each of the $N_c$ points in which the error is to be evaluated, an additiona
 
 To save computing time, a nice mathematical property was discovered and exploited: performing an analysis that differs only by one data point from a previous analysis can be performed using an already existing matrix factorization. In this case, the generation of all covariances (always changing only one data point) can be performed with a cost similar to a single error analysis with prescribed mathematical covariance functions.
 
-To explain the method, let us suppose that we have constructed and inverted the stiffness matrix $\matr{K_0}$ for the same problem without any data point (as explained in Section~\ref{sec:finiteelements}), $\matr{K_0}$ has a component that is related to the smoothness constraint, not to the data). Then, adding a single data point with unit value at location $i$ would demand the solution of 
+To explain the method, let us suppose that we have constructed and inverted the stiffness matrix\index{Stiffness matrix} $\matr{K_0}$ for the same problem without any data point (as explained in Section~\ref{sec:finiteelements}), $\matr{K_0}$ has a component that is related to the smoothness constraint, not to the data). Then, adding a single data point with unit value at location $i$ would demand the solution of 
 
 \begin{equation}
 \left( \matr{K}_0 + \mu_i \matr{S}_i \transp{\matr{S}}_i \right) \vect{q} ~=~ \mu_i \matr{S}_i.
@@ -231,8 +231,7 @@ The choice of one particular method depends on several factors:
 \item The sources of anisotropies (advection, coastlines).
 \end{itemize} 
 
-If the objective is limited to having an indication of the area where the analysed field cannot be trusted, then the poor man's estimate is sufficient. If a more complex error field is to be constructed, a bypass is the reduction of the output grid resolution. This solution is particularly welcome when a large number of analyses ($\mathcal{O}(10^{2})$) is required, as it is the case for a climatology.
-
+If the objective is limited to having an indication of the area where the analysed field cannot be trusted, then the poor man's estimate is sufficient. If a more complex error field is to be constructed, a bypass is the reduction of the output grid resolution. This solution is particularly welcome when a large number of analyses ($\mathcal{O}(10^{2})$) is required, as it is the case for a climatology (repeated analysis on months and depth levels).
 
 
 % \section{Error field with advection}
@@ -250,11 +249,13 @@ If the objective is limited to having an indication of the area where the analys
 Very often, we are not only interested in the analysed field itself but also in its integral over the
 total domain or a sub-domain. If we have the analysis on a sufficiently fine output grid, the integral
 itself is then just a sum of the values at the grid points covering the integration domain, multiplied by the
-grid-cell surface. Hence we do not consider here the additional approximation brought by replacing a continuous integral by
-a discrete sum. Indeed, generally the output grid is fine compared to the scales of interest
-and the sum can be considered an "exact" integral. Hence, we will focus here on the error on a discrete sum of the analysed field.
+grid-cell surface. 
 
-An application of this theory is found in \citet{YARI12}, where the authors estimate transports through the Strait of Otranto (Adriatic Sea) using \diva and the calculation of integrals.
+We do not consider here the additional approximation brought by replacing a continuous integral by
+a discrete sum. Indeed, generally the output grid is fine compared to the scales of interest
+and the sum can be considered an "exact" integral. Hence, we will focus on the error on a discrete sum of the analysed field.
+
+An application of this theory is found in \citet{YARI12}, where the authors estimated transports through the Strait of Otranto (Adriatic Sea) using \diva and the calculation of integrals.
 
 \subsection{Theory}
 %------------------
@@ -334,7 +335,7 @@ c(r) ~=~{r \over L} K_1 \left(r \over L\right)
 \end{equation}
 where $r$ is the distance between the two points, $L$ the correlation length and $K_1$ a Bessel function\index{Bessel function}. To get the covariance function we simply have to multiply by the variance $\sigma^2$ of the background field.
 
-Hence we can estimate $\Delta^2$ by calculating these covariance functions between grid and data points and performing one analysis with \diva.
+This way we can estimate $\Delta^2$ by calculating these covariance functions between grid and data points and performing one analysis with \diva.
 
 \subsubsection{Inflation approach}
 
@@ -362,9 +363,7 @@ If we had used the naive approach of neglecting the spatial covariances, the dou
 \begin{equation}
 \tilde{\tilde{\Delta}}^2= {1 \over \Delta x \Delta y} \int_D <{\epsilon}^a(\vect{x}) {\epsilon}^a(\vect{x}) >  d \vect{x}.
 \end{equation}
-Hence we see that we should apply an inflation factor of $\sqrt{{4 \pi L^2 \over \Delta x \Delta y}}$ on $\tilde{\tilde{\Delta}}$ to get a better estimate of the error standard deviation. In practice  this inflation factor is probably a little too high (we assumed the analysis error to have the same correlation length as the analysis while in reality it is generally smaller and we extended one of the integrals to an infinite domain, adding up more errors).
-
-
+Hence we see that we should apply an inflation factor of $\sqrt{{4 \pi L^2 \over \Delta x \Delta y}}$ on $\tilde{\tilde{\Delta}}$ to get a better estimate of the error standard deviation. In practice this inflation factor is probably a little too high (we assumed the analysis error to have the same correlation length as the analysis while in reality it is generally smaller and we extended one of the integrals to an infinite domain, adding up more errors).
 
 \subsection{Use}
 

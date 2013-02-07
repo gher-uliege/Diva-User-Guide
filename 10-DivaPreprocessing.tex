@@ -1,5 +1,6 @@
 % DivaPreprocessing
 \chapter{Preparation of the input files\label{Preprocessing}}
+%--------------------------------------------------
 
 We describe in this chapter the tools to prepare the various input files presented in Chapter~\ref{chap:general}. If you already have the input files at your disposal, you way want to go directly to the next chapter.
 
@@ -9,16 +10,19 @@ We describe in this chapter the tools to prepare the various input files present
 %---------------------------------------------------------
 
 \index{Topography}
-Topographies are necessary in two cases: first when you work in a vertical plane and want to interpolate several profiles from a cruise; second is when you need contour files at different depths to perform analysis. We describe here two techniques to get a topography file compatible with \diva.
+A topography may be the first thing you have to prepare in order to generate a climatology. They are necessary in two cases: 
+\begin{enumerate}
+\item when you need contour files at different depths to perform analysis;
+\item when you work in a vertical plane and want to interpolate several profiles from a cruise.
+\end{enumerate} 
 
-Basically, the procedure consists in changing the format of a topography file and making it readable by \diva. The methods presented in this Section correspond to different data bases of topography. 
-
+Basically, the procedure consists in creating files with a format readable by \diva. The list of methods presented in this Section is not exhaustive, but corresponds to different procedures to create topography files using different data bases freely available on the web. 
 
 \begin{center}
 \fbox{
 \begin{minipage}{0.9\textwidth}
 \vspace{.25cm}
-\textbf{Convention:} \diva works with the convention that depth are positive under the sea level. This is especially important when creating contours. \matlab\,tools provided with the software create topographies which respect this convention, but in case that you work with topography database that are not described in the following section,  
+\textbf{Convention:} \diva works with the convention that depth are positive under the sea level. This is especially important when creating contours. \matlab tools provided with the software create topographies which respect this convention, but in case that you work with topography database that are not described in the following section,  
 \vspace{.25cm}
 \end{minipage}
 }

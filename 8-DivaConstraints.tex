@@ -19,7 +19,7 @@ Activating an advection \index{Advection}constraint on the tracers is done by ad
 \right]^2 \ddiff \tilde{D}
 \end{equation}
 
-where $U$ and $L$ are characteristic velocity and length scales, respectively. We recognize a dimensionless version of stationnary advection-diffusion equation
+where $U$ and $L$ are characteristic velocity and length scales, respectively. We recognize a dimensionless version of stationary advection-diffusion equation
 
 \begin{equation}
 \vect{u} \cdot {\nabla} \varphi
@@ -64,12 +64,10 @@ When a constraint is added, in the original version, the stiffness matrix is aug
 
 where $s_i$ are the shape functions of the element
 
-
-
 \subsection{Advection alone}
 %------------------------------
 
-Figure~\ref{fig:solidrot} shows an example of a single data point in\, $(0.7,60)$ with unit value in a solid 
+Figure~\ref{fig:solidrot} shows an example of a single data point located at $(0.7,60)$ with unit value in a solid 
 rotation (centred in $(0,60)$). In the absence of diffusion, up and downwind are identical (covariance 
 counts).
 
@@ -94,9 +92,7 @@ recovered (except for boundary effect on the right side).
 }
 \end{figure}
 
-
-
-To decrease the across frontal scale, we must decrease $L$ but add advection 
+To decrease the cross-frontal scale, we must decrease $L$ but add advection 
 to keep along-current scale larger (Fig. \ref{fig:solidrotsmall}).
 
 \begin{figure}[H]
@@ -107,9 +103,8 @@ to keep along-current scale larger (Fig. \ref{fig:solidrotsmall}).
 }
 \end{figure}
 
-
 Adding advection without decreasing $L$ increases correlation length 
-along front and keeps across front correlation length.
+along-front and keeps cross-front correlation length.
 
 %--------------------------------------
 \subsection{Advection and diffusion}
@@ -156,7 +151,7 @@ vector indicating the direction in which correlation is to be increased.
 Hence it could be for example, topography gradients rotated by $90$ degrees 
 or density gradients rotated by 90 degrees if we respectively assume across depth-contour movements are more 
 difficult (and hence data correlation decreased) or across frontal movements more difficult (and hence correlation length 
-across fronts decreased). This idea is implemented in \command{divaUVtopo} which generates a "velocity" field along isobath.
+across fronts decreased). This idea is implemented in \command{divaUVtopo} which generates a pseudo velocity field along isobaths.
 
 The advection constraint therefore allows any known anisotropy in the correlations to be included into the analysis. We notice that the vector field does not need to be divergence free.
 
@@ -175,7 +170,7 @@ With the more complete equation
 \vect{u} \cdot {\nabla} \varphi
 ~=~ \sum_j \mathcal{Q}_j\delta( \vect{\tilde{r}}-\vect{\tilde{r}}_j ) ~-\gamma \varphi ~+ \mathcal{A}  {\nabla}\! \cdot\! {\nabla}\varphi ,
 \end{equation}
-we augment the functional as
+we augment the cost function as
 
 \begin{equation}
 \tilde{J}= \tilde{J}_1(\varphi) + {\theta  } \int_{\tilde{D}}\left[ 
@@ -187,7 +182,6 @@ we augment the functional as
 %-------------------------
 \subsection{Implementation}
 %-------------------------
-
 
 $\matr{K}_s$ is easily modified by adding the decay term during the calculation of the constraint:
 \begin{eqnarray}
@@ -407,8 +401,6 @@ specified in the file.
 and we call \command{divadetrend 3}, columns \texttt{8 5 7} will be used in this order for detrending. If there is no file \file{detrend.order}, then \command{divadetrend 3} will use 5 6 7 in this order.
 
 (file \file{detrend.order} or default order is written in \file{fort.56} in \directory{divawork} during execution)
-
-
 
 
 %-------------------

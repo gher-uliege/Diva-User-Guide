@@ -118,7 +118,7 @@ literate={\$}{{\textcolor{red}{\$}}}1
 %-------------------------------------------------
 
 \newcommand{\diva}{\textsf{Diva}\xspace}
-\newcommand{\matlab}{\textsf{Matlab}}
+\newcommand{\matlab}{\textsf{Matlab}\xspace}
 \newcommand{\plplot}{\textsf{PlPlot}}
 \newcommand{\tcltk}{\textsf{Tcl/Tk}}
 \newcommand{\divaversion}{4.3}
@@ -222,9 +222,9 @@ pdfstartview=FitP,
 pdftoolbar=true,
 pdfmenubar=true,
 pdfwindowui=true,
-pdfauthor={Charles Troupin, M. Ouberdous, J.-M. Beckers},
-pdftitle=Diva User Guide,
-pdfsubject=Geostatistics analysis tool,
+pdfauthor={C.~Troupin, M.~Ouberdous, J.-M.~Beckers},
+pdftitle={Diva User Guide},
+pdfsubject={Geostatistics analysis tool},
 bookmarksopenlevel=2,
 colorlinks=true,%
 breaklinks=true,%
@@ -242,6 +242,7 @@ urlcolor=blue}
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \MakeUppercase{\thechapter.\ #1}}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
 %The text used in the header is determined by the arguments to the \markboth
+
 \fancyhf{} %Clears all header and footer fields, in preparation.
 \fancyhead[L]{\parbox{8cm}{\flushleft\textcolor{gris}{\leftmark}\\
 \rule{\textwidth}{0pt}}}
@@ -253,7 +254,8 @@ urlcolor=blue}
 \renewcommand{\footrulewidth}{0pt} %Underlines the footer. (Set to 0pt if not required)..
 %\fancyfoot[C]{\large\bfseries \textcolor{gris}{--\thepage--} }
 
-\fancyfoot[C]{\thepage}
+\fancyfoot[C]{\large\thepage}
+
 % ------------------------------------------------
 % chapter style
 %-------------------------------------------------

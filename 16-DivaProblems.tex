@@ -18,7 +18,8 @@ The latest stable version if available at \url{http://modb.oce.ulg.ac.be/mediawi
 
 \subsection{How to report a bug or a problem?}
 
-The preferred option is to send a message to the \diva user group on google (url{}). This has two advantages over emails:
+The preferred option is to send a message to the \diva user group on google% (url{}). 
+This has two advantages over emails:
 \begin{enumerate}
 \item The questions is directly sent to all the \diva developers.
 \item The issues previously solved are archived and available for other users.
@@ -50,14 +51,14 @@ There are basically two ways:
 
 \subsubsection{a) Using special binaries and preparing {\tt fort.*} files for \diva}
 
-This approach has been taken in the incorporation of \diva into ODV\index{Ocean Data View} and in the matlab\index{Matlab} function in \url{http://modb.oce.ulg.ac.be/mediawiki/upload/divaformatlab.zip}
+This approach has been taken in the incorporation of \diva into ODV\index{Ocean Data View} and in the \matlab\index{Matlab} function in \url{http://modb.oce.ulg.ac.be/mediawiki/upload/divaformatlab.zip}
 
-It requires some time (you can try to understand the matlab function to see how to prepare the files and recover the results), but has the advantage that you do not need to install \diva, compilers, netCDF or cygwin. It also avoids creation of large subdirectory trees for \diva. 
+It requires some time (you can try to understand the matlab function to see how to prepare the files and recover the results), but has the advantage that you do not need to install \diva, compilers, NetCDF or Cygwin. It also avoids creation of large subdirectory trees for \diva. 
 
 
 \subsubsection{b) Using a full \diva installation and preparation of normal \diva input files}
 
-In this case you must have installed the \diva package and have access to either directly unix or cygwin shells. \index{Cygwin}
+In this case you must have installed the \diva package and have access to either directly unix or Cygwin shells.\index{Cygwin}
 
 You also need to prepare a shell script. You can call it whatever you want let's say \command{mydivacall} and it contains the instructions you want to execute with \diva. So typically what you would type in the command-line session when trying to make the analysis.
 
@@ -116,8 +117,6 @@ are working with anomalies, thus no need to subtract any background field.
 and anomaly fields.
 
 \end{enumerate}
-
-
 
 
 \subsection{How can one create monthly analysis where the reference field is the annual analysis?}
@@ -271,18 +270,20 @@ End of lines in Unix,  Windows and Mac files are different, and this causes prob
 
 Working on a individual file, the command\\
 
-\command{dos2unix  name\_of\_the\_file}
+\begin{lstlisting}[style=Bash]
+[charles@gher13 divastripped]$ dos2unix  name\_of\_the\_file
+\end{lstlisting}
+does the conversion between Windows and Unix end of lines. According to the Linux distribution, \command{dos2unix} may requires options to perfom the conversion. For example with Mandriva~2010, it is necessary to add the option \texttt{-U}:
 
-does the conversion between Windows and Unix end of lines. According to the Linux distribution, \command{dos2unix} may requires options to perfom the conversion. For example with Mandriva 2012, it is necessary to add the option \texttt{-U}:\\
+\begin{lstlisting}[style=Bash]
+[charles@gher13 divastripped]$ dos2unix  -U name\_of\_the\_file
+\end{lstlisting}
 
-\command{dos2unix  -U name\_of\_the\_file}
-
-When working with GODIVA, the transformation is automatically done on all the files. \command{dos2unix} is available using the package manager, but sometimes with the name \texttt{fromdos}.
+When working with GODIVA, the transformation is automatically done on all the files. \command{dos2unix} is available using the package manager of most of Linux distributions, but sometimes with the name \texttt{fromdos}.
 
 
 \subsection{Compilation problems\label{sec:error_compile}}
 %------------------------------------------------------------------------------------------------
-
 
 \begin{figure}[htpb]
 \centering
@@ -293,7 +294,7 @@ When working with GODIVA, the transformation is automatically done on all the fi
 \subsection{\question}
 %--------------------------------------
 
-The array $S$ defined in the various programs located in \directory{./src/Fortran/Calc/} are too large to be handled by your compiler. 
+The array $S$ defined in the various programs located in \directory{./src/Fortran/Calc/} is too large to be handled by your compiler. 
 
 
 \subsubsection{\answer}
@@ -337,7 +338,7 @@ If this is not sufficient, you will have to rebuild the NetCDF library correspon
 %----------------------------------------------------------------------------
 
 
-\subsection[Resource temporarily unavailable]{Resource temporarily unavailable \label{sec:error_resource}}
+\subsection[Resource temporarily unavailable]{Resource temporarily unavailable\label{sec:error_resource}}
 %------------------------------------------------------------------------------------------------
 
 
@@ -352,7 +353,6 @@ If this is not sufficient, you will have to rebuild the NetCDF library correspon
 
 The \texttt{diva.a} executable requires to much memory to work. This error comes from the operating system limitations.
 
-
 \subsubsection{\answer}
 %--------------------------------------
 First try to cancel all unnecessary tasks running on your machine, possibly rebooting. This will clean up the system and free up resources. If this is not sufficient, the solution is the same as case \ref{sec:error_compile}: recompile the sources after reducing the values of parameters \texttt{nrea} and \texttt{nent} in file \file{./src/Fortran/Calc/divainc.h}:
@@ -363,9 +363,6 @@ First try to cancel all unnecessary tasks running on your machine, possibly rebo
 If you get the same error message, reduce again the values of \texttt{nrea} and \texttt{nent}.
 
 Note that maximal allowable values for these parameters depends on your compiler and system, so it is not possible to assign them with universal values.
-
-
-%----------------------------------------------------------------------------
 
 \subsection{Error of allocation \label{sec:error_allocation}}
 %-------------------------------------------------------
@@ -398,10 +395,6 @@ In some uncommon cases, you may not be able to find values of \texttt{nrea} and 
 
 This procedure should help you to save memory otherwise used for the finite-element mesh. Working with a coarser mesh will not affect excessively your results.\index{Finite-elements}
 
-
-
-
-%-------------------------------------------------------------------------------
 
 \subsection{Permission denied for execution of \texttt{diva.a}\label{sec:error_gfortran}}
 %------------------------------------------------------------------------------------------------
@@ -462,7 +455,7 @@ As the default value of \texttt{nm} is already large, you may also consider work
 \parbox{.65\textwidth}{
 \includegraphics[width=.6\textwidth]{fine_contour}
 }\parbox{.35\textwidth}{
-\caption[Small contours]{Small contours created from DBDBV topography in the North Atlantic at 4500 m depth\label{fig:smallcont}.}
+\caption[Small contours]{Small contours created from DBDBV topography in the North Atlantic at 4500~m depth\label{fig:smallcont}.}
 }
 \end{figure}
  
@@ -498,11 +491,6 @@ The most frequent reason is that the \file{param.par} file has been modified dur
 
 Simply edit \file{param.par} to write the correct values of \texttt{nx} and \texttt{ny}, then run again \command{divacalc} (or \command{divadress}) to have an analysis on the desired grid.
 
-
-
-
-
-%-------------------------------------------------------------------------------
 
 \subsection{Windows runs out of virtual memory during diva execution}
 %------------------------------------------
@@ -562,9 +550,6 @@ An application has opened one or several files located in the directory you want
 %--------------------------------------
 
 Simply close the application(s) that open the files of the concerned directory.
-
-
-
 
 
 \section{Older problems}

@@ -7,10 +7,16 @@ The purpose of this chapter is to describe the tools included in the \diva softw
 
 
 %------------------------------------------------
-\section{Determination of the correlation length}
+\section[Correlation length]{Determination of the correlation length}
 %------------------------------------------------
+
 \index{Correlation length}
-The correlation length $L$ translates the distance over which a given data point influences its neighbourhood (Section~\ref{sec:parammeaning}). The method to evaluate $L$ is to fit the theoretical kernel of \eqref{divaformula2} (see Fig.~\ref{kernel1}) to the correlation between data assuming spatial isotropy and homogeneity in correlations.
+The correlation length $L$ gives an indication of the distance over which a given data point influences its neighbourhood (Section~\ref{sec:parammeaning}). Similarly to other interpolation techniques, it is an essential parameter for obtaining meaningful results. The value of $L$ can be provided a priori by the user, or determined using the data distribution  itself, as explained in the next Section.
+
+
+\subsection{Method}
+
+The method to evaluate $L$ is to fit the theoretical kernel of \eqref{divaformula2} (see Fig.~\ref{kernel1}) to the correlation between data assuming spatial isotropy and homogeneity in correlations. The quality of the fit will depend on the number of data points: a value of $L$ obtained with few data points has to be considered with care.
 
 \subsection{Illustration\label{sec:medseaex}}
 
@@ -221,7 +227,7 @@ The $\tilde{w}_i$ are the values provided as optional fourth column in \file{dat
 \command{divacv} uses cross validation with complete calculation of $A_{ii}$, whereas \command{divagcv} uses the approximation $A_{ii} N=\trace{\matr{A}}$.
 
 %------------------------------------------------------
-\section{Quality control (QC) of data\label{secdivaqc}}
+\section[Quality control]{Quality control of data\label{secdivaqc}}
 %------------------------------------------------------
 
 \index{Quality control}
@@ -250,7 +256,7 @@ Finally, in case the noise is not calculated from $\Theta^2$, another estimate i
 \Delta_i^{(3)}= \frac{\noise_i}{\noise} { \left({1-\frac{1}{ N} \trace{\matr{A}}}\right)}\, \Theta,
 \label{eq:qc3}
 \end{equation}
-which we can calculate directly from the RMS value of the misfit (or residual) and the generalized cross validator $\Theta$. This version can easily be used simultaneously with test \eqref{eq:qc2} using the results of the GCV.
+which can be calculatet directly from the RMS value of the misfit (or residual) and the generalized cross validator $\Theta$. This version can easily be used simultaneously with test \eqref{eq:qc2} using the results of the GCV.
 
  
 \subsection{Normalized version}
@@ -263,7 +269,7 @@ s_i = \frac{d_i - \tilde{d}_i}{\Delta_i}.
 \end{equation}
  
 Because we will look for outliers, instead of working with mean values and variances, more robust 
-estimators are the median and $\mathrm{MAD}$ (\textit{median absolute deviation}).
+estimators are the median and \textit{median absolute deviation} ($\mathrm{MAD}$).
  
 A bias in the analysis is likely to exist if $S=\mathrm{median}(s_i)$ is not much smaller than one
 (the typical values of $s$ should be of the order of one if the misfit estimate is correct on average).
@@ -274,7 +280,7 @@ the median absolute deviation  $\delta$ defined as
 \begin{equation}
 \delta = \mathrm{MAD}(s_i)=1.4826 \, \mathrm{median}| s_i-  S |
 \end{equation}
-where the factor 1.4826 is introduced such that for a normal distribution, the MAD is identical to the standard deviation.
+where the factor 1.4826 is introduced such that for a normal distribution, the $\mathrm{MAD}$ is identical to the standard deviation.
  
 Hence we can detect points qualified as outliers if they satisfy the inequality
 
@@ -284,7 +290,6 @@ Hence we can detect points qualified as outliers if they satisfy the inequality
 \end{equation}
  
 This normalized version of quality control to some extent corrects for inaccurate estimation of the expected misfits $\Delta$.
-
 
 
 \subsection{Implementation in \diva\label{sec:divagcv}}

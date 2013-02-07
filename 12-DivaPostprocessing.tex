@@ -1,16 +1,11 @@
 \chapter{Postprocessing tools\label{chap:postprocessing}}
 
-Various tools are available to visualize gridded fields; some of them are presented in the following sections.
+Various tools are available to visualize gridded fields; some of them are presented in the following sections. We consider it is up to the user to utilize his favourite drawing tools for representing the numerical results. Nevertheless, we provide several basic tools to facilitate this task.
+
 
 \minitoc
 
-
-\section{Display of outputs\label{visutools}}
-%--------------------------------------------------
-
-We consider it is up to the user to utilize his favourite drawing tools for representing the numerical results. Nevertheless, we provide several basic tools to facilitate this task.
-
-\subsection{Gnuplot\label{sec:visugnuplot}}
+\section{Gnuplot\label{sec:visugnuplot}}
 %-------------------------------------------
 
 \index{Gnuplot}
@@ -38,7 +33,7 @@ by
 
 \verb#for i in diva_analysis diva_error diva_coastline#
 
-\subsubsection{Installation}
+\subsection{Installation}
 %---------------------------
 
 \gnuplot can be easily downloaded for windows systems on the web page \url{http://www.gnuplot.info}. For Cygwin users, there are two possibilities:
@@ -73,11 +68,11 @@ Once you have downloaded it, just unzip the folder in the location of your choic
 \end{enumerate} 
 
 
-\subsubsection{Utilization}
+\subsection{Utilization}
 %-------------------------
 
 
-Normally Fortran sources (\file{forgnuplot*.f}) have been compiled during the \diva installations and executables placed into \directory{DIVA3D/bin/}.
+Normally Fortran sources (\file{forgnuplot*.f}) have been compiled during the \diva installation and executables placed into \directory{DIVA3D/bin/}.
 
 In directory \directory{divastripped/gnuwork/}, edit \command{divaplotall}  and adapt the header so that  \texttt{gplot} indicates the correct path to your \gnuplot executable.
 
@@ -131,7 +126,7 @@ Here are some examples of plots created with \gnuplot:
 \end{figure}
 
 
-\subsection{\matlab}
+\section{\matlab}
 %-------------------
 
 %http://modb.oce.ulg.ac.be/mediawiki/index.php/NetCDF_toolbox_for_Octave
@@ -145,8 +140,8 @@ x(\texttt{diva-\divaversion/src/Matlab})
 
 
 
-\subsubsection{Tools description}
-%--------------------------------
+\subsection{Tools description}
+%--------------------------
 
 In most of the cases, you should only edit \texttt{diva\_start.m}, where you will define:
 
@@ -217,7 +212,7 @@ The provided \matlab\, scripts aim to show you how to create plots from files ge
 \paragraph{Subroutines:} \texttt{uread.m} performs the reading of files written in GHER format (binary). These files are opened and closed with the help of \texttt{gzopen.m} and \texttt{gzfclose.m}, respectively. These three files do not need to be modified.
 
 
-\subsubsection{Examples of plot with Matlab \diva toolbox}
+\subsection{Examples of plot with Matlab \diva toolbox}
 %------------------------------------------------------------
 
 \begin{figure}[H]
@@ -236,15 +231,14 @@ The provided \matlab\, scripts aim to show you how to create plots from files ge
 \end{figure}
 
 
-\subsection{NcBrowse}
+\section{NcBrowse}
 %-------------------
 
 \index{NetCDF}
 \diva provides analyse and error fields under the NetCDF (network Common Data Form) format. It is an machine-independent format to represent scientific data. For more details, please consult \url{http://www.unidata.ucar.edu/software/netcdf/}.
 
 \textsl{NcBrowse} (Linux and Windows) is available at\\
-\url{http://www.epic.noaa.gov/java/ncBrowse/}\\
-and can be utilized directly after installation.
+\url{http://www.epic.noaa.gov/java/ncBrowse/}
 
 
 \begin{figure}[htpb]
@@ -256,7 +250,7 @@ and can be utilized directly after installation.
 \end{figure}
 
 
-\subsection{Ncview}
+\section{Ncview}
 %------------------
 
 \index{Ncview}
@@ -264,10 +258,13 @@ and can be utilized directly after installation.
 \url{http://meteora.ucsd.edu/~pierce/ncview_home_page.html}\\
 but requires the NetCDF library to be compiled with your own system configuration.
 
+\subsection{Installation under Linux}
 
-\subsubsection{Installation under Cygwin}
+Recent Linux distribution already permits the installation of Ncview through their package manager. Should it not be the case, the last version of Ncview is available here: \url{???}
 
-Install and build the last NetCDF version for Unix: download the latest release and build as with Unix. The latest release is tested under Cygwin and passes all tests cleanly. To build under Cygwin, follow the Unix build instructions in a Cygwin shell. The \texttt{--enable-shared} option to configure will generate the \texttt{netcdf.dll}. 
+\subsection{Installation under Windows-Cygwin}
+
+Install and build the last NetCDF version for Unix: download the latest release and build as with Unix. The latest release is tested under Cygwin\index{Cygwin} and passes all tests cleanly. To build under Cygwin, follow the Unix build instructions in a Cygwin shell. The \texttt{--enable-shared} option to configure will generate the \file{netcdf.dll}. 
 
 
 \begin{itemize}

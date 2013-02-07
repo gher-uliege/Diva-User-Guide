@@ -145,9 +145,9 @@ The contour file (\file{coast.cont}) delimits the region where the analysis has 
 \caption{coast.cont\label{ex:coast.dat}}
 \end{exfile}
 
-Here, our contour is made up of 2 sub-contours: 
+Here, the contour is made up of 2 sub-contours: 
 \begin{itemize}
-\item the first one with 4 points (and four edges): $(0,0)$, $(100,0)$, $(100,80)$ and $(0,80)$. It is the main contour.
+\item the first one with 4 points (and 4~edges): $(0,0)$, $(100,0)$, $(100,80)$ and $(0,80)$. It is the main contour.
 \item the second one with also 4 points. It is the interior contour (island).
 \end{itemize}
 In realistic application, the contours are more complex: they have more sub-contours (islands, interior seas), and each sub-contour is made up of more points. 
@@ -163,16 +163,15 @@ In realistic application, the contours are more complex: they have more sub-cont
 %----------------
 
 \index{Data}
-The data file (\file{data.dat}) contains three (or four) columns: 
+The data file (\file{data.dat}) contains at least three columns: 
 \begin{enumerate}
 \item the $x-$coordinate (usually the longitude, but can also be an horizontal distance in $km$, or any coordinate).
 \item the $y-$coordinate (usually the latitude).
 \item the data value.
-\item the weight [optional] 
 \end{enumerate}
 \begin{itemize}
-\item If the number of column is three, the fourth column is assumed to take the value $1$. 
-\item If there are more than four columns, columns 5 and higher are not used by the software, except if you want to use the detrending tool (Section~\ref{sec:detrending}). 
+\item The fourth column  [optional] indicates the weight of the each data point. If this column is empty, the fourth column is assumed to take the value $1$. 
+\item If there are more than four columns, columns 5 and higher are not used by the software, except if you want to use the detrending tool (Section~\ref{sec:detrending})\index{Detrending}. 
 \end{itemize}
 
 \begin{exfile}[htpb]
@@ -203,7 +202,7 @@ The data file (\file{data.dat}) contains three (or four) columns:
 %-------------------------------------------
 
 \index{Parameters}
-The file \file{./input/param.par} determines the main analysis parameters and options of \diva. A clear understanding of is essential for a proper use of the software. A description of each parameter is provided below the example file.
+The file \file{./input/param.par} specifies the main analysis parameters and options of \diva. A clear understanding of is essential for a proper use of the software. A description of each parameter is provided below the example file.
 
 \begin{exfile}[htpb]
 %\begin{footnotesize}
@@ -243,7 +242,7 @@ The file \file{./input/param.par} determines the main analysis parameters and op
 \subsubsection{\texttt{Lc}}
 % ------------------------
 
-The global correlation length \index{Correlation length} used for the analysis (see Section~\ref{sec:parammeaning} for the physical meaning). It has to be defined as a real positive number. 
+The global correlation length $L$ \index{Correlation length} used for the analysis (see Section~\ref{sec:parammeaning} for the physical meaning). It has to be defined as a real positive number. Note that the length of the finite-elements will be computed according to the value of $L$.
 
 \subsubsection{\texttt{icoordchange}\label{sec:icoord}}
 %---------------------------------------------------
@@ -318,7 +317,6 @@ Signal-to-noise ratio of the whole dataset (Section~\ref{sec:formulation}). It h
 
 Variance of the background field. 
 
-
 \subsection[Additional points of analysis]{Locations of additional points where analysis is required (optional)}
 %--------------------------------------------------------------------------------
 
@@ -333,13 +331,13 @@ The file \file{valatxy.coord} is a two-column list of locations where you want t
 \caption{valatxy.coord\label{ex:valatxy}}
 \end{exfile}
 
-If there are more than two columns, columns 3 and higher are not used.
+If they exist, columns 3 and higher are not used.
 
 
 \section{Working directories (2-D analysis)}
 % ------------------------------
 
-For 2 dimension analysis, the main working directory is \directory{divastripped}. Inside it, we have:
+For 2-D analysis, the main working directory is \directory{divastripped}. Inside it, we have:
 \begin{lstlisting}[style=Bash]
 [charles@gher13 divastripped] tree -d -L 2
 .
@@ -361,7 +359,7 @@ For 2 dimension analysis, the main working directory is \directory{divastripped}
 \begin{description}
 
 \item[\directory{divawork}] is where the intermediate files are produced.
-\item[\directory{gnuwork}] contains the scripts for generating the plots with gnuplot. These plots will be located in the sub-folder \directory{plots}.
+\item[\directory{gnuwork}] contains the scripts for generating the plots with Gnuplot. These plots will be located in the sub-folder \directory{plots}.
 \item[\directory{input}] contains the input files presented in this section.
 \item[\directory{divawork}] is the working directory for the mesh generation.
 \item[\directory{output}] contains the analysis results. In \directory{ghertonetcdf}, one can find the output in NetCDF format (file \file{results.nc}), while \directory{meshvisu} stores the files that describe the mesh.
