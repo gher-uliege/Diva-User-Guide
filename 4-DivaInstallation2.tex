@@ -23,7 +23,13 @@ The basic requirements to compile and run \diva are:
 \item ifort (Intel\textsuperscript{\textregistered}, \url{http://software.intel.com/en-us/intel-compilers}),
 \item pgf (Portland Group, \url{http://www.pgroup.com/}).
 \end{itemize}    
-\item The NetCDF library (\url{http://www.unidata.ucar.edu/software/netcdf/}) for Fortran.
+\item The NetCDF library (\url{http://www.unidata.ucar.edu/software/netcdf/}) for Fortran. Note that the library is available in recent versions of the cygwin installer, but does not properly work in all cases (and you must add the library \texttt{nclib=/usr/lib/libnetcdff.dll.a} into the compiling options). When trying to make the cygwin NetCDF library to work, you might need to use 
+
+\begin{lstlisting}[style=Bash]
+[charles@gher13 ~]$ cygcheck netcdfoutput.a
+\end{lstlisting}
+%$
+to see which libraries are still missing (in our case \texttt{sasl}) and therefore to install them with the cygwin installer.  
 \end{enumerate}
 
 For a quick visualization of the results, a software able to read and display the content of a NetCDF \index{NetCDF} file is recommended:
@@ -41,7 +47,7 @@ Select a directory on your local disk (here we install in a directory \directory
 
 \begin{lstlisting}[style=Bash]
 [charles@gher13 ~]$ cd Software/
-[charles@gher13 Software]$ wget http://modb.oce.ulg.ac.be/mediawiki/upload/DIVA/releases/GODIVA_07_2012.tar.gz
+[charles@gher13 Software]$ wget http://modb.oce.ulg.ac.be/mediawiki/upload/DIVA/releases/GODIVA_mm_yyyy.tar.gz
 \end{lstlisting}
 
 Extract the archive and go in the main directory:
@@ -87,6 +93,8 @@ There are two possibilities to obtain the binaries:
 The second option is provided for cases where the compilation was not possible, mainly because of missing libraries (e.g., NetCDF) or Fortran compilers.
 
 \subsection{Compilation\label{sec:compilation}}
+%-----------------------------------------------
+
 \index{Compilation}
 Go in the source directory 
 \begin{lstlisting}[style=Bash]
@@ -140,7 +148,7 @@ Binaries are located in directory:
 
 \section{Direct copy of pre-compiled binaries}
 
-If the compilation failed, go in the \directory{GODIVA\_07\_2012/DIVA3D/bin/} directory and copy directly the binaries available in the sub-directories. For example for Windows with the Cygwin tool:
+If the compilation failed, go in the \directory{GODIVA\_mm\_yyyy/DIVA3D/bin/} directory and copy directly the binaries available in the sub-directories. For example for Windows with the Cygwin tool:
 \begin{lstlisting}[style=Bash]
 [charles@gher13 bin] cp -f cygwin/* .
 \end{lstlisting}
@@ -148,7 +156,7 @@ If the compilation failed, go in the \directory{GODIVA\_07\_2012/DIVA3D/bin/} di
 \section{Run tests\label{sec:divatest}}
 %------------------
 
-In the main working directory (\directory{GODIVA\_07\_2012/DIVA3D/divastripped}), run one the two available tests: \command{divatest} and \command{divabigtest}. 
+In the main working directory (\directory{GODIVA\_mm\_yyyy/DIVA3D/divastripped}), run one the two available tests: \command{divatest} and \command{divabigtest}. 
 
 
 \subsection{Basic test}

@@ -160,7 +160,6 @@ Called in \command{divacv},\command{divacvrand} and\command{divagcv}.
 \item[\file{fitlsn.f}]: from the data file (\file{fort.10}) and information on coordinate change and 
 reference field (\file{fort.11}), tries to fit the \textit{Bessel covariance function} to the data covariance (called in \command{divafit}).
 
-
 Outputs:\\
 \file{fort.66} contains the correlation length and an rough estimate of the signal-to-noise ratio;\\
 \file{fort.99} contains the data-covariance over all distances;\\ 
@@ -234,38 +233,34 @@ The graphical interface requires some particular routines:
 
 
 % --------------------------------------------------------------------------------------------
-\section{Input and output files}
+\section{Input and output files for the executables}
 %-------------------------------
 
-The Fortran executables (files ending by \texttt{.a}) work with input and output \file{fort.*} files:
+This section describes the input and output files \file{fort.*} related to the executables or binaries, which are the files ending by \texttt{.a} and located in \directory{GODIVA\_mm\_yyyy/DIVA3D/bin/}. 
 
-\boxed{\texttt{generopt.a}}		
 
-%--------------
-\begin{itemize}
-%_-------------
+\subsection{Mesh generation: \texttt{generopt.a}}		
+%------------------------------------------------
 
-  \item   reads as inputs:			\\
-  	\file{fort.10}:			coast file, see example file with description, case of a square island in a square sea.	\\				
-	\file{fort.11}:			the parameters required for the mesh generation.					
-	\item 	produces as outputs:	\\							
 
-%--------------------------
-\begin{itemize}
-%--------------------------
+\subsubsection{Files readed as input}			
+  
+\begin{description}
+\item[\file{fort.10}:] coast file (identical to \file{coast.cont}), see example file with description, case of a square island in a square sea.	\item[\file{fort.11}:]	the parameters required for the mesh generation.		
+\end{description}
+				
+\subsubsection{Files produced as output}
 
-\item \file{fort.22}, which contains the finite element mesh: 
+\begin{description}
+
+\item[\file{fort.22}:] contains the finite-element\index{Finite-elements} mesh, as described here:
 %---------------------------------------------------
 \begin{enumerate}
-%---------------------------------------------------
-
 \item the first part of the file has three columns: the first column gives the numbers of the nodes; the second and third ones give the $x-$ and $y-$coordinates of the nodes, respectively. \\
-\example first line indicates that node n$^{\circ}$ is located in $(-1,-1)$.
+\example first line indicates that node no.~1 is located in $(-1,-1)$.
 \item the second part is composed of only one column, which indicates the numbers of the interfaces;
 \item the last part has six columns: columns 1, 3 and 5 specify the line numbers where the coordinates of the triangle points can be found; columns 2, 4 and 6 specify the interfaces numbers of the considered element.\\
-\example the last line says that the last elements has its coordinates in lines 2, 3 and 5, \textit{i.e.}, at has points $(1,-1)$, $(1,1)$ and $(-0.333333343  0.333333343)$; it also says that this element is composed of interfaces n$^{\circ}$ 13, 8 and 12.
-
-%---------------------------------------------------
+\example the last line says that the last elements has its coordinates in lines 2, 3 and 5, \textit{i.e.}, at has points $(1,-1)$, $(1,1)$ and $(-0.333333343  0.333333343)$; it also says that this element is composed of interfaces no.~13, 8 and 12.
 \end{enumerate}
 %---------------------------------------------------
 
@@ -290,7 +285,7 @@ The Fortran executables (files ending by \texttt{.a}) work with input and output
  3 -6 4 -7 5 -8\\
  4 -9 1 -10 5 -7\\
  1 -11 2 -12 5 -10\\
- 2 -13 3 -8 5 -12\\
+ 2 -13 3 -8 5 -12
 } 
 \end{footnotesize}
 \caption{fort.22\label{fig:fort22}}
@@ -302,14 +297,11 @@ The Fortran executables (files ending by \texttt{.a}) work with input and output
 \begin{figure}[H]
 \centering
 \includegraphics[width=.7\textwidth]{SimpleMesh_mesh}
-\caption[Example of simple mesh]{Example of simple mesh corresponding to file \file{fort.22}}
+\caption[Example of simple mesh]{Example of simple mesh corresponding to file \file{fort.22}.}
 \end{figure}
 
-%\end{minipage}
 
-
-
-\item \file{fort.23}, filled with topological parameters: 
+\item[\file{fort.23}:] contains the topological parameters: 
 \begin{enumerate}
 \item total number of vertex nodes (red dots);
 \item total number of interfaces (black lines);  
@@ -317,34 +309,34 @@ The Fortran executables (files ending by \texttt{.a}) work with input and output
 \end{enumerate}
 
 \begin{exfile}[H]
-%\begin{footnotesize}
 \begin{verbatim}
  5
  8
  4
  \end{verbatim}
-%\end{footnotesize}
 \caption{fort.23\label{fig:fort23}}
 \end{exfile}
  
-\end{itemize}
+\end{description}
 
-\end{itemize}
 %--------------------------------------------------------------------
-\boxed{\texttt{diva.a}}
-\begin{itemize}	
-    \item reads as inputs: \\								
-	 	\file{fort.10}:			\directory{divawork} organizer, defining which modules to use and how, including several parameters.\\				
-		\file{fort.11}:			finite element mesh, copy of the \file{fort.22} produced by \texttt{generopt.a}.\\					
-	 	\file{fort.12}:			$\alpha_0$ and $\alpha_1$, calculated as: 
-	 	\[\alpha_0=\frac{1}{L^{4}}\quad \textrm{and}  \quad  \alpha_1 =\frac{2}{L^{2}}.	\]				
-	 	\file{fort.13}:			characteristics of regular output grid.\\					
-		\file{fort.20}:			data file; 4 columns: $|X|Y|data(X,Y)|\mu|$, where  
-		\[ \mu = 4\,\pi\,\frac{\snr}{L^{2}},\]
-	  with $\snr$, the signal-to-noise ratio.	\\				
-		\file{fort.79}:			coordinates where analysed field values are requested; 2 columns separated by space: $|X|Y|$. \\					
-	 	\file{fort.15}:			parameter \texttt{varbak}, variance of the background field, set as $=0$ will avoid calculating error field.				
+\subsection{\diva interpolation: \texttt{diva.a}}
 
+\subsubsection{Files read as input}
+				
+\begin{description}
+\item[\file{fort.10}:]			\directory{divawork} organizer, defining which modules to use and how, including several parameters.	
+\item[\file{fort.11}:]			finite-element mesh, copy of the \file{fort.22} produced by \texttt{generopt.a}.					
+\item[\file{fort.12}:]			$\alpha_0$ and $\alpha_1$, calculated as: 
+	 	\[\alpha_0=\frac{1}{L^{4}}\quad \textrm{and}  \quad  \alpha_1 =\frac{2}{L^{2}}.	\]				
+\item[\file{fort.13}:]			characteristics of the regular output grid.					
+\item[\file{fort.20}:]			data file; 4 columns: $|X|Y|data(X,Y)|\mu|$, where  
+		\[ \mu = 4\,\pi\,\frac{\snr}{L^{2}},\]
+	  with $\snr$, the signal-to-noise ratio.				
+\item[\file{fort.79}:]			coordinates where analysed field values are requested; 2 columns separated by space: $|X|Y|$. 					
+\item[\file{fort.15}:]			parameter \texttt{varbak}, variance of the background field, set as $=0$ will avoid calculating error field.						
+\end{description}								
+	 
 \begin{exfile}[H]
 coord 1\\
 0\\
@@ -361,7 +353,7 @@ datapr 1\\
 solver 1\\
 0\\
 stores 1\\
-1  -> 1 if normal or seminormed final, otherwise 3\\
+1  -> 1 if normal or semi-normed final, otherwise 3\\
 esterr 1\\
 stopex\\
 \caption{fort.10}
@@ -397,17 +389,44 @@ $$\cdots$$\\
   
 	  
 	  
-\item produces as outputs:	\\							
-\file{fort.71}:			field value at data points given in \file{fort.20}, ascii format.\\					
-\file{fort.72}:			error value at data points given in \file{fort.20}, ascii format.\\					
-\file{fort.73}:			error at points given in \file{fort.79}, ascii format.\\					
-\file{fort.82}:			field value at points given in \file{fort.79}, ascii format.\\					
-\file{fort.83}:			field on regular grid, ascii format.\\					
-\file{fort.84}:			field on regular grid, gher format.\\					
-\file{fort.86}:			error field on regular grid, ascii format.\\					
-\file{fort.87}:			error field on regular grid, gher format.	
+\subsubsection{Files produced as output}
+
+\begin{description}
+\item[\file{fort.71}:]			field value at data points given in \file{fort.20}, ascii format.				
+\item[\file{fort.72}:]			error value at data points given in \file{fort.20}, ascii format.					
+\item[\file{fort.73}:]			error at points given in \file{fort.79}, ascii format.			
+\item[\file{fort.82}:]			field value at points given in \file{fort.79}, ascii format.					
+\item[\file{fort.83}:]			field on regular grid, ascii format.
+\item[\file{fort.84}:]			field on regular grid, gher format.					
+\item[\file{fort.86}:]			error field on regular grid, ascii format.					
+\item[\file{fort.87}:]			error field on regular grid, gher format.	
  				
-\end{itemize}
+\end{description}						
+
+
+
+%--------------------------------------------------------------------
+\subsection{Detrending calculation: \texttt{detrend.a}}
+
+The execution of \texttt{detrend.a} will create a new \file{./input/data.dat}.  
+
+\subsubsection{Files read as input}
+
+\begin{description}
+\item[\file{fort.88}:] original data file. 
+\item[\file{fort.89}:] analysis at data points. 
+
+\end{description}
+ 
+\subsubsection{Files produced as output}
+
+\begin{description}
+\item[\file{fort.90}:] modified data file with data detrended by groups and classes. 
+\item[\file{trends.1.dat}:] trends for classes of group 1. 
+\item[\file{trends.2.dat}:] trends for classes of group 2.
+\item[] \ldots
+\end{description}
+
 
 
 %\section[\tcltk code]{\tcltk code [\directory{src/Tcl}]\label{tclcode}}

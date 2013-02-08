@@ -1,8 +1,7 @@
 %DivaExamples
 \chapter{Realistic examples\label{chap:examples}}
 
-
-A few examples with real data are described in this chapter. They can act as model for users who needs to perform such kind of analysis. 
+A few examples with real data are described in this chapter. They can act as model for users who need to perform such kind of analysis. 
 
 \minitoc
 
@@ -11,8 +10,7 @@ A few examples with real data are described in this chapter. They can act as mod
 \section{Complete example}
 %---------------------------------------------------
 
-We present here a complete case treated with the CL version and its additional tools.
-
+We present here a complete 2-D case treated in command-line. This example is taken from \citet{TROUPIN12}.
 
 \subsection{Preparation of the input files\label{prep}}
 %-----------------------------------------------------
@@ -22,7 +20,8 @@ To perform an analysis, you will need:
 \item a contour file (\file{coast.cont}),
 \item a data file (\file{data.dat}), 
 \item a list of run parameters (\file{param.par}) and 
-\item the locations of the points where you want to know the value of the analysed field (\file{valatxy.coord}).
+\item the locations of the points where you want to know the value of the analysed field\\ 
+	  (\file{valatxy.coord}).
 \end{itemize}
 Examples of these files are given in Chapter~\ref{chap:general}.
 
@@ -34,140 +33,140 @@ Let us assume that you created \directory{case1} in \directory{\textasciitilde/E
 \begin{lstlisting}[style=Bash]
 bash-3.2$ divaload ../case1
 \end{lstlisting}
+%$
 
-For the present example, we will use a subset of data contained in the MEDAR database (see Fig.~\ref{dataplotCL}). 
+\subsubsection{Data}
 
-\begin{figure}[htpb]
-\centering
-\parbox{.65\textwidth}{
-\includegraphics[width=.625\textwidth]{medar_data_contour}
-}\parbox{.35\textwidth}{
-\caption{Data and contour used in our example.\label{dataplotCL}}
-}
-\end{figure}
+In this example we work with salinity measurements in the Mediterranean Sea at a depth of 30~m in September, for the 1980-1990 period (Fig.~\ref{fig:diva_oi_09_10030dataval_mesh3}). The data set is built up by exploiting the SeaDataNet portal (\url{http://www.seadatanet.org}) and the World Ocean Database 2009 \citep[WOD09,][]{BOYER09} and contains 1061 data points. 
+% Notes: figures located /home/charles/DIVA/MedSea_PaperDIVA/figureOI/July1980_1990c/ps
 
+\subsubsection{Parameters}
+
+We start with the parameter file \ref{paramfileCL}: the regular grid for the analysis extends from 7$^{\circ}$W to 36$^{\circ}$E and from 30$^{\circ}$15'N to 45$^{\circ}$45'N, with a horizontal resolution of about 10~km. The \texttt{icoordchange} parameter is set to 2, meaning that a cosine projection will be used for the coordinates.
 
 \begin{exfile}[htpb]
 \begin{footnotesize}
 \begin{verbatim}
-# Lc: correlation length 
-4
-# icoordchange 
+# Correlation Length lc in km or degree??? according to param icoordchange
+2
+# icoordchange (=0 if position of data in km ; =1 if position of data in degree)
+2
+# ispec (output files required, comments to come)
+0
+# ireg
+2
+# xori (origin of output regular grid, min values of X)
+-7
+# yori (origin of output regular grid, min values of Y)
+30.25
+# dx (step of output grid)
+0.09
+# dy (step of output grid)
+0.0625
+# nx max x of output grid
+500
+# ny max y of output grid
+250
+# valex (exclusion value)
+-99
+# snr signal to noise ratio
 1
-# ispec 
-3
-# ireg 
-1
-# xori: x-coordinate of the first grid point of the output
--10.0
-# yori: y-coordinate of the first grid point of the output
-30
-# dx: step of output grid
-0.5
-# dy: step of output grid
-0.5
-# nx: number of grid points in the x-direction
-96
-# ny: number of grid points in the y-direction
-32
-# valex: exclusion value
--9999.0
-# snr: signal to noise ratio of the whole data set
-1000
-# varbak variance of the background field. 
+# varbak variance of the background field 2.5
 1
 \end{verbatim}
 \end{footnotesize}
 \caption{First version of \file{param.par}\label{paramfileCL}}
 \end{exfile}
 
+\subsubsection{Contours}
 
-\subsection{Parameters fit}
+The land-sea contours are created from the GEBCO bathymetry. The Black Sea and the Atlantic Ocean were masked in order to concentrate only on the Mediterranean Sea properties. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.9\textwidth,bb=14 254 588 561]{diva_oi_09_10030dataval_mesh3}
+\caption{Finite-element mesh and salinity measurements used for the application.\label{fig:diva_oi_09_10030dataval_mesh3}}
+\end{figure}
+
+
+
+\subsection{Parameters determination}
 %------------------------------
 
+\subsubsection{Correlation length}
+%---------------------------------
+
 \index{Correlation length}
-Type \command{divafit} to have a first guess of the parameters $\snr$ and $L$. You will get the output files \file{covariance.dat}, \file{covariancefit.dat} and  \file{paramfit.dat}  (shown hereafter). 
 
-The first file contains distances between points, the covariance and the number of data couples used to estimate the covariance; the second file contains the distance between points, the data-covariance and the fitted covariance. 
-
-In \file{paramfit.dat}, you will find estimates for the correlation length $L$ and for the signal-to-noise ratio $\snr$. You can replace the old values of $\snr$ and $L$ in \file{param.par} by the new ones from \file{paramfit.dat}.
+The toold \command{divafit} will provide a first guess of the parameters $\snr$ and $L$. It will generates the output files:
+\begin{description}
+\item[\file{covariance.dat}:] contains distances between points, the covariance and the number of data couples used to estimate the covariance.
+\item[\file{covariancefit.dat}:] contains the distance between points, the data-covariance and the fitted covariance.
+\item[\file{paramfit.dat}:] contains estimates for the correlation length $L$ and for the signal-to-noise ratio $\snr$. You can manually replace the old values of $\snr$ and $L$ in \file{param.par} by the new ones from \file{paramfit.dat}.
+\end{description}
 
 If you want the new $L$ value to be automatically replaced, type 
 
 \begin{lstlisting}[style=Bash]
 bash-3.2$ divafit -r
 \end{lstlisting}
+%$
 
 \begin{exfile}[H]
 \begin{footnotesize}
 \begin{verbatim}
-Correlation length (in degrees latitude)
-  2.76536822
+Correlation length
+   1.3565110
  Signal to noise ratio
-  0.324503303
+  0.72524220
  VARBAK
-  0.566215277
- For information: correlation length in km is  308.738007
+  4.59391139E-02
+ Quality of the fit (0: bad 1: good)
+  0.85546345970344528
+ For information: correlation length in km is   151.44691
 \end{verbatim}
 \end{footnotesize}
 \caption{\file{paramfit.dat}}
 \end{exfile}
 
 
+The fit yields the value $L=1.36^{\circ}$ ($\simeq$ 151~km).
 
-\subsection{Contour checking}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.475\textwidth,bb=106 253 450 575]{Salinity_19502010_0707_10029e_fit}
+\caption[Fit of the data correlation to the theoretical kernel.]{Fit of the data correlation to the theoretical kernel (dashed line). \label{fig:Salinity_19502010_0707_10029e_fit}}
+\end{figure}
+
+
+
+\subsection[Contour checking]{Contour checking (optional)}
 %--------------------------------
 
 If you want to check the contour file you want to use to generate the mesh, type \command{divacck}. The output \file{coast.cont.checked} is a thinned contour based on the length scale.
+Then simply copy the new contour into the \directory{input} directory:
 
-%\begin{figure}[htpb]
-%\centering
-%\parbox{.65\textwidth}{
-%\includegraphics[width=.625\textwidth]{medar_contourcheck}
-%}\parbox{.35\textwidth}{
-%\caption{Example of output generated by \texttt{contourcck}.\label{contourcck}}
-%}
-%\end{figure}
+\begin{lstlisting}[style=Bash]
+bash-3.2$ cp ./output/coast.cont.checked ./input/contour.cont
+\end{lstlisting}
 
-Then simply copy the new contour into the \directory{input} directory:\\
-\command{cp ./output/coast.cont.checked ./input/contour.cont}\\
-
+%$
 
 \subsection{Mesh creation}
 %------------------------------
 
 \index{Mesh}
 Simply type \command{divamesh} to perform the mesh generation. All the parameters needed by \diva are contained in \file{coast.cont}, \file{param.par} and \file{coast.cont.dens} if you work with a non-uniform mesh.
-%
-%
-%\begin{figure}[htpb]
-%\centering
-%\parbox{.65\textwidth}{
-%\includegraphics[width=.625\textwidth]{medar_divamesh}
-%}\parbox{.35\textwidth}{
-%\caption{Example of output generated by \texttt{divamesh}.\label{divameshCL}}
-%}
-%\end{figure}
+The mesh corresponding to this example is shown in Fig.~\ref{fig:diva_oi_09_10030dataval_mesh3}. For the sake of visibility, the mesh was generated with a rather long caracteristic scale: the correlation length was set to $3^{\circ}$, meaning the typical length of triangle edge is about 1$^{\circ}$
 
 
-\begin{figure}[htpb]
-\centering
-\parbox{.65\textwidth}{
-\includegraphics[width=.625\textwidth]{medar_mesh}
-}\parbox{.35\textwidth}{
-\caption{Result of the mesh generation.\label{divameshCL2}}
-}
-\end{figure}
-
-
-\subsection{Generalisxed Cross Validation}
+\subsection{Generalised Cross Validation}
 %-------------------------------------
 
 \index{Generalised cross validation}
 GCV provides you with improved estimates of parameters (see Chapter~\ref{chap:analysisparameters} for a detailed description of the method). You need to provide an input file \file{gvcsampling.dat} (see example file \ref{gcvsampling}) containing a list of values for the signal-to-noise ratio on which you want to try the estimator.
 
-Type \command{divagcv} to perform the GCV on these values. Optimal values for the parameters are given in \file{gcvsnvar.dat} (example file \ref{gcvsnvar}). You can then modify \file{param.par} (example file \ref{paramfileCL2}) according to these values before performing an analysis. Note that in our example we also modified parameters for the output grid to have a analysis with a better resolution.
-
+Type \command{divagcv} to perform the GCV on these values. Optimal values for the parameters are given in \file{gcvsnvar.dat} (example file \ref{gcvsnvar}). You can then modify \file{param.par} (example file \ref{paramfileCL2}) according to these values before performing an analysis. 
 
 \begin{exfile}[H]
 \begin{footnotesize}
@@ -242,7 +241,7 @@ If zero, no error fields are produced. If one, relative errors are obtained
 \begin{figure}[htpb]
 \centering
 \includegraphics[width=.75\textwidth]{medar_analysis}
-\caption{Analyzed salinity field with the parameters from \command{divagcv}.\label{analysisCL1}}
+\caption{Analysed salinity field with the parameters from \command{divagcv}.\label{analysisCL1}}
 \end{figure}
 
 
@@ -401,7 +400,7 @@ This case is very similar to the previous one. the difference is that here, data
 \subsection{Data}
 %-------------
 
-The track of the cruise (Fig. \ref{fig:transectprofiles}) follows a trajectory of constant latitude (24$^{\circ}$ N) across the Atlantic Ocean. Salinity (in PSU) for the year 1958, are represented on Fig. \ref{fig:domaindata} along with the topography. 
+The track of the cruise (Fig. \ref{fig:transectprofiles}) follows a trajectory of constant latitude (24$^{\circ}$ N) across the Atlantic Ocean. Salinity for the year 1958 is represented on Fig. \ref{fig:domaindata} along with the topography. 
 
 \begin{figure}[htpb]
 \centering
