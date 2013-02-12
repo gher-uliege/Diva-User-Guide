@@ -157,7 +157,7 @@ bash-3.2$ cp ./output/coast.cont.checked ./input/contour.cont
 
 \index{Mesh}
 Simply type \command{divamesh} to perform the mesh generation. All the parameters needed by \diva are contained in \file{coast.cont}, \file{param.par} and \file{coast.cont.dens} if you work with a non-uniform mesh.
-The mesh corresponding to this example is shown in Fig.~\ref{fig:diva_oi_09_10030dataval_mesh3}. For the sake of visibility, the mesh was generated with a rather long caracteristic scale: the correlation length was set to $3^{\circ}$, meaning the typical length of triangle edge is about 1$^{\circ}$
+The mesh corresponding to this example is shown in Fig.~\ref{fig:diva_oi_09_10030dataval_mesh3}. For the sake of visibility, the mesh was generated with a rather long characteristic scale: the correlation length was set to $3^{\circ}$, meaning the typical length of triangle edge is about 1$^{\circ}$
 
 
 \subsection{Generalised Cross Validation}
@@ -332,7 +332,7 @@ Generally the contour generation is easier in this case, since the transect cann
 
 \end{verbatim}
 \end{footnotesize}
-\caption{Contour file of Fig. \ref{fig:data}(b).\label{exfile:contour}}
+\caption{Contour file of Fig.~\ref{fig:data}(b).\label{exfile:contour}}
 \end{exfile}
 
 
@@ -350,7 +350,7 @@ The most direct solution is to compute, for $L_{x}$, the mean distance between t
 
 \[r = \frac{L_y}{L_x}\]
 
-and multiply the horizontal coordinates by $r$. This allows one to work with the same length scale both on vertical and horizontal directions. With the  data set from Fig. \ref{fig:data}(b), we obtain:
+and multiply the horizontal coordinates by $r$. This allows one to work with the same length scale both on vertical and horizontal directions. With the  data set from Fig.~\ref{fig:data}(b), we obtain:
 
 \begin{eqnarray*}
 L_{x} &=& 4.4\,km,\\
@@ -369,14 +369,14 @@ We then compute the length scale with the help of \command{divafit} and generate
 \subsubsection{Use of negative \texttt{icoordchange}}
 %-------------------------------------------
 
-A more direct way to do the previous operation consists in changing the value of \texttt{icoord\-change} in file \file{param.par}: by assigning a negative value to this parameter, we apply a scaling on the $x$ coordinate (Sec. \ref{sec:icoord}). In the present case we would put\, \texttt{icoordchange = -0.0125}. Then the classical \diva operations can be done.
+A more direct way to do the previous operation consists in changing the value of \texttt{icoord\-change} in file \file{param.par}: by assigning a negative value to this parameter, we apply a scaling on the $x$ coordinate (Sec.~\ref{sec:icoord}). In the present case we would put\, \texttt{icoordchange = -0.0125}. Then the classical \diva operations can be done.
 
 
 
 \subsection{Analysis}
 %--------------------
 
-Once the mesh is created, the analysis is straightforward. The only thing to be aware of is the specification of the domain in file \file{param.par}: as we worked with scaled coordinates when generating the mesh, we have to do the same when specifying \texttt{x/yorigin} and \texttt{dx/y}. After the analysis, we may simply multiply the $x$ coordinate by $r$ to recover the original values. The results are presented on Fig. \ref{fig:analysis}.  
+Once the mesh is created, the analysis is straightforward. The only thing to be aware of is the specification of the domain in file \file{param.par}: as we worked with scaled coordinates when generating the mesh, we have to do the same when specifying \texttt{x/yorigin} and \texttt{dx/y}. After the analysis, we may simply multiply the $x$ coordinate by $r$ to recover the original values. The results are presented on Fig.~\ref{fig:analysis}.  
 
  
 \begin{figure}[htpb]
@@ -400,7 +400,7 @@ This case is very similar to the previous one. the difference is that here, data
 \subsection{Data}
 %-------------
 
-The track of the cruise (Fig. \ref{fig:transectprofiles}) follows a trajectory of constant latitude (24$^{\circ}$ N) across the Atlantic Ocean. Salinity for the year 1958 is represented on Fig. \ref{fig:domaindata} along with the topography. 
+The track of the cruise (Fig.~\ref{fig:transectprofiles}) follows a trajectory of constant latitude (24$^{\circ}$ N) across the Atlantic Ocean. Salinity for the year 1958 is represented on Fig.~\ref{fig:domaindata} along with the topography. 
 
 \begin{figure}[htpb]
 \centering
@@ -437,7 +437,7 @@ We extract topography with the help of \matlab function  \file{m\_tbase.m}, whic
 \subsubsection{Computation of length scales}
 %----------------------------------------
 
-Similarly to the previous case, we compute horizontal and vertical length scales in order to take into account the domain anisotropy. Fig. \ref{fig:anisotropy} illustrates the difference between horizontal and vertical scales, as we represented the data within the domain with axes graduated in kilometres.
+Similarly to the previous case, we compute horizontal and vertical length scales in order to take into account the domain anisotropy. Fig.~\ref{fig:anisotropy} illustrates the difference between horizontal and vertical scales, as we represented the data within the domain with axes graduated in kilometres.
 
 For $L_x$ and $L_y$, the same definitions as in Section~\ref{sec:meshscale} are used. We find
 

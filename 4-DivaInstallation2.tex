@@ -146,7 +146,7 @@ Binaries are located in directory:
 /home/charles/Software/GODIVA_07_2012/DIVA3D/bin
 \end{verbatim}
 
-\section{Direct copy of pre-compiled binaries}
+\subsection{Direct copy of pre-compiled binaries}
 
 If the compilation failed, go in the \directory{GODIVA\_mm\_yyyy/DIVA3D/bin/} directory and copy directly the binaries available in the sub-directories. For example for Windows with the Cygwin tool:
 \begin{lstlisting}[style=Bash]
@@ -162,7 +162,7 @@ In the main working directory (\directory{GODIVA\_mm\_yyyy/DIVA3D/divastripped})
 \subsection{Basic test}
 
 
-\command{divatest} creates basic input files (see Chapter~\ref{chap:general} for details), performs a simple \diva execution, checks if \command{awk} is appropriate and checks if the pipes are supported in your operating system (O.S.). If \command{divatest} hangs during the pipe test, it means pipes are not supported (as for some gfortran versions) and you can use a \command{CTRL-C} to exit. The analysis output can be checked using any software for reading NetCDF files. In this case we use ncview (see Chapter~\ref{chap:postprocessing} for details and installation). 
+\command{divatest} creates basic input files (see Chapter~\ref{chap:general} for details), performs a simple \diva execution, checks if \command{awk} is appropriate and checks if the pipes are supported in your operating system (O.S.). If \command{divatest} hangs during the pipe test, it means pipes are not supported (as for some gfortran versions) and you can use a \command{CTRL-C} to exit. The analysis output can be checked using any software for reading NetCDF\index{NetCDF} files. In this case we use ncview (see Chapter~\ref{chap:postprocessing} for details and installation). 
 
 \begin{lstlisting}[style=Bash]
 [charles@gher13 divastripped]$ divatest
