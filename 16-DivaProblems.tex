@@ -18,7 +18,7 @@ The latest stable version if available at \url{http://modb.oce.ulg.ac.be/mediawi
 
 \subsection{How to report a bug or a problem?}
 
-The preferred option is to send a message to the \diva user group on google% (url{}). 
+The preferred option is to send a message to the \diva user group on google: \url{http://groups.google.com/group/diva_users}. 
 This has two advantages over emails:
 \begin{enumerate}
 \item The questions is directly sent to all the \diva developers.
@@ -167,6 +167,18 @@ The best option is to copy the whole directory \directory{divastripped} in the d
 \caption{Simultaneous run of \diva.}
 \end{figure}
 
+
+\subsection{What is the resolution of the output field?}
+
+One has to distinguish between 2 \textit{resolutions}:
+
+\begin{enumerate}
+\item the resolution brought by the finite-element mesh, of which the characteristic length should be in agreement with the typical scale of the studied region (based on the data correlation in \diva);
+
+\item the grid resolution, which can be anything (larger, smaller or similar to the mesh resolution). It means that you can always work with a finer grid, but that does not mean that the actual resolution will be improved.
+\end{enumerate}
+
+So the best resolution you can obtain is the one allowed you by the data you are working with.
 
 %--------------------------------------------
 \section{Error messages}
