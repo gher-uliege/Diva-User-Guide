@@ -73,7 +73,7 @@ The anomalies are assumed to be computed as a linear combination of the data, i.
 \varphi(\mathbf{r}) = \varphi_b(\mathbf{r}) + \sum_{j=1}^{N_d} w_j\, d_j,
 \label{objectiveanal}
 \end{equation}
-where $d_{j}$ is the data anomaly at $\mathbf{r}= \mathbf{r_{j}}$ and $w_j$ is the relative weight of the data $j$. The weighting functions are the new unknowns to determine: once the background field and the weighting functions are known, the field $\varphi$ can be computed at any position $\mathbf{r}$, hence gridding is possible.
+where $d_{j}$ is the data anomaly at $\mathbf{r}= \mathbf{r_{j}}$ and $w_j$ is the relative \textit{weight} \index{Weight} of the data $j$. The weighting functions are the new unknowns to determine: once the background field and the weighting functions are known, the field $\varphi$ can be computed at any position $\mathbf{r}$, hence gridding is possible.
 
 From here on, we will work with anomaly only and therefore formally use $\varphi_{b}=0$.
 
@@ -98,7 +98,7 @@ Because of the multiple sources of error, a perfect fit to data is not advised, 
  
 Before explaining the core of \diva technique, the main principles of \textit{Optimal interpolation} \citep[OI,][]{STOR99,CHILES99} are explained\index{OI}. OI is a popular analysis tool, owing to its ease of use and the error field associated to the analysis \citep[e.g.,][]{SHEN98b,KAPLAN00}. The first references of the method are \citet{GANDIN65} and \citet{BRETHERTON76}.
 
-The idea is to minimise the expected error variance of the analysis. This conditions lead to the determination of the weights $w_j$ \eqref{objectiveanal}, with the assumption that the true anomaly field $\varphi_t$ is one realization out of a zero mean ensemble. 
+The idea is to minimise the expected error variance of the analysis. This conditions lead to the determination of the weights \index{Weight} $w_j$ \eqref{objectiveanal}, with the assumption that the true anomaly field $\varphi_t$ is one realization out of a zero mean ensemble. 
 
 Note that \textit{Kriging}\index{Kriging} \citep{KRIGE51,MATHERON63} is an equivalent technique: it uses the same criterion as OI, but with a different mathematical formulation: the weights $w_{j}$ are chosen from the study of the covariance between the values as a function of the distance between them.
 
@@ -295,7 +295,7 @@ Hence $\alpha_0$ fixes the length scale over which variations are significant to
 \begin{equation}
 \alpha_0 L^4 = 1
 \end{equation}
-$ \mu L^2$ fixes the relative weight on data (signal, $\sigma^2$) versus regularization (noise, $\epsilon^2$):
+$ \mu L^2$ fixes the relative weight\index{Weight} on data (signal, $\sigma^2$) versus regularization (noise, $\epsilon^2$):
 \begin{equation}
 \mu L^2= 4 \pi \frac{\sigma^2}{\epsilon^2}= 4 \pi S/N 
 \label{defmu}
@@ -312,7 +312,7 @@ where $\xi=1$ if penalization on the gradients is enforced, $\xi=0$ if no penali
 \subsubsection{Weights on data}
 % -----------------------------
 
-A weight $\mu_i$ can be assigned to each data $d_i$. This weight expresses the confidence you have in a particular data. It is expressed as a function of the signal-to-noise ratio and the correlation length \citep{BRANKART96}: 
+A weight $\mu_i$ \index{Weight} can be assigned to each data $d_i$. This weight expresses the confidence you have in a particular data. It is expressed as a function of the signal-to-noise ratio and the correlation length \citep{BRANKART96}: 
 
 \begin{equation}
 \mu=\frac{\sigma^{2}}{\epsilon^{2}} \frac{4 \pi}{L^{2}}
