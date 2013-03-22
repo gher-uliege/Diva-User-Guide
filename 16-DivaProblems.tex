@@ -213,7 +213,16 @@ You can type \\
 so that the system knows the command is the current directory.
 
 A better solution is to adapt your path by typing:\\
-\command{PATH=\$PATH:.}
+\command{PATH=\$PATH:path\_to\_diva\_directory}, where \verb|path\_to\_diva\_directory| has to be adapted to your installation.
+
+For example:
+\begin{lstlisting}[style=Bash]
+ctroupin@predator ~/Software/Diva/DIVA3D/divastripped $ pwd
+/home/ctroupin/Software/Diva/DIVA3D/divastripped
+ctroupin@predator ~/Software/Diva/DIVA3D/divastripped $export  PATH=$PATH:home/ctroupin/Software/Diva/DIVA3D/divastripped
+ctroupin@predator ~/Software/Diva/DIVA3D/divastripped $ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/home/ctroupin/Software/Diva/DIVA3D/divastripped/
+\end{lstlisting}
 
 For example in \texttt{cygwin}:\\
 \begin{itemize}
