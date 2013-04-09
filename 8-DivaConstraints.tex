@@ -285,7 +285,7 @@ where $\mu_i$ is the data weight\index{Weight} on data $d_i$ found in location $
 
 
 If we define one group, each data point is in one and only one class $C_j$ of this group. Hence
-when calculating the misfit in the minimisation part of \diva , we include now an (unknown) trend value for each class ($d_{C_1}, d_{C_2} ...$):
+when calculating the misfit in the minimisation part of \diva, we include now an (unknown) trend value for each class ($d_{C_1}, d_{C_2} \ldots$):
 
 \begin{equation}
 \sum_{i\in C_1} \mu_i \left[ d_i -d_{C_1}- \varphi(x_i,y_i) \right]^2 + \sum_{i\in C_2} \mu_i \left[ d_i -d_{C_2}- \varphi(x_i,y_i) \right]^2 + ...
@@ -374,7 +374,7 @@ Column 8 contains 1 for points that have a density below 1025~kg/m$^3$, 2 for po
 \end{itemize}
 
 Execute \command{divadetrend ngroups [niterations]}. The parameter {\tt ngroups} specifies that the first {\tt ngroups} will be used for the detrending.
-(You might create for exemple 5 groups and try with detrending on the first one only using \command{divadetrend 1}). The optional parameter {\tt niterations} tells how many iterations are to be performed for the detrending. Default value is 10 iterations.
+(You might create for example 5 groups and try with detrending on the first one only using \command{divadetrend 1}). The optional parameter {\tt niterations} tells how many iterations are to be performed for the detrending. Default value is 10 iterations.
 
 \subsubsection{Outputs}
 \file{./output/rmsmisfit.dat} contains the evolution during the iterations of the misfit (after detrending). It should decrease if the detrending works well.  
@@ -389,7 +389,7 @@ Execute \command{divadetrend ngroups [niterations]}. The parameter {\tt ngroups}
 \item It is assumed that the mesh already exists, otherwise execute \command{divamesh} before.
 \end{itemize}
 
-\subsubsection{Additionnal options}
+\subsubsection{Additional options}
 
 If you provide file \file{detrend.order} in \directory{./input/}, then the columns for detrending will be taken in the order 
 specified in the file. 
