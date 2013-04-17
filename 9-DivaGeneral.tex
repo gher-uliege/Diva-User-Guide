@@ -274,18 +274,46 @@ Then you can combine these four values to obtain several error outputs: \index{E
 \texttt{ispec}             = 7 (=1+2+4) \qquad means you want the three error files.
 
 
+From there several variants can be specified:
+
 For computing errors with the real covariance function (Section~\ref{sec:realcovariance}), simply multiply the \texttt{ispec} value by $-1$:
 
 \example\\
 \texttt{ispec}             = -7 \qquad \begin{minipage}[t]{.7\textwidth}{means you want the three error files computed with the help of the real covariance function.}\end{minipage}
 
 
-A \textit{poor man's} error estimate (quick and underestimated error field, Section~\ref{sec:poormans}) is available by adding $+10$ to the \texttt{ispec} value:
+For computing errors with the real covariance function using boundary effects (Section~\ref{sec:realcovariance}), simply add $-10$ to a negative \texttt{ispec}:
+
+\example\\
+\texttt{ispec}             = -17 \qquad \begin{minipage}[t]{.7\textwidth}{means you want the three error files computed with the help of the real covariance function and boundary effects.}\end{minipage}
+
+
+A \textit{poor man's} error estimate (quick and underestimated error field, Section~\ref{sec:poormans}) is available by adding $+10$ to the positive base \texttt{ispec} value:
 
 \example\\
 \texttt{ispec}             = 16 \qquad \begin{minipage}[t]{.7\textwidth}{means you want errors at data locations and at points listed in \file{valatxy.coord} computed with the \textit{poor man's} error estimate.}\end{minipage}
 
-Finally, adding $+10$ and multiplying \texttt{ispec} by $-1$ means that the error field is computed using the real covariance function and taking into account the boundary effects. 
+
+
+Adding $+100$ to the base \texttt{ispec} activates  the clever poor man's error calculation and launches automatically \command{divacpme) 
+
+\example\\
+\texttt{ispec}             = 116 \qquad \begin{minipage}[t]{.7\textwidth}{means you want errors at data locations and at points listed in \file{valatxy.coord} computed with the \textit{clever poor man's} error estimate.}\end{minipage}
+
+Adding $-100$ to a negative \texttt{ispec} activates the almost exact error calculation and launches automatically \command{divaexerr)
+
+\example\\
+\texttt{ispec}             = -106 \qquad \begin{minipage}[t]{.7\textwidth}{means you want errors at data locations and at points listed in \file{valatxy.coord} computed with the almost exact error estimate.}\end{minipage}
+
+
+
+\example\\
+\texttt{ispec}             = -117 \qquad \begin{minipage}[t]{.7\textwidth}{means you want errors everywhere computed with the almost exact error estimate using the background covariance with boundary effects.}\end{minipage}
+
+
+
+
+
 
 \subsubsection{\texttt{ireg}}
 
