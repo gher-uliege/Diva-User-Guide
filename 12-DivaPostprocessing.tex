@@ -126,19 +126,22 @@ Here are some examples of plots created with \gnuplot:
 \end{figure}
 
 
-\section{\matlab}
+\section{\matlab / Octave}
 %-------------------
 
 %http://modb.oce.ulg.ac.be/mediawiki/index.php/NetCDF_toolbox_for_Octave
 
 \index{Matlab}
-Tools to display contours, data, meshes, analysis and error fields are provided in the directory \texttt{diva-\divaversion/src/Matlab}. 
+Tools to display contours, data, meshes, analysis and error fields are available at \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/Diva_matlab}. 
 
+\subsection{Installation}
 
-In latest versions (from \diva-\divaversion), they are regrouped in a single directory\\
-x(\texttt{diva-\divaversion/src/Matlab})
-
-
+In order to have the routines working properly, you need to installe:
+\begin{description}
+\item[NetCDF toolbox,] for reading the result files. For recent versions of \matlab, the routines for reading/writing NetCDF are readily available. For older versions, you can install it from \url{http://mexcdf.sourceforge.net/downloads/}.
+\item[m\_map toolbox:] optional but recommanded, it allows one to plot generate various plots (mesh, data, analysis) using coastlines, projections etc. 
+\end{description}
+    
 
 \subsection{Tools description}
 %--------------------------
@@ -173,7 +176,7 @@ In most of the cases, you should only edit \texttt{diva\_start.m}, where you wil
            2 $\rightarrow$ eps\\
            3 $\rightarrow$ png
            \end{minipage}
-
+Matlab/Octave
 \item the use of the \texttt{m\_map} package \footnote{\texttt{m\_map} is a mapping package for \matlab\, created and made available by Rich Pawlowicz at \url{http://www.eos.ubc.ca/~rich/map.html}} for your plots:\\
 
 \texttt{is\_mmap} = \begin{minipage}[t]{5cm}
@@ -231,15 +234,39 @@ The provided \matlab\, scripts aim to show you how to create plots from files ge
 \end{figure}
 
 
-\section{NcBrowse}
+
+
+
+\section{Python}
+%_--------------
+
+
+Python (\url{http://www.python.org/}) is a object-oriented, free to use, programming language. It is directly available through the package manager of recent Linux distributions.
+
+\subsection{Installation}
+
+Along with Python, it is necessary to install:
+\begin{description}
+\item[NumPy] \url{www.numpy.org}, a package for scientific computing;
+\item[SciPy] (\url{http://www.scipy.org/}), another package for science and engineering;
+\item[matplotlib] (\url{http://matplotlib.org/}), a 2D plotting library, where one can find the basemap toolkit (https://pypi.python.org/pypi/basemap) particularly useful for plot data on map projection (somewhat equivalent to m\_map in Matlab).
+\end{description}
+
+\subsection{Usage}
+
+
+\section{General NetCDF visualization tools}
+%---------------------------------------------
+
+NetCDF (network Common Data Form) format. It is an machine-independent format to represent scientific data. For more details, consult \url{http://www.unidata.ucar.edu/software/netcdf/}. \index{NetCDF}
+
+There are several tools that aim to provide a quick view of the content of a NetCDF files, such as the analyse and error fields provided by \diva. It is possible to export the results as a figure, but generally these software do not offer the possibility to customize the plots as could be done with the previous tools.
+
+\subsection{NcBrowse}
 %-------------------
 
-\index{NetCDF}
-\diva provides analyse and error fields under the NetCDF (network Common Data Form) format. It is an machine-independent format to represent scientific data. For more details, please consult \url{http://www.unidata.ucar.edu/software/netcdf/}.
 
-\textsl{NcBrowse} (Linux and Windows) is available at\\
-\url{http://www.epic.noaa.gov/java/ncBrowse/}
-
+\textsl{NcBrowse} is available at \url{http://www.epic.noaa.gov/java/ncBrowse/} and works with both Linux and Windows O.S.
 
 \begin{figure}[htpb]
 \centering
@@ -249,8 +276,7 @@ The provided \matlab\, scripts aim to show you how to create plots from files ge
 \caption{Plots of results with NcBrowse.}
 \end{figure}
 
-
-\section{Ncview}
+\subsection{Ncview}
 %------------------
 
 \index{Ncview}
@@ -258,11 +284,11 @@ The provided \matlab\, scripts aim to show you how to create plots from files ge
 \url{http://meteora.ucsd.edu/~pierce/ncview_home_page.html}\\
 but requires the NetCDF library to be compiled with your own system configuration.
 
-\subsection{Installation under Linux}
+\subsubsection{Installation under Linux}
 
 Recent Linux distribution already permits the installation of Ncview through their package manager. Should it not be the case, the last version of Ncview is available here: \url{ftp://cirrus.ucsd.edu/pub/ncview/ncview-2.1.2.tar.gz}
 
-\subsection{Installation under Windows-Cygwin}
+\subsubsection{Installation under Windows-Cygwin}
 
 Install and build the last NetCDF version for Unix: download the latest release and build as with Unix. The latest release is tested under Cygwin\index{Cygwin} and passes all tests cleanly. To build under Cygwin, follow the Unix build instructions in a Cygwin shell. The \texttt{--enable-shared} option to configure will generate the \file{netcdf.dll}. 
 
