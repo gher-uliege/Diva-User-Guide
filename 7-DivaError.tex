@@ -35,6 +35,12 @@ According to the data sets, the type of analysis (with/without dynamical constra
 
 To circumvent the main problems (unknown covariance function and repeated analysis), \citet{BRASSEUR94} estimated the error by analysing a vector of "covariances" with constant $\sigma^2$. As all covariances are identical, the error can be assessed in all locations with the same analysis. The advantage is the fast calculation, but the drawback is a systematic underestimation of the actual errors, since the error reduction by the overestimated covariances \eqref{eq:erroroi} is also overestimated. The poor man's error field is a very efficient way to assess data-coverage and determine the regions where the analysis cannot be trusted.
 
+\subsection{The clever poor man's estimate\label{sec:cleverpoormans}}
+
+Compared to the poor man's estimate, this approach still analyses a vector of "covariances" with constant $\sigma^2$ but reduces the correlation length so that for isolated observations, the resulting error field is almost exact. When data points are closer to each other (typically within the range of the correlation length), then the methods is still to optimistic.
+
+{\it more to come}
+
 \subsection{The hybrid approach}
 %-------------------------------
 
@@ -132,11 +138,45 @@ e^2 (\vect{r}) = \sigma^2 \hat{B}(\vect{r},\vect{r}) - \sigma^2 \matr{H} \hat{\v
 \end{equation}
 where $\hat{B}(\vect{r},\vect{r})$ is the local relative background variance (calculated by \eqref{eq:brr}) and $\hat{\vect{b}}$ is a vector filled according to \eqref{eq:btildco}.
 
+
+\subsubsection{The real covariance method: discussion of background variance\label{sec:backgroundrealcovariance}}
+
+
+\paragraph{a) Absolute error}
+
+
+\paragraph{b) Errors scaled by $B_{ii}$}
+
+
+When relative errors are demanded, one could divide by $\sigma^2 B_{ii}$; 
+
+
+
+
+\paragraph{Discussion}
+The effect of spatially non-uniform $B_{ii}$ is particularly clear at the edge of the finite elements grid. If the boundary is in the open ocean, there is actually no reason to suppose that the background error increases when approaching the artificial boundary and dividing by $B_{ii}$ provides a more natural error estimation so that solution b) should be used. 
+
+If near real coasts increased background variance is expected, then the error estimation a) should be used. In such cases, open boundaries should be pushed further away in the numerical finite element grid and the analysis on the regular grid only be done in the region of interest.
+
+\subsection{The almost exact method\label{sec:exerr}}
+
+The idea here is to calcule the error exactly in some selected location and than interpolate the error to provide a gridded error field at a reduced cost. The implementation also allows to avoid the need to run a second diva executable by exploiting an expression of the error at data locations by adding pseudo data in well selected locations.
+
+{\it more to come}
+
+\subsubsection{Background variance}
+
+As for the case of the real covariance, one can select to provide the error scaled by $B_{ii}$ or not.
+
+
 %-----------------
-\subsubsection{Usage}
+\section{Usage of methods}
 %-----------------
 
-Calculation of the full covariance function for error calculation is recommended when at least one of the following conditions is true:
+The (clever) poor man's error is useful as a first and quick error field during exploration of data. Once analysis parameters such as correlation length are correctly calibrated, outliers eliminated and the analysis considered relevant, a better error calculation should be used.
+
+
+Calculation of the full covariance function or the almost exact error version for error calculation is recommended when at least one of the following conditions is true:
 \begin{itemize}
 \item Advection constraint is strong.
 \item Signal-to-noise ratio is high and few data are available near the boundaries.
