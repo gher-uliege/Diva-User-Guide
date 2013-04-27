@@ -1,6 +1,6 @@
 \chapter{Postprocessing tools\label{chap:postprocessing}}
 
-Various tools are available to visualize gridded fields; some of them are presented in the following sections. We consider it is up to the user to utilize his favourite drawing tools for representing the numerical results. Nevertheless, we provide several basic tools to facilitate this task.
+Various tools are available for visualization and processing of the gridded fields; some of them are presented in the following sections. It is up to the user to utilize his favourite drawing tools for representing the numerical results. Nevertheless, we provide several basic tools easily adaptable to facilitate the task.
 
 
 \minitoc
@@ -136,101 +136,109 @@ Tools to display contours, data, meshes, analysis and error fields are available
 
 \subsection{Installation}
 
+Download and extract the archives \file{Diva\_matlab.tar.gz} and \file{matlab\_example.tar.gz}
+\begin{lstlisting}[style=Bash]
+ tar -xvf Diva_matlab.tar.gz
+ tar -xvf Diva_matlab_example.tar.gz
+\end{lstlisting}
+
 In order to have the routines working properly, you need to installe:
 \begin{description}
 \item[NetCDF toolbox,] for reading the result files. For recent versions of \matlab, the routines for reading/writing NetCDF are readily available. For older versions, you can install it from \url{http://mexcdf.sourceforge.net/downloads/}.
-\item[m\_map toolbox:] optional but recommanded, it allows one to plot generate various plots (mesh, data, analysis) using coastlines, projections etc. 
+\item[m\_map toolbox:] optional but recommanded, it allows one to plot generate various plots (mesh, data, analysis) using coastlines, projections etc (\url{http://www.eos.ubc.ca/~rich/map.html}). 
 \end{description}
     
 
 \subsection{Tools description}
 %--------------------------
-
-In most of the cases, you should only edit \texttt{diva\_start.m}, where you will define:
-
-\begin{itemize}
-
-\item the variable you want to plot:\\
-\texttt{variable =} \begin{minipage}[t]{6.6cm}
-            1 (temperature)\\
-            2 (salinity)\\
-            3 (depth)\\
-            4 (velocity)\\
-            5 (correlation length)\\
-            0 (nothing)
-           \end{minipage}
-           
-\item the path of your result and plot directories:\\
-
-\texttt{dir.name} = name of your  \begin{minipage}[t]{3cm}    input/output \\  \command{divaload}/\command{divasave} \end{minipage}  directories called with\\
-\texttt{dir.figures} = where you want figures to be saved.
-
-\item the prefix of the figure names:\\  
-    
-\texttt{casename = 'Island';}
-
-\item the figure format:\\
-
-\texttt{fig\_format} = \begin{minipage}[t]{5cm}
-           1 $\rightarrow$ jpeg\\
-           2 $\rightarrow$ eps\\
-           3 $\rightarrow$ png
-           \end{minipage}
-Matlab/Octave
-\item the use of the \texttt{m\_map} package \footnote{\texttt{m\_map} is a mapping package for \matlab\, created and made available by Rich Pawlowicz at \url{http://www.eos.ubc.ca/~rich/map.html}} for your plots:\\
-
-\texttt{is\_mmap} = \begin{minipage}[t]{5cm}
-           1  if you have the \texttt{m\_map} toolbox installed;\\
-           0  if not.
-           \end{minipage}
-\end{itemize}
  
+\begin{table}[htpb]
+\centering
+\caption[\matlab programs for plotting.]{\matlab programs for plotting. Set \texttt{mmapflag}=1 if the m\_map toolbox is installed.}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llll}
+\toprule
+Routine				&	Mandatory input(s) 		&	Optional input(s)	& 	Utility  			\\
+\midrule
+diva\_contour.m 		&	contourfile 			& mmapflag 			&	Plot contour		\\
+diva\_mesh.m 			& meshfile, meshtopofile 	& mmapflag 			&	Plot mesh			\\
+diva\_data\_positions.m	& datafile 					& dotsize, mmapflag & 	Plot data locations	\\
+diva\_data.m 			& datafile 					& dotsize, mmapflag & Plot data values		\\
+diva\_analysis.m 		& resultfile 				& valex ,mmapflag 	 & Plot the analyzed field \\
+\bottomrule
+\end{tabular*}
+\end{table}
 
-Various scripts allow you to create plots, their purposes are self-explanatory for most of them:
-
-\begin{enumerate}
-\item \texttt{diva\_data.m},
-\item \texttt{diva\_contour.m}, 
-\item \texttt{diva\_mesh.m},
-\item \texttt{diva\_analysis.m},
-\item \texttt{diva\_error.m},
-\item \texttt{diva\_data\_outliers.m}.
-\end{enumerate}
-\vspace{.25cm}
-
-These six operations are summed in \texttt{diva\_plot\_all.m}. Along with these basic scripts, you also have at your disposal:
-\begin{itemize}
-\item \texttt{diva\_analysis\_mask.m} to plot the analysed field covered by a mask depending on the error field;
-\item \texttt{diva\_contour\_depth.m} to plot all the contours generated through an execution of \texttt{divacont} (needs a \texttt{contour.depth} file to work);
-\item \texttt{diva\_covafit.m} to plot the fitted and experimental covariance functions;
-\item \texttt{diva\_inversetopo.m} to inverses the sign of the topography;
-\item \texttt{diva\_topo.m} to plot topography using \texttt{topo.grd} file.
-\end{itemize}
-
- 
-\btips
-The provided \matlab\, scripts aim to show you how to create plots from files generated by \diva. Therefore do not hesitate to modify and adapt them to your own need.
-\etips
-
-\paragraph{Subroutines:} \texttt{uread.m} performs the reading of files written in GHER format (binary). These files are opened and closed with the help of \texttt{gzopen.m} and \texttt{gzfclose.m}, respectively. These three files do not need to be modified.
-
-
-\subsection{Examples of plot with Matlab \diva toolbox}
+\subsection{Examples of use}
 %------------------------------------------------------------
+
+Open a \matlab session and set the path to the directory containg the function:
+
+\begin{lstlisting}[style=Matlab]
+addpath('path_to_functions')
+\end{lstlisting}
+
+Define the input files:
+
+\begin{lstlisting}[style=Matlab]
+exampledir   = path_to_example_directory;
+contourfile  = [exampledir,'/coast.cont'];
+datafile     = [exampledir,'/data.dat'];
+meshfile     = [exampledir,'/mesh.dat'];
+meshtopofile = [exampledir,'/meshtopo.dat'];
+resultfile   = [exampledir,'/results.nc'];
+\end{lstlisting}
+
+
+Execute the different commands:
+\begin{itemize}
+\item Plot the contour:
+\begin{lstlisting}[style=Matlab]
+diva_contour(contourfile);
+\end{lstlisting}
+
+\item Plot the finite-element mesh:
+\begin{lstlisting}[style=Matlab]
+diva_mesh(meshtopofile,meshfile);
+\end{lstlisting}
+
+
+\item Plot the data positions:
+\begin{lstlisting}[style=Matlab]
+diva_data_positions(datafile);
+\end{lstlisting}
+
+\item Plot the data (with values):
+\begin{lstlisting}[style=Matlab]
+diva_data(datafile);
+colorbar;
+\end{lstlisting}
+
+\item Plot the analysis:
+\begin{lstlisting}[style=Matlab]
+diva_analysis(resultfile);
+colorbar;
+\end{lstlisting}
+
+
+\end{itemize}
+
+
+
+The resulting figures (without the m\_map option) are shown below.
 
 \begin{figure}[H]
 \centering
 \subfigure[Data]{
-\includegraphics[width=.45\textwidth]{mat_data}
+\includegraphics[width=.495\textwidth]{Diva_example_contour}
 }\subfigure[Mesh]{
-\includegraphics[width=.45\textwidth]{mat_mesh}
+\includegraphics[width=.495\textwidth]{Diva_example_mesh}
 }
 \subfigure[Analysis]{
-\includegraphics[width=.45\textwidth]{mat_analysis}
+\includegraphics[width=.495\textwidth]{Diva_example_contour_data2}
 }\subfigure[Outliers]{
-\includegraphics[width=.45\textwidth]{mat_outliers}
+\includegraphics[width=.495\textwidth]{Diva_example_analysis}
 }
-\caption{Examples of figures created with \matlab}
+\caption{Examples of figures created with \diva-\matlab toolbox.}
 \end{figure}
 
 
@@ -250,9 +258,35 @@ Along with Python, it is necessary to install:
 \item[NumPy] \url{www.numpy.org}, a package for scientific computing;
 \item[SciPy] (\url{http://www.scipy.org/}), another package for science and engineering;
 \item[matplotlib] (\url{http://matplotlib.org/}), a 2D plotting library, where one can find the basemap toolkit (https://pypi.python.org/pypi/basemap) particularly useful for plot data on map projection (somewhat equivalent to m\_map in Matlab).
+\item[netcdf4-python] (\url{http://code.google.com/p/netcdf4-python/}), the Python/numpy interface to netCDF.
 \end{description}
 
+Under Linux, the first three items are available with the package manager. The NetCDF interface requires a manual installation.
+
+\begin{itemize}
+\item Download the archive from \url{http://code.google.com/p/netcdf4-python/downloads/list}
+\item Check the \textit{sha1 sum} and extract the archive:
+\begin{lstlisting}[style=Bash]
+ctroupin@gher13 ~/Software $ sha1sum netCDF4-1.0.4.tar.gz 
+cd1735a69446e558ba55034f184ee5f3d44d1a44  netCDF4-1.0.4.tar.gz
+ctroupin@gher13 ~/Software $ tar -xvf netCDF4-1.0.4.tar.gz 
+ctroupin@gher13 ~/Software $ cd netCDF4-1.0.4/
+\end{lstlisting}
+\item Follow the instruction written in file \file{README}:
+\begin{lstlisting}[style=Bash]
+ctroupin@gher13 ~/Software python setup.py build
+ctroupin@gher13 ~/Software python setup.py install
+\end{lstlisting}
+\end{itemize}
+
 \subsection{Usage}
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=.5\textwidth,viewport=51 235 560 556]{data_blacksea_python}
+\caption{Examples of figures obtained with the \diva-Python toolbox.}
+\end{figure}
 
 
 \section[NetCDF visualization tools]{General NetCDF visualization tools}
@@ -262,9 +296,15 @@ NetCDF (network Common Data Form) format. It is an machine-independent format to
 
 There are several tools that aim to provide a quick view of the content of a NetCDF files, such as the analyse and error fields provided by \diva. It is possible to export the results as a figure, but generally these software do not offer the possibility to customize the plots as could be done with the previous tools.
 
+\subsection{Ocean Data View}
+
+\index{Ocean Data View}
+Among the numerous possibilities offered by ODV, there is a tool for accessing and visualizing local or remote NetCDF files \citep[][Chapter~13]{SCHLITZER12}.
+
+
+
 \subsection{NcBrowse}
 %-------------------
-
 
 \textsl{NcBrowse} is available at \url{http://www.epic.noaa.gov/java/ncBrowse/} and works with both Linux and Windows O.S.
 

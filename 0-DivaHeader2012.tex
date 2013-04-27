@@ -66,6 +66,27 @@ literate={\$}{{\textcolor{red}{\$}}}1
 
 %$
 
+\lstdefinestyle{Matlab}
+{language=matlab,
+keywordstyle=\color{blue},
+basicstyle=\ttfamily,
+morekeywords={charles@gher13},
+alsoletter={:~$},
+commentstyle=\color{dkgreen},
+morekeywords=[2]{charles@gher13:},
+keywordstyle=[2]{\color{red}},
+literate={\$}{{\textcolor{red}{\$}}}1 
+         {:}{{\textcolor{red}{:}}}1
+         {~}{{\textcolor{red}{\textasciitilde}}}1,
+}
+\lstset{
+    breaklines     = true,
+    frame          = single,
+    rulecolor=     \color{gray},
+}
+
+%$
+
 % paths + extensions for the figures
 \DeclareGraphicsExtensions{.pdf,.jpg,.JPG,.png,.PNG}
 \graphicspath{
