@@ -12,8 +12,7 @@ Various tools are available for visualization and processing of the gridded fiel
 \textsl{Gnuplot} is a free portable command-line driven interactive data and function plotting utility, available for various platforms (\url{http://www.gnuplot.info/}). We provide some routines for plotting \diva inputs and outputs (data, contour, mesh, analysis etc) with the help of this tool. Running \command{divagnu} makes plots in \texttt{png} format. 
 
 \begin{tips}
-Plots provided by \gnuplot are made to help the user to have a quick look at the results, immediately after the execution. However, these plots are not always suitable for publications or diffusion. The user is invited to create his own post-processing tools, for example appealing to the existing Matlab routines.
-\end{tips}
+Plots provided by \gnuplot are made to help the user to have a quick look at the results, immediately after the execution. However, these plots are not always suitable for publications or diffusion. The user is invited to create his own post-processing tools based on the examples provided in the next sections.\end{tips}
 
 \begin{tips}
 If you need larger fonts, on some systems they are available and you can edit the plotting program \file{gnuwork$\backslash$divaplotall}
@@ -154,7 +153,7 @@ In order to have the routines working properly, you need to installe:
  
 \begin{table}[htpb]
 \centering
-\caption[\matlab programs for plotting.]{\matlab programs for plotting. Set \texttt{mmapflag}=1 if the m\_map toolbox is installed.}
+\caption[\matlab programs for plotting.]{\matlab programs for plotting. Set \texttt{mmapflag}=1 if the m\_map toolbox is installed. \texttt{valex} stands for exclusion value.}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llll}
 \toprule
 Routine				&	Mandatory input(s) 		&	Optional input(s)	& 	Utility  			\\
@@ -163,7 +162,7 @@ diva\_contour.m 		&	contourfile 			& mmapflag 			&	Plot contour		\\
 diva\_mesh.m 			& meshfile, meshtopofile 	& mmapflag 			&	Plot mesh			\\
 diva\_data\_positions.m	& datafile 					& dotsize, mmapflag & 	Plot data locations	\\
 diva\_data.m 			& datafile 					& dotsize, mmapflag & Plot data values		\\
-diva\_analysis.m 		& resultfile 				& valex ,mmapflag 	 & Plot the analyzed field \\
+diva\_analysis.m 		& resultfile 				& valex, mmapflag 	 & Plot the analyzed field \\
 \bottomrule
 \end{tabular*}
 \end{table}
@@ -281,10 +280,12 @@ ctroupin@gher13 ~/Software python setup.py install
 
 \subsection{Usage}
 
+Edit the files and run Python (either in a shell, or using a Python editor).
+
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=.5\textwidth,viewport=51 235 560 556]{data_blacksea_python}
+\includegraphics[width=.495\textwidth,viewport=51 235 560 556]{data_blacksea_python}\includegraphics[width=.495\textwidth,viewport=51 235 560 556]{mesh_blacksea_python}
 \caption{Examples of figures obtained with the \diva-Python toolbox.}
 \end{figure}
 
