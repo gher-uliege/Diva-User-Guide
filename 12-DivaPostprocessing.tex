@@ -141,10 +141,10 @@ Download and extract the archives \file{Diva\_matlab.tar.gz} and \file{matlab\_e
  tar -xvf Diva_matlab_example.tar.gz
 \end{lstlisting}
 
-In order to have the routines working properly, you need to installe:
+In order to have the routines working properly, you need to install:
 \begin{description}
 \item[NetCDF toolbox,] for reading the result files. For recent versions of \matlab, the routines for reading/writing NetCDF are readily available. For older versions, you can install it from \url{http://mexcdf.sourceforge.net/downloads/}.
-\item[m\_map toolbox:] optional but recommanded, it allows one to plot generate various plots (mesh, data, analysis) using coastlines, projections etc (\url{http://www.eos.ubc.ca/~rich/map.html}). 
+\item[m\_map toolbox:] optional but recommended, it allows one to plot generate various plots (mesh, data, analysis) using coastlines, projections etc (\url{http://www.eos.ubc.ca/~rich/map.html}). 
 \end{description}
     
 
@@ -170,7 +170,7 @@ diva\_analysis.m 		& resultfile 				& valex, mmapflag 	 & Plot the analyzed fiel
 \subsection{Examples of use}
 %------------------------------------------------------------
 
-Open a \matlab session and set the path to the directory containg the function:
+Open a \matlab session and set the path to the directory containing the function:
 
 \begin{lstlisting}[style=Matlab]
 addpath('path_to_functions')
@@ -242,15 +242,23 @@ The resulting figures (without the m\_map option) are shown below.
 
 
 
-
-
 \section{Python}
 %_--------------
-
 
 Python (\url{http://www.python.org/}) is a object-oriented, free to use, programming language. It is directly available through the package manager of recent Linux distributions.
 
 \subsection{Installation}
+
+Download and extract the archive \file{Diva\_Python\_tools\_v1.0.tar.gz}
+\begin{lstlisting}[style=Bash]
+ tar -xvf Diva_Python_tools_v1.0.tar.gz
+\end{lstlisting}
+
+To have example files to test, extract the files from \file{matlab\_example.tar.gz} (the same files used in the previous section) inside the python directory:
+\begin{lstlisting}[style=Bash]
+ctroupin@gher13 cd Diva_Python_tools_v1.0
+ctroupin@gher13 tar -xvf Diva_matlab_example.tar.gz
+\end{lstlisting}
 
 Along with Python, it is necessary to install:
 \begin{description}
@@ -280,13 +288,17 @@ ctroupin@gher13 ~/Software python setup.py install
 
 \subsection{Usage}
 
-Edit the files and run Python (either in a shell, or using a Python editor).
+Edit the files if necessary and run Python (either in a shell, or using a Python editor). An example of plots is shown in Fig.~\ref{fig:pythontoolbox}.
 
+\begin{lstlisting}[style=Bash]
+ctroupin@gher13 ~/ Diva_Python_tools_v1.0 python diva_plot_mesh.py
+\end{lstlisting}
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=.495\textwidth,viewport=51 235 560 556]{data_blacksea_python}\includegraphics[width=.495\textwidth,viewport=51 235 560 556]{mesh_blacksea_python}
-\caption{Examples of figures obtained with the \diva-Python toolbox.}
+\includegraphics[width=.495\textwidth,viewport=44 299 567 492]{contour_ex_py}\includegraphics[width=.495\textwidth,viewport=44 299 567 492]{mesh_ex_py}
+\includegraphics[width=.495\textwidth,viewport=44 279 567 512]{data_ex_py}\includegraphics[width=.495\textwidth,viewport=44 279 567 512]{results_ex_py}
+\caption{Examples of figures obtained with the \diva-Python toolbox.\label{fig:pythontoolbox}}
 \end{figure}
 
 
