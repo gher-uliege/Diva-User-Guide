@@ -158,6 +158,8 @@ Any suggestion concerning the development of the software is welcome. Simply sen
 \subsection{How can I run \diva on a multi-processor machine?}
 %------------------------------------------------------------
 
+\subsubsection{Coarse grain parallelisation}
+
 The best option is to copy the whole directory \directory{divastripped} in the directory in which it is located, but with a different name (e.g.,  \directory{divastripped2}, or \directory{divastripped\_username1}). The you can run \diva analysis separately in these directories. 
 
 
@@ -179,6 +181,16 @@ One has to distinguish between 2 \textit{resolutions}:
 \end{enumerate}
 
 So the best resolution you can obtain is the one allowed you by the data you are working with.
+
+\subsubsection{Fine grain parallelisation}
+
+If you compiled \diva for parallel use, you can activate the parallel solver by editing \command{divacalc} and use \texttt{solver=1}
+
+
+\subsection{Why is there an iterative solver?}
+You can activate an iterative solver by editing \command{divacalc} and use \texttt{solver=2}. This can be usefull if you do not calculate error fields and do not use cross validation techniques but work with very fine grids. In this case execution time can be reduced. There are some tuning parameters which can enhance convergence but to exploit them, please contact us.
+
+
 
 %--------------------------------------------
 \section{Error messages}
