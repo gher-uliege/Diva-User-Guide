@@ -131,22 +131,22 @@ Then run the compilation script:
 \end{lstlisting}
 and check the content of the log file (\file{compilation.log}). You should obtain something similar to that:
 \begin{verbatim}
-Compilation time:  Thu Oct 25 14:21:54 CEST 2012
-compiler:          ifort
-compilation flags: -O3
+Compilation time:  Wed May 22 20:57:28 CEST 2013
+compiler:          gfortran
+compilation flags: -O3 -cpp -DDIVAITERATIVE
 Calc directory:       1/1   program compiled
-Extensions directory: 12/12 programs compiled
+Extensions directory: 13/13 programs compiled
 Mesh directory:       9/9   programs compiled
 NC directory:         3/3   programs compiled
 PlPlot directory:     1/1   programs compiled
-Util directory:       38/38 programs compiled
+Util directory:       41/41 programs compiled
 Pipetest directory:   1/1   program compiled
 Stabil directory:     28/28 programs compiled
 ----------------------------------------------------------
-TOTAL:                93/93 programs compiled
+TOTAL:                97/97 programs compiled
 ----------------------------------------------------------
 Binaries are located in directory:
-/home/charles/Software/GODIVA_07_2012/DIVA3D/bin
+/home/ctroupin/Software/diva-4.5.1/DIVA3D/bin
 \end{verbatim}
 
 \subsection{Direct copy of pre-compiled binaries}
@@ -183,7 +183,8 @@ The results you obtain have to be similar to those of Fig.~\ref{fig:diva_test_re
 
 \subsection{Another basic test}
 
-\command{divatest0} creates basic input files for a fine mesh and a single data point in the center of the domain and runs the analysis. You should obtain the Bessel function with a maximum value of 0.5.
+\command{divatest0} creates basic input files for a fine mesh and a single data point in the center of the domain and runs the analysis. You should obtain the \index{Bessel function} Bessel function with a maximum value of 0.5.
+
 
 
 \subsection{Large-memory test}
