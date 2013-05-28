@@ -46,9 +46,9 @@ awk '{print $2,$1,$3}' infile > outfile
 \subsection{Method 1: conversion from GEBCO topography\label{sec:topogebco}}
 %------------------------------------------------------
 
-The GEBCO bathymetry is distributed by the British Oceanographic Data Centre (BODC). If you have already registered, you can log in (https://www.bodc.ac.uk/my_account/login/), otherwise it is necessary to register to become a new user. 
+The GEBCO bathymetry is distributed by the British Oceanographic Data Centre (BODC). If you have already registered, you can log in (https://www.bodc.ac.uk/my\_account/login/), otherwise it is necessary to register to become a new user. 
 
-Download the complete, global GEBCO One-Minute Grid file (\file{90n90s180w180e.zip}) from \url{http://www.bodc.ac.uk/data/online_delivery/gebco/} and unzip it to obtain the file \file{GridOne.grd}. Download the software \texttt{GebcoCE\_GridOnly} as well and run it. 
+Download the complete, global GEBCO One-Minute Grid file (\file{90n90s180w180e.zip}) from \url{http://www.bodc.ac.uk/data/online\_delivery/gebco/} and unzip it to obtain the file \file{GridOne.grd}. Download the software \texttt{GebcoCE\_GridOnly} as well and run it. 
 
 \subsubsection{Select your area}
 %-------------------------------
@@ -197,6 +197,18 @@ N
 
 
 Look into \file{dvdv2diva.f} in \directory{./src/Fortran/Util/} how to write such files from within a Fortran code.
+
+
+
+\subsection{Method 4: using \diva on web}
+
+Goto \url{http://gher-diva.phys.ulg.ac.be/web-vis-test/diva.html}, upload any data (it can be the example provided on the web).
+Then specify the output grid on the region where you want the topography and provide the resolution which is typical for the resolution you will use later for the analysis.
+Then perform the analysis with your "data". In the download section, you can download the topography in a netcdf file \file{diva\_bath.nc}. Save this file into your \directory{input}. Then on the command line, placed in this \directory{input}, execute \command{../../bin/divabath2topogrd.a}. This will create \file{topo.grd} and \file{TopoInfo.dat}.
+
+If tapering with topography is needed, you can either work first in the netcdf file \file{diva\_bath.nc} before you run this executable or work on the gher format file \file{topo.grd} afterwards.& 
+
+
 
 \subsection{Deprecated method: conversion of data from Topography Extractor\label{sec:toponavy}}
 %------------------------------------------------------------------
