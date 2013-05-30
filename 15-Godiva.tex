@@ -1,9 +1,9 @@
-\chapter{Climatologies production: \diva 4D\label{chap:diva4D}}
+\chapter{Climatology production: \diva 4D\label{chap:diva4D}}
 
 \diva can be used to produce climatologies for a given variable in an oceanic basin. In this case \diva 3D tools are used to produce for successive climatological time periods, 3D climatological analyses on the basin. The resulting climatologies are gathered in 4D binary files GHER format and NetCDF.
 
 The working directory to performs 4D-analyses is:\\ 
-\directory{GODIVA\_mm\_yyyy/JRAx/Climatology}.
+\directory{diva-4.6.1/JRA4/Climatology}.
 
 \minitoc
 
@@ -13,15 +13,18 @@ The working directory to performs 4D-analyses is:\\
 The climatologies to be produced are first defined by the mean of three files:
 
 \begin{center}
-\begin{tabular}{ll}\hline
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
+\hline
 \file{varlist}: & one column file, where each line defines the short name of a variable \\
  &  (see example~\ref{varlistexp}).\\
 \file{yearlist}:& one column file, where the lines define the time period of years  over\\
- & which the climatologies (of the variables) are performed (see example~\ref{yearlistexp}). \\
+ & which the climatologies (of the variables) are performed \\
+ & (see example~\ref{yearlistexp}). \\
 \file{monthlist}: & one column file, where the lines define the time period in the year\\
- &  for which the climatologies (of the variables) are performed (see example~\ref{monthlistexp}). \\
+ &  for which the climatologies (of the variables) are performed \\ 
+ & (see example~\ref{monthlistexp}). \\
 \hline
-\end{tabular}
+\end{tabular*}
 \end{center}
  
 
@@ -82,24 +85,26 @@ Salinity
 }
 \end{center}
 
-\section{\diva 4D Climatology performance}
+\section{\diva 4D climatology performance}
 %-----------------------------------------
 
-All \diva shell scripts files for climatologies (or 4D-analyses) production are located in \par \directory{GODIVA\_mm\_yyyy/JRAx/Climatology}. This directory has its proper subdirectories \directory{input} where input data and files are placed, and \directory{output} where \diva outputs are stored.
+All \diva shell scripts files for climatologies (or 4D-analyses) production are located in \par \directory{diva-4.6.1/JRAx/Climatology}. This directory has its proper subdirectories:
+\begin{itemize}
+\item[] \directory{input} where input data and files are placed and 
+\item[] \directory{output} where \diva outputs are stored.
+\end{itemize}
 
-The main shell script file for climatologies performance is \command{divadoall}. The actions that one can perform when running \command{divadoall} are:
-
-\subsection{Actions performed by \file{divadoall} }
+The main shell script file for generating climatologies is \command{divadoall}. The actions that performed when running \command{divadoall} are:
 
 \begin{itemize}
-\item Extraction of data at selected depth levels.
-\item Boundary lines and coastlines generation (contour files).
+\item Data extraction at selected depth levels.
+\item Boundary lines/coastline generation (contour files).
 \item Advection field generation based on coastlines.
-\item Data cleaning on mesh.
-\item Elimination of outliers from data sets.
+\item Cleaning of the data outside the mesh.
+\item Outliers elimination from data sets.
 \item Generation of relative length fields.
-\item Optimization of the correlation length parameter (for each data set).
-\item Optimization of the signal-to-noise ratio parameter (for each data set).
+\item Optimization of the correlation length (for each data set).
+\item Optimization of the signal-to-noise ratio (for each data set).
 \item Calculation of variable (semi-normed) reference fields.
 \item Performance of variable analysis fields using the following options:
 \begin{itemize}
@@ -108,9 +113,9 @@ The main shell script file for climatologies performance is \command{divadoall}.
 \item analysis using advection constraint,
 \item analysis with data transformation,
 \item analysis using reference fields for each level calculated on bases of mixed data from three  neighbouring levels,
-\item analysis using a filtered mean background field: all levels mean are first calculated an vertically filtered before being used  3D analyses.
+\item analysis using a filtered mean background field: all levels mean are first calculated an vertically filtered before being used 3D analyses.
 \end{itemize}
-\item Gnuplot plots production.
+\item Gnuplot plot production.
 \item Analysis with detrending method.
 \end{itemize}
 
@@ -126,8 +131,8 @@ The main shell script file for climatologies performance is \command{divadoall}.
 {\bf Note:}
 \begin{itemize}
 \item[*] When data extraction is activated in the \file{driver}, the execution is made for all levels found in \file{contour.depth} file provided in the subdirectory \file{input}. It is also taking into account a minimum number of data in a layer with regard to the corresponding flag value given in \file{driver}.
-\item[*] When boundary lines and coastlines' generation is activated in the \file{driver}, the execution is made for all levels found in \file{contour.depth} file provided in the subdirectory \directory{input}.
-\item[*] When parameters optimisation and/or analysis is activated, the execution is made for the levels between the values chosen for the lower and upper level numbers and takes into account the bound values (maximum and minimum) prescribed in the \file{driver}.
+\item[*] When boundary line and coastline generation is activated in the \file{driver}, the execution is made for all levels found in \file{contour.depth} file provided in the subdirectory \directory{input}.
+\item[*] When parameter optimisation and/or analysis is activated, the execution is made for the levels between the values chosen for the lower and upper level numbers and takes into account the bound values (maximum and minimum) prescribed in \file{driver}.
 \end{itemize}
 
 
@@ -184,12 +189,12 @@ To perform an action, one has to configure the \file{driver} file and give in th
 {\bf Action} & {\bf Inputs} \\
 \hline
     &   \\
-Data extraction  &  \file{darasource} in \directory{Climatology} \\
+Data extraction  &  \file{datasource} in \directory{Climatology} \\
                  &  \file{qflist}  in \directory{Climatology} \\
     &   \\
 \hline
     &   \\
- Coastlines generation & \file{topogebco.asc}, \file{topo.gebco} or \file{topo.dat} ascii \\
+ Coastline generation & \file{topogebco.asc}, \file{topo.gebco} or \file{topo.dat} ascii \\
  and ``Advection''     & file or \file{topo.grd} GHER binary format file and its \\
   fields generation     &  related \file{TopoInfo.dat} ascii info-file \\
     &   \\
@@ -211,7 +216,8 @@ Parameters optimisation &  {\directory{divadata}} directory which contains the d
 \hline
     &   \\
 Reference fields &  {\directory{divadata}} directory which contains the data set files\\
-generation       &  of the considered depths and time periods {\directory{divaparam}} directory \\
+generation       &  of the considered depths and time periods\\
+				 &  {\directory{divaparam}} directory \\
                  &  which contains coastlines {\file{coast.cont.$100xx$}} files of the \\
                  &  considered basin, and a(template) {\file{param.par}} file  in \directory{input} or \\
                  & a {\file{param.par.var.$100xx$}} files  in \directory{input/divaparam} directory.\\
@@ -338,7 +344,7 @@ number of groups for data detrending, 0 if no detrending.
 %-----------------------------------------------------------------------------------
 %-----------------------------------------------------------------------------------
 
-\section{Production of Climatologies}
+\section{Production of climatologies}
 
 \diva 4D allows the production of climatologies based on simple \diva data analysis or based on \diva analysis using different option as in \diva 3D:
 

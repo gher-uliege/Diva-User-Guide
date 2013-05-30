@@ -23,7 +23,7 @@ The basic requirements to compile and run \diva are:
 \item ifort (Intel\textsuperscript{\textregistered}, \url{http://software.intel.com/en-us/intel-compilers}),
 \item pgf (Portland Group, \url{http://www.pgroup.com/}).
 \end{itemize}    
-\item The NetCDF library (\url{http://www.unidata.ucar.edu/software/netcdf/}) for Fortran. Note that the library is available in recent versions of the cygwin installer, but does not properly work in all cases (and you must add the library \texttt{nclib=/usr/lib/libnetcdff.dll.a} into the compiling options). When trying to make the cygwin NetCDF library to work, you might need to use 
+\item The NetCDF library (\url{http://www.unidata.ucar.edu/software/netcdf/}) for Fortran. Note that the library is available in recent versions of the Cygwin installer, but does not properly work in all cases (and you must add the library \texttt{nclib=/usr/lib/libnetcdff.dll.a} into the compiling options). When trying to make the Cygwin NetCDF library to work, you might need to use 
 
 \begin{lstlisting}[style=Bash]
 [charles@gher13 ~]$ cygcheck netcdfoutput.a
@@ -47,28 +47,28 @@ Select a directory on your local disk (here we install in a directory \directory
 
 \begin{lstlisting}[style=Bash]
 [charles@gher13 ~]$ cd Software/
-[charles@gher13 Software]$ wget http://modb.oce.ulg.ac.be/mediawiki/upload/DIVA/releases/GODIVA_mm_yyyy.tar.gz
+[charles@gher13 Software]$ wget http://modb.oce.ulg.ac.be/mediawiki/upload/DIVA/releases/diva-4.6.1.tar.gz
 \end{lstlisting}
 
 Extract the archive and go in the main directory:
 \begin{lstlisting}[style=Bash]
-[charles@gher13 Software]$ tar -xvf GODIVA_07_2012.tar.gz
-[charles@gher13 Software]$ cd GODIVA_07_2012/
+[charles@gher13 Software]$ tar -xvf diva-4.6.1.tar.gz
+[charles@gher13 Software]$ cd diva-4.6.1/
 \end{lstlisting}
 
 The directory tree has the following structure: %\newpage 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 GODIVA_07_2012]$ tree -d -L 2
+[charles@gher13 diva-4.6.1]$ tree -d -L 2
 .
 |-- DIVA3D
 |   |-- bin
 |   |-- divastripped
 |   `-- src
-|-- Doc
+|-- Example4D
+	|--input
 `-- JRA4
     `-- Climatology
-
-7 directories
+8 directories
 \end{lstlisting}
 
 
@@ -77,7 +77,8 @@ The directory tree has the following structure: %\newpage
 \item \directory{DIVA3D/divastripped/} is the main working directory at the 2-D level. 
 \item \directory{DIVA3D/src/} contains the Fortran source code. This is where the compilation has to be done.
 \item[]
-\item \directory{Doc/} contains the link to publications. For \LaTeX users: you find the corresponding \BibTeX  entries in the file \file{DivaPublications.bib}.
+%\item \directory{Doc/} contains the link to publications. For \LaTeX users: you find the corresponding \BibTeX  entries in the file \file{DivaPublications.bib}.
+\item \directory{Example4D/} contains a set of input file that cab be used to run a simple test.
 \item \directory{JRA4/Climatology/} is the main working directory at the 3-D and 4-D levels.
 \end{itemize}
 
@@ -98,17 +99,18 @@ The second option is provided for cases where the compilation was not possible, 
 \index{Compilation}
 Go in the source directory 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 GODIVA_07_2012]$ cd DIVA3D/src/Fortran/
+[charles@gher13 diva-4.6.1]$ cd DIVA3D/src/Fortran/
 \end{lstlisting}
-and edit the configuration file \file{divacompile\_options} for the compilation  according to your machine. 
+and edit the configuration file \file{divacompile\_options} for the compilation according to your machine. 
 
 \begin{verbatim}
-# Name of the fortran compiler (ex: ifort,gfortran,pgi,...)
-compiler=ifort
-# Compilation flags
-flags='-O3'
-# Netcdf library
-nclib=/usr/local/lib/netcdf3ifort/libnetcdf.a
+compiler=gfortran
+...
+DIVA_PARALLEL=1
+...
+flags='-O3  -cpp   -DDIVAITERATIVE  ' # ' -DDIVABINARYFILESMESH -DDIVABINARYFILES '
+...
+flagscalc=' -O3 -cpp   -DDIVAITERATIVE -Wall -fbounds-check'
 ...
 \end{verbatim}
 
@@ -121,13 +123,15 @@ gfortran
 \end{lstlisting}
 Check the options of this command by typing \command{nf-config}, or visit the web page: \url{http://www.unidata.ucar.edu/software/netcdf/workshops/2011/utilities/Nc-config.html}. If you have installed several versions of the NetCDF libraries, you might find several \command{nf-config} on your system, and each of them may provide you different outputs for the two previous commands. In older versions of NetCDF libraries \command{nc-config} was used instead of \command{nf-config}.
 
+If neither \command{nc-config} nor \command{nf-config} is installed, you may have to further edit\\ 
+\file{divacompile\_options}:
+\begin{verbatim}
+nclib=/usr/lib/libnetcdff.dll.a
+\end{verbatim}
 
-
-
-
-Then run the compilation script: 
+Once this is done, run the compilation script: 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 Fortran] divacompileall
+[charles@gher13 Fortran] ./divacompileall
 \end{lstlisting}
 and check the content of the log file (\file{compilation.log}). You should obtain something similar to that:
 \begin{verbatim}
@@ -146,12 +150,12 @@ Stabil directory:     28/28 programs compiled
 TOTAL:                97/97 programs compiled
 ----------------------------------------------------------
 Binaries are located in directory:
-/home/ctroupin/Software/diva-4.5.1/DIVA3D/bin
+/home/ctroupin/Software/diva-4.6.1/DIVA3D/bin
 \end{verbatim}
 
 \subsection{Direct copy of pre-compiled binaries}
 
-If the compilation failed, go in the \directory{GODIVA\_mm\_yyyy/DIVA3D/bin/} directory and copy directly the binaries available in the sub-directories. For example for Windows with the Cygwin tool:
+If the compilation failed, go in the \directory{diva-4.6.1/DIVA3D/bin/} directory and copy directly the binaries available in the sub-directories. For example for Windows with the Cygwin tool:
 \begin{lstlisting}[style=Bash]
 [charles@gher13 bin] cp -f cygwin/* .
 \end{lstlisting}
@@ -184,7 +188,6 @@ The results you obtain have to be similar to those of Fig.~\ref{fig:diva_test_re
 \subsection{Another basic test}
 
 \command{divatest0} creates basic input files for a fine mesh and a single data point in the center of the domain and runs the analysis. You should obtain the \index{Bessel function} Bessel function with a maximum value of 0.5.
-
 
 
 \subsection{Large-memory test}
