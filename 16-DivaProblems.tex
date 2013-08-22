@@ -16,9 +16,34 @@ The latest stable version if available at \url{http://modb.oce.ulg.ac.be/mediawi
 
 %Another possibility is to check the page \url{http://modb.oce.ulg.ac.be/viewsvn/}, which contains the svn repository.
 
-\subsection{How to report a bug or a problem?}
+\subsection{What do I need to install DIVA?}
+%--------------------------------------------
 
-The preferred option is to send a message to the \diva user group on google: \url{http://groups.google.com/group/diva_users}. 
+Check Chapter~\ref{chap:installation} where the requirements and the procedure are described.
+
+
+\subsection{Is there a graphical user interface?}
+%--------------------------------------------------
+
+Previously, an interface for the 2-D version was available, but is was not up-to-date with respect to the developments of the code.
+
+Usually, one wants to perform a large number (more than 100) analysis in order to produce a complete climatology. To this end, it is easier to use command line than to click and wait 100 times.
+
+For the users not familiar with shells and scripts, the web interface \citep{BARTH10} can be tried at \url{http://gher-diva.phys.ulg.ac.be/web-vis/diva.html}
+
+\subsection{Can I use \diva to interpolate measurements from satellite?}
+%------------------------------------------------- 
+
+Yes, it is always possible to perform an interpolation with \diva on this kind of data. However, a better solution is to take into account not only a single satellite images, but also the information contained in the images of the previous days. This is done with the software DINEOF \citep[e.g.,][or \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/DINEOF}] {ALVERA05,BECKERS06}. 
+
+
+
+\subsection{How to report a bug or a problem?}
+%----------------------------------------------
+
+The preferred option is to send a message to the \diva user group on google:\\
+ \url{http://groups.google.com/group/diva_users}. 
+ 
 This has two advantages over emails:
 \begin{enumerate}
 \item The questions is directly sent to all the \diva developers.
@@ -29,24 +54,35 @@ Along with a small description of the problem, add relevant informations that wo
 \begin{itemize}
 \item the version of \diva you are using,
 \item your operating system (O. S.),
-\item your options for compiling the code (check file \file{compilation.log} in directory \directory{DIVA3D/src/Fortran/}.
+\item your options for compiling the code\\
+ (check file \file{compilation.log} in directory \directory{DIVA3D/src/Fortran/}.
 \end{itemize}
 If the problem can be reproduced at the 2-D level (i.e., working in the directory \directory{divastripped}), add the input files that generated the problem as well, so that we can check if the issue is machine-dependent. 
 
 To know your O. S. you can type in the shell:
 
 \begin{lstlisting}[style=Bash]
-MacBook-Pro-de-GHER:divastripped gherulg$ uname -a
-Darwin MacBook-Pro-de-GHER.local 11.3.0 Darwin Kernel Version 11.3.0: Thu Jan 12 18:47:41 PST 2012; root:xnu-1699.24.23~1/RELEASE_X86_64 x86_64
+gherulg$ uname -voi
+28-Ubuntu SMP Tue Oct 9 19:31:23 UTC 2012 x86_64 GNU/Linux
 \end{lstlisting}
 
+If you received advice which helped you to solve the problem, please post a comment so that others know the solution worked. 
+%%
+
+
 \subsection{How to register to the user group?}
-
-
+%------------------------------------------------
+\begin{itemize}
+\item Go to \url{http://groups.google.com/group/diva_users} and login with a google account (not necessarily a gmail address). 
+\item Follow the "\textit{Apply for membership}" link. You will be asked to explain why you want to use \diva.
+\item Finally click on the "\textit{Apply to join this group}" button. \\
+You will get an email confirmation once the the application has been reviewed and accepted.
+\end{itemize}
+ 
 
 
 \subsection{How can I use \diva in R, Matlab, IDL, Ferret or any other software}
-
+%------------------------------------------------
 There are basically two ways:
 
 \subsubsection{a) Using special binaries and preparing {\tt fort.*} files for \diva}
@@ -60,7 +96,7 @@ It requires some time (you can try to understand the matlab function to see how 
 
 In this case you must have installed the \diva package and have access to either directly unix or Cygwin shells.\index{Cygwin}
 
-You also need to prepare a shell script. You can call it whatever you want let's say \command{mydivacall} and it contains the instructions you want to execute with \diva. So typically what you would type in the command-line session when trying to make the analysis.
+You also need to prepare a shell script that we will call \command{mydivacall} in this example, and which contains the instructions to be to executed with \diva. So typically what you would type in the command-line session when trying to make the analysis.
 
 \begin{exfile}[htpb]
 \begin{footnotesize}
@@ -85,14 +121,16 @@ Then your program has to prepare all input files exactly as for a normal \diva e
 
 For a Cygwin system it is more complicated:
 
+{\footnotesize
 \command{call system("c:$\backslash$cygwin$\backslash$bin$\backslash$bash.exe --login -i -c c:/<path>/mydivacall")}
-
+}
 %\begin{lstlisting}[style=Bash]
 %call system("c:cygwin\bin\bash.exe --login -i -c c:/<path>/mydivacall")
 %\end{lstlisting}
 
-Once the script execution is finished, you can read the diva output files with your program and continue to do whatever you want.
+Once the script execution is finished, you can read the diva output files with your program and continue the processing.
 
+%\url{www.neurotap.blogspot.com.es/2010/08/how-to-call-bash-command-outside-of.html}
 % add a link to the web page that explain that
 
 \subsection{What value for parameter \texttt{ireg} should I choose for a semi-normed analysis}
@@ -152,7 +190,7 @@ In summary the steps to follow are:
 \subsection{How to contribute to the development?}
 %----------------------------------------------
 
-Any suggestion concerning the development of the software is welcome. Simply send a description of what improvements/tools you would like to see and we will check if this could be easily added to the general distribution.
+Any suggestion concerning the development of the software is welcome. Simply send to the developers or to the google group, a description  of what improvements/tools you would like to see and we will check if this could be easily added to the general distribution.
 
 
 \subsection{How can I run \diva on a multi-processor machine?}
@@ -160,7 +198,7 @@ Any suggestion concerning the development of the software is welcome. Simply sen
 
 \subsubsection{Coarse grain parallelisation}
 
-The best option is to copy the whole directory \directory{divastripped} in the directory in which it is located, but with a different name (e.g.,  \directory{divastripped2}, or \directory{divastripped\_username1}). The you can run \diva analysis separately in these directories. 
+The best option is to copy the whole directory \directory{divastripped} in the directory in which it is located, but with a different name (e.g., \directory{divastripped2}, or \directory{divastripped\_username1}). The you can run \diva analysis separately in these directories. 
 
 
 \begin{figure}[htpb]
@@ -169,8 +207,12 @@ The best option is to copy the whole directory \directory{divastripped} in the d
 \caption{Simultaneous run of \diva.}
 \end{figure}
 
+\subsubsection{Fine grain parallelisation}
+
+If you compiled \diva for parallel use, you can activate the parallel solver by editing \command{divacalc} and use \texttt{solver=1}
 
 \subsection{What is the resolution of the output field?}
+%-------------------------------------------------------
 
 One has to distinguish between 2 \textit{resolutions}:
 
@@ -182,14 +224,65 @@ One has to distinguish between 2 \textit{resolutions}:
 
 So the best resolution you can obtain is the one allowed you by the data you are working with.
 
-\subsubsection{Fine grain parallelisation}
-
-If you compiled \diva for parallel use, you can activate the parallel solver by editing \command{divacalc} and use \texttt{solver=1}
-
 
 \subsection{Why is there an iterative solver?}
-You can activate an iterative solver by editing \command{divacalc} and use \texttt{solver=2}. This can be usefull if you do not calculate error fields and do not use cross validation techniques but work with very fine grids. In this case execution time can be reduced. There are some tuning parameters which can enhance convergence but to exploit them, please contact us.
+%-------------------------------------------------------
 
+You can activate an iterative solver by editing \command{divacalc} and use \texttt{solver=2}. This can be useful if you do not calculate error fields and do not use cross validation techniques but work with very fine grids. In this case execution time can be reduced. There are some tuning parameters which can enhance convergence but to exploit them, please contact us.
+
+
+\subsection{Can \diva deal with several measurements at the same location?}
+%---------------------------------------------------------------------------
+
+Yes. In that case (for example: time series, mooring, \ldots) \diva provides an average value. 
+
+However, when data locations are very close and values are very different and a huge signal-to-noise ratio is used, then you will see artefacts simply showing that you have created a huge gradient because you said to \diva your data are perfect and yet are very different at very close stations. Figure~\ref{fig:results_twopoints_center} provides an example of a situation with two different measurements at the same point.
+
+\begin{figure}[H]
+\centering 
+\includegraphics[width=.7\textwidth]{results_twopoints_center}
+\caption[Results with two data points with values 1 and 3, located in the domain center (0,0), with a large signal-to-noise ratio.]{Results with two data points with values 1 and 3, located in the domain center (0,0), with a large signal-to-noise ratio. The analyzed field at (0,0) is $\approx 2$.\label{fig:results_twopoints_center}}
+\end{figure}
+
+
+\subsection{How to run \diva in operational or real-time mode?}
+%---------------------------------------------------------------------------
+
+The idea is to work on a data set that evolved regularly, let's say every day. It is assumed that the files are formatted so that they can be ingested by \diva (either ODV format for 4D runs, or simple 3-column files for 2D runs), and that a script \command{mydivarun} prepares the input files, execute \diva and copy the results into another directory.
+
+On Unix-like computers, the software utility \command{cron} can be used to schedule a task, such as a \diva execution. Please consult the documentation relative to \command{cron} and \command{crontab}, for example: 
+\url{http://ss64.com/bash/crontab.html} or \url{http://cronjob.com/}.\index{cron}
+
+To have \command{mydivarun} executed every day at 9.15 AM, the crontab has to be edited:
+\begin{lstlisting}[style=Bash]
+gherulg$ crontab -e
+\end{lstlisting}
+and a line such as 
+\begin{lstlisting}[style=Bash]
+gherulg$ 9 15 * * *   path_to_scripts/mydivarun
+\end{lstlisting}
+is added. If everything goes well, you can skip the rest of this section.
+
+Otherwise, if the script run properly when called directly from the shell, but not from the cronjob, it is probably due to the environment variables (PATH, LD\_LIBRARY\_PATH \ldots) passed by cron are minimal. For example your path used by cron is not the same path that you have when typing commands. To avoid this problem:
+\begin{itemize}
+\item Use absolute path for your commands. Note that \diva commands (\command{divacalc}, \command{divamesh}, \ldots) have to be run from the \directory{DIVA3D/divastripped/} directory. Hence in the script \command{mydivarun}, you may write something like
+\begin{lstlisting}[style=Bash]
+here=$pwd
+divadir=path_to_divadir
+cd $divadir
+./divadress
+cd $here
+\end{lstlisting}
+\item Manually add the path at the beginning of the script you want to run.
+\end{itemize}
+
+A good idea for debugging is to redirect the standard output and error in text files:
+\begin{lstlisting}[style=Bash]
+gherulg$ 9 15 * * *   path_to_scripts/mydivarun > path_to_directory/crontab.out 2>/home/ctroupin/DataOceano/AVISO/Operational/crontab.err
+\end{lstlisting}
+
+A list of possible reasons for cron job failure is found at\\
+\url{http://askubuntu.com/questions/23009/reasons-why-crontab-does-not-work}.
 
 
 %--------------------------------------------
@@ -333,7 +426,8 @@ The array $S$ defined in the various programs located in \directory{./src/Fortra
 \subsubsection{\answer}
 %--------------------------------------
 
-You need to recompile the sources after reducing the values of parameter \texttt{nrea} in file \file{./src/Fortran/Calc/divainc.h}:
+You need to recompile the sources after reducing the values of parameter \texttt{nrea} in file\\
+ \file{./src/Fortran/Calc/divainc.h}:
 \begin{verbatim}
       PARAMETER(nrea=150000000)
 \end{verbatim}
@@ -529,15 +623,15 @@ Simply edit \file{param.par} to write the correct values of \texttt{nx} and \tex
 %------------------------------------------
 
 
-\subsection{\question}
+\subsubsection{\question}
 %--------------------------------------
 
 The problem arises probably because you have a computer with little RAM.
 
 \diva uses a memory allocation for the largest problem encountered. This 
-translates in Windows to a request of virtual memory of around 1.3Gb.
+translates in Windows to a request of virtual memory of around 1.3~Gb.
 During execution, the real memory used can be much smaller than that and 
-the problem actually fit in real memory, even if you have less than 1Gb RAM.
+the problem actually fit in real memory, even if you have less than 1~Gb RAM.
 
 The only problem is that if your Windows virtual memory (the swap file) 
 is not big enough, \diva will not execute.
@@ -548,7 +642,7 @@ is not big enough, \diva will not execute.
 
 The best solution would be to 
 add real memory (your computer would benefit from it anyway), but to 
-make DIVA work you can simply increase the virtual memory of Windows by 
+make \diva work you can simply increase the virtual memory of Windows by 
 changing the windows settings. As administrator:\\
 
 \begin{verbatim}
@@ -557,11 +651,10 @@ my computer   right click
  -> settings -> advanced -> change
 \end{verbatim}
 
-Put there a virtual memory (swap file) of 2Gb (initial and maximum) and 
+Put there a virtual memory (swap file) of 2~Gb (initial and maximum) and 
 \diva should run. 
 
 Other solution consists of recompiling with lower \texttt{nrea} value (see problem~\ref{sec:error_compile}).
-
 
 
 \subsection{"Cannot move directory" \ldots "permission denied" messages}
@@ -585,18 +678,18 @@ An application has opened one or several files located in the directory you want
 Simply close the application(s) that open the files of the concerned directory.
 
 
-\section{Older problems}
+\section{Solved problems}
 %------------------------
 
 
-The following problems should not appear any more in the latest version of \diva. Should you encounter them, please let use know.
+The following problems should not appear any more in the latest version of \diva. Should you encounter them, please contact us.
 
 %--------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Jacobian matrix with null determinant}
 %------------------------------------------
 
-The value of the Jacobian determinant is zero (Fig. \ref{fig:error_jacobian}).
+The value of the Jacobian determinant is zero (Fig.~\ref{fig:error_jacobian}).
 \begin{figure}[htpb]
 \centering
 \includegraphics[width=.80\textwidth]{error_jacobian}\\
