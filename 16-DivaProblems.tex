@@ -263,7 +263,7 @@ gherulg$ 9 15 * * *   path_to_scripts/mydivarun
 \end{lstlisting}
 is added. If everything goes well, you can skip the rest of this section.
 
-Otherwise, if the script run properly when called directly from the shell, but not from the cronjob, it is probably due to the environment variables (PATH, LD\_LIBRARY\_PATH \ldots) passed by cron are minimal. For example your path used by cron is not the same path that you have when typing commands. To avoid this problem:
+Otherwise, if the script runs properly when called directly from the shell, but not from the cronjob, it is probably due to the environment variables (PATH, LD\_LIBRARY\_PATH \ldots) passed by cron are minimal. For example your path used by cron is not the same path that you have when typing commands. To avoid this problem:
 \begin{itemize}
 \item Use absolute path for your commands. Note that \diva commands (\command{divacalc}, \command{divamesh}, \ldots) have to be run from the \directory{DIVA3D/divastripped/} directory. Hence in the script \command{mydivarun}, you may write something like
 \begin{lstlisting}[style=Bash]
@@ -380,7 +380,7 @@ to rounding if you place a request for analysis "exactly" on the boundary. In re
 \subsubsection{\question}
 %--------------------------------------
 
-End of lines in Unix,  Windows and Mac files are different, and this causes problems when switching from a system to the other. Typically if you visualize a Windows-end-of-line file under Unix, you will see ends of line with symbols such as \verb|^M| or \verb|\r|. When reading such files, scripts get in trouble because they expect to read numbers, but instead they find characters.
+End of lines in Unix,  Windows and Mac files are different, and this causes problems when switching from a system to the other. Typically if you visualize a Windows-end-of-line file under Unix, you will see ends of line with symbols such as \verb|^M| or \verb|\r|. When reading such files, scripts get in trouble because they expect to read numbers, but instead they find characters.\index{dos2unix}
 
 \textbf{Note:} strange behaviours of \diva are often related to this topic, therefore always be aware of this possible problem before undertaking more complex actions.
 
@@ -397,15 +397,16 @@ End of lines in Unix,  Windows and Mac files are different, and this causes prob
 Working on a individual file, the command\\
 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 divastripped]$ dos2unix  name\_of\_the\_file
+[charles@gher13 divastripped]$ dos2unix  file2convert
 \end{lstlisting}
-does the conversion between Windows and Unix end of lines. According to the Linux distribution, \command{dos2unix} may requires options to perfom the conversion. For example with Mandriva~2010, it is necessary to add the option \texttt{-U}:
+does the conversion between Windows and Unix end of lines. According to the Linux distribution, \command{dos2unix} may requires options to perform the conversion. For example with Mandriva~2010, it is necessary to add the option \texttt{-U}:
 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 divastripped]$ dos2unix  -U name\_of\_the\_file
+[charles@gher13 divastripped]$ dos2unix  -U file2convert
 \end{lstlisting}
-
-When working with GODIVA, the transformation is automatically done on all the files. \command{dos2unix} is available using the package manager of most of Linux distributions, but sometimes with the name \texttt{fromdos}.
+As a general rule, use the man command to see how a command is used on your particular computer. 
+When working with GODIVA, the transformation is automatically done on all the files. \\
+\command{dos2unix} is available using the package manager of most of Linux distributions, but sometimes with the name \texttt{fromdos}.
 
 
 \subsection{Compilation problems\label{sec:error_compile}}
@@ -453,14 +454,14 @@ Then use script \command{divacompile} to get the new executables (see Section~\r
 \subsubsection{\question}
 %--------------------------------------
 
-The NetCDF library, required for compiling of \file{netcdf\-output.f}, \texttt{netcdf\-output\-field.f} and \texttt{netcdf\-output\-error.f}, is not compatible with your compiler, or not found by the linker.
+The NetCDF library, required for compiling of \file{netcdf\-output.f} and \file{netcdf\-output\-field.f}, is not compatible with your compiler, or not found by the linker.
 
 \subsubsection{\answer}
 %--------------------------------------
 
-You have to make sure that \command{divacompile} includes the appropriate link path.
+Make sure that \command{divacompileall} includes the appropriate link path.
 
-If this is not sufficient, you will have to rebuild the NetCDF library corresponding to your operating system. Installation and compilation procedures can be at \url{http://www.unidata.ucar.edu/software/netcdf/docs/netcdf-install/}
+If this is not sufficient, you will have to rebuild the NetCDF library corresponding to your operating system. Installation and compilation procedures can be at \url{http://www.unidata.ucar.edu/software/netcdf/docs/netcdf-install/}.
 
 %----------------------------------------------------------------------------
 
@@ -568,7 +569,7 @@ The number of contours created from a given topography (Section~\ref{sec:contour
 
 Modify the first line of \file{contourgen.f} (located in \directory{./src/Fortran/Mesh/}) and increase the value of \texttt{nm}:
 \begin{verbatim}
-parameter(nm=5000000)
+      parameter(nm=5000000)
 \end{verbatim}
 
 \subsubsection{Additional information}
@@ -708,7 +709,7 @@ This messages comes from a problem in the mesh generation: some of the triangula
 
 This problem was fixed in latest versions of \diva. 
 
--------------------------------------------------------------------------------
+
 
 \subsection{Analysed field with white stripes}
 %------------------------------------------
@@ -766,7 +767,7 @@ by
 
 \texttt{LC\_ALL=C gawk}.
 
-Remark: in latest versions of the code, this bug was fixed by adding 
+\textbf{Remark:} in latest versions of the code, this bug was fixed by adding 
 
 \texttt{export LC\_ALL=C}
 

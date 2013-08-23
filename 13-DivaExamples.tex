@@ -49,7 +49,7 @@ We start with the parameter file \ref{paramfileCL}: the regular grid for the ana
 \begin{verbatim}
 # Correlation Length lc in km or degree??? according to param icoordchange
 2
-# icoordchange (=0 if position of data in km ; =1 if position of data in degree)
+# icoordchange
 2
 # ispec (output files required, comments to come)
 0
@@ -164,50 +164,51 @@ The mesh corresponding to this example is shown in Fig.~\ref{fig:diva_oi_09_1003
 %-------------------------------------
 
 \index{Generalised cross validation}
-GCV provides you with improved estimates of parameters (see Chapter~\ref{chap:analysisparameters} for a detailed description of the method). You need to provide an input file \file{gvcsampling.dat} (see example file \ref{gcvsampling}) containing a list of values for the signal-to-noise ratio on which you want to try the estimator.
-
-Type \command{divagcv} to perform the GCV on these values. Optimal values for the parameters are given in \file{gcvsnvar.dat} (example file \ref{gcvsnvar}). You can then modify \file{param.par} (example file \ref{paramfileCL2}) according to these values before performing an analysis. 
+As described in Section~\ref{sec:determiationparameters}, there are three tools to get an estimate of the signal-to-noise ratio: \command{divagcv}, \command{divacv} and \command{divacvrand}.
+For these tools to work, one has to provide an input file \file{gvcsampling.dat} (see example file \ref{gcvsampling}) containing a list of values for the signal-to-noise ratio on which the estimator is tried.
 
 \begin{exfile}[H]
 \begin{footnotesize}
 \begin{verbatim}
 0.1
-0.5
+0.3
+0.6
 1
-5
+3
+6
 10
-50
-100
+30
 \end{verbatim}
 \end{footnotesize}
 \caption{\file{gvcsampling.dat}. \label{gcvsampling}}
 \end{exfile}
 
 
+Estimated values for the parameters are given in \file{gcvsnvar.dat} (example file \ref{gcvsnvar}). You can then modify \file{param.par} (example file \ref{paramfileCL2}) according to these values before performing an analysis. 
+
 \begin{exfile}[H]
 \begin{footnotesize}
 \begin{verbatim}
-  S/N , VARBAK
-  68.7858658   2.05896711
+ S/N					S/N						S/N
+   30.00000    				2.625988 				3.359623  
+ VARBAK					VARBAK					VARBAK
+  0.1011484  				7.5680271E-02			8.1069477E-02
 \end{verbatim}
 \end{footnotesize}
-\caption{\file{gcvsnvar.dat}. \label{gcvsnvar}}
+\caption{\file{gcvsnvar.dat} files obtained with \command{divagcv}, \command{divacv} and \command{divacvrand}.\label{gcvsnvar}}
 \end{exfile}
-
 
 
 \begin{exfile}[htpb]
 \begin{footnotesize}
 \begin{verbatim}
 # Lc: correlation length (in units coherent with your data)
-2.76536822
-# icoordchange (=0 if no change of coordinates is to be performed; 
-=1 if positions are in degrees and if you want to use real distances)
+1.3565110
+# icoordchange 
 1
-# ispec (output files required, comments to come)
+# ispec 
 3
-# ireg (mode selected for background field: 0=null guess; 1=mean of data; 
-2=regression plan if at least 3 non-aligned data provided)
+# ireg 
 1
 # xori: x-coordinate of the first grid point of the output
 -10.0
@@ -224,10 +225,9 @@ Type \command{divagcv} to perform the GCV on these values. Optimal values for th
 # valex: exclusion value
 -9999.0
 # snr: signal to noise ratio of the whole data set
-68.7858658   
-# varbak variance of the background field. 
-If zero, no error fields are produced. If one, relative errors are obtained
-2.05896711
+2.625988 
+# varbak variance of the background field
+7.5680271E-02
 \end{verbatim}
 \end{footnotesize}
 \caption{Adapted version of \file{param.par}\label{paramfileCL2}}
@@ -236,19 +236,17 @@ If zero, no error fields are produced. If one, relative errors are obtained
 \subsection{Analysis}
 %-----------------
 
-\diva analysis is executed by typing \command{divacalc}. It not only provides the analysed field, but also the error field if $\texttt{varbak}$ is not equal to zero. Results are presented in Figs.~\ref{analysisCL1} and \ref{analysisCL1}.
+\diva analysis is executed by typing \command{divacalc}. It not only provides the analysed field, but also the error field if $\texttt{varbak}$ is not equal to zero. Results are presented in Fig.~\ref{fig:medsea_results_paper_SNR1}.
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=.75\textwidth]{medar_analysis}
-\caption{Analysed salinity field with the parameters from \command{divagcv}.\label{analysisCL1}}
-\end{figure}
-
-
-\begin{figure}[htpb]
-\centering
-\includegraphics[width=.75\textwidth]{medar_error}
-\caption{Error field and data locations with the parameters from \command{divagcv}.\label{errorCL1}}
+\subfigure[Analysis]{
+\includegraphics[width=.75\textwidth]{medsea_results_paper_SNR_CV}
+}
+\subfigure[Error]{
+\includegraphics[width=.75\textwidth]{medsea_error_paper_SNR_CV}
+}
+\caption{Analysed and error fields with $L=1.36^{\circ}$ and $\snr=2.63$.\label{fig:medsea_results_paper_SNR1}}
 \end{figure}
 
 
