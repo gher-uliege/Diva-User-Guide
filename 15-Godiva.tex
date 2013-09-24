@@ -97,6 +97,7 @@ All \diva shell scripts files for climatologies (or 4D-analyses) production are 
 The main shell script file for generating climatologies is \command{divadoall}. The actions that performed when running \command{divadoall} are:
 
 \begin{itemize}
+\item Preparation of data files (ODV files with only one depth and/or current -speed and direction- variables). \command{Divadoall} calls \command{divaonedepthODV4}, generating new files with the extension ``\_bis.txt'' containing the x and y components of the speed (u\_star and v\_star), as well as a depth axis.
 \item Data extraction at selected depth levels.
 \item Boundary lines/coastline generation (contour files).
 \item Advection field generation based on coastlines.
@@ -606,6 +607,8 @@ All actions performed by \command{divadoall} are prescribed in the file \file{dr
 \item {\bf Data extraction}: Possible flag values: $0$,$1$,$-1$ and $-10$. If you activate the data extraction (flag value $\neq 0$) in the \file{driver} file, the execution of \command{divadoall} will run the \command{divaselectorODV4} automatically, including interpolation to the levels specified in {\tt contour.depth}. Data will be extracted from the ODV spreadsheat file(s) specified in \file{datasource}. Command \command{divaselectorODV4} will recognises if the data export to ODV file was done with depths (in meters) or it was done with pressure (in dbar) vertical coordinate, you can either choose to map it as if they were meters or apply the \citet{SAUNDERS81} correction. Choose flag $=-1$ to use pressure coordinate and assume they are meters, and flag value $=-10$ to use pressure coordinates and transform to meters by using the Saunders approach.
 
 If there is a \file{qflist} file, the selection with \file{divaselectorODV4} will only use those measurements for which the quality flag is one of those found in the file \file{qflist}. In the absence of \file{qflist}, no quality flag analysis is done and all data taken.
+
+{\bf Note:} the files containing only one depth value are treated separately by the \command{divaone\-depthODV4}. This script also handles the current direction (CurrDir [deg T]) and speed (CurrSpd [cm/s]) and transforms them into x-y components (North, East). 
 
 {\bf Note:} you can specify several ODV4 spreadsheet files as input files, one file name (or full path) per line in \file{datasource} file, {\it they must have the same variables naming convention, depth coordinates and quality flags conventions}.
 
