@@ -284,6 +284,20 @@ gherulg$ 9 15 * * *   path_to_scripts/mydivarun > path_to_directory/crontab.out 
 A list of possible reasons for cron job failure is found at\\
 \url{http://askubuntu.com/questions/23009/reasons-why-crontab-does-not-work}.
 
+\subsection{How to run \diva on the Lemaitre2 cluster ?}
+%---------------------------------------------------------------------------
+
+\begin{enumerate}
+ \item Copy the whole DIVA directory to your home directory on the cluster.
+ \item Recompile the sources with \command{divacompileall}.
+ \item Create symbolic links towards the scratch for input and output directories (to save disk space).
+ \item  Install dos2unix and (if mandatory) gnuplot in a new directory \directory{/bin} and add this directory to the \textdollar PATH.
+ \item Write a submission script to launch a new job (see this example : \url{www.ceci-hpc.be/assets/doc/submission.sh}).
+ 
+\end{enumerate}
+
+More information can be found at \url{http://www.ceci-hpc.be/}
+
 
 %--------------------------------------------
 \section{Error messages}
