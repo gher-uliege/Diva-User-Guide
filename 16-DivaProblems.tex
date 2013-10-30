@@ -288,10 +288,9 @@ A list of possible reasons for cron job failure is found at\\
 %---------------------------------------------------------------------------
 
 \begin{enumerate}
- \item Copy the whole DIVA directory to your home directory on the cluster.
+ \item Copy the whole DIVA directory to your scratch directory on the cluster (don't forget to regularly save the important files to your home directory). 
  \item Recompile the sources with \command{divacompileall}.
- \item Create symbolic links towards the scratch for input and output directories (to save disk space).
- \item  Install dos2unix and (if mandatory) gnuplot in a new directory \directory{/bin} and add this directory to the \textdollar PATH.
+ \item Install dos2unix and (if mandatory) gnuplot in a new directory \directory{/bin} and add this directory to the \textdollar PATH.
  \item Write a submission script to launch a new job (see this example : \url{www.ceci-hpc.be/assets/doc/submission.sh}).
  
 \end{enumerate}
