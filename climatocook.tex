@@ -160,7 +160,7 @@ Decide on the output grid you want (normally the original region of interest, se
 \item Define an analysis with a subset of data (edit \file{yearlist, monthlist, varlist})
 \item Use a correlation length which is somewhere between domain length and output grid size
 \item Use a unit signal to noise ratio
-\item Ask for poor man's error {\tt ispec=17}
+\item Ask for poor man's error {\tt ispec=17}.  For SDN normally relative errors are used so use {\tt VARBAK=1} in \file{param.par}
 \item Do not optimise analysis parameters
 \item Run \command{divadoall} including generation of contours if not yet done
 \item Check 4D output netCDF file and verify if all data seem you asked to be included have been used.
@@ -201,7 +201,7 @@ Only if you are happy with the reference fields you can proceed to fine tuning.
 \item Check analysis carefully. If not ok, try again with other parameters. If analysis ok, proceed further
 \item Possibly apply outlier elimination. If there are severe or a lot of outliers you might consider recalibrating signal/noise ratios after outlier elimination.
 
-\item Perform final analysis with full error calculation ({\tt ispec -107})
+\item Perform final analysis with full error calculation ({\tt ispec -107}).
 \item Submit so-obtained climatology to experts for internal reviewing. If not ok, fine tune parameters. If ok, proceed to submit to oceanBrowser and sextant.
 \end{enumerate}
 
