@@ -1,13 +1,12 @@
-
-
-\documentclass[8pt,a4paper,notitlepage]{book}
-\usepackage{array,amsmath}
-
-
-
-\usepackage{pstricks,pst-node,pst-text,pst-3d,pst-grad}
+\documentclass[a4paper,12pt,oneside,notitlepage]{book}
 \usepackage[dvips]{graphicx}
-\usepackage{psfrag}
+
+
+\usepackage{array,amsmath}
+\usepackage[dvipsnames]{xcolor}
+
+%\usepackage{pstricks,pst-node,pst-text,pst-3d,pst-grad}
+%\usepackage{psfrag}
 \usepackage{xspace}
 \usepackage{float}
 \usepackage{verbatim}
@@ -15,17 +14,18 @@
 \usepackage{multicol}
 \usepackage{calc}
 
+
 %\usepackage{import}
 
 %\usepackage{nicefrac}
 
-\usepackage{amsmath}
+
 \usepackage{amssymb}
 \usepackage{times}
 \usepackage{shadow}
 \usepackage{pifont}
-\usepackage{color}
-\usepackage[dvips]{hyperref}
+%\usepackage{color}
+\usepackage{hyperref}
 %\usepackage{prettyref}
 %\usepackage[small,hang]{caption2}
 %\usepackage{caption2}
@@ -38,6 +38,10 @@
 %,showidx
 %to show where indexes are defined, just use showidx
 %}
+
+\newcommand{\directory}[1]{\texttt{\color{ForestGreen}{#1}}}
+\newcommand{\file}[1]{\texttt{\color{MidnightBlue}{#1}}}
+\newcommand{\command}[1]{\texttt{\color{RedOrange}{#1}}}
 
 \DeclareFixedFont{\petitefonte}{\encodingdefault}%
 {\familydefault}{\seriesdefault}{\shapedefault}{6pt}
@@ -85,58 +89,59 @@ This is a short cook-book for creating climatologies with \Diva, adapted for use
 \begin{enumerate}
 \item Decide which region is of interest for you. 
 \item You can increase this domain of interest slightly to avoid any "boundary problems" (10 \% typically).
-\item Find a topography file covering this extended region (If you do not have your own, we suggest to use {\tt gebco},  see the {\diva} usermanual for details on how to transform it or how to extract it via diva-on-web)
-\item Apply some masking to the topography to exclude regions that are not of interests (lowlands, lakes, unconnected regional seas, estuaries). An example how to do this with scripts can be found in {\tt gebcoprep*}. Otherwise you can edit the topographic file by hand or in Matlab and change topographic values locally.
-\item Finally transform the topography to a {\diva}   topography (Example with {\tt gebco2diva 15 15} to undersample to orginal 1 minute grid to a 1/4 degree grid).
+\item Find a topography file covering this extended region (If you do not have your own, we suggest to use \command{gebco},  see the {\diva} user manual for details on how to transform it or how to extract it via diva-on-web)
+\item Apply some masking to the topography to exclude regions that are not of interests (lowlands, lakes, unconnected regional seas, estuaries). An example how to do this with scripts can be found in \command{gebcoprep*}. Otherwise you can edit the topographic file by hand or in Matlab/Octave and change topographic values locally.
+\item Finally transform the topography to a {\diva} topography (Example with \command{gebco2diva 15 15} to under-sample to original 1 minute grid to a 1/4 degree grid).
 \end{enumerate}
 
-After this, you should have topographic files {\tt topo.grd} and {\tt TopoInfo.dat} that correspond to a possibly slightly larger domain than that for the analysis.
+After this, you should have topographic files \file{topo.grd} and \file{TopoInfo.dat} that correspond to a possibly slightly larger domain than that for the analysis.
 
 
 {\bf NOTE}: do not use a too fine topography, this will lead to unnecessarily complex boundaries and too fine meshes near the coasts. For plotting purposes you can always overlay finer coastlines than those used for the analysis.
-(To decrease the resolution of the {\tt gebco} topographie, you can invoke for example {\tt gebco2diva 2 3} that subsamples the original {\tt topo.gebco} file  by using every second point in x and third in y direction only)
+(To decrease the resolution of the {\tt gebco} topography, you can invoke for example \command{gebco2diva 2 3} that sub-samples the original {\tt topo.gebco} file  by using every second point in x and third in y direction only)
 
-% {\bf NOTE}: coordinates and files must be decimal numbers with decimal separators {\tt .} and not {\tt ,} as found in some country local settings. Also note that longitude-latitude coordinates must be decimal. ODV exported files sometimes have the origin of longitude in 0, but since ODV4 there is an option to choose $[$0:360$]$ or $[$-180:180$]$. If your domain includes the Greenwich meridian and if your data extraction goes via an ODV spreadsheat export on $[$0:360$]$, you might therefore need to adapt {\tt divaselectorODV4} to change the coordinate origin.
+% {\bf NOTE}: coordinates and files must be decimal numbers with decimal separators {\tt .} and not {\tt ,} as found in some country local settings. Also note that longitude-latitude coordinates must be decimal. ODV exported files sometimes have the origin of longitude in 0, but since ODV4 there is an option to choose $[$0:360$]$ or $[$-180:180$]$. If your domain includes the Greenwich meridian and if your data extraction goes via an ODV spreadsheat export on $[$0:360$]$, you might therefore need to adapt \command{divaselectorODV4} to change the coordinate origin.
 
 
-\section{Metainformation}
+\section{Meta-information}
 
 \begin{enumerate}
-\item Fill in part of the metainformation necessary for the product definitions {\tt NCDFinfo}
+\item Fill in part of the meta-information necessary for the product definitions \file{NCDFinfo}.
 \end{enumerate}
 
 
 \section{Levels}
 
 \begin{enumerate}
-\item Decide at which values of depth you want the analysis. At the minimum you typically need to include IODE standard depth (provided as en example in {\tt contour.depth.iode}). Think about adding levels which are representative of particular water masses.
-\item Encode these analysis depths  in file {\tt contour.depth} (first the deepest level, up to the uppermost layer, all depth values being positive).
+\item Decide at which values of depth you want the analysis. At the minimum you typically need to include IODE standard depth (provided as en example in \file{ contour.depth.iode}). Think about adding levels which are representative of particular water masses.
+\item Encode these analysis depths  in file \file{contour.depth} (first the deepest level, up to the uppermost layer, all depth values being positive).
 \end{enumerate}
 
-{\bf NOTE}: At this point you can already test the contour generation for the boundaries of the finite-element mesh and check that {\tt coast.cont.100xx} files are created.
+{\bf NOTE}: At this point you can already test the contour generation for the boundaries of the finite-element mesh and check that \file{coast.cont.100xx} files are created.
+
+{\bf NOTE}: The new version of the World Ocean Atlas (2013) will have much more levels than before. It might be interesting to have the same levels as they have for comparison purpose.
 
 \section{Data}
 
-
-
 \begin{enumerate}
 \item If you already have a series of ODV4 spreadsheet files, you can proceed to step 6.
-\item Otherwise import your data into Ocean Data View (ODV, found at \url{http://odv.awi.de/}). You can for example extract data from the world ocean atlas at \url{http://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html} and choose the export in the native world ocean atlas. This allows a direct import of the file into ODV.
-\item Once imported in ODV you can apply some selection criteria if you want to reduce the amount of data exported for \diva 
-\item Then export the data you want as ODV generic spreadsheat and name this exported file as you want, for example {\tt woaODV.txt}) and if possible, take already care of the longitude range  $[$0:360$]$ or $[$-180:180$]$ according to your needs. For european projects, the range $[$-180:180$]$  is the most appropriate.
-\item Look at the header of the exported file to have an idea of the name of the variables that are in the file (use command {\tt head -40 woaODV.txt}). If in doubt, apply {\tt divaguessforms woaODV.txt} that will create file {\tt ODVcolumns} which includes names of variables and the columns in which to find them.
-\item Include the name(s) of your data files in {\tt datasource}
+\item Otherwise import your data into Ocean Data View (ODV, found at \url{http://odv.awi.de/}). You can for example extract data from the World Ocean Atlas at \url{http://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html} and choose the export in the native World Ocean Atlas. This allows a direct import of the file into ODV.
+\item Once imported in ODV you can apply some selection criteria if you want to reduce the amount of data exported for \diva. 
+\item Then export the data you want as ODV generic spreadsheet and name this exported file as you want, for example \file{woaODV.txt}) and if possible, take already care of the longitude range  $[$0:360$]$ or $[$-180:180$]$ according to your needs. For European projects, the range $[$-180:180$]$ is the most appropriate.
+\item Look at the header of the exported file to have an idea of the name of the variables that are in the file (use command \command{head -40 woaODV.txt}). If in doubt, apply \command{divaguessforms woaODV.txt} that will create file \file{ODVcolumns} which includes names of variables and the columns in which to find them.
+\item Include the name(s) of your data files in \file{datasource}
 \end{enumerate}
-{\bf NOTE}: if original data export was done with pressure (in dbar) vertical coordinate, you can either chose to map it as if they were meters or apply the Saunders correction. In both cases, you MUST tell {\tt divaselectorODV4} to use pressure coordinate as input by editing {\tt driver} and assigning a special value to the dataextraction flag: -1 to use pressure coordinate and assume they are meters. Flag value -10 to use pressure coordinates and transform to meters by using the Saunders approach.
 
-{\bf NOTE}: do not forget to deal adequately with data elimination based on quality flags, either before importing in ODV, selection within ODV, during export from ODV or when using {\tt divaselectorODV4} with file {\tt qflist}. Make sure  you export the quality flags with the data and you know their meaning. Also make sure all files you use exploit the SAME quality flags.
+{\bf NOTE}: if original data export was done with pressure (in dbar) vertical coordinate, you can either chose to map it as if they were meters or apply the Saunders correction. In both cases, you MUST tell \file{divaselectorODV4} to use pressure coordinate as input by editing \file{driver} and assigning a special value to the dataextraction flag: -1 to use pressure coordinate and assume they are meters. Flag value -10 to use pressure coordinates and transform to meters by using the Saunders approach.
 
-
-
+{\bf NOTE}: do not forget to deal adequately with data elimination based on quality flags, either before importing in ODV, selection within ODV, during export from ODV or when using \file{divaselectorODV4} with file \file{qflist}. Make sure  you export the quality flags with the data and you know their meaning. Also make sure all files you use exploit the SAME quality flags.
 
 
 
-{\bf NOTE:} if there is a {\tt qflist} file, the selection with {\tt divaselectorODV4} will only use those measurements for which the quality flag is one of those found in the file {\tt qflist}. In the absence of {\tt qflist}, no quality flag analysis is done and all data taken.
+
+
+
+{\bf NOTE:} if there is a \file{qflist} file, the selection with \command{divaselectorODV4} will only use those measurements for which the quality flag is one of those found in the file \file{qflist}. In the absence of \file{qflist}, no quality flag analysis is done and all data taken.
  
 
 
@@ -145,35 +150,36 @@ After this, you should have topographic files {\tt topo.grd} and {\tt TopoInfo.d
 \begin{enumerate}
 \item
 Decide on the output grid you want (normally the original region of interest, see beginning of the recipe). Output resolution is the one you want for the gridded field and has nothing to do with the correlation length of the field, except that you generally chose the grid spacing much smaller than the correlation length.
-\item Edit {\tt param.par} and define the grid as desired.
-\item Decide on your coordinate change via {\tt ireg}
+\item Edit \file{param.par} and define the grid as desired.
+\item Decide on your coordinate change via {\tt ireg}.
 \end{enumerate}
 
 
 \section{First run for checking}
 \begin{enumerate}
-\item Define an analysis with a subset of data (edit {\tt yearlist, monthlist, varlist})
+\item Define an analysis with a subset of data (edit \file{yearlist, monthlist, varlist})
 \item Use a correlation length which is somewhere between domain length and output grid size
 \item Use a unit signal to noise ratio
 \item Ask for poor man's error {\tt ispec=17}
 \item Do not optimise analysis parameters
-\item Run {\tt divadoall} including generation of contours if not yet done
+\item Run \command{divadoall} including generation of contours if not yet done
 \item Check 4D output netCDF file and verify if all data seem you asked to be included have been used.
 \end{enumerate}
-If it was not successful, check for implementation errors (be careful about end-of-line problems (remember {\tt dos2unix}), file permissions, limited disk space, input-data file formats, too fine coastlines leading to memory problems, strange characters in input files etc). In doubt, retry the Example4D provided with the distribution to see if the problems stems from your data and implementation or the software itself.
+If it was not successful, check for implementation errors (be careful about end-of-line problems (remember \command{dos2unix}), file permissions, limited disk space, input-data file formats, too fine coastlines leading to memory problems, strange characters in input files etc). In doubt, retry the Example4D provided with the distribution to see if the problems stems from your data and implementation or the software itself.
 
 
 If this step with your own data and region is successful you can proceed to the actual climatology production.  
 
 
 \section{Reference field}
+
 This is a critical part of the climatology production and the definition of the the reference fields are part of the regional specificities. Typically a reference field is the climatology using all available data for a given variable and therefore should represent the global large scale field. To create this
 
 \begin{enumerate}
-\item Adapt {\tt yearlist, monthlist, varlist} to define the reference field
-\item Use a large correlation length (eg one tenth of the domain length)
+\item Adapt \file{yearlist, monthlist, varlist} to define the reference field
+\item Use a large correlation length (e.g., one tenth of the domain length)
 \item Use a semi-normed analysis (with extrapolations in regions void of data) (analysis flag for reference fields 2, 21, 22, 23)
-\item Use a not too high signal to noise ratio (one or less)
+\item Use a not too high signal-to noise-ratio (one or less)
 \item Run the analysis
 \end{enumerate}
 {\bf Very} carefully check the analysis you obtain, in particular its vertical structure by looking at vertical sections. The field you have should be quite smooth, large scale and have reasonable values everywhere. If the extrapolations have created unrealistic values of the field, you might replace the semi-normed analysis by a normal analysis with changed {\tt ireg} parameters. If there are still problems in vertical coherence of the reference field, contact us or try to apply a vertical filter on the gridded field.
@@ -186,14 +192,15 @@ Only if you are happy with the reference fields you can proceed to fine tuning.
 \section{Final climatology}
 
 \begin{enumerate}
-\item Define climatology {\tt yearlist, monthlist, varlist}
-\item Choose the reference fields you created earlier by adapting {\tt constandrefe}
+\item Define climatology \file{yearlist, monthlist, varlist}
+\item Choose the reference fields you created earlier by adapting \command{constandrefe}
 \item Try parameter optimisation (suggested: L and SN with vertical filtering)
 \item Possibly add advection constraints and detrending
-\item Adapt metainformation to reflect climatology definition
+\item Adapt meta-information to reflect climatology definition
 \item Make the analysis
 \item Check analysis carefully. If not ok, try again with other parameters. If analysis ok, proceed further
 \item Possibly apply outlier elimination. If there are severe or a lot of outliers you might consider recalibrating signal/noise ratios after outlier elimination.
+
 \item Perform final analysis with full error calculation ({\tt ispec -107})
 \item Submit so-obtained climatology to experts for internal reviewing. If not ok, fine tune parameters. If ok, proceed to submit to oceanBrowser and sextant.
 \end{enumerate}
@@ -202,27 +209,34 @@ Only if you are happy with the reference fields you can proceed to fine tuning.
 This part can take a lot of iterations depending on data quality, data coverage etc.
 
 
+\section{Check list}
+
+Add text from document "bad analysis".
+
+\begin{itemize}
+\item[\checkmark] 1
+\end{itemize}
 
 
 
 
 
 % \section{Plotting during calculations}
-% You can always retrieve the analysed fields into visualisation software (via netcdf files or binary import) to fine-tune the maps. For a quick assessment of the climatology production, {\tt gnuplot} executions can be included in the production process. 
+% You can always retrieve the analysed fields into visualisation software (via netcdf files or binary import) to fine-tune the maps. For a quick assessment of the climatology production, \command{gnuplot} executions can be included in the production process. 
 
 % There are a few controls you can apply for these gnuplot plots:
 % \begin{itemize}
-% \item {\tt VAR.bounds}: contains the lower and upper bounds during the plotting for the variable {\tt VAR} (which is one of the variable names found in {\tt varlist}) 
-% \item {\tt VAR.pal}: contains the color palette for the same variable.
-% \item {\tt plotboundingbox.dat}: contains the box for plotting. This is typically used to plot only the region of interest, without overlapping regions
-% with other climatologies (the numerical fields include the overlappint regions, only the plotting is limited with the {\tt plotboundingbox.dat} file ).
+% \item \file{VAR.bounds}: contains the lower and upper bounds during the plotting for the variable {\tt VAR} (which is one of the variable names found in \file{varlist}) 
+% \item \file{VAR.pal}: contains the color palette for the same variable.
+% \item \file{plotboundingbox.dat}: contains the box for plotting. This is typically used to plot only the region of interest, without overlapping regions
+% with other climatologies (the numerical fields include the overlappint regions, only the plotting is limited with the \file{plotboundingbox.dat} file ).
 % File containes {\tt xmin, xmax} on the first line, then {\tt ymin, ymax} on the second line.
 % \end{itemize}
 
-% {\bf NOTE}: the gnuplot colorbars use a scale that is actually remapped to the bounds found in {\tt VAR.bound}. Exemple:
+% {\bf NOTE}: the gnuplot colorbars use a scale that is actually remapped to the bounds found in \file{VAR.bound}. Exemple:
 % if your colorbar definition goes from 0 to 10 and the {\tt VAR} bounds are from 0 and 100, a value of 50 in the variable analysed will use the color found in the colorbar definition at value 5. To help you designing a specially adapted colorbar lets say for salinity, it is therefore a good idea to define the colorbar with the same bounds as those in {\tt VAR.bounds}.
 
-% {\bf NOTE}: for adapting the color palette, file {\tt gnuplotcolornames} containes a list of preexisting colors and their hexadecimal codes you can use instead of names.
+% {\bf NOTE}: for adapting the color palette, file \file{gnuplotcolornames} containes a list of preexisting colors and their hexadecimal codes you can use instead of names.
 
 
 
