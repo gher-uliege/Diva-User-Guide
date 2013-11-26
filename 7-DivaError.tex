@@ -25,8 +25,6 @@ where $\sigma^{2}$ is the local variance of the background field. This equality 
 However, in principle, a new analysis has to be performed for each point $\mathbf{r}$ in which the error is requested and then is not adapted for large data sets. On the contrary, the error calculation in \diva is not trivial since the covariance functions are never explicitly specified. We will see in the next sections how \diva computes this error field.
 
 %-------------------------------------
-\section{Methods implemented in \diva}
-%-------------------------------------
 
 According to the data sets, the type of analysis (with/without dynamical constraints, constant or variable correlation length, \ldots), several error calculation methods are available with \diva. 
 
@@ -367,7 +365,7 @@ a series of covariances with a single matrix inversion. Hence the recipe of calc
 
 \subsubsection{Hybrid approach}
 
-A simplified versions can be used, using to some extend the fact the covariance functions in an infinite domain are known analytically when no
+A simplified version can be used, using to some extend the fact the covariance functions in an infinite domain are known analytically when no
 advection constraint or variable correlation length is activated. We can indeed introduce an approximation that makes the calculation manageable without calculating the covariances with \diva itself. Instead of using the exact covariances on the background field, we use the covariances we would find in an infinite domain with constant correlation length and without advection constraint. In this case, we know
 that the correlation function $c$ between two points is
 \begin{equation}
