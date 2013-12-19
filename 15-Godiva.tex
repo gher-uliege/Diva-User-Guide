@@ -99,6 +99,7 @@ The main shell script file for generating climatologies is \command{divadoall}. 
 \begin{itemize}
 \item Preparation of data files (ODV files with only one depth and/or current -speed and direction- variables). \command{Divadoall} calls \command{divaonedepthODV4}, generating new files with the extension ``\_bis.txt'' containing the x and y components of the speed (u\_star and v\_star), as well as a depth axis.
 \item Data extraction at selected depth levels.
+\item Cleaning of duplicates in the extracted data (\command{divadoall} calls \command{divaduplicatesODV4} if the analysis flag is not zero).
 \item Boundary lines/coastline generation (contour files).
 \item Advection field generation based on coastlines.
 \item Cleaning of the data outside the mesh.
@@ -606,11 +607,13 @@ All actions performed by \command{divadoall} are prescribed in the file \file{dr
 \begin{itemize}
 \item {\bf Data extraction}: Possible flag values: $0$,$1$,$-1$ and $-10$. If you activate the data extraction (flag value $\neq 0$) in the \file{driver} file, the execution of \command{divadoall} will run the \command{divaselectorODV4} automatically, including interpolation to the levels specified in {\tt contour.depth}. Data will be extracted from the ODV spreadsheat file(s) specified in \file{datasource}. Command \command{divaselectorODV4} will recognises if the data export to ODV file was done with depths (in meters) or it was done with pressure (in dbar) vertical coordinate, you can either choose to map it as if they were meters or apply the \citet{SAUNDERS81} correction. Choose flag $=-1$ to use pressure coordinate and assume they are meters, and flag value $=-10$ to use pressure coordinates and transform to meters by using the Saunders approach.
 
-If there is a \file{qflist} file, the selection with \file{divaselectorODV4} will only use those measurements for which the quality flag is one of those found in the file \file{qflist}. In the absence of \file{qflist}, no quality flag analysis is done and all data taken.
+If there is a \file{qflist} file, the selection with \file{divaselectorODV4} will only use those measurements for which the quality flag is one of those found in the file \file{qflist}. In the absence of \file{qflist} (or if \file{qflist} is empty), no quality flag analysis is done and all data taken.
 
 {\bf Note:} the files containing only one depth value are treated separately by the \command{divaone\-depthODV4}. This script also handles the current direction (CurrDir [deg T]) and speed (CurrSpd [cm/s]) and transforms them into x-y components (North, East). 
 
-{\bf Note:} you can specify several ODV4 spreadsheet files as input files, one file name (or full path) per line in \file{datasource} file, {\it they must have the same variables naming convention, depth coordinates and quality flags conventions}.
+{\bf Note:} you can specify several ODV4 spreadsheet files as input files, one file name (or full path) per line in \file{datasource} file, {\it they must have the same variables naming convention}. You can also specify different quality flags for each file by adding these values after the file name (separated by a space). At the moment, a maximum of two quality flags per file is admitted. In the absence of quality flag after the file name, \command{Diva} simply uses the values provided in \file{qflist}.
+
+{\bf Note:} the weight of data is increased to 1.1 if the file name contains ``CTD,PFL,MRB,DRB or ARGO'' and decreased to 0.5 if it contains ``APB,XBT or MBT'', due to differences in the accuracy of these instruments. This default behaviour can be cancelled by setting the flag\_weight to 0 (in \file{divaselectorODV4}). 
 
 \item {\bf Boundary lines and coastlines generation}: Possible flag values are $0$, $1$, $2$ and $3$. When this action is activated (flag $\geq 1$), you must provide in the \directory{input} directory the files \file{TopoInfo.dat} and  \file{topo.grd} in addition to \file{contour.depth} file.
               \begin{itemize}
