@@ -164,7 +164,7 @@ The main shell script file for generating climatologies is \command{divadoall}. 
 
 \subsection{Data files}
 
-They must be ODV SeaDataNet compliant: https://www.bodc.ac.uk/data/codes_and_formats/odv_format/
+They must be ODV SeaDataNet compliant: https://www.bodc.ac.uk/data/codes\_and\_formats/odv\_format/
 
 
 \subsection{Inputs for input data preparation actions}
@@ -285,7 +285,7 @@ generation       & all generated reference fields \\
 \vspace{0.5cm}
 
 
-The sell script file \command{divadocommit}: in order to be able to use the outputs of input data preparation actions, they must be copied to the \directory{input} directory. This can be done by running the sell script file \command{divadocommit}. 
+The shell script file \command{divadocommit}: in order to be able to use the outputs of input data preparation actions, they must be copied to the \directory{input} directory. This can be done by running the sell script file \command{divadocommit}. 
 
 \vspace{0.5cm}
 {\bf Note:} \\
@@ -333,7 +333,7 @@ lowerlevel number
 7
 upperlevel number
 11
-reference (to come)
+4D netcdf climatology file
 0
 isplot 0 or 1
 1
@@ -352,33 +352,46 @@ number of groups for data detrending, 0 if no detrending.
 
 \section{Production of climatologies}
 
-\diva 4D allows the production of climatologies based on simple \diva data analysis or based on \diva analysis using different option as in \diva 3D:
+\diva 4D allows the production of climatologies based on simple \diva data analysis or based on \diva analysis using various options as in \diva 3D:
 
 \begin{itemize}
-\item relative length files
-\item advection constraint
+\item relative length ($RL$) files,
+\item advection constraint,
 \item reference fields and detrending.
 \end{itemize}
 
-
-
 \vspace{-0.5cm}
-
 
 {\bf Note:} These options are automatically activated when the appropriate input data are provided.
 
-More options available in \diva 4D are:
+\vspace{0.5cm}
 
-\begin{itemize}
-\item analysis using vertically filtered mean background
-\item analysis with data transformation:  $\log$(data)-$\exp$(analysis), and anamorphosis transformations or user defined transformation
-\item analysis using  a reference field for each layer generated on the basis of all data from the two neighbouring layers in addition to the layer data set.
-\end{itemize}
-
+{\bf \diva 4D for climatology production offers more options to improve the analysis coherence:}
 
 \vspace{-0.5cm}
 
-{\bf Note:} These options are activated with a specific flag values in the \file{driver}.
+\begin{itemize}
+\item analysis using vertically filtered mean background
+\item analysis with data transformation:  $\log$(data)-$\exp$(analysis), $Logit$ and \it{anamorphosis} transformations or a ``user defined'' transformation.
+\item analysis using  a reference field for each layer generated on the basis of all data from the two neighbouring layers in addition to the layer data set.
+\end{itemize}
+
+\vspace{-0.5cm}
+
+{\bf Note:} These options are activated with a specific flag values in the \file{driver}.\\
+{\bf Note:} The  $Logit$ transformation is made to insure analysis values to be in a given range $[a,b]$. The range $[a,b]$ must be prescribed in a file \file{var.logitrange} (see example \ref{ex:logitrange}) and provided in \directory{input/divadata}. If  \file{var.logitrange} is note provided and the $Logit$ transformation is acctivated, \diva will take the data minimum and maximum values as rage values.
+
+
+
+\begin{exfile}[htpb]
+\begin{footnotesize}
+\texttt{ $0$ \\
+$10$\\
+}
+\end{footnotesize}
+\caption{Example of file \file{var.logitrange}. \label{ex:logitrange}}
+\end{exfile}
+
 
 
 \subsection{Inputs for production of climatologies}
@@ -654,18 +667,20 @@ If there is a \file{qflist} file, the selection with \file{divaselectorODV4} wil
 
 \item {\bf Analysis}: analysis and reference fields can be performed in different ways:
   \begin{itemize}
-  \item  {\bf Perform analysis}: Possible flag values are $1$, $10$, $11$, $12$, $13$ and $14$:
+  \item  {\bf Perform analysis}: Possible flag values are $1$, $11$, $12$, $13$ and $14$:
               \begin{itemize}
                 \item[*] $=1$ if analysis fields of the given variable are to be performed for all the layers between $L_1$ and $L_2$ which are the flag values for lower level number and upper level number in the \file{driver}.
-                \item[*] $=11$ if analysis fields of the given variable are to be performed with $\exp$(data)-$\log$(analysis) transformation
-                \item[*] $=13$ if analysis fields of the given variable are to be performed with anamorphosis transformation
+                \item[*] $=11$ if analysis fields of the given variable are to be performed with $\log$(data)-$\exp$(analysis) transformation
+                \item[*] $=12$ if analysis fields of the given variable are to be performed with $Logit$ transformation
+                \item[*] $=13$ if analysis fields of the given variable are to be performed with \it{anamorphosis} transformation
                 \item[*] $=14$ if analysis fields of the given variable are to be performed with user chosen transformation function.
               \end{itemize}
-   \item  {\bf Perform reference fields}: Possible flag values are $2$, $20$, $21$, $22$, $23$ and $24$:
+   \item  {\bf Perform reference fields}: Possible flag values are $2$, $21$, $22$, $23$ and $24$:
               \begin{itemize}
                 \item[*] $=2$ if semi normed reference fields of the given variables (prescribed in \file{varlist} and for time periods described in \file{yearlist} and \file{monthlist}) are to be performed for all the layers between $L_1$ and $L_2$, which are the flag values for lower level number and upper level number in the \file{driver}.
                 \item[*] $=21$ if analysis fields of the given variable are to be performed with $\log$(data)-$\exp$(analysis) transformation
-                \item[*] $=23$ if reference fields of the given variable are to be performed with anamorphosis transformation
+                \item[*] $=22$ if analysis fields of the given variable are to be performed with $Logit$ transformation
+                \item[*] $=23$ if reference fields of the given variable are to be performed with \it{anamorphosis} transformation
                 \item[*] $=24$ if reference fields of the given variable are to be performed with user chosen transformation function.
               \end{itemize}
   \item  {\bf Adding $100$ to the flag value}:

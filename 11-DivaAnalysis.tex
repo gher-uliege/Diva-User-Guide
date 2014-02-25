@@ -396,4 +396,37 @@ You start with correct data and contour file, but with parameters file that need
 \end{enumerate}
 
 
-% to add sth
+
+\subsection{Analysis Relative Length ($RL$) Fields }
+%--------------------------------------------------
+
+To perform analysis using ``variable correlation length'' on the considered domain, one can provide the ``Relative Length'' field in the \directory{input}.
+
+``Relative Length'' field can be produced by \diva on basis of data distribution using \command{divadacoverge}, or on basis of a mask netcdf file \file{mask.nc} provided in  \directory{input} using \command{dvncmask2RL}. The mask netcdf file must be written as shown in example \ref{ex:ncmask}. 
+
+An analysis using  $RL$ field based on a mask field provided in  \directory{input}, may be performed as follow:
+
+\begin{enumerate}
+\item \command{divaload your\_directory}
+\item \command{dvncmask2RL} \qquad to write \file{RL.dat} and \file{RLInfo.dat} in \directory{input};
+\item \command{divadress}
+\item \command{divasave your\_directory}
+\end{enumerate}
+
+
+\begin{exfile}[htpb]
+\begin{footnotesize}
+\texttt{netcdf mask  \\
+dimensions:\\
+\mbox{      } lon = 100 ;\\
+\mbox{      } lat = 100 ;\\
+variables:\\
+\mbox{      } float lon(lon) ;\\
+\mbox{      } float lat(lat) ;\\
+\mbox{      } float mask(lat, lon) ;\\
+ \\
+}
+\end{footnotesize}
+\caption{Header of mask netcdf file \file{mask.nc}. \label{ex:ncmask}}
+\end{exfile}
+

@@ -51,7 +51,8 @@ Simply type:
 \begin{description}
 \item[\command{divaanom}:] computes the difference between the data and the provided reference field. 
 \item[\command{divadataclean}:] eliminates all data that fall outside the bounding box of the contours.
-\item[\command{divadatacoverage}:] 
+\item[\command{divadatacoverage}:] Writes Relative Length (RL) (\file{RL.dat} and \file{RLInfo.dat}) field based on data coverage and data density field (\file{DATABINS.dat}).
+\item[\command{dvncmask2RL}:] Writes Relative Length (RL) (\file{RL.dat} and \file{RLInfo.dat}) field based on a given mask on the domain.  
 \end{description}
 
 
@@ -92,6 +93,15 @@ Simply type:
 \item[\command{divaseminorm}:] performs an analysis with a semi-normed reference field: computes the reference field (\command{divarefe}), computes the anomalies with respect to the reference field (\command{divaanom}), makes the analysis (\command{divacalc}) and add the reference field to the obtained analysis (\command{divasumup}).
 \item[\command{divasumup}:] performs the last step of a semi-normed analysis: the sum of background field and analysed anomaly field.
 \end{description}
+
+\subsubsection{Analysis: using relative length field}
+
+\begin{description}
+\item[\command{divadatacoverage}:] Writes in \directory{input} Relative Length (RL) field based on data coverage. RL fields are used to perform an analysis when they are present in  \directory{input}.
+\item[\command{dvncmask2RL}:] Writes Relative Length (RL) field based on a given netcdf mask file of the domain. It uses the file \file{mask.nc} if present in \directory{input} and writes \file{RL.dat} and \file{RLInfo.dat} to \directory{input} directory.
+
+\end{description}
+
 
 \subsection{Quality control and error field}
 
