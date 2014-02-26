@@ -3,6 +3,8 @@
 
 \diva is a software designed to run with any operating system (Microsoft Windows, Linux, Mac OS X). The main steps for the the installation are described in this chapter. A more detailed and up-to-date list of instructions is available on the Installation web page of \diva: \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/Diva_installation}
 
+{\bf \underline{WARNING:} IF you have a previous \diva version  running on your system, please make a copy (or save it somewhere) before installing the new version.} 
+
 %%while the Graphical User Interface (GUI) is presented in Section~\ref{sec:guiinstall}. Note that the GUI is not up-to-date.
 
 \minitoc
@@ -47,18 +49,18 @@ Select a directory on your local disk (here we install in a directory \directory
 
 \begin{lstlisting}[style=Bash]
 [charles@gher13 ~]$ cd Software/
-[charles@gher13 Software]$ wget http://modb.oce.ulg.ac.be/mediawiki/upload/DIVA/releases/diva-4.6.1.tar.gz
+[charles@gher13 Software]$ wget http://modb.oce.ulg.ac.be/mediawiki/upload/DIVA/releases/diva4.6.4.tar.gz
 \end{lstlisting}
 
 Extract the archive and go in the main directory:
 \begin{lstlisting}[style=Bash]
-[charles@gher13 Software]$ tar -xvf diva-4.6.1.tar.gz
-[charles@gher13 Software]$ cd diva-4.6.1/
+[charles@gher13 Software]$ tar -xvf diva4.6.4.tar.gz
+[charles@gher13 Software]$ cd diva4.6.4/
 \end{lstlisting}
 
 The directory tree has the following structure: %\newpage 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 diva-4.6.1]$ tree -d -L 2
+[charles@gher13 diva4.6.4]$ tree -d -L 2
 .
 |-- DIVA3D
 |   |-- bin
@@ -96,10 +98,17 @@ The second option is provided for cases where the compilation was not possible, 
 \subsection{Compilation\label{sec:compilation}}
 %-----------------------------------------------
 
+The \diva Fortran programs compilation is done by running the shell script \file{divacompileall}, which uses a configuration file \file{divacompile\_options}. In the configuration file \\ \file{divacompile\_options} are prescribed the options for Fortran compiler and libraries.
+\begin{itemize}
+\item If you have allready a previous running \diva version and -within it- the file \\ \file{divacompile\_options} configured according to your system, you can simply copy it to the same place in the new version (\directory{diva4.6.4/DIVA3D/src/Fortran/)} before running  \file{divacompileall}.
+\item If not proceed as follow:
+\end{itemize}
+
+
 \index{Compilation}
 Go in the source directory 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 diva-4.6.1]$ cd DIVA3D/src/Fortran/
+[charles@gher13 diva4.6.4]$ cd DIVA3D/src/Fortran/
 \end{lstlisting}
 and edit the configuration file \file{divacompile\_options} for the compilation according to your machine. 
 
@@ -150,7 +159,7 @@ Stabil directory:     28/28 programs compiled
 TOTAL:                97/97 programs compiled
 ----------------------------------------------------------
 Binaries are located in directory:
-/home/ctroupin/Software/diva-4.6.1/DIVA3D/bin
+/home/ctroupin/Software/diva4.6.4/DIVA3D/bin
 \end{verbatim}
 
 \subsection{Direct copy of pre-compiled binaries}
