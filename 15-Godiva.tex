@@ -183,7 +183,7 @@ Input data preparation consists in the following actions:
 
 %\vspace{-0.5cm}
 
-To perform an action, one has to configure the \file{driver} file and give in the corresponding flag values and run the \command{divadoall} files script. For each action, a specific inputs are needed:
+To perform an action, one has to configure the \file{driver} file and give in the corresponding flag values and run the \command{godiva} file script (this will launch the \command{divadoall} script and check for possible severe errors). For each action, a specific inputs are needed:
 
 
 %\vspace{1.5cm}
@@ -630,7 +630,7 @@ If there is a \file{qflist} file, the selection with \file{divaselectorODV4} wil
 
 {\bf Note:} you can specify several ODV4 spreadsheet files as input files, one file name (or full path) per line in \file{datasource} file, {\it they must have the same variables naming convention}. You can also specify different quality flags for each file by adding these values after the file name (separated by a space). At the moment, a maximum of two quality flags per file is admitted. In the absence of quality flag after the file name, \command{Diva} simply uses the values provided in \file{qflist}.
 
-{\bf Note:} the weight of data is increased to 1.1 if the file name contains ``CTD,PFL,MRB,DRB or ARGO'' and decreased to 0.5 if it contains ``APB,XBT or MBT'', due to differences in the accuracy of these instruments. This default behaviour can be cancelled by setting the flag\_weight to 0 (in \file{divaselectorODV4}). 
+%{\bf Note:} the weight of data is increased to 1.1 if the file name contains ``CTD,PFL,MRB,DRB or ARGO'' and decreased to 0.5 if it contains ``APB,XBT or MBT'', due to differences in the accuracy of these instruments. This default behaviour can be cancelled by setting the flag\_weight to 0 (in \file{divaselectorODV4}). 
 
 \item {\bf Boundary lines and coastlines generation}: Possible flag values are $0$, $1$, $2$ and $3$. When this action is activated (flag $\geq 1$), you must provide in the \directory{input} directory the files \file{TopoInfo.dat} and  \file{topo.grd} in addition to \file{contour.depth} file.
               \begin{itemize}
