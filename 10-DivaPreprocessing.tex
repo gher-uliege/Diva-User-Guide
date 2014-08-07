@@ -419,7 +419,9 @@ and \file{./output/gcvsnvar.dat} the best new estimate for the S/N and \texttt{V
 
 In \file{param.par.gcv}, you find an adapted version of the original \file{param.par}.
 
+\subsection{\command{divabin}}
 
+\command{divabin} performs a binning of the data with the spatial resolution defined in \file{param.par}. The script is called by \command{divafit} and/or by \command{diva3Dsnop} if the parameter ``binning'' is set to the value ``1'' in these scripts (at the beginning). The purpose of this optional binning is to improve the quality of the parameters (CL and/or SNR) optimization by removing a part of the highly correlated observations (taken by a boat in a restricted area, for instance).  
 
 \subsection{\command{divacv}}
 %-------------------------------
