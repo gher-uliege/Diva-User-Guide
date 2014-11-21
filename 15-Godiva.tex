@@ -97,7 +97,7 @@ All \diva shell scripts files for climatologies (or 4D-analyses) production are 
 The main shell script file for generating climatologies is \command{divadoall}. The actions that performed when running \command{divadoall} are:
 
 \begin{itemize}
-\item Preparation of data files (ODV files with only one depth and/or current -speed and direction- variables). \command{Divadoall} calls \command{divaonedepthODV4}, generating new files with the extension ``\_bis.txt'' containing the x and y components of the speed (u\_star and v\_star), as well as a depth axis.
+\item Preparation of data files (ODV files without any depth axis and/or containing current -speed and direction- variables). \command{Divadoall} calls \command{divanodepthODV4}, generating new files with the extension ``\_bis.txt'' containing the x and y components of the speed (u\_star and v\_star), as well as a depth axis.
 \item Data extraction at selected depth levels.
 \item Cleaning of duplicates in the extracted data (\command{divadoall} calls \command{divaduplicatesODV4} if the analysis flag is not zero).
 \item Boundary lines/coastline generation (contour files).
@@ -626,7 +626,7 @@ All actions performed by \command{divadoall} are prescribed in the file \file{dr
 
 If there is a \file{qflist} file, the selection with \file{divaselectorODV4} will only use those measurements for which the quality flag is one of those found in the file \file{qflist}. In the absence of \file{qflist} (or if \file{qflist} is empty), no quality flag analysis is done and all data taken.
 
-{\bf Note:} the files containing only one depth value are treated separately by the \command{divaone\-depthODV4}. This script also handles the current direction (CurrDir [deg T]) and speed (CurrSpd [cm/s]) and transforms them into x-y components (North, East). 
+{\bf Note:} the files without any depth axis are treated separately by the \command{divano\-depthODV4}. This script also handles the current direction (CurrDir [deg T]) and speed (CurrSpd [cm/s]) and transforms them into x-y components (North, East). 
 
 {\bf Note:} you can specify several ODV4 spreadsheet files as input files, one file name (or full path) per line in \file{datasource} file, {\it they must have the same variables naming convention}. You can also specify different quality flags for each file by adding these values after the file name (separated by a space). At the moment, a maximum of two quality flags per file is admitted. In the absence of quality flag after the file name, \command{Diva} simply uses the values provided in \file{qflist}.
 
