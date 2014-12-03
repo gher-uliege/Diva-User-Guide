@@ -453,9 +453,33 @@ If for a level (or all levels) \file{param.par.var.$1xxxx$} is not present, one 
 
 \subsubsection{ Using relative length files:}
 
-If more than one relative length files are available, they must be  named and numbered following the variable and level to which they correspond as \file{RL.var.$1xxxx$}, and must be provided in the \directory{input/divaparam/} subdirectory. One default file \file{RL.dat} may be placed in \directory{input/divaparam} subdirectory to be used for the levels for which relative length files are missing. One \file{RLinfo.dat} ascii file (grid info file) must be placed with the relative length files (binary GHER format)
+If more than one relative length files are available, they must be  named and numbered following the variable
+and level to which they correspond as \file{RL.var.$1xxxx$}, and must be provided in the \directory{input/divaparam/} 
+subdirectory. One default file \file{RL.dat} may be placed in \directory{input/divaparam} subdirectory to be used for 
+the levels for which relative length files are missing. One \file{RLinfo.dat} ascii file (grid info file) must be placed
+with the relative length files (binary GHER format).
 
-If only one \file{RL.dat} file of relative length is used, it must be placed in the \directory{divaparam} subdirectory or in the \file{input} directory.
+If only one \file{RL.dat} file of relative length is used, it must be placed in the \directory{divaparam} subdirectory
+or in the \file{input} directory.
+
+\textbf{How to create these relative length files ?}
+
+If you do not have these binary relative length files, you can either create them by yourself or use the tool \command{divaasctobin}
+located in \directory{JRA4/Climatology} which use simple ascii files as input to create your binary ones, via a run of diva. You will 
+need to edit this script and set the parameter "RL" to 1 (at the beginning). Please note that this is not only
+a format transformation, the output is the analyse of the input files (with low SNR, high CL and reference field
+equal to one. By default, the domain (lon, lat, x and y step) is the one defined in the
+original \file{./input/param.par} file.
+
+Your ascii input files have to be located in \directory{JRA4/Climatology/input/divaparam}. Your input files have to be named like this : 
+\file{./input/divaparam/RL.var.$1xxxx$.ascii}. They contain 3 columns : longitude,
+latitude and the value of the relative length.
+
+Then, just launch \command{./divaasctobin} in the directory \file{JRA4/Climatology}. The ouput binary files as well as
+the \file{RLinfo.dat\_erasethispart} (of course, rename it by erasing the last part when activation is needed)
+will be located in \directory{input/divaparam}, ready to be used. Do not forget to check if the output 
+corresponds to what you want by looking at \file{RL.10001000.4Danl.nc} in 
+\directory{output/3Danalysis}.
 
 \begin{center}
 \fbox{
@@ -470,14 +494,40 @@ If only one \file{RL.dat} file of relative length is used, it must be placed in 
 
 \subsubsection{Using advection constraint\label{advconstuse}}
 
-To perform 3D analysis with avection constraint\index{Advection}, the files \file{UVinfo.var.$1xxxx$},\linebreak \file{Uvel.var.$1xxxx$}, \file{Vvel.var.$1xxxx$}, must be then placed in \directory{input/divaUVcons/} subdirectory. The advection constraint is activated when a \file{constraint.dat} file is present in the \directory{input} directory (see Section~\ref{ex:constraint.dat}). If one wants to use different advection parameters $\theta$ and $\mathcal{A}$ (see Section~\ref{sec:advection}) a two column \file{3Dconstraint} file must be placed in \directory{input/divaparam} subdirectory where each line contains the advection parameters for the corresponding level number.
+To perform 3D analysis with avection constraint\index{Advection}, the files \file{UVinfo.var.$1xxxx$},\linebreak
+\file{Uvel.var.$1xxxx$}, \file{Vvel.var.$1xxxx$}, must be then placed in \directory{input/divaUVcons/} subdirectory. 
+The advection constraint is activated when a \file{constraint.dat} file is present in the \directory{input} directory 
+(see Section~\ref{ex:constraint.dat}). If one wants to use different advection parameters $\theta$ and $\mathcal{A}$ 
+(see Section~\ref{sec:advection}) a two column \file{3Dconstraint} file must be placed in \directory{input/divaparam} 
+subdirectory where each line contains the advection parameters for the corresponding level number.
 
-If \file{UVinfo} files are identical for all the levels, only one file \file{UVinfo.dat} may be placed in the \directory{input} directory or in the \directory{input/divaUVcons} subdirectory.
+If \file{UVinfo} files are identical for all the levels, only one file \file{UVinfo.dat} may be placed in the \directory{input}
+directory or in the \directory{input/divaUVcons} subdirectory.
 
-If for some levels, the pair of files \file{Uvel.var.$1xxxx$}, \file{Vvel.var.$1xxxx$} (or \file{Uvel.$1xxxx$}, \file{Vvel.$1xxxx$}) is not available, A default \file{Uvel.dat} and \file{Vvel.dat} files must be placed in the \directory{input/divaUVcons/} subdirectory as well as a \file{UVinfo.dat} if using different \file{UVinfo} files.
+If for some levels, the pair of files \file{Uvel.var.$1xxxx$}, \file{Vvel.var.$1xxxx$} (or \file{Uvel.$1xxxx$},
+\file{Vvel.$1xxxx$}) is not available, A default \file{Uvel.dat} and \file{Vvel.dat} files must be placed in the
+\directory{input/divaUVcons/} subdirectory as well as a \file{UVinfo.dat} if using different \file{UVinfo} files.
 
-If for all levels, the same advection files are used, only \file{Uvel.dat}, \file{Vvel.dat} and \file{UVinfo.dat} may be placed in the \directory{input/divaUVcons/} subdirectory or simply in the \directory{input} directory.
+If for all levels, the same advection files are used, only \file{Uvel.dat}, \file{Vvel.dat} and \file{UVinfo.dat} 
+may be placed in the \directory{input/divaUVcons/} subdirectory or simply in the \directory{input} directory.
 
+\textbf{How to create these advection files ?}
+
+If you do not have these binary advection files, you can either create them by yourself or use the tool \command{divaasctobin}
+located in \directory{JRA4/Climatology} which use simple ascii files as input to create your binary ones, via a run of diva. You will 
+need to edit this script and set the parameter "UV" to 1 (at the beginning). Please note that this is not only
+a format transformation, the output is the analyse of the input files (with low SNR, high CL and reference field
+equal to zero. By default, the domain (lon, lat, x and y step) is the one defined in the
+original \file{./input/param.par} file.
+
+Your ascii input files have to be located in \directory{JRA4/Climatology/input/divaUVcons}. Your input files have to be named like this : 
+\file{./input/divaUVcons/Uvel.$1xxxx$.ascii} and \file{./input/divaUVcons/Vvel.$1xxxx$.ascii}. They contain 3 columns : longitude,
+latitude and the value of the speed component.
+
+Then, just launch \command{./divaasctobin} in the directory \file{JRA4/Climatology}. The ouput binary files as well as
+the \file{UVinfo.dat} will be located in \directory{input/divaUVcons}, ready to be used. Do not forget to check if the output 
+corresponds to what you want by looking at \file{Uvel.10001000.4Danl.nc} and \file{Vvel.10001000.4Danl.nc} in 
+\directory{output/3Danalysis}.
 
 \begin{center}
 \fbox{

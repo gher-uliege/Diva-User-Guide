@@ -3,7 +3,7 @@
 \diva can be used to produce climatologies for a given variable in an oceanic basin. In this case \diva 3D tools are used to produce for successive climatological time periods, 3D climatological analyses on the basin. The resulting climatologies are gathered in 4D binary files GHER format and NetCDF.
 
 The working directory to performs 4D-analyses is:\\ 
-\directory{diva-4.6.1/JRA4/Climatology}.
+\directory{diva-x.x.x/JRA4/Climatology}.
 
 \minitoc
 
@@ -79,6 +79,7 @@ Salinity
 \begin{itemize}
 \item In \file{yearlist}, each time period must be in an eight digits number such as $yyyyzzzz$ where $yyyy$ is the start year and $zzzz$ the end year time period.
 \item  In \file{monthlist}, each time period must be in a four digits number such as $mmnn$ where $mm$ is the start month and $nn$ the last month numbers.
+\item In \file{monthlist}, if the first month is greater than the second (ex. 1202), the next year is considered for months after december (ex. 01 and 02).
 \end{itemize}
 \vspace{.25cm} 
 \end{minipage}
@@ -642,13 +643,17 @@ If there is a \file{qflist} file, the selection with \file{divaselectorODV4} wil
 \item {\bf Cleaning data and Relative Length}: Possible flag values are $0$, $1$, $2$, $3$, $4$ and $5$:
               \begin{itemize}
                 \item[*] $=1$ if data files are to be cleaned,
-                \item[*] $=2$ if relative length files are to be generated,
-                \item[*] $=3$ if data files are to be cleaned and relative length files are to be generated.
+                \item[*] $=2$ if relative length files depending on data coverage are to be generated,
+                \item[*] $=3$ if data files are to be cleaned and relative length files depending on data coverage are to be generated.
                 \item[*] $=4$ if outliers are to be cleaned from data files.
-                \item[*] $=5$ if outliers are to be cleaned from data files and, relative length files to be generated.
+                \item[*] $=5$ if outliers are to be cleaned from data files and, relative length files depending on data coverage to be generated.
+                \item[*] $=6$ if data files are to be cleaned and relative length files depending on depth to be generated.
               \end{itemize}
 
-
+\item {\bf Minimum number of data in a layer}: Any value from -1 to infinity. If less, uses data from any month.
+                \begin{itemize}
+                \item[*] $=-1$ if you never want to use other data from other months.
+                \end{itemize}
 \item {\bf Parameter optimization}: Possible flag values are $0$, $1$, $2$, $3$, $-1$, $-2$, $-3$, $10$, $-10$, $30$ and $-30$:
               \begin{itemize}
                 \item[*] $=1$ if correlation length parameters are to be estimated,
@@ -689,6 +694,11 @@ If there is a \file{qflist} file, the selection with \file{divaselectorODV4} wil
                \item[*] $=102$ or $=12x$ allows performing reference fields for each layer using all data from the two neighbouring layers in addition to the layer data set.
               \end{itemize}
    \end{itemize}
+\item {\bf 4D netcdf files generation}: Possible flag values are $0$, $1$ and $11$:
+                \begin{itemize}
+                \item[*] $=0$ or $1$ If you only want 3D netcdf output files and a 4D netcdf for each year period,
+                \item[*] $=11$ If you also want a big 4D netcdf containing all the year period.
+                \end{itemize}
 \item {\bf Gnuplot plots}: Possible flag values are $0$ and $1$. Activate this action for a quick visualization (and assessment) of the climatology production, {\tt gnuplot} executions can be included in the production process.\par 
 There are a few controls you can apply for these gnuplot plots:
 \begin{itemize}

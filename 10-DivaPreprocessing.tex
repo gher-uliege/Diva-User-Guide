@@ -421,7 +421,13 @@ In \file{param.par.gcv}, you find an adapted version of the original \file{param
 
 \subsection{\command{divabin}}
 
-\command{divabin} performs a binning of the data with the spatial resolution defined in \file{param.par}. The script is called by \command{divafit} and/or by \command{diva3Dsnop} if the parameter ``binning'' is set to the value ``1'' in these scripts (at the beginning). The purpose of this optional binning is to improve the quality of the parameters (CL and/or SNR) optimization by removing a part of the highly correlated observations (taken by a boat in a restricted area, for instance).  
+\command{divabin} performs a spatial binning of the data with the spatial resolution defined in \\ \file{param.par}. 
+The script is called by \file{DIVA3D/divastripped/divafit} (for CL) and/or by \file{DIVA3D/divastripped/diva3Dsnop} 
+(for SNR, only called when working in 3 or 4D) 
+if the parameter ``binning'' is set to the value
+``1'' in these scripts (at the beginning). The purpose of this optional binning is to improve the quality 
+of the parameters (CL and/or SNR) optimization by averaging a part of the highly correlated observations 
+(taken by a boat in a restricted area, for instance).  
 
 \subsection{\command{divacv}}
 %-------------------------------
