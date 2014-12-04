@@ -34,6 +34,13 @@ The basic requirements to compile and run \diva are:
 to see which libraries are still missing (in our case \texttt{sasl}) and therefore to install them with the cygwin installer.  
 \end{enumerate}
 
+Other requirement :
+\begin{enumerate}
+ \item dos2unix (on Linux Ubuntu : sudo apt-get install dos2unix, on Cygwin : launch the setup.exe and tick ``dos2unix'').
+\end{enumerate}
+
+
+
 For a quick visualization of the results, a software able to read and display the content of a NetCDF \index{NetCDF} file is recommended:
 \begin{itemize}
 \item ncBrowse (\url{http://www.epic.noaa.gov/java/ncBrowse/}, a Java application,
@@ -178,7 +185,12 @@ In the main working directory (\directory{GODIVA\_mm\_yyyy/DIVA3D/divastripped})
 \subsection{Basic test}
 
 
-\command{divatest} creates basic input files (see Chapter~\ref{chap:general} for details), performs a simple \diva execution, checks if \command{awk} is appropriate and checks if the pipes are supported in your operating system (O.S.). If \command{divatest} hangs during the pipe test, it means pipes are not supported (as for some gfortran versions) and you can use a \command{CTRL-C} to exit. The analysis output can be checked using any software for reading NetCDF\index{NetCDF} files. In this case we use ncview (see Chapter~\ref{chap:postprocessing} for details and installation). 
+\command{divatest} creates basic input files (see Chapter~\ref{chap:general} for details), performs a simple \diva execution,
+checks if \command{awk} is appropriate, checks if the pipes are supported in your operating system (O.S.), checks if \command{dos2unix}
+is installed.
+If \command{divatest} hangs during the pipe test, it means pipes are not supported (as for some gfortran versions) 
+and you can use a \command{CTRL-C} to exit. The analysis output can be checked using any software for reading 
+NetCDF\index{NetCDF} files. In this case we use ncview (see Chapter~\ref{chap:postprocessing} for details and installation). 
 
 \begin{lstlisting}[style=Bash]
 [charles@gher13 divastripped]$ divatest

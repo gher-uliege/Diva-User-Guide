@@ -203,6 +203,12 @@ Look into \file{dvdv2diva.f} in \directory{./src/Fortran/Util/} how to write suc
 \subsection{Method 4: using \diva on web}
 
 Go to \url{http://gher-diva.phys.ulg.ac.be/web-vis-test/diva.html}, upload any data (it can be the example provided on the web).
+It is faster to use a small file, and you can even create a simple file with 2 measurements in the lower left and upper right corners of 
+your region.
+\begin{verbatim}
+lonmin latmin value
+lonmax latmax value
+\end{verbatim}
 Then specify the output grid on the region where you want the topography and provide the resolution which is typical for the resolution you will use later for the analysis.
 Perform the analysis with your "data". In the download section, you can download the topography in a NetCDF file \file{diva\_bath.nc}. Save this file into your \directory{input}. Then on the command line, placed in this \directory{input}, execute \command{../../bin/divabath2topogrd.a}. This will create \file{topo.grd} and \file{TopoInfo.dat}.
 

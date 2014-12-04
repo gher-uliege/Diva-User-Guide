@@ -228,6 +228,7 @@ generation       &  of the considered depths and time periods\\
                  &  which contains coastlines {\file{coast.cont.$100xx$}} files of the \\
                  &  considered basin, and a(template) {\file{param.par}} file  in \directory{input} or \\
                  & a {\file{param.par.var.$100xx$}} files  in \directory{input/divaparam} directory.\\
+                 & In these \file{param.par} and/or \file{param.$100xx$} files, ireg is automatically forced to 0. \\
     &   \\
 \hline
 \end{tabular}
@@ -519,7 +520,7 @@ The use of reference fields option is activated when the corresponding flag valu
 0103
 \end{verbatim}
 \end{footnotesize}
-\caption{\file{varlist}}
+\caption{\file{constandrefe}}
 \label{varlistexp2}
 \end{exfile}
 \end{center}
@@ -528,6 +529,11 @@ The use of reference fields option is activated when the corresponding flag valu
 \hline
 \hline
 \end{tabular}
+
+\textbf{How to use a different reference field for each month period ? }
+
+Just change the parameter ``refsameasmonthlist'' to ``yes'' in the script \file{divadoall} (around line 330). The month code for your reference field
+will then be the same as the current month period. Do not forget to set ``refsameasmonthlist'' back to ``no'' after your analyses.
 
 \pagebreak
 

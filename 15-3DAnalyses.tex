@@ -212,7 +212,7 @@ In order to use the three dimensional features of \diva, one has to provide two 
 
 \begin{description}
 
-\item[\file{contour.depth}] contains a list of depth values (one value per line) of the considered levels. The first line corresponds to the deepest level and the last one to the top level. 
+\item[\file{contour.depth}] contains a list of depth values (one value per line) of the considered levels. The first line corresponds to the \textbf{deepest} level and the last one to the \textbf{top} level. 
 
 \item[\file{3Dinfo}] is the file where shell script reads the parameter values for the 3D execution: variable name, levels to be treated, flags values controlling the execution of tasks to be performed and, maximum and minimum acceptable values for correlation length ($L$) and signal-to-noise ($\snr$) parameters. If one desires to specify the maximum and the minimum values for $L$  and/or ($\snr$) parameter for each level, a file \texttt{CLminmax} and/or \texttt{SNminmax} must be placed in the \directory{divaparam} subdirectory. In this case the corresponding maximum and minimum values in the \file{3Dinfo} file are ignored.
 \end{description}
