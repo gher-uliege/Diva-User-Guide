@@ -253,7 +253,12 @@ The file \file{./input/param.par} specifies the main analysis parameters and opt
 \subsubsection{\texttt{Lc}}
 % ------------------------
 
-The global correlation length $L$ \index{Correlation length} used for the analysis (see Section~\ref{sec:parammeaning} for the physical meaning). It has to be defined as a real positive number. Note that the length of the finite-elements will be computed according to the value of $L$.
+The global correlation length $L$ \index{Correlation length} used for the analysis (see Section~\ref{sec:parammeaning} for 
+the physical meaning). It has to be defined as a real positive number. Note that the length of the finite-elements 
+will be computed according to the value of $L$.
+
+As a first guess, you can use a value between a tenth of the domain size and the domain size, in order to avoid
+getting into memory troubles due to a too fine mesh. Later, you can change this value if it seems interesting (via optimization).
 
 \subsubsection{\texttt{icoordchange}\label{sec:icoord}}
 %---------------------------------------------------
@@ -261,9 +266,9 @@ The global correlation length $L$ \index{Correlation length} used for the analys
 
 Specifies the desired type of coordinate system:\\
 
-\texttt{icoordchange} \begin{minipage}[t]{.7\textwidth} = $0$ if no change is necessary (data position in kilometres);\\
-                                                        = $1$ if data positions are given in degrees;\\
-                                                        = $2$ if data positions are given in degrees and your domain extends on a wide span of latitude                                                           (uses a cosine projection);\\
+\texttt{icoordchange} \begin{minipage}[t]{.7\textwidth} = $0$ if no change is necessary (same coordinates as data);\\
+                                                        = $1$ if data positions are given in degrees and if you want to use real distances;\\
+                                                        = $2$ if data positions are given in degrees, you want to use real distances, and your domain extends on a wide span of latitude                                                           (uses a cosine projection);\\
                                                         = $-xscale$ to scale $x$ coordinates by a factor $xscale$ before doing anything (for vertical sections: see Section~\ref{sec:cruise})
                       \end{minipage}
                       

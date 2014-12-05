@@ -41,9 +41,29 @@ awk '{print $2,$1,$3}' infile > outfile
 \end{verbatim}
 \etips
 
+\subsection{Method 1: using \diva on web}
 
+Go to \url{http://gher-diva.phys.ulg.ac.be/web-vis-test/diva.html}, upload any data (it can be the example provided on the web).
+It is faster to use a small file, and you can even create a simple file with 2 measurements in the lower left and upper right corners of 
+your region.
+\begin{verbatim}
+lonmin latmin value
+lonmax latmax value
+\end{verbatim}
+Then specify the output grid on the region where you want the topography and provide the resolution which is typical for
+the resolution you will use later for the analysis.
+Perform the analysis with your "data". In the download section, you can download the topography in a NetCDF file
+\file{diva\_bath.nc}. Save this file into your \directory{input}. Then on the command line, placed in this \directory{input},
+execute \command{../../bin/divabath2topogrd.a}. This will create \file{topo.grd} and \file{TopoInfo.dat}.
 
-\subsection{Method 1: conversion from GEBCO topography\label{sec:topogebco}}
+If you need to erase some zones from your topography, you have to create a netcdf file \file{masktopo.nc} before executing 
+\command{../../bin/divabath2topogrd.a}. This \file{masktopo.nc} has to be a 2D file containing a binary variable called MASKTOPO 
+(0 where you want to erase the topography, 1 elsewhere). The dimensions have to be the same as \file{diva\_bath.nc} and the axis
+have to be named ``lon'' and ``lat'' or ``LON'' and ``LAT''. 
+
+%If tapering with topography is needed, you can either work first in the NetCDF file \file{diva\_bath.nc} before you run this executable or work on the gher format file \file{topo.grd} afterwards.
+
+\subsection{Method 2: conversion from GEBCO topography\label{sec:topogebco}}
 %------------------------------------------------------
 
 The GEBCO bathymetry is distributed by the British Oceanographic Data Centre (BODC). If you have already registered, you can log in (\url{https://www.bodc.ac.uk/my\_account/login/}), otherwise it is necessary to register to become a new user. 
@@ -132,7 +152,7 @@ If everything is stable, you can erase \file{topogebco.asc} and \file{topo.gebco
 \end{figure}
 
 
-\subsection{Method 2: interpolation of individual topography measurements\label{sec:topotopex}}
+\subsection{Method 3: interpolation of individual topography measurements\label{sec:topotopex}}
 %-------------------------------------------------------------------------
 
 The principle of this method is to apply a \diva analysis to a data file containing depths at various locations.
@@ -178,7 +198,7 @@ With the two files \file{topo.dat} and \file{param.par} located in \directory{di
 \end{figure}
 
 
-\subsection{Method 3: by hand}
+\subsection{Method 4: by hand}
 %----------------------
 
 Create a gridded file (in the same format as the analysis fields \file{fieldgher.anl}) of topography and call
@@ -198,21 +218,6 @@ N
 
 Look into \file{dvdv2diva.f} in \directory{./src/Fortran/Util/} how to write such files from within a Fortran code.
 
-
-
-\subsection{Method 4: using \diva on web}
-
-Go to \url{http://gher-diva.phys.ulg.ac.be/web-vis-test/diva.html}, upload any data (it can be the example provided on the web).
-It is faster to use a small file, and you can even create a simple file with 2 measurements in the lower left and upper right corners of 
-your region.
-\begin{verbatim}
-lonmin latmin value
-lonmax latmax value
-\end{verbatim}
-Then specify the output grid on the region where you want the topography and provide the resolution which is typical for the resolution you will use later for the analysis.
-Perform the analysis with your "data". In the download section, you can download the topography in a NetCDF file \file{diva\_bath.nc}. Save this file into your \directory{input}. Then on the command line, placed in this \directory{input}, execute \command{../../bin/divabath2topogrd.a}. This will create \file{topo.grd} and \file{TopoInfo.dat}.
-
-If tapering with topography is needed, you can either work first in the NetCDF file \file{diva\_bath.nc} before you run this executable or work on the gher format file \file{topo.grd} afterwards.
 
 
 
@@ -448,6 +453,44 @@ of the parameters (CL and/or SNR) optimization by averaging a part of the highly
 
 Note that in the present version (\diva-\divaversion), tools  \command{divacv} and \command{divacvrand}  
 do not adapt the error norm to include the relative weights on data. This will be introduced in the next versions.
+
+%--------------
+\section{Format conversion tools}
+%--------------
+
+\subsection{\command{ncdf2gher}}
+%-----------------------------
+
+\command{ncdf2gher} performs a format conversion from a 2D NETCDF file to a file in GHER format, with its info file (ASCII).
+The netcdf file \file{myfield.nc} has to be placed in \directory{input}. Its axis have to be ``lon'' and ``lat'' or ``LON'' and ``LAT''.
+Only one variable (myfield, i.e. the name of your field) is accepted. 
+
+To launch the conversion, just type 
+
+\begin{lstlisting}[style=Bash]
+[sylvain@gher-diva DIVA3D/divastripped] ./ncdf2gher myfield
+\end{lstlisting}
+
+Your variable ``myfield'' will then be stored into a gher format file named \file{myfield.grd} and its info file \file{myfieldInfo.dat}.
+These two files are in \directory{input} and have the same form and conventions as \file{topo.grd} and \file{TopoInfo.dat}.
+By default, the exclusion value will be $10^6$.
+
+
+\subsection{\command{gher2ncdf}}
+%-----------------------------
+
+\command{gher2ncdf} performs a format conversion from a file in GHER format, with its info file (ASCII) to a 2D NETCDF file.
+The gher file \file{myfield.grd} has to be placed in \directory{input}, as well as its info file \file{myfieldInfo.dat}. 
+These two files have the same form and conventions as \file{topo.grd} and \file{TopoInfo.dat}. 
+
+To launch the conversion, just type 
+
+\begin{lstlisting}[style=Bash]
+[sylvain@gher-diva DIVA3D/divastripped] ./gher2ncdf myfield
+\end{lstlisting}
+
+Your variable ``myfield'' will then be stored into a netcdf file named \file{myfield.nc}. Its axis will be ``lon'' and ``lat''.
+The exclusion value will be the same as in gher file. Only one variable (myfield, i.e. the name of your field) is accepted. 
 
 %--------------
 \section{Misc}
