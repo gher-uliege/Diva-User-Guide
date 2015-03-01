@@ -165,7 +165,10 @@ The main shell script file for generating climatologies is \command{divadoall}. 
 
 \subsection{Data files}
 
-They must be ODV SeaDataNet compliant: https://www.bodc.ac.uk/data/codes\_and\_formats/odv\_format/
+They must be ODV SeaDataNet compliant: \url{https://www.bodc.ac.uk/data/codes\_and\_formats/odv\_format/}.
+
+\textbf{IMPORTANT :} Time series are now allowed, but have to be placed in a different ODV file than profiles. The time 
+axis used for time series is "time\_ISO8601". For profiles, the time axis is labelled "yyyy-mm(-ddThh:mm:ss.sss)".
 
 
 \subsection{Inputs for input data preparation actions}
@@ -469,7 +472,7 @@ $10$\\
 Comment
 'This is only for DIVA development and testing work'
 Author e-mail address (or contact person to report problems)
-'m.ouberdous@ulg.ac.be'
+'swatelet@ulg.ac.be'
 
 \end{verbatim}
 \end{footnotesize}
