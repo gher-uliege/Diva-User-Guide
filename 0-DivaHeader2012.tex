@@ -287,11 +287,11 @@ urlcolor=blue}
    \normalfont\sffamily\Huge\bfseries\scshape}
   {\gdef\chapterlabel{\thechapter\ }}{0pt}
   {\begin{tikzpicture}[remember picture,overlay]
-    \node[yshift=-2.5cm] at (current page.north west)
+    \node[yshift=+0.5cm] at (current page.north west) %old value : -2.5cm
       {\begin{tikzpicture}[remember picture, overlay]
         \draw[fill=lightgray] (0,0) rectangle
-          (\paperwidth,2.5cm);
-        \node[anchor=east,xshift=.95\paperwidth,rectangle,
+          (1.05\paperwidth,2.5cm); %old value : 1.00
+        \node[anchor=east,xshift=1.00\paperwidth,rectangle, %old value : 0.95
               rounded corners=20pt,inner sep=11pt,
               fill=black]
               {\color{white}\chapterlabel#1};

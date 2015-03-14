@@ -86,10 +86,10 @@ Salinity
 }
 \end{center}
 
-\section{\diva 4D climatology performance}
+\section{\diva 4D climatology performance\label{4Dclim}}
 %-----------------------------------------
 
-All \diva shell scripts files for climatologies (or 4D-analyses) production are located in \par \directory{diva-4.6.1/JRAx/Climatology}. This directory has its proper subdirectories:
+All \diva shell scripts files for climatologies (or 4D-analyses) production are located in \par \directory{diva-x.x.x/JRAx/Climatology}. This directory has its proper subdirectories:
 \begin{itemize}
 \item[] \directory{input} where input data and files are placed and 
 \item[] \directory{output} where \diva outputs are stored.
@@ -98,8 +98,16 @@ All \diva shell scripts files for climatologies (or 4D-analyses) production are 
 The main shell script file for generating climatologies is \command{divadoall}. The actions that performed when running \command{divadoall} are:
 
 \begin{itemize}
-\item Preparation of data files (ODV files without any depth axis and/or containing current -speed and direction- variables). \command{Divadoall} calls \command{divanodepthODV4}, generating new files with the extension ``\_bis.txt'' containing the x and y components of the speed (u\_star and v\_star), as well as a depth axis.
+\item Preparation of data files (ODV files without any depth axis and/or containing current -speed and direction- 
+variables). \command{Divadoall} calls \command{divanodepthODV4}, generating new files with the extension ``\_bis.txt'' containing 
+the x and y components of the speed (u\_star and v\_star), as well as a depth axis.
 \item Data extraction at selected depth levels.
+\item Weighting of data. In case of close measurements (space and time), the representativity errors can be mitigated 
+via a weighting option. The closer the measurements are, the less is their weight in the analysis. 
+The characteristic distances for the weighting are defined by the user in \file{radiusweighting.par}, see file \ref{radiusfile}. 
+In case of file absence,
+the correlation length (from \file{param.par}) divided by 10 (same units as data) is used for the characteristic length scale, 
+while the characteristic time scale is fixed to 7 days. This option is particularly suited for time series. 
 \item Cleaning of duplicates in the extracted data (\command{divadoall} calls \command{divaduplicatesODV4} if the analysis flag is not zero).
 \item Boundary lines/coastline generation (contour files).
 \item Advection field generation based on coastlines.
@@ -165,10 +173,7 @@ The main shell script file for generating climatologies is \command{divadoall}. 
 
 \subsection{Data files}
 
-They must be ODV SeaDataNet compliant: \url{https://www.bodc.ac.uk/data/codes\_and\_formats/odv\_format/}.
-
-\textbf{IMPORTANT :} Time series are now allowed, but have to be placed in a different ODV file than profiles. The time 
-axis used for time series is "time\_ISO8601". For profiles, the time axis is labelled "yyyy-mm(-ddThh:mm:ss.sss)".
+They must be ODV SeaDataNet compliant: \url{https://www.bodc.ac.uk/data/codes\_and\_formats/odv\_format/}
 
 
 \subsection{Inputs for input data preparation actions}
@@ -180,6 +185,7 @@ Input data preparation consists in the following actions:
 
 \begin{itemize}
 \item Data set for extraction.
+\item Weighting of extracted data.
 \item Boundary lines and coastlines generation and advection field generation.
 \item Data cleaning on mesh, outliers elimination from data sets and generation of Relative Length fields.
 \item Parameters optimisation and reference fields generation.
@@ -187,10 +193,10 @@ Input data preparation consists in the following actions:
 
 %\vspace{-0.5cm}
 
-To perform an action, one has to configure the \file{driver} file and give in the corresponding flag values and run the
+To perform an action, one has to configure the \file{driver} file and give in the corresponding flag values (see Section \ref{driverflags}) and run the
 \command{godiva} file script (this will launch the \command{divadoall} script and check for possible severe errors). 
 The standard output (stdout) and error (sdterr) will be stored in \file{divadoall.log} while the error and warning lines will be found in 
-\file{divadoall.severeerrors}, \\ \file{divadoall.errors} and \file{divadoall.warnings}.
+\file{divadoall.\\severeerrors}, \file{divadoall.errors} and \file{divadoall.warnings}.
 For each action, specific inputs are needed:
 
 
@@ -204,7 +210,13 @@ For each action, specific inputs are needed:
 \hline
     &   \\
 Data extraction  &  \file{datasource} in \directory{Climatology} \\
-                 &  \file{qflist}  in \directory{Climatology} \\
+      &  \file{qflist}  in \directory{Climatology} \\
+    &   \\
+\hline
+    &   \\
+Data extraction  &  \file{datasource} in \directory{Climatology} \\
+\textbf{and} weighting      &  \file{qflist}  in \directory{Climatology} \\
+    &		\file{radiusweighting.par} in \directory{Climatology/input} \\
     &   \\
 \hline
     &   \\
@@ -241,6 +253,20 @@ generation       &  of the considered depths and time periods\\
 \end{tabular}
 }
 
+\begin{exfile}[H]
+\label{ex_radius}
+\begin{scriptsize}
+\begin{verbatim}
+# characteristic length of weighting (same units as data) [not too low, otherwise memory problems can occur]
+0.01
+# characteristic time of weighting (days)
+2
+\end{verbatim}
+\end{scriptsize}
+\caption{The \file{radiusweighting.par} file.} 
+\label{radiusfile}
+\end{exfile}
+
 \vspace{1.5cm}
 
 
@@ -259,6 +285,11 @@ Outputs resulting from a \command{divadoall} run for input data preparation acti
     &   \\
 Data extraction  & A subdirectory {\directory{divadata}} is created in \\
                  &  {\directory{input}} directory, and contains all the data sets. \\
+    &   \\
+\hline
+    &   \\
+Data weighting  & The extracted data files in \directory{input/divadata} \\
+		& contain a variable weight for each measurement. \\
     &   \\
 \hline
     &   \\
@@ -634,10 +665,20 @@ The outputs are placed in \directory{output/3Danalysis/} and are the same as of 
 
 \subsection{{\tt driver} file: actions and flag values\label{driverflags}}
 
-All actions performed by \command{divadoall} are prescribed in the file \file{driver} through flag values. In this section all possible actions and corresponding flag values are listed:
+All actions performed by \command{divadoall} are prescribed in the file \file{driver} through flag values. In this section all
+possible actions and corresponding flag values are listed:
 
 \begin{itemize}
-\item {\bf Data extraction}: Possible flag values: $0$,$1$,$-1$ and $-10$. If you activate the data extraction (flag value $\neq 0$) in the \file{driver} file, the execution of \command{divadoall} will run the \command{divaselectorODV4} automatically, including interpolation to the levels specified in {\tt contour.depth}. Data will be extracted from the ODV spreadsheat file(s) specified in \file{datasource}. Command \command{divaselectorODV4} will recognises if the data export to ODV file was done with depths (in meters) or it was done with pressure (in dbar) vertical coordinate, you can either choose to map it as if they were meters or apply the \citet{SAUNDERS81} correction. Choose flag $=-1$ to use pressure coordinate and assume they are meters, and flag value $=-10$ to use pressure coordinates and transform to meters by using the Saunders approach.
+\item {\bf Data extraction}: Possible flag values: $0$,$1$,$2$,$-1$ and $-10$. If you activate the data extraction (flag value $\neq 0$)
+in the \file{driver} file, the execution of \command{divadoall} will run the \command{divaselectorODV4} automatically, including
+interpolation to the levels specified in {\tt contour.depth}. Data will be extracted from the ODV spreadsheat file(s) specified in
+\file{datasource}. Command \command{divaselectorODV4} will recognises if the data export to ODV file was done with depths (in meters)
+or it was done with pressure (in dbar) vertical coordinate, you can either choose to map it as if they were meters or apply 
+the \citet{SAUNDERS81} correction. Choose flag $=-1$ to use pressure coordinate and assume they are meters, and flag value $=-10$ 
+to use pressure coordinates and transform to meters by using the Saunders approach.
+
+If you choose the flag $=2$, the weighting option will be activated. Particularly suited for time series or in other cases of overabundant 
+data in some limited spatial and temporal zones.
 
 If there is a \file{qflist} file, the selection with \file{divaselectorODV4} will only use those measurements for which the quality flag is one of those found in the file \file{qflist}. In the absence of \file{qflist} (or if \file{qflist} is empty), no quality flag analysis is done and all data taken.
 
