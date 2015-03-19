@@ -689,12 +689,17 @@ Other solution consists of recompiling with lower \texttt{nrea} value (see probl
 \subsubsection{\question}
 %--------------------------------------
 
-An application has opened one or several files located in the directory you want to (re)move, so that it is impossible to perform the operation.
+1. An application has opened one or several files located in the directory you want to (re)move, so that it is impossible to perform the operation.
+2. You are looking into diva temporary subdirectories with an explorer while running. In this case, an error message like this one can appear: 
+
+\begin{verbatim}
+mv: cannot move 'output' to 'workexerr/output': Permission denied}
+\end{verbatim}
 
 \subsubsection{\answer}
 %--------------------------------------
 
-Simply close the application(s) that open the files of the concerned directory.
+Simply close the application(s) that open/explore the files of the concerned directory.
 
 
 \section{Solved problems}
