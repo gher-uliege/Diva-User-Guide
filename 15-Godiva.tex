@@ -763,11 +763,26 @@ variables, you can proceed by steps (just changing the \file{varlist}).
 \item {\bf Gnuplot plots}: Possible flag values are $0$ and $1$. Activate this action for a quick visualization (and assessment) of the climatology production, {\tt gnuplot} executions can be included in the production process.\par 
 There are a few controls you can apply for these gnuplot plots:
 \begin{itemize}
-\item[*] \file{VAR.bounds}: contains the lower and upper bounds during the plotting for the variable {\tt VAR} (which is one of the variable names found in {\tt varlist}) 
+\item[*] \file{VAR.bounds}: contains the lower and upper bounds during the plotting for the variable {\tt VAR} 
+(which is one of the variable names found in {\tt varlist}), see example \ref{VARboundsexp1}
+\begin{center}
+\begin{exfile}[H] %[htpb]
+\begin{footnotesize}
+\begin{verbatim}
+# lower bound
+0
+# upper bound
+30
+\end{verbatim}
+\end{footnotesize}
+\caption{\file{VAR.bounds}}
+\label{VARboundsexp1}
+\end{exfile}
+\end{center}
 \item[*] \file{VAR.pal}: contains the color palette for the same variable.
 \item[*] \file{plotboundingbox.dat}: contains the box for plotting. This is typically used to plot only the region of interest, without overlapping regions with other climatologies (the numerical fields include the overlapping regions, only the plotting is limited with the \file{plotboundingbox.dat} file).
 \end{itemize}
-{\bf Note}: the gnuplot colorbars use a scale that is actually remapped to the bounds found in {\tt VAR.bound}. Example:
+{\bf Note}: the gnuplot colorbars use a scale that is actually remapped to the bounds found in \file{VAR.bounds}. Example:
 if your colorbar definition goes from 0 to 10 and the {\tt VAR} bounds are from 0 and 100, a value of 50 in the variable analysed will use the color found in the colorbar definition at value 5. To help you designing a specially adapted color bar lets say for salinity, it is therefore a good idea to define the colorbar with the same bounds as those in \file{VAR.bounds}.
 
 {\bf Note}: for adapting the color palette, file \file{gnuplotcolornames} contains a list of pre-existing colors and their hexadecimal codes you can use instead of names.
