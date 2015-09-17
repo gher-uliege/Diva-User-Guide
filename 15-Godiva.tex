@@ -79,7 +79,7 @@ Salinity
 \begin{itemize}
 \item In \file{yearlist}, each time period must be in an eight digits number such as $yyyyzzzz$ where $yyyy$ is the start year and $zzzz$ the end year time period.
 \item  In \file{monthlist}, each time period must be in a four digits number such as $mmnn$ where $mm$ is the start month and $nn$ the last month numbers.
-\item In \file{monthlist}, if the first month is greater than the second (ex. 1202), the next year is considered for months after december (ex. 01 and 02).
+\item In \file{monthlist}, if the first month is greater than the second (ex. 1202), the previous year is considered for months before January (ex. 12).
 \end{itemize}
 \vspace{.25cm} 
 \end{minipage}
@@ -173,8 +173,34 @@ while the characteristic time scale is fixed to 7 days. This option is particula
 
 \subsection{Data files}
 
-They must be ODV SeaDataNet compliant: \url{https://www.bodc.ac.uk/data/codes\_and\_formats/odv\_format/}
+\subsubsection{General Format}
 
+They \textbf{must} be ODV SeaDataNet compliant: \url{https://www.bodc.ac.uk/data/codes\_and\_formats/odv\_format/}
+
+\begin{itemize}
+ \item \textbf{Date column} : it is advised to use the most complete date format ``yyyy-mm-ddThh:mm:ss.sss'', or at least ``yyyy-mm-ddT''.
+
+ \item \textbf{Detection of profiles} : the ODV profiles should always allow a combination "edmo code - local cdi" unique for each 
+ profile, and if these columns are absent (e.g. non-SDN profiles),
+DIVA uses a combination of "cruise", "station", ``longitude'' and ``latitude''. In a single profile, the time has to be constant, otherwise 
+you will get a warning and your profile will be split.
+
+\end{itemize}
+
+\subsubsection{Profiles and time series}
+
+Profiles and time series have to be in separated ODV files.
+
+\subsubsection{Missing value}
+
+In the comment lines, you can specify the input missing value as follows (not necessarily the same as the output exclusion value defined 
+in \file{param.par}) :
+
+\begin{verbatim}
+ //<MissingValueIndicators>NaN</MissingValueIndicators>
+\end{verbatim}
+
+where ``NaN'' is the missing value.
 
 \subsection{Inputs for input data preparation actions}
 
