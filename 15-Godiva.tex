@@ -817,3 +817,31 @@ if your colorbar definition goes from 0 to 10 and the {\tt VAR} bounds are from 
 {\bf Note}: If you use \command{divadoall} (or \command{divaselectorODV4}) to extract data and create data input files, columns 5, 6 ,7 and 8 contain respectively groups years, months, days and hours (1 for the first year in the selection etc).
 \end{itemize}
 
+\section{Climatologies postprocessing}
+
+\subsection{Cutting the 4D-NetCDF domain}
+
+\begin{enumerate}
+ \item Create a contour file in JRA4/Climatology/input such as \file{cutNCDF.cont}, see example file \ref{cutNCDFexp} for a square-shaped contour. First line : number of contours 
+ (has to be 1 for the moment), second line : number of points, other lines : lon and lat of the successive contour points.
+ \item Edit divacutNCDF : the first lines (USER SETTINGS) allow you to define the original 4D netcdf file, the contour file 
+ and the output 4D cut file.
+ \item Launch \command{divacutNCDF} in JRA4/Climatology.
+\end{enumerate}
+
+\begin{center}
+\begin{exfile}[H] %[htpb]
+\begin{footnotesize}
+\begin{verbatim}
+1
+4
+33.00 40.00
+33.00 48.00
+45.00 48.00
+45.00 40.00
+\end{verbatim}
+\end{footnotesize}
+\caption{\file{cutNCDF.cont}}
+\label{cutNCDFexp}
+\end{exfile}
+\end{center}
