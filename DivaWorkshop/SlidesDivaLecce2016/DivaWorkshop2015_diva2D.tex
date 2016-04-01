@@ -1,0 +1,545 @@
+\input{GHERheader2015.tex}
+\parindent 0cm
+
+\author[Alexander Barth, Aida Alvera-Azc\'{a}rate, Mohamed~Ouberdous, Charles~Troupin, Sylvain~Watelet \& Jean-Marie~Beckers]{Alexander Barth, Aida Alvera-Azc\'{a}rate, Mohamed~Ouberdous,\\
+ Charles~Troupin, Sylvain~Watelet \& Jean-Marie~Beckers}
+  
+\title[]{\diva workshop 2015}
+\subtitle{\diva in 2 dimensions}
+\date{}
+\begin{document}
+
+\maketitlepage % defined in GHERheader2013.tex
+
+%--------------------------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Interpolation 150 years ago\ldots}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.55\columnwidth]{oldschool_interp}
+\end{figure}
+
+
+\end{frame}
+%--------------------------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{What is \diva?}
+
+\begin{columns}[totalwidth=\textwidth]
+\column{.5\textwidth}
+\textbf{D}ata\\
+\textbf{I}nterpolating\\
+\textbf{V}ariational\\
+\textbf{A}nalysis
+\column{.5\textwidth}
+\begin{figure}[H]
+\centering
+\includegraphics[width=.9\columnwidth]{Logo_diva_1500}
+\end{figure}
+\end{columns}
+
+\vspace*{.5cm}
+
+\begin{description}
+\item[What is \diva?]
+\begin{itemize}
+\footnotesize
+\item[]
+\item a method to produce gridded fields
+\item a set of bash scripts and Fortran programs
+\item[]
+\end{itemize}
+
+\item[What is not \diva?]
+
+\begin{itemize}
+\footnotesize
+\item[]
+\item a plotting tool 
+\item a \textit{black-box}
+\item a numerical model
+\end{itemize}
+
+\end{description}
+\end{frame}
+%----------------------------------------------------------------------------------------------------
+
+\begin{frame}[t]
+\footnotesize
+\frametitle{A little bit of history}
+
+\begin{description}
+
+\item<1->[Code development] (1990-1996)
+
+\onslide*<1>{
+\begin{itemize}
+\scriptsize
+\item Variational Inverse Method (VIM) \cita{(Brasseur, 1991, JMS, JGR)}
+\item cross-validation  \cita{(Brankart and Brasseur, 1996, JAOT)}
+\item error computation \cita{(Brankart and Brasseur, 1998, JMS;\\
+Rixen et al., 2000, OM)}
+\end{itemize}
+}
+
+
+\item<2->[2D-analysis] (2006-2007)
+
+\onslide*<2>{
+\begin{itemize}
+\scriptsize
+\item set of bash scripts  (\texttt{divamesh}, \texttt{divacalc}, \ldots)
+\item Fortran executables
+\item parameters optimization tools
+\item Matlab/Octave scripts for plotting
+\end{itemize}
+}
+
+\item<3->[3D-analysis] (2007-2008)
+
+\onslide*<3>{
+\begin{itemize}
+\scriptsize
+\item superposition of 2D layers
+\item automated treatment and optimization
+\item stability constraint \cita{(Ouberdous et al.)}
+\end{itemize}
+}
+
+
+\item<4->[4D-analysis ] (2008-2009)
+
+\onslide*<4>{
+\begin{itemize}
+\scriptsize
+\item start from \textsf{ODV} spreadsheet
+\item \textit{detrending} (with J.~Carstensen, DMU)
+\item NetCDF 4-D climatology files
+\end{itemize}
+}
+
+\item<5->[Web tools ] \hspace{1cm}
+
+\onslide*<5>{
+\begin{itemize}
+\scriptsize
+\item On-line analysis \cita{(Barth et al., 2010, Adv. Geosci.)}\\
+\url{http://gher-diva.phys.ulg.ac.be/web-vis/diva.html}
+\item Climatology viewer: \url{http://gher-diva.phys.ulg.ac.be/web-vis/clim.html}
+\end{itemize}
+}
+
+
+\item<6->[2011-2012] \hspace{1cm}
+
+\onslide*<6>{
+\begin{itemize}
+\scriptsize
+\item multivariate approach
+\item data transformation tools 
+\item 4-D graphical interface
+\item implementation of \textit{source/decay} terms
+\item advanced error computation  \cita{(Troupin et al., 2012, OM)}
+\end{itemize}
+}
+
+\item<7->[On-going:] \hspace{1cm}
+
+\onslide*<7>{
+\begin{itemize}
+\item Modernisation of the code structure
+\item n-dimensional generalisation 
+\item Spatially correlated observations errors 
+\item optimized and approximate error calculations (clever poor man)
+\item Analysis at a specific distance from bottom
+\item ... \Coffeecup
+\end{itemize}
+}
+
+\item<8->[General:] \fbox{user-driven developments}
+
+
+\end{description}		
+\end{frame}
+
+%--------------------------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{\diva related tools}
+
+\begin{description}
+\item[\diva:] base tool (command line), 2D analysis
+\item[\textsf{Godiva}:] automatic repetition of 2D analysis  
+\item[\diva-on-web:] 2D analysis with your data on our server  
+\item[OceanBrowser:] visualisation tool of 4D NetCDF files
+\item[\textsf{divand}:] multi-dimension analysis (lon, lat, time, depth)
+\item[\textsf{divaformatlab}:] wrapper to use in matlab
+\end{description}
+\end{frame}
+
+%---------------------------------------------------------------------
+\begin{frame}[t]
+\frametitle{DIVA: Data-Interpolating Variational Analysis}
+\footnotesize
+
+\begin{figure}[H]
+\textcolor{blue}{$N_{d}$ data points $d_{i}$ $\bullet$}\quad $\rightarrow$ \quad{\textcolor{gray}{gridded field}}\\
+\centering
+\includegraphics[width=.4\textwidth,viewport=166   289   440   564]{gridding}
+\end{figure}
+
+\important{Formulation:} minimize cost function $J[\varphi]$
+
+
+\begin{eqnarray*}
+& &\min {J}[\varphi] = \sum_{i=1}^{N}\mu_i \left[d_{i}-\varphi(x_{i},y_{i})\right]^{2} \onslide<2->{\qquad\textcolor{gray}{\textrm{data--analysis misfit}}}\\
+	  &+& \int_{{D}}\left(
+{\nablab}{\nablab}\varphi : {\nablab}{\nablab}\varphi + { \alpha_{1}}
+{\nablab}\varphi \cdot {\nablab}\varphi + \alpha_{0} \varphi^{2} \right) \ddiff {D} \onslide<2->{\qquad\textcolor{gray}{\textrm{field regularity}}}
+\end{eqnarray*}
+
+\end{frame}
+
+
+%-----------------------------------------------------------------------------------------
+\begin{frame}[t]
+\frametitle{Analysis parameters are related to data}
+\footnotesize
+
+Non-dimensional version:
+
+\begin{eqnarray}
+L  = \textrm{length scale} &\rightarrow & \tilde{\nablab} = L \nablab\\
+                     	   &\rightarrow & D = L^2 \tilde{D}
+\end{eqnarray}
+
+\onslide*<2->{
+\begin{eqnarray*}
+\tilde{J}[\varphi]&=&\sum_{i=1}^{N}\textcolor<5>{blue}{\mu_i L^2} [d_{i}-\varphi(x_{i},y_{i})]^{2}\\ 
+&+&  \int_{\tilde{D}}\left(
+ \tilde{\nablab}\tilde{\nablab}\varphi : \tilde{\nablab}\tilde{\nablab}\varphi + { \textcolor<4>{blue}{\alpha_{1}} L^2}
+\tilde{\nablab}\varphi \cdot \tilde{\nablab}\varphi + \textcolor<3>{blue}{\alpha_{0}} L^4 \varphi^{2} \right) \ddiff \tilde{D}\nonumber
+\end{eqnarray*}
+}
+
+\onslide*<3-5>{
+\begin{itemize}
+\item<3-> $\alpha_0$ \fleche $L$ for which data-analysis misfit $\simeq$ regularity term: \hspace*{\fill} $\alpha_0 L^4 = 1$
+
+\item<4-> $\alpha_1$ \fleche influence of gradients: \hspace*{\fill}  $\alpha_1 L^2 = 2 \xi, \qquad \xi=1$
+
+\item<5-> $ \mu_i L^2$ \fleche weight on data: \hspace*{\fill} 
+$\displaystyle \mu_i L^2= 4 \pi \frac{\textrm{signal}}{\textrm{noise}_{i}}$
+\end{itemize}
+}
+
+\onslide*<6>{
+Coefficients $\alpha_0$, $\alpha_1$ and $\mu_i$ related to
+\begin{enumerate}
+\item Correlation length $L$
+\item Signal-to-noise $\snr$
+\item Observational noise standard deviation $\noise_i^2$
+\end{enumerate}
+}
+\end{frame}
+
+%---------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Main analysis parameters}
+
+\begin{columns}[totalwidth=\textwidth]
+\column{.5\textwidth}
+\important{Correlation length $L$:}
+
+\begin{itemize}
+\footnotesize
+\item[]
+\item Measure of the \textit{influence} of data points
+\item Estimated by a least-square fit of the covariance function
+\item[]
+\end{itemize}
+
+\important{Signal-to-noise ratio $\snr$:}
+
+\begin{itemize}
+\footnotesize
+\item[]
+\item Measure of the \textit{confidence} in data 
+\item Estimated with Generalized Cross Validation techniques
+\end{itemize}
+
+\column{.5\textwidth}
+
+
+
+\end{columns}
+
+
+\end{frame}
+
+
+%-------------------------------------------------------------------------------§
+\begin{frame}
+\footnotesize
+\frametitle{Minimization with a finite-element method}
+
+Field regularity \fleche plate bending problem \fleche finite-element solver
+
+%Belgian specialties: finite-element mesh
+\begin{figure}[H]
+\centering
+\includegraphics[width=.3\textwidth,viewport=165 273 429 567]{mesh_northsea}\includegraphics[width=.3\textwidth,viewport=133 272 448 568]{mesh_baltic}\includegraphics[width=.3\textwidth,viewport=138 272 443 568]{mesh_adriatic}
+\end{figure}
+\textbf{Advantages:}
+\begin{itemize}
+\item boundaries taken into account
+\item numerical cost (almost independent on data number)
+\item no \textit{a posteriori} masking (except if based on error level) 
+\end{itemize}
+
+\end{frame}
+
+%----------------------------------------
+
+\begin{frame}
+\frametitle{Minimization with a finite-element method}
+\footnotesize
+
+%\begin{columns}[totalwidth=\textwidth]
+%\column{.6\textwidth}
+
+\onslide*<1>{
+
+\begin{equation}
+\textrm{Triangular FE only covers sea:}\qquad J[\varphi] = \sum_{e=1}^{N_{e}}J_{e}(\varphi_{e})
+\label{eq:split}
+\end{equation}
+
+\begin{equation}
+\textrm{In each element: } \varphi_{e}(\mathbf{r_e})=\mathbf{q_e}^{T}\mathbf{s}(\mathbf{r_e}) \quad \textrm{with} \left\{ \begin{array}{ll}
+         \mathbf{s} & \rightarrow \mbox{shape functions}\\
+         \mathbf{q} & \rightarrow  \mbox{\important{connectors}}\\
+         \mathbf{r_e} & \rightarrow \mbox{position}
+         \end{array} \right.
+\label{eq:connectors}
+\end{equation}
+
+     
+     
+\eqref{eq:connectors} in \eqref{eq:split} + variational principle
+\begin{equation}
+J_{e}(\mathbf{q_e}) = \mathbf{q_e}^{T}\mathbf{K_e}\mathbf{q_e}-2\mathbf{q_e}^{T} \mathbf{g_{e}}+\sum_{i=1}^{N_{d_{e}}}\mu_{i}d_{i}
+\label{eq:elements}
+\end{equation}
+
+\[ \quad\textrm{where }\left\{ \begin{array}{ll}
+         \mathbf{K_e} & \rightarrow \mbox{local stiffness matrix}\\
+         \mathbf{g} & \rightarrow  \mbox{vector depending on local data}
+         \end{array} \right.
+\]
+}
+      
+      
+\onslide*<2>{
+
+\tikzstyle{na} = [baseline=-.5ex]
+\begin{align}
+\textrm{On the whole domain:}&&   J(\mathbf{q}) = \mathbf{q}^{T}\mathbf{K}\mathbf{q}-2\mathbf{q}^{T}\mathbf{g}+\sum_{i=1}^{N_{d}}\mu_{i}d_{i} &  \\
+\textrm{Minimum:}&&  \mathbf{q}=\mathbf{K}^{-1}\mathbf{g}    & \\
+&&    \tikz[baseline]{
+            \node[fill=blue!30,anchor=base] (t1)
+            {$\mathbf{q}$};
+            } = 
+        \tikz[baseline]{
+            \node[fill=gray!30,anchor=base] (t2)
+            {$\mathbf{K^{-1}}$};
+        } 
+        \tikz[baseline]{
+            \node[fill=green!20,anchor=base] (t3)
+        {$\mathbf{g}$};
+        } & 
+\end{align}
+
+\begin{itemize}
+\scriptsize
+    \item Stiffness matrix
+        \tikz[na]\node[coordinate] (n1) {};
+    \item Connectors (new unknowns)
+        \tikz[na]\node [coordinate] (n2) {};
+    \item Charge vector
+        \tikz[na]\node [coordinate] (n3) {};    
+\end{itemize}
+       
+\begin{tikzpicture}[overlay]
+\path[-] (n1) edge [out=0, in=-90] (t1);
+\path[-] (n2) edge [out=0, in=-90] (t2);
+\path[-] (n3) edge [out=0, in=-90] (t3);
+\end{tikzpicture}
+
+%$\mathbf{K}$ \fleche size proportional to $N_{\mathrm{dof}}$\\
+%$\mathbf{K}^{-1}$ \fleche $N_{\mathrm{dof}}^{5/2}$ op. 
+
+\begin{align*}
+\textrm{Mapping of data on FEM} &\rightarrow & \textrm{transfer operator $\mathbf{T_{2}}$}&\rightarrow &\mathbf{g}=\mathbf{T_2}(\mathbf{r})\mathbf{d} \label{eq:T2}\\
+\textrm{Solution at any location} &\rightarrow & \textrm{transfer operator $\mathbf{T_{1}}$}&\rightarrow &\boldsymbol{\varphi}(\mathbf{r})=\mathbf{T_1}(\mathbf{r})\mathbf{q}
+%\label{eq:T1}
+\end{align*}
+
+
+\begin{align*}
+\textrm{Results obtained at any location} \rightarrow  \boldsymbol{\varphi} = \mathbf{T_1}(\mathbf{r})\mathbf{K}^{-1}\mathbf{T_2}(\mathbf{r}) \mathbf{d} & &
+%\label{eq:solution2}
+\end{align*}
+
+}
+\end{frame}
+
+%--------------------------------------------------------------------------------------------------------
+
+\begin{frame}[t]
+\frametitle{Diva Cocktail Recipe}
+
+\begin{columns}[totalwidth=1.\textwidth]
+\column{.65\textwidth}
+\important{Ingredients:}
+\onslide*<1>{
+\begin{itemize}
+\item 1 1/2 oz vodka
+\item 1/2 oz passion-fruit juice
+\item 1/2 oz lime juice
+\item 1 tbsp cherry juice
+\item fill with soda 
+\end{itemize}
+} 
+
+\onslide*<2>{
+\begin{itemize}
+\item Smoothness \tikz[na] \coordinate (s-smooth);
+\item Observation constraint \tikz[na] \coordinate (s-obs); 
+\item Behaviour constraint \tikz[na] \coordinate (s-behaviour);
+\end{itemize}
+} 
+
+\column{.35\textwidth}
+
+\tikzstyle{background grid}=[draw, black!50,step=1cm]
+\begin{tikzpicture}%[show background grid]
+\node [inner sep=0pt,above right] 
+{\includegraphics[width=.8\columnwidth]{cocktail}};
+            % show origin
+            %\fill (0,0) circle (2pt);
+            % define destination coordinates
+            \path (1.5,5.75) coordinate (smooth)
+                  (0.4,1) coordinate (behaviour)
+                  (0.4,3) coordinate (obs);
+\end{tikzpicture}
+
+
+\end{columns}
+\onslide*<2>{
+\begin{tikzpicture}[overlay]
+        \path[-,black,thick] (s-smooth) edge (smooth);
+        \path[-,black,thick] (s-obs) edge  (obs);
+        \path[-,black,thick] (s-behaviour) edge  (behaviour);
+\end{tikzpicture}
+}
+\end{frame}
+
+%---------------------------------------------------------------------------------------------------
+\begin{frame}[t]
+
+\frametitle{Want to use \diva?}
+
+\onslide*<1>{Playing\ldots}
+\onslide*<2>{With your own data\ldots} 
+\onslide*<3>{For serious work: \begin{description}
+\item[2D version] (for production), open source, GPL 
+\item[nD version] (for research), open source, GPL
+\end{description}
+}
+
+%\begin{overlayarea}{\textwidth}{6.5cm}
+\begin{figure}
+\centering
+\includegraphics<1>[width=.625\paperwidth]{diva_demo}
+\includegraphics<2>[width=.8\paperwidth]{divaonweb}
+\includegraphics<3>[width=.75\paperwidth]{divascreen}
+\end{figure}
+%\end{overlayarea}
+
+\onslide*<1>{\footnotesize \url{http://data-assimilation.net/Tools/divand_demo/html/}}
+\onslide*<2>{\footnotesize \url{http://gher-diva.phys.ulg.ac.be/web-vis/diva.html} or ODV or matlab wrapper}
+\onslide*<3>{\footnotesize \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/DIVA}}
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------------------
+\begin{frame}[t]
+\frametitle{Running \diva in 2D: input files}
+
+\begin{overlayarea}{\textwidth}{2cm}
+\begin{enumerate}
+\item<1-> \file{data.dat}: contains the observations \hfill \textcolor{gray}{x|y|value}
+\item<2-> \file{coast.cont}: delimits land and sea \hfill \textcolor{gray}{(coastline or isobaths)}
+\item<3-> \file{param.par}: analysis parameters \hfill \textcolor{gray}{$L$, $\lambda$, resolution, \ldots}
+\end{enumerate}
+\end{overlayarea}
+
+\begin{figure}
+\includegraphics<1>[height=.6\textheight]{datadat}
+\includegraphics<2>[height=.6\textheight]{coastcont}
+\includegraphics<3>[height=.6\textheight]{parampar}
+
+\end{figure}
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------------------
+\begin{frame}[t]
+\frametitle{Workflow in 2D}
+
+\begin{overlayarea}{\textwidth}{.5cm}
+\onslide*<1>{Select region of study}
+\onslide*<2>{Extract \important{topography}, for example via {\tiny{\url{http://gher-diva.phys.ulg.ac.be/web-vis/diva.html}}}}
+\onslide*<3>{Generate \important{contour}}
+\onslide*<4>{Extract \important{data}}
+\onslide*<5>{Evaluate analysis \important{parameters}}
+\onslide*<6>{Create finite-element\important{ mesh}}
+\onslide*<7>{Generate \important{analysis}}
+\onslide*<8>{Generate \important{error} field}
+\end{overlayarea}
+
+\begin{figure}
+\centering
+\includegraphics<1>[width=.99\textwidth]{example2D_1_bs}
+\includegraphics<2>[width=.89\textwidth]{example2D_2_bs}
+\includegraphics<3>[width=.99\textwidth]{example2D_3_bs}
+\includegraphics<4-5>[width=.99\textwidth]{example2D_4_bs}
+\includegraphics<6>[width=.99\textwidth]{example2D_5_bs}
+\includegraphics<7>[width=.99\textwidth]{example2D_6_bs}
+\includegraphics<8>[width=.99\textwidth]{example2D_7_bs}
+\end{figure}
+
+\end{frame}
+% 
+
+\begin{frame}
+\frametitle{When to use 2D version}
+\begin{itemize}
+\item occasional use
+\item 2D fields like benthic properties
+\item for implementation of special features by your own (eg multiplicative bias correction, special background field creation based on habitats 
+\item ...
+\end{itemize}
+otherwise: use 3D or 4D version directly
+\end{frame}
+
+%-------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[c]
+\frametitle{Next\ldots }
+\huge
+\diva in 4 dimensions
+
+\end{frame}
+
+
+\end{document}
