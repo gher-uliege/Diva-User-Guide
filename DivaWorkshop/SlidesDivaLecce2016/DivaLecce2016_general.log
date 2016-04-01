@@ -1,18 +1,18 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex 2015.3.13)  9 OCT 2015 14:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.19)  1 APR 2016 16:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**DivaWorkshop2015_general.tex
-(./DivaWorkshop2015_general.tex
-LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 79 languages loaded.
+**DivaLecce2016_general.tex
+(./DivaLecce2016_general.tex
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (./GHERheader2015.tex
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasercs.sty
-Package: beamerbasercs 2013/12/25 (rcs-revision 31cc758a62ae)
+Package: beamerbasercs 2015/03/08 (rcs-revision 368aa9ba9d38)
 )
-Document Class: beamer 2013/12/02 3.33 A class for typesetting presentations (r
-cs-revision 332bfd3ce558)
+Document Class: beamer 2015/01/05 3.36 A class for typesetting presentations (r
+cs-revision 8a39122e1f63)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasemodes.sty
 Package: beamerbasemodes 2013/09/03 (rcs-revision 768f2d98ca64)
 \beamer@tempbox=\box26
@@ -78,7 +78,7 @@ Package ifpdf Info: pdfTeX in PDF mode is detected.
 Package: beamerbaseoptions 2013/03/10 (rcs-revision 47431932db0d)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 ))
 \beamer@paperwidth=\skip42
@@ -108,14 +108,14 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@dimlist=\toks15
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
@@ -123,7 +123,7 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 94.
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -216,7 +216,7 @@ Package xcolor Info: Driver file: pdftex.def on input line 225.
 Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
-Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen139
 \extrarowheight=\dimen140
 \NC@list=\toks23
@@ -238,7 +238,7 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def
-File: dvipsnam.def 2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
+File: dvipsnam.def 2014/10/14 v3.0j Driver-dependent file (DPC,SPQR)
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2010/04/11 v3.0.0 (rcs-revision 1.7)
@@ -492,7 +492,7 @@ Package: beamerbaserequires 2010/05/01  (rcs-revision efa082c6111d)
 Package: beamerbasecompatibility 2012/05/01  (rcs-revision 67c48b3b652d)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasefont.sty
-Package: beamerbasefont 2013/10/18  (rcs-revision 72f39e01808a)
+Package: beamerbasefont 2015/01/05  (rcs-revision b4b4bee242e2)
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
@@ -543,7 +543,7 @@ Package: beamerbasesection 2013/06/07  (rcs-revision 60b9fe0f342f)
 \c@subsubsection=\count133
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseframe.sty
-Package: beamerbaseframe 2013/10/02  (rcs-revision cdc8e9a3aaac)
+Package: beamerbaseframe 2014/02/20  (rcs-revision 4b8ceeeff434)
 \beamer@framebox=\box40
 \beamer@frametitlebox=\box41
 \beamer@zoombox=\box42
@@ -560,7 +560,7 @@ Package: beamerbaseframe 2013/10/02  (rcs-revision cdc8e9a3aaac)
 \c@framenumber=\count137
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseverbatim.sty
-Package: beamerbaseverbatim 2012/08/30  (rcs-revision dfdb135076b3)
+Package: beamerbaseverbatim 2015/01/05  (rcs-revision 431510bb5890)
 \beamer@verbatimfileout=\write4
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseframesize.sty
@@ -576,21 +576,21 @@ Package: beamerbaseframecomponents 2013/10/18  (rcs-revision 5cf6c5555a45)
 \beamer@footins=\box44
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasecolor.sty
-Package: beamerbasecolor 2010/06/06  (rcs-revision d1a9b48be06d)
+Package: beamerbasecolor 2015/02/21  (rcs-revision d944b04ee2d5)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasenotes.sty
 Package: beamerbasenotes 2012/12/19  (rcs-revision 1686da3db3c9)
 \beamer@frameboxcopy=\box45
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetoc.sty
-Package: beamerbasetoc 2013/05/23  (rcs-revision 0fdf5bc43be8)
+Package: beamerbasetoc 2015/03/08  (rcs-revision 7270298bbaae)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetemplates.sty
 Package: beamerbasetemplates 2010/05/01  (rcs-revision efa082c6111d)
 \beamer@sbttoks=\toks32
 
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseauxtemplates.sty
-Package: beamerbaseauxtemplates 2013/09/04  (rcs-revision 4ac715c499d0)
+Package: beamerbaseauxtemplates 2014/06/30  (rcs-revision 580088513a67)
 
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseboxes.sty
 Package: beamerbaseboxes 2012/05/13  (rcs-revision 56972908a390)
@@ -607,10 +607,10 @@ Package: beamerbaseboxes 2012/05/13  (rcs-revision 56972908a390)
 \beamer@blockheadheight=\dimen177
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaselocalstructure.sty
-Package: beamerbaselocalstructure 2013/09/04  (rcs-revision 4ac715c499d0)
+Package: beamerbaselocalstructure 2014/09/10  (rcs-revision 393f6dcff371)
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/enumerate.sty
-Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
+Package: enumerate 2014/10/28 v3.00 enumerate extensions (DPC)
 \@enLab=\toks33
 )
 \c@figure=\count139
@@ -619,7 +619,7 @@ Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
 \belowcaptionskip=\skip53
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasenavigation.sty
-Package: beamerbasenavigation 2013/10/05  (rcs-revision 62be157fe783)
+Package: beamerbasenavigation 2015/02/27  (rcs-revision 923f4bf87efa)
 \beamer@section@min@dim=\dimen178
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetheorems.sty
@@ -684,7 +684,7 @@ LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
-Package: amsthm 2004/08/06 v2.20
+Package: amsthm 2015/03/04 v2.20.2
 \thm@style=\toks39
 \thm@bodyfont=\toks40
 \thm@headfont=\toks41
@@ -714,7 +714,7 @@ Package: beamercolorthemedefault 2012/12/19  (rcs-revision 1686da3db3c9)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/inner/beamerinnerthemede
 fault.sty
-Package: beamerinnerthemedefault 2013/10/15  (rcs-revision 65cb471f9634)
+Package: beamerinnerthemedefault 2014/06/30  (rcs-revision 580088513a67)
 \beamer@dima=\dimen188
 \beamer@dimb=\dimen189
 )
@@ -727,35 +727,35 @@ essionalfonts.sty
 Package: beamerfontthemeprofessionalfonts 2010/06/17  (rcs-revision d02a7cf4d8a
 e)
 ) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2014/03/24 3.9k The Babel package
+Package: babel 2014/09/25 3.9l The Babel package
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2012/08/20 v3.3p English support from the babel system
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2014/03/24 3.9k Babel common definitions
+File: babel.def 2014/09/25 3.9l Babel common definitions
 \babel@savecnt=\count154
 \U@D=\dimen190
-LaTeX Info: Redefining \textlatin on input line 1428.
+LaTeX Info: Redefining \textlatin on input line 1431.
 )
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2014/04/30 v1.2b Input encoding file
+Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks45
 \inpenc@posthook=\toks46
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+File: utf8.def 2014/09/29 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
-File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+File: t1enc.dfu 2014/09/29 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00AB (decimal 171)
@@ -905,7 +905,7 @@ Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
-File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+File: ot1enc.dfu 2014/09/29 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00B8 (decimal 184)
@@ -936,7 +936,7 @@ Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
-File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+File: omsenc.dfu 2014/09/29 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
    defining Unicode char U+00B7 (decimal 183)
@@ -966,10 +966,10 @@ Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2014/04/23 v1.8e multicolumn formatting (FMi)
+Package: multicol 2015/03/31 v1.8m multicolumn formatting (FMi)
 \c@tracingmulticols=\count155
 \mult@box=\box53
 \multicol@leftmargin=\dimen191
@@ -1032,7 +1032,7 @@ LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
 (Font)                  U/wasy/m/n --> U/wasy/b/n on input line 90.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
-Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
@@ -1144,15 +1144,15 @@ File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.0 (rcs-revision 1.2)
 \lst@maxwidth=\dimen227
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2014/03/04 1.5c (Carsten Heinz)
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 \c@lstnumber=\count184
 \lst@skipnumbers=\count185
 \lst@framebox=\box87
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2014/03/04 1.5c listings configuration
+File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
-Package: listings 2014/03/04 1.5c (Carsten Heinz)
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Package: fancybox 2010/05/15 1.4
@@ -1271,8 +1271,8 @@ Package hyperref Info: Option `pdffitwindow' set `true' on input line 72.
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 77.
 
-) (./DivaWorkshop2015_general.aux)
-\openout1 = `DivaWorkshop2015_general.aux'.
+) (./DivaLecce2016_general.aux)
+\openout1 = `DivaLecce2016_general.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
 LaTeX Font Info:    ... okay on input line 6.
@@ -1370,9 +1370,9 @@ LaTeX Info: Redefining \ref on input line 6.
 LaTeX Info: Redefining \pageref on input line 6.
 LaTeX Info: Redefining \nameref on input line 6.
 
-(./DivaWorkshop2015_general.out) (./DivaWorkshop2015_general.out)
+(./DivaLecce2016_general.out) (./DivaLecce2016_general.out)
 \@outlinefile=\write6
-\openout6 = `DivaWorkshop2015_general.out'.
+\openout6 = `DivaLecce2016_general.out'.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bas
@@ -1402,7 +1402,7 @@ Dictionary: translator-theorem-dictionary, Language: English
 LaTeX Info: Redefining \includegraphics on input line 6.
 \c@lstlisting=\count193
 
-(./DivaWorkshop2015_general.nav)
+(./DivaLecce2016_general.nav)
 LaTeX Font Info:    Try loading font information for T1+phv on input line 8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
@@ -1448,12 +1448,12 @@ File: ./figures/Logo_Stareso.jpg Graphic file (type jpg)
 Package pdftex.def Info: ./figures/Logo_Stareso.jpg used on input line 8.
 (pdftex.def)             Requested size: 32.77625pt x 17.04341pt.
 
-<./figures/background3.jpg, id=19, 1521.74155pt x 1068.7817pt>
-File: ./figures/background3.jpg Graphic file (type jpg)
+<./figures/Lecce1.jpg, id=19, 1204.5pt x 683.55376pt>
+File: ./figures/Lecce1.jpg Graphic file (type jpg)
 
-<use ./figures/background3.jpg>
-Package pdftex.def Info: ./figures/background3.jpg used on input line 8.
-(pdftex.def)             Requested size: 408.34474pt x 286.80478pt.
+<use ./figures/Lecce1.jpg>
+Package pdftex.def Info: ./figures/Lecce1.jpg used on input line 8.
+(pdftex.def)             Requested size: 505.39032pt x 286.80478pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
@@ -1467,16 +1467,15 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figures/background3.jpg>
- <./figures/gherlogo_transparent.PNG> <./figures/Logo_SeaDataNet_fond_transpare
-nt.png> <./figures/logo_ulg.PNG> <./figures/logo_emodnet.jpg> <./figures/Logo_S
-tareso.jpg>]
-<./figures/IMG_7335.JPG, id=31, 1204.5pt x 803.0pt>
-File: ./figures/IMG_7335.JPG Graphic file (type jpg)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figures/Lecce1.jpg> <./f
+igures/gherlogo_transparent.PNG> <./figures/Logo_SeaDataNet_fond_transparent.pn
+g> <./figures/logo_ulg.PNG> <./figures/logo_emodnet.jpg> <./figures/Logo_Stares
+o.jpg>]
+File: ./figures/Lecce1.jpg Graphic file (type jpg)
 
-<use ./figures/IMG_7335.JPG>
-Package pdftex.def Info: ./figures/IMG_7335.JPG used on input line 55.
-(pdftex.def)             Requested size: 304.21866pt x 202.80797pt.
+<use ./figures/Lecce1.jpg>
+Package pdftex.def Info: ./figures/Lecce1.jpg used on input line 55.
+(pdftex.def)             Requested size: 304.21866pt x 172.64029pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
@@ -1490,63 +1489,36 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [2
 
- <./figures/IMG_7335.JPG>] <./figures/stebelle.jpg, id=37, 108.405pt x 137.313p
-t>
-File: ./figures/stebelle.jpg Graphic file (type jpg)
-
-<use ./figures/stebelle.jpg>
-Package pdftex.def Info: ./figures/stebelle.jpg used on input line 55.
-(pdftex.def)             Requested size: 122.9164pt x 155.70244pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 55.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 55.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Try loading font information for U+wasy on input line 55.
-
-(/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
-File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
-)
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 55.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-55.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 55.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [3
-
- <./figures/stebelle.jpg>] <./figures/IMG_6061.JPG, id=45, 1129.21875pt x 752.8
-125pt>
+]
+<./figures/IMG_6061.JPG, id=36, 1129.21875pt x 752.8125pt>
 File: ./figures/IMG_6061.JPG Graphic file (type jpg)
 
 <use ./figures/IMG_6061.JPG>
 Package pdftex.def Info: ./figures/IMG_6061.JPG used on input line 91.
 (pdftex.def)             Requested size: 142.26378pt x 94.83649pt.
+LaTeX Font Info:    Try loading font information for U+msa on input line 91.
 
-<./figures/IMG_7268.JPG, id=46, 1129.21875pt x 752.8125pt>
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 91.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+wasy on input line 91.
+
+(/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
+File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
+)
+<./figures/IMG_7268.JPG, id=37, 1129.21875pt x 752.8125pt>
 File: ./figures/IMG_7268.JPG Graphic file (type jpg)
 
 <use ./figures/IMG_7268.JPG>
 Package pdftex.def Info: ./figures/IMG_7268.JPG used on input line 91.
 (pdftex.def)             Requested size: 142.26378pt x 94.83649pt.
 
-<./figures/Workshop2012.JPG, id=47, 1019.30812pt x 656.4525pt>
+<./figures/Workshop2012.JPG, id=38, 1019.30812pt x 656.4525pt>
 File: ./figures/Workshop2012.JPG Graphic file (type jpg)
 
 <use ./figures/Workshop2012.JPG>
@@ -1563,11 +1535,11 @@ File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  input line 91.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [4
+ [3
 
  <./figures/IMG_6061.JPG> <./figures/IMG_7268.JPG> <./figures/Workshop2012.JPG>
 ]
-<./figures/calvi_lighhouse.JPG, id=53, 517.18219pt x 1154.81438pt>
+<./figures/calvi_lighhouse.JPG, id=44, 517.18219pt x 1154.81438pt>
 File: ./figures/calvi_lighhouse.JPG Graphic file (type jpg)
 
 <use ./figures/calvi_lighhouse.JPG>
@@ -1584,11 +1556,31 @@ File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  input line 128.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [5
+ [4
 
  <./figures/calvi_lighhouse.JPG>]
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 239.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
- <use ./figures/gherlogo_transparent.PNG>
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+239.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 239.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [5
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
 239.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
@@ -1646,21 +1638,6 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  [9
 
 ]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-239.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 239.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [10
-
-]
 Overfull \hbox (15.36073pt too wide) detected at line 239
 [][]$[]$[][][][][][][][] $[]$[][][][][][]
  []
@@ -1676,43 +1653,43 @@ File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  input line 239.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [11
+ [10
 
 ]
-<./figures/alex.jpg, id=92, 260.975pt x 336.25626pt>
+<./figures/alex.jpg, id=84, 260.975pt x 336.25626pt>
 File: ./figures/alex.jpg Graphic file (type jpg)
  <use ./figures/alex.jpg>
 Package pdftex.def Info: ./figures/alex.jpg used on input line 270.
 (pdftex.def)             Requested size: 46.0916pt x 59.38446pt.
 
-<./figures/mohamed2.jpg, id=93, 449.42906pt x 520.94624pt>
+<./figures/mohamed2.jpg, id=85, 449.42906pt x 520.94624pt>
 File: ./figures/mohamed2.jpg Graphic file (type jpg)
 
 <use ./figures/mohamed2.jpg>
 Package pdftex.def Info: ./figures/mohamed2.jpg used on input line 270.
 (pdftex.def)             Requested size: 46.0916pt x 53.42516pt.
 
-<./figures/jmb.jpg, id=94, 260.975pt x 336.25626pt>
+<./figures/jmb.jpg, id=86, 260.975pt x 336.25626pt>
 File: ./figures/jmb.jpg Graphic file (type jpg)
  <use ./figures/jmb.jpg>
 Package pdftex.def Info: ./figures/jmb.jpg used on input line 270.
 (pdftex.def)             Requested size: 46.0916pt x 59.38446pt.
 
-<./figures/sylvain3.jpg, id=95, 374.39874pt x 475.7775pt>
+<./figures/sylvain3.jpg, id=87, 374.39874pt x 475.7775pt>
 File: ./figures/sylvain3.jpg Graphic file (type jpg)
 
 <use ./figures/sylvain3.jpg>
 Package pdftex.def Info: ./figures/sylvain3.jpg used on input line 270.
 (pdftex.def)             Requested size: 46.0916pt x 58.57182pt.
 
-<./figures/ctroupin.jpg, id=96, 547.3248pt x 768.9528pt>
+<./figures/ctroupin.jpg, id=88, 547.3248pt x 768.9528pt>
 File: ./figures/ctroupin.jpg Graphic file (type jpg)
 
 <use ./figures/ctroupin.jpg>
 Package pdftex.def Info: ./figures/ctroupin.jpg used on input line 270.
 (pdftex.def)             Requested size: 46.0916pt x 64.74413pt.
 
-<./figures/Cant01.jpg, id=97, 120.45pt x 120.45pt>
+<./figures/Cant01.jpg, id=89, 120.45pt x 120.45pt>
 File: ./figures/Cant01.jpg Graphic file (type jpg)
  <use ./figures/Cant01.jpg>
 Package pdftex.def Info: ./figures/Cant01.jpg used on input line 270.
@@ -1729,46 +1706,45 @@ File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  input line 270.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [12
+ [11
 
  <./figures/alex.jpg> <./figures/mohamed2.jpg> <./figures/jmb.jpg> <./figures/s
 ylvain3.jpg> <./figures/ctroupin.jpg> <./figures/Cant01.jpg>]
 \tf@nav=\write7
-\openout7 = `DivaWorkshop2015_general.nav'.
+\openout7 = `DivaLecce2016_general.nav'.
 
 \tf@toc=\write8
-\openout8 = `DivaWorkshop2015_general.toc'.
+\openout8 = `DivaLecce2016_general.toc'.
 
 \tf@snm=\write9
-\openout9 = `DivaWorkshop2015_general.snm'.
+\openout9 = `DivaLecce2016_general.snm'.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 273.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 273.
- (./DivaWorkshop2015_general.aux)
+ (./DivaLecce2016_general.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 273.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 273.
-Package rerunfilecheck Info: File `DivaWorkshop2015_general.out' has not change
-d.
+Package rerunfilecheck Info: File `DivaLecce2016_general.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 273.
  ) 
 Here is how much of TeX's memory you used:
- 25209 strings out of 493104
- 498125 string characters out of 6136932
- 605957 words of memory out of 5000000
- 28018 multiletter control sequences out of 15000+600000
- 37704 words of font info for 69 fonts, out of 8000000 for 9000
+ 25216 strings out of 493085
+ 498307 string characters out of 6136916
+ 607419 words of memory out of 5000000
+ 28051 multiletter control sequences out of 15000+600000
+ 37083 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,14n,67p,463b,870s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,14n,67p,460b,870s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8
-a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/wasy/wasy8.pfb>
-Output written on DivaWorkshop2015_general.pdf (12 pages, 3534354 bytes).
+a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/wasy2-ps/wasy8.pfb>
+Output written on DivaLecce2016_general.pdf (11 pages, 3316366 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
- 25 named destinations out of 1000 (max. 500000)
- 133 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 120 PDF objects out of 1000 (max. 8388607)
+ 77 compressed objects within 1 object stream
+ 23 named destinations out of 1000 (max. 500000)
+ 123 words of extra memory for PDF output out of 10000 (max. 10000000)
 
