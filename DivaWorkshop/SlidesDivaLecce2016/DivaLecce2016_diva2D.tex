@@ -4,7 +4,7 @@
 \author[Alexander Barth, Aida Alvera-Azc\'{a}rate, Mohamed~Ouberdous, Charles~Troupin, Sylvain~Watelet \& Jean-Marie~Beckers]{Alexander Barth, Aida Alvera-Azc\'{a}rate, Mohamed~Ouberdous,\\
  Charles~Troupin, Sylvain~Watelet \& Jean-Marie~Beckers}
   
-\title[]{\diva workshop 2015}
+\title[]{\diva Lecce 2016}
 \subtitle{\diva in 2 dimensions}
 \date{}
 \begin{document}
@@ -145,23 +145,40 @@ Rixen et al., 2000, OM)}
 \end{itemize}
 }
 
-\item<7->[On-going:] \hspace{1cm}
+\item<7->[2013-2015] \hspace{1cm}
 
 \onslide*<7>{
 \begin{itemize}
 \item Modernisation of the code structure
 \item n-dimensional generalisation 
-\item Spatially correlated observations errors 
 \item optimized and approximate error calculations (clever poor man)
-\item Analysis at a specific distance from bottom
+\end{itemize}
+}
+
+\item<8->[On-going:] \hspace{1cm}
+
+\onslide*<8>{
+\begin{itemize}
+\item Analysis at a specific distance from the bottom
+\item Correlated observations errors (data weighting)
 \item ... \Coffeecup
 \end{itemize}
 }
 
-\item<8->[General:] \fbox{user-driven developments}
+\item<9->[General:] \fbox{user-driven developments}
 
 
 \end{description}		
+\end{frame}
+
+%--------------------------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{\diva history}
+
+\includegraphics[width=0.9\textwidth]{diva-history}
+\begin{itemize}
+\item \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/New_Diva_Features}
+\end{itemize}
 \end{frame}
 
 %--------------------------------------------------------------------------------------------------------
@@ -175,7 +192,232 @@ Rixen et al., 2000, OM)}
 \item[OceanBrowser:] visualisation tool of 4D NetCDF files
 \item[\textsf{divand}:] multi-dimension analysis (lon, lat, time, depth)
 \item[\textsf{divaformatlab}:] wrapper to use in matlab
+\item[Clone-diva-x.x.x:] virtual machine containing diva-x.x.x + other stuff (gfortran, netcdf,...)
 \end{description}
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Common problem}
+\centerline{
+\includegraphics[width=0.75\textwidth]{medsea_data}
+}
+% Use divaonweb interface
+
+Appears when
+\begin{itemize}
+\item trying to produce maps
+\item calculate volume averages
+\item prepare initial conditions for models
+\item quality control of data 
+\item ...
+\end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Solutions}
+\centerline{
+\includegraphics[width=0.9\textwidth]{discovery}
+}
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Solutions}
+\centerline{
+\includegraphics[width=0.9\textwidth]{diva_analysis_data}
+}
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}{Estimation}
+\begin{itemize}
+\item
+Observer 1: 14$^\circ$
+\item
+Observer 2: 16$^\circ$
+\end{itemize}
+
+\centerline{Your best guess ?}
+
+\only<2->{\centerline{15$^\circ$}}
+\only<3>{But what if observer 1 uses digital thermometer and observer 2 his finger ?}
+\only<4>{But what if observer 1 uses digital thermometer and observer 2 his finger ?
+\centerline{Best guess probably near 14$^\circ$.}}
+\only<5>{But what if observer 1 uses digital thermometer and observer 2 his finger ?
+\centerline{Best guess probably near 14$^\circ$.}
+\begin{center}
+\shabox{
+Exploit knowledge of errors !}
+\end{center}
+}
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}{Optimal estimate}
+\begin{equation}
+T_1 = \true{T}+\epsilon_1, \quad \statmean{\epsilon_1} = 0, \quad T_2 = \true{T}+\epsilon_2, \quad \statmean{\epsilon_2} = 0
+\end{equation}
+statistical average, denoted by $\statmean{\quad}$ with unbiased estimates $\statmean{\epsilon_*}=0$
+
+Linear estimate
+\begin{equation}
+{T}=w_1 \, T_1 ~+~ w_2 \, T_2 ~=~ (w_1+w_2) \true{T} ~+~ (w_1 \epsilon_1 + w_2 \epsilon_2)
+\end{equation}
+\begin{equation}
+\statmean{{T}} = (w_1+w_2) \true{T},
+\end{equation}
+we obtain an unbiased estimate of the true state if we take $w_1+w_2=1$. This leaves one parameter free to chose: $w_2$
+\begin{center}
+\shabox{Exploit knowledge on errors to find optimal value of $w_2$}
+\end{center}
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}{Choice of weighting ?}
+\begin{equation}
+\analyzed{T} = (1-w_2) T_1 + w_2 T_2  ~=~ T_1 + w_2 (T_2-T_1)
+\end{equation}
+while in reality there is an error
+\begin{equation}
+\analyzed{T} - \true{T} = (1-w_2) \epsilon_1 + w_2 \epsilon_2,
+\end{equation}
+This error is zero on average but its variance is not zero:
+\begin{equation}
+\statmean{(\analyzed{T}-\true{T})^2} = (1-w_2)^2 \statmean{\epsilon_1^2} + w_2^2 \statmean{\epsilon_2^2} + 2 (1-w_2) w_2 
+\statmean{\epsilon_1 \epsilon_2}
+\end{equation}
+The actual errors $\epsilon_1$ and $\epsilon_2$ are not known, but the error variance $\statmean{\epsilon_1^2}$ are.
+Often we can reasonably suppose that the errors
+$\epsilon_1$ and $\epsilon_2$ are uncorrelated $\statmean{\epsilon_1 \epsilon_2}=0$. 
+The error variance $\statmean{\epsilon^2}$ of the analysis is
+\begin{equation}
+\statmean{\epsilon^2}=(1-w_2)^2 \statmean{\epsilon_1^2} + w_2^2 \statmean{\epsilon_2^2}.
+\label{eq:epsilonerror}
+\end{equation}
+So what ?
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}{Minimisation}
+\begin{equation}
+\statmean{\epsilon^2}=(1-w_2)^2 \statmean{\epsilon_1^2} + w_2^2 \statmean{\epsilon_2^2}.
+\label{eq:epsilonerror}
+\end{equation}
+Naturally, the best estimate for $T$ is the one with the lowest expected error variance and we will use $w_2$, which minimizes
+the right-hand side:
+\begin{equation}
+w_2 = \frac{\statmean{\epsilon_1^2}}{\statmean{\epsilon_1^2}+\statmean{\epsilon_2^2}}
+\label{eq:weighterror}
+\end{equation}
+\begin{equation}
+\analyzed{T}=   {\statmean{\epsilon_1^2} \statmean{\epsilon_2^2} \over \statmean{\epsilon_1^2} 
++ \statmean{\epsilon_2^2} }\left( {T_1 \over \statmean{\epsilon_1^2}} + {T_2 \over \statmean{\epsilon_2^2}}\right) .
+ \label{eq:analyzedTb}
+\end{equation}
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}{Best estimate}
+With \eqref{eq:weighterror} we obtain the minimal error variance
+\begin{equation}
+\statmean{\epsilon^2}= {\statmean{\epsilon_1^2} \statmean{\epsilon_2^2} \over \statmean{\epsilon_1^2} 
++ \statmean{\epsilon_2^2} } = \left( 1 - {\statmean{\epsilon_1^2} \over \statmean{\epsilon_1^2} 
++ \statmean{\epsilon_2^2} } \right) \statmean{\epsilon_1^2},
+\label{eq:optimalerror}
+\end{equation}
+while the estimate of the temperature itself reads
+\begin{equation}
+\analyzed{T}= T_1 ~+~ \left( {\statmean{\epsilon_1^2} \over \statmean{\epsilon_1^2} 
++ \statmean{\epsilon_2^2} } \right) \left( T_2-T_1\right).
+ \label{eq:analyzedT}
+\end{equation}
+\begin{center}
+\shabox{Error variance on the combination of $T_1$ and $T_2$ 
+is smaller than both $\statmean{\epsilon_1^2}$ and $\statmean{\epsilon_2^2}$. }
+\end{center}
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}[allowframebreaks]{Optimal Interpolation}
+Same problem but data distributed in space and {\it a priori} information on background (with variance $\sigma^2$). 
+
+Weighting of background (zero value when working with anomalies and $\sigma^2$ local variance and covariances between points) information and data points (observed values and observational error variance) 
+
+\begin{itemize}
+\item
+"Model forecast": Background field.
+\item
+Need for  covariance of the background field between data points: each element $i,j$ of $\matr{B}$ provides the covariance between points in location $i$ and $j$. Covariance between a given point and all data points is stored in column vector $\matr{c}$ and the local variance at the analysis point is noted $\sigma^2$.
+\item
+Analysis $\phi$ of anomaly $\observation$ with respect to background leads to spatial analysis at any desired location of covariance between any two points is known.
+\end{itemize}
+
+\begin{equation}
+\phi= {\matr{c}}^t \inv{\left( \matr{B} + \Rerr \right)} 
+\observation
+\label{eq:analyzedfield}
+\end{equation}
+with a local error variance of the analysis
+\begin{equation}
+\epsilon_a^2=\sigma^2 - {\matr{c}}^t \inv{\left( \matr{B} + \Rerr \right)} \matr{c}
+\end{equation}
+Note that inversion of matrix is needed (cost increases as the cube of number of data points).
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}{Background covariance}
+Problem, how to specify background covariances (between all data points and between data points and the desired analysis location).
+\begin{itemize}
+\item $c_i$= {covariance between location of the analysis and data location of point i} = $C(x,x_i)$
+\item $B_{ij}$={covariance between location of data point i and  location of point j}= $C(x_i,x_j)$
+\end{itemize}
+Approaches
+\begin{itemize}
+\item
+Normally obtained via statistics on data. Seldom possible (noticable exception: satellite images).
+\item
+Standard OI: via functions $B_{ij}= f(r/L)$ where $r$ is the distance between points $i$ and $j$, but still function $f$ needs to be determined. $L$ is the so-called correlation length. Here statistics on all data couples as a function of distance.
+Example: $f=\sigma^2 \exp(-r^2/L^2)$.
+\item Via functionals (see Kernel of DIVA later)
+\end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}{Signal to noise ratio}
+\begin{equation}
+\matr{B}= \sigma^2 \tilde{\matr{B}}
+\end{equation}
+\begin{equation}
+\matr{R}= \epsilon^2 \tilde{\matr{R}}
+\end{equation}
+\begin{equation}
+\matr{c}= \sigma^2 \tilde{\matr{c}}
+\end{equation}
+with non-dimensional correlation matrixes $\tilde{\matr{B}}$, $\tilde{\matr{R}}$, $\tilde{\matr{c}}$
+\begin{equation}
+\phi= {\tilde{\matr{c}}}^t \inv{\left( \tilde{\matr{B}} + {1 \over \lambda} \tilde{\Rerr} \right)} 
+\observation
+\label{eq:analyzedfield}
+\end{equation}
+with signal-to noise ratio
+\begin{equation}
+\lambda= {\sigma^2 \over \epsilon^2}
+\end{equation}
+Also the error field is only depending on the ratio.
 \end{frame}
 
 %---------------------------------------------------------------------

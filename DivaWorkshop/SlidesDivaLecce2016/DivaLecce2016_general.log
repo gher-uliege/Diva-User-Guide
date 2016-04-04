@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.19)  3 APR 2016 23:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.19)  4 APR 2016 21:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1257,19 +1257,19 @@ File: tikzlibrarybackgrounds.code.tex 2013/07/18 v3.0.0 (rcs-revision 1.3)
 f.sty
 Package: beamerfontthemeserif 2010/06/17  (rcs-revision d02a7cf4d8ae)
 )
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 72.
-Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 72.
-Package hyperref Info: Option `pdffitwindow' set `true' on input line 72.
-Package hyperref Info: Option `pdffitwindow' set `true' on input line 72.
-Package hyperref Info: Option `pdftoolbar' set `true' on input line 72.
-Package hyperref Info: Option `pdfmenubar' set `true' on input line 72.
-Package hyperref Info: Option `pdfwindowui' set `true' on input line 72.
-Package hyperref Info: Option `colorlinks' set `true' on input line 72.
-Package hyperref Info: Option `pdffitwindow' set `true' on input line 72.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 73.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 73.
+Package hyperref Info: Option `pdffitwindow' set `true' on input line 73.
+Package hyperref Info: Option `pdffitwindow' set `true' on input line 73.
+Package hyperref Info: Option `pdftoolbar' set `true' on input line 73.
+Package hyperref Info: Option `pdfmenubar' set `true' on input line 73.
+Package hyperref Info: Option `pdfwindowui' set `true' on input line 73.
+Package hyperref Info: Option `colorlinks' set `true' on input line 73.
+Package hyperref Info: Option `pdffitwindow' set `true' on input line 73.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 77.
+(hyperref)                removing `\\' on input line 78.
 
 ) (./DivaLecce2016_general.aux)
 \openout1 = `DivaLecce2016_general.aux'.
@@ -1543,23 +1543,23 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
 File: ./figures/president-lecce.jpg Graphic file (type jpg)
 
 <use ./figures/president-lecce.jpg>
-Package pdftex.def Info: ./figures/president-lecce.jpg used on input line 128.
+Package pdftex.def Info: ./figures/president-lecce.jpg used on input line 125.
 (pdftex.def)             Requested size: 96.79521pt x 72.48181pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-128.
+125.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 128.
+ input line 125.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [4
 
  <./figures/president-lecce.jpg>]
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 228.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 225.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
@@ -1567,13 +1567,13 @@ File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-228.
+225.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 228.
+ input line 225.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [5
 
@@ -1582,13 +1582,13 @@ File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-228.
+225.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 228.
+ input line 225.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [6
 
@@ -1597,13 +1597,13 @@ File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-228.
+225.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 228.
+ input line 225.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [7
 
@@ -1612,31 +1612,35 @@ File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-228.
+225.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 228.
+ input line 225.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [8
 
 ]
-Overfull \hbox (15.36073pt too wide) detected at line 228
+Overfull \hbox (15.36073pt too wide) detected at line 225
 [][]$[]$[][][][][][][][] $[]$[][][][][][]
+ []
+
+
+Overfull \vbox (1.11713pt too high) detected at line 225
  []
 
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-228.
+225.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 228.
+ input line 225.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [9
 
@@ -1644,52 +1648,52 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
 <./figures/alex.jpg, id=81, 260.975pt x 336.25626pt>
 File: ./figures/alex.jpg Graphic file (type jpg)
  <use ./figures/alex.jpg>
-Package pdftex.def Info: ./figures/alex.jpg used on input line 259.
+Package pdftex.def Info: ./figures/alex.jpg used on input line 256.
 (pdftex.def)             Requested size: 46.0916pt x 59.38446pt.
 
 <./figures/mohamed2.jpg, id=82, 449.42906pt x 520.94624pt>
 File: ./figures/mohamed2.jpg Graphic file (type jpg)
 
 <use ./figures/mohamed2.jpg>
-Package pdftex.def Info: ./figures/mohamed2.jpg used on input line 259.
+Package pdftex.def Info: ./figures/mohamed2.jpg used on input line 256.
 (pdftex.def)             Requested size: 46.0916pt x 53.42516pt.
 
 <./figures/jmb.jpg, id=83, 260.975pt x 336.25626pt>
 File: ./figures/jmb.jpg Graphic file (type jpg)
  <use ./figures/jmb.jpg>
-Package pdftex.def Info: ./figures/jmb.jpg used on input line 259.
+Package pdftex.def Info: ./figures/jmb.jpg used on input line 256.
 (pdftex.def)             Requested size: 46.0916pt x 59.38446pt.
 
 <./figures/sylvain3.jpg, id=84, 374.39874pt x 475.7775pt>
 File: ./figures/sylvain3.jpg Graphic file (type jpg)
 
 <use ./figures/sylvain3.jpg>
-Package pdftex.def Info: ./figures/sylvain3.jpg used on input line 259.
+Package pdftex.def Info: ./figures/sylvain3.jpg used on input line 256.
 (pdftex.def)             Requested size: 46.0916pt x 58.57182pt.
 
 <./figures/ctroupin.jpg, id=85, 547.3248pt x 768.9528pt>
 File: ./figures/ctroupin.jpg Graphic file (type jpg)
 
 <use ./figures/ctroupin.jpg>
-Package pdftex.def Info: ./figures/ctroupin.jpg used on input line 259.
+Package pdftex.def Info: ./figures/ctroupin.jpg used on input line 256.
 (pdftex.def)             Requested size: 46.0916pt x 64.74413pt.
 
 <./figures/gaelle.jpg, id=86, 120.45pt x 120.45pt>
 File: ./figures/gaelle.jpg Graphic file (type jpg)
  <use ./figures/gaelle.jpg>
-Package pdftex.def Info: ./figures/gaelle.jpg used on input line 259.
+Package pdftex.def Info: ./figures/gaelle.jpg used on input line 256.
 (pdftex.def)             Requested size: 46.0916pt x 46.09126pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-259.
+256.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 259.
+ input line 256.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [10
 
@@ -1704,20 +1708,20 @@ ylvain3.jpg> <./figures/ctroupin.jpg> <./figures/gaelle.jpg>]
 \tf@snm=\write9
 \openout9 = `DivaLecce2016_general.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 262.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 262.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 259.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 259.
  (./DivaLecce2016_general.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 262.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 262.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 259.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 259.
 Package rerunfilecheck Info: File `DivaLecce2016_general.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 262.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 259.
  ) 
 Here is how much of TeX's memory you used:
- 25214 strings out of 493085
- 498288 string characters out of 6136916
- 611329 words of memory out of 5000000
- 28051 multiletter control sequences out of 15000+600000
+ 25224 strings out of 493085
+ 498680 string characters out of 6136916
+ 611453 words of memory out of 5000000
+ 28061 multiletter control sequences out of 15000+600000
  37083 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,14n,67p,460b,870s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1726,7 +1730,7 @@ e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8
 a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/wasy2-ps/wasy8.pfb>
-Output written on DivaLecce2016_general.pdf (10 pages, 3283254 bytes).
+Output written on DivaLecce2016_general.pdf (10 pages, 3283586 bytes).
 PDF statistics:
  117 PDF objects out of 1000 (max. 8388607)
  75 compressed objects within 1 object stream

@@ -19,6 +19,7 @@
 \usepackage{tikz}
 \usepackage{listings}
 \usepackage{fancybox}
+\usepackage{shadow}
 
 
 \usetikzlibrary{arrows,shapes,backgrounds}
@@ -34,6 +35,7 @@
 
 \setbeamertemplate{navigation symbols}{}
 \setbeamercolor{title}{fg=sdnblue}
+\setbeamertemplate{footline}[frame number]
 %\setbeamercolor{background canvas}{bg=black!95}
 %\setbeamercolor{normal text}{bg=black,fg=white}
 \setbeamercolor{frametitle}{fg=sdnblue}
@@ -61,7 +63,7 @@ pdfmenubar=true,
 pdfwindowui=true,
 pdfauthor={Alexander Barth{,} Aida Alvera-Azc\'{a}rate{,} Mohamed~Ouberdous{,} Charles~Troupin{,} Sylvain~Watelet \& Jean-Marie~Beckers},
 pdfsubject={DIVA Lecce 2016},
-pdftitle={DIVA Lecce 2015},
+pdftitle={DIVA Lecce 2016},
 bookmarksopenlevel=0,
 colorlinks=true,
 linkcolor=blue,anchorcolor=black,%
@@ -71,7 +73,7 @@ pdfpageduration=1,%
 pdffitwindow=true
 }
 
-\logo{\includegraphics[height=0.5cm]{gherlogo_transparent}~\includegraphics[height=0.5cm]{Logo_SeaDataNet_fond_transparent}}
+\logo{\vspace{-5mm}\includegraphics[height=0.5cm]{gherlogo_transparent}~\includegraphics[height=0.5cm]{Logo_SeaDataNet_fond_transparent}\hspace{7mm}}
 
 \author[Alexander Barth, Aida Alvera-Azc\'{a}rate, Mohamed~Ouberdous, Charles~Troupin, Sylvain~Watelet \& Jean-Marie~Beckers]{Alexander Barth, Aida Alvera-Azc\'{a}rate, Mohamed~Ouberdous,\\
  Charles~Troupin, Sylvain~Watelet \& Jean-Marie~Beckers}
@@ -99,6 +101,28 @@ pdffitwindow=true
 \newcommand{\file}[1]{\texttt{\color{MidnightBlue}{#1}}}
 \newcommand{\command}[1]{\texttt{\color{RedOrange}{#1}}}
 \newcommand{\resfile}[1]{\texttt{\color{MidnightBlue}{#1}}}
+
+\newcommand{\statmean}[1]{\left\langle #1 \right\rangle}
+\newcommand{\true}[1]{{#1}^t}
+\newcommand{\analyzed}[1]{{#1}^a}
+\newcommand{\observation}{ \mbox{\boldmath   $ \protect\mathrm{y} $} }
+\newcommand{\forecasted}[1]{{#1}^f}
+\newcommand{\kalmangain}{\matr{K}}
+\newcommand{\Hobs}{\matr{H}}
+\newcommand{\errorv}{\vect{\epsilon}}
+\newcommand{\errorobs}{\vect{\epsilon}^o}
+\newcommand{\Perr}{\matr{P}}
+\newcommand{\Rerr}{\matr{R}}
+
+\newcommand{\matr}[1] { \mbox{\boldmath   $ \protect\mathsf{#1} $} }
+\newcommand{\trcon}[1]{{#1}^\star}
+\newcommand{\adj}[1]{\trcon{#1}}
+\newcommand{\elem}[2]{\left( #1 \right)_{#2}}
+\newcommand{\trace}{\operatorname{trace}}
+\newcommand{\sing}{\rho}
+
+\newcommand{\myshadowbox}[1]{\shabox{\parbox{10cm}{#1}}}
+\newcommand{\inv}[1]{{#1}^{ \mbox{\small{-}}  1}}
 
 \lstdefinestyle{Bash}
 {language=bash,
