@@ -434,7 +434,7 @@ Also the error field is only depending on the ratio.
 \important{Formulation:} minimize cost function $J[\varphi]$
 
 
-\begin{eqnarray*}
+\begin{eqnarray*} \label{eqn:divaJ}
 & &\min {J}[\varphi] = \sum_{i=1}^{N}\mu_i \left[d_{i}-\varphi(x_{i},y_{i})\right]^{2} \onslide<2->{\qquad\textcolor{gray}{\textrm{data--analysis misfit}}}\\
 	  &+& \int_{{D}}\left(
 {\nablab}{\nablab}\varphi : {\nablab}{\nablab}\varphi + { \alpha_{1}}
@@ -513,13 +513,51 @@ Coefficients $\alpha_0$, $\alpha_1$ and $\mu_i$ related to
 
 \column{.5\textwidth}
 
-
-
 \end{columns}
+\end{frame}
 
+%-------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Correlation function}
+
+In variational analysis, the correlation function is not specified
+\texttt{a priori}, but its form is determined by the differential in
+equation \eqref{eqn:divaJ}. For an infinite domain, one can show that
+for $\alpha_0 = L^{-4}$ and $\alpha_1 = 2 L^{-2}$ 
+the correlation function is given by: %\citep{BRAS96}
+
+\begin{equation}
+C(r) = \frac{r}{L} K_1 \left(\frac{r}{L}\right)
+\end{equation}
+
+where $r$ is the Euclidean distance, $L$ is the correlation length and
+$K_1$ is the modified Bessel function. %\citep{ABRA64}
+
+%-------------------------------------------------------------------------------
 
 \end{frame}
 
+\begin{frame}
+\frametitle{Correlation function}
+
+\centerline{\includegraphics[width=0.9\textwidth]{besselvsonepoint}}
+
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Illustration of covariance functions}
+\vspace{-0.5cm}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=8cm,height=4cm]{medregiso}
+\vspace{0cm}
+\includegraphics[width=8cm,height=4cm]{medregtopo}
+%\caption{Left: data influence of alternating anomalies assuming isotropic and homogeneous covariances (typically OI approach). Right: With DIVA, data influence is not %crossing land without requiring a specific formulation in the covariance function. The finite element mesh naturally creates some decoupling.}
+\end{center}
+\end{figure}
+
+\end{frame}
 
 %-------------------------------------------------------------------------------§
 \begin{frame}
@@ -540,6 +578,26 @@ Field regularity \fleche plate bending problem \fleche finite-element solver
 \item no \textit{a posteriori} masking (except if based on error level) 
 \end{itemize}
 
+\end{frame}
+
+%----------------------------------------
+
+\begin{frame}{Minimization with a finite-element method}
+%\vspace{-0.5cm}
+%\begin{equation}
+%\mu=\frac{\sigma^{2}}{\epsilon^{2}} \frac{4 \pi}{L^{2}}
+%\end{equation}
+%where the $\sigma^{2}/\epsilon^{2} $  is known as a signal to noise 
+%ratio $S/N$.
+\centerline{
+\includegraphics[width=7cm]{divamesh.eps}
+}
+Solution by finite element method. % including DIVA mesh generator using topographic data. 
+Note decoupling of subbasins. (Each element is in fact composed by three sub-elements) %, each one with cubic functions)
+\begin{itemize}
+\item The solution method relies on a finite-element resolution, the mesh being automatically generated using one of the tools provided within the software. 
+\item The finite element mesh only covers actual sea so that land regions are excluded from the analysis and provide natural barriers for data-information propagation.
+\end{itemize}
 \end{frame}
 
 %----------------------------------------
@@ -635,6 +693,59 @@ J_{e}(\mathbf{q_e}) = \mathbf{q_e}^{T}\mathbf{K_e}\mathbf{q_e}-2\mathbf{q_e}^{T}
 \end{align*}
 
 }
+\end{frame}
+
+%--------------------------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{DIVA as OI}
+
+\vspace{-.5cm}
+DIVA is identical to the well known Optimal Interpolation
+%\centerline{\includegraphics[width=2cm]{../Seminars/besselvsonepoint.eps}}
+\begin{itemize}
+\item
+if so-called reproducing kernel of the norm$~=~$ covariance function of OI, 
+\item
+if the noise is random, spatially uncorrelated and the signal/noise ratio parameter is identical with OI.
+\end{itemize}
+In this case, the OI solution$~=~$DIVA solution.
+\begin{itemize}
+\item Advantages of DIVA: regularization, fast finite-element solution, boundary effects taken into account.
+\item Difficulties: generalizations to 3D and multivariate versions are "hybrid" (some expensive O.I. components).
+\end{itemize}
+% Kernel function (blue) can be "looked at" by a single point analysis with high signal/noise ratio and no background field.
+% The exact function in an infinite domain is given in red and differences are only due to boundaries.
+Major direct advantage of DIVA: matrix to invert is related to the finite-element mesh, NOT the number of data. Useful for large data sets (Rixen {\it et al.}, 2000).
+Equivalence allows to calculate error fields with DIVA even if formulation does not rely on error minimisation.
+\end{frame}
+
+%--------------------------------------------------------------------------------------------------------
+
+\begin{frame}{Comparison}
+
+{\tiny{\begin{center}
+\hspace*{-1cm}
+\begin{tabular}{l||c|c|c|c|c|c|c|c|}
+Method & $\min(\epsilon^2)$ & 3D           & Multivar & Ops/image   & $\epsilon(\vect{r})$ & a priori   & C.V.           & anisotropy      \\ \hline \hline
+Cressman &                 & $\star$       &  $\star$ &  $N_d N_a$  &                      &   $w(r/L)$ &     ($L$)      &       ($\star$)  \\ \hline
+O.I.     &   $\star$       & $\star$       &  $\star$ &  $N_d^3+ N_d N_a$  &     $\star$        &   $c(r/L)$ &     $L, \sigma^2/\mu^2$   &       ($\star$)  \\ \hline
+%S.C.     &   ($\star$)     & $\star$       &  $\star$ &  $N_d^3 N_a$ ??  &  $\star$        &   $c(r/L)$ &     $L, n$   &       ($\star$)  \\ \hline
+\shabox{{\bf DIVA} }     &   $\star$       &  ($\star$)    &  ($\star$) &  $N_e^{5/2}$  &   $\star$        &  $K(r/L)$ &     $L, \sigma^2/\mu^2$   &       $\star$  \\ \hline
+DINEOF   &   ($\star$)     &  $\star$    &  $\star$ &  $N_a^{5/4}$  &   ($\star$)        &     stat.   &     $N$   &       $\star$  \\ \hline
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item[$N_d$]: number of data points
+\item[$N_a$]: number of grid points for analysis
+\item[$N_e$]: number of finite elements
+\item[$N$]: number of EOFs
+\item[$L$]: correlation length
+\item[$\sigma^2/\epsilon^2$]: signal to noise ratio
+\item[$\star$]: available feature
+\item[($\star$)]: available with some adaptations\hypertarget{COMPARE}{}
+\end{itemize}
+}}
 \end{frame}
 
 %--------------------------------------------------------------------------------------------------------
