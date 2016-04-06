@@ -1,18 +1,18 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex 2015.3.13)  9 OCT 2015 18:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.19)  6 APR 2016 16:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**DivaWorkshop2015_diva4D.tex
-(./DivaWorkshop2015_diva4D.tex
-LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 79 languages loaded.
+**DivaLecce2016_diva4D.tex
+(./DivaLecce2016_diva4D.tex
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (./GHERheader2015.tex
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasercs.sty
-Package: beamerbasercs 2013/12/25 (rcs-revision 31cc758a62ae)
+Package: beamerbasercs 2015/03/08 (rcs-revision 368aa9ba9d38)
 )
-Document Class: beamer 2013/12/02 3.33 A class for typesetting presentations (r
-cs-revision 332bfd3ce558)
+Document Class: beamer 2015/01/05 3.36 A class for typesetting presentations (r
+cs-revision 8a39122e1f63)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasemodes.sty
 Package: beamerbasemodes 2013/09/03 (rcs-revision 768f2d98ca64)
 \beamer@tempbox=\box26
@@ -78,7 +78,7 @@ Package ifpdf Info: pdfTeX in PDF mode is detected.
 Package: beamerbaseoptions 2013/03/10 (rcs-revision 47431932db0d)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 ))
 \beamer@paperwidth=\skip42
@@ -108,14 +108,14 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@dimlist=\toks15
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
@@ -123,7 +123,7 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 94.
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -216,7 +216,7 @@ Package xcolor Info: Driver file: pdftex.def on input line 225.
 Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
-Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen139
 \extrarowheight=\dimen140
 \NC@list=\toks23
@@ -238,7 +238,7 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def
-File: dvipsnam.def 2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
+File: dvipsnam.def 2014/10/14 v3.0j Driver-dependent file (DPC,SPQR)
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2010/04/11 v3.0.0 (rcs-revision 1.7)
@@ -492,7 +492,7 @@ Package: beamerbaserequires 2010/05/01  (rcs-revision efa082c6111d)
 Package: beamerbasecompatibility 2012/05/01  (rcs-revision 67c48b3b652d)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasefont.sty
-Package: beamerbasefont 2013/10/18  (rcs-revision 72f39e01808a)
+Package: beamerbasefont 2015/01/05  (rcs-revision b4b4bee242e2)
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
@@ -543,7 +543,7 @@ Package: beamerbasesection 2013/06/07  (rcs-revision 60b9fe0f342f)
 \c@subsubsection=\count133
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseframe.sty
-Package: beamerbaseframe 2013/10/02  (rcs-revision cdc8e9a3aaac)
+Package: beamerbaseframe 2014/02/20  (rcs-revision 4b8ceeeff434)
 \beamer@framebox=\box40
 \beamer@frametitlebox=\box41
 \beamer@zoombox=\box42
@@ -560,7 +560,7 @@ Package: beamerbaseframe 2013/10/02  (rcs-revision cdc8e9a3aaac)
 \c@framenumber=\count137
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseverbatim.sty
-Package: beamerbaseverbatim 2012/08/30  (rcs-revision dfdb135076b3)
+Package: beamerbaseverbatim 2015/01/05  (rcs-revision 431510bb5890)
 \beamer@verbatimfileout=\write4
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseframesize.sty
@@ -576,21 +576,21 @@ Package: beamerbaseframecomponents 2013/10/18  (rcs-revision 5cf6c5555a45)
 \beamer@footins=\box44
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasecolor.sty
-Package: beamerbasecolor 2010/06/06  (rcs-revision d1a9b48be06d)
+Package: beamerbasecolor 2015/02/21  (rcs-revision d944b04ee2d5)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasenotes.sty
 Package: beamerbasenotes 2012/12/19  (rcs-revision 1686da3db3c9)
 \beamer@frameboxcopy=\box45
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetoc.sty
-Package: beamerbasetoc 2013/05/23  (rcs-revision 0fdf5bc43be8)
+Package: beamerbasetoc 2015/03/08  (rcs-revision 7270298bbaae)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetemplates.sty
 Package: beamerbasetemplates 2010/05/01  (rcs-revision efa082c6111d)
 \beamer@sbttoks=\toks32
 
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseauxtemplates.sty
-Package: beamerbaseauxtemplates 2013/09/04  (rcs-revision 4ac715c499d0)
+Package: beamerbaseauxtemplates 2014/06/30  (rcs-revision 580088513a67)
 
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseboxes.sty
 Package: beamerbaseboxes 2012/05/13  (rcs-revision 56972908a390)
@@ -607,10 +607,10 @@ Package: beamerbaseboxes 2012/05/13  (rcs-revision 56972908a390)
 \beamer@blockheadheight=\dimen177
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaselocalstructure.sty
-Package: beamerbaselocalstructure 2013/09/04  (rcs-revision 4ac715c499d0)
+Package: beamerbaselocalstructure 2014/09/10  (rcs-revision 393f6dcff371)
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/enumerate.sty
-Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
+Package: enumerate 2014/10/28 v3.00 enumerate extensions (DPC)
 \@enLab=\toks33
 )
 \c@figure=\count139
@@ -619,7 +619,7 @@ Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
 \belowcaptionskip=\skip53
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasenavigation.sty
-Package: beamerbasenavigation 2013/10/05  (rcs-revision 62be157fe783)
+Package: beamerbasenavigation 2015/02/27  (rcs-revision 923f4bf87efa)
 \beamer@section@min@dim=\dimen178
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetheorems.sty
@@ -684,7 +684,7 @@ LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
-Package: amsthm 2004/08/06 v2.20
+Package: amsthm 2015/03/04 v2.20.2
 \thm@style=\toks39
 \thm@bodyfont=\toks40
 \thm@headfont=\toks41
@@ -714,7 +714,7 @@ Package: beamercolorthemedefault 2012/12/19  (rcs-revision 1686da3db3c9)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/inner/beamerinnerthemede
 fault.sty
-Package: beamerinnerthemedefault 2013/10/15  (rcs-revision 65cb471f9634)
+Package: beamerinnerthemedefault 2014/06/30  (rcs-revision 580088513a67)
 \beamer@dima=\dimen188
 \beamer@dimb=\dimen189
 )
@@ -727,35 +727,35 @@ essionalfonts.sty
 Package: beamerfontthemeprofessionalfonts 2010/06/17  (rcs-revision d02a7cf4d8a
 e)
 ) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2014/03/24 3.9k The Babel package
+Package: babel 2014/09/25 3.9l The Babel package
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2012/08/20 v3.3p English support from the babel system
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2014/03/24 3.9k Babel common definitions
+File: babel.def 2014/09/25 3.9l Babel common definitions
 \babel@savecnt=\count154
 \U@D=\dimen190
-LaTeX Info: Redefining \textlatin on input line 1428.
+LaTeX Info: Redefining \textlatin on input line 1431.
 )
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2014/04/30 v1.2b Input encoding file
+Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks45
 \inpenc@posthook=\toks46
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+File: utf8.def 2014/09/29 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
-File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+File: t1enc.dfu 2014/09/29 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00AB (decimal 171)
@@ -905,7 +905,7 @@ Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
-File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+File: ot1enc.dfu 2014/09/29 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00B8 (decimal 184)
@@ -936,7 +936,7 @@ Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
-File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+File: omsenc.dfu 2014/09/29 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
    defining Unicode char U+00B7 (decimal 183)
@@ -966,10 +966,10 @@ Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2014/04/23 v1.8e multicolumn formatting (FMi)
+Package: multicol 2015/03/31 v1.8m multicolumn formatting (FMi)
 \c@tracingmulticols=\count155
 \mult@box=\box53
 \multicol@leftmargin=\dimen191
@@ -1032,7 +1032,7 @@ LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
 (Font)                  U/wasy/m/n --> U/wasy/b/n on input line 90.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
-Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
@@ -1144,15 +1144,15 @@ File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.0 (rcs-revision 1.2)
 \lst@maxwidth=\dimen227
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2014/03/04 1.5c (Carsten Heinz)
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 \c@lstnumber=\count184
 \lst@skipnumbers=\count185
 \lst@framebox=\box87
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2014/03/04 1.5c listings configuration
+File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
-Package: listings 2014/03/04 1.5c (Carsten Heinz)
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Package: fancybox 2010/05/15 1.4
@@ -1167,6 +1167,15 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 \EndVerbatimTokens=\toks55
 \Verbatim@Outfile=\write5
 \Verbatim@Infile=\read2
+) (/usr/share/texlive/texmf-dist/tex/latex/shadow/shadow.sty
+Package: shadow 2003/02/19 v1.3 shadow boxes (M.O.)
+\txtwdth=\dimen229
+\sht=\dimen230
+\shw=\dimen231
+\shbox=\box90
+\sboxsep=\dimen232
+\sboxrule=\dimen233
+\sdim=\dimen256
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryarrows.code.tex
@@ -1175,7 +1184,7 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.0 (rcs-revision 1.1)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.
 tex
 File: pgflibraryarrows.code.tex 2013/09/23 v3.0.0 (rcs-revision 1.16)
-\arrowsize=\dimen229
+\arrowsize=\dimen257
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryshapes.code.tex
@@ -1226,58 +1235,58 @@ File: tikzlibraryshapes.multipart.code.tex 2008/01/09 v3.0.0 (rcs-revision 1.1)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshape
 s.multipart.code.tex
 File: pgflibraryshapes.multipart.code.tex 2010/01/07 v3.0.0 (rcs-revision 1.2)
-\pgfnodepartlowerbox=\box90
-\pgfnodeparttwobox=\box91
-\pgfnodepartthreebox=\box92
-\pgfnodepartfourbox=\box93
-\pgfnodeparttwentybox=\box94
-\pgfnodepartnineteenbox=\box95
-\pgfnodeparteighteenbox=\box96
-\pgfnodepartseventeenbox=\box97
-\pgfnodepartsixteenbox=\box98
-\pgfnodepartfifteenbox=\box99
-\pgfnodepartfourteenbox=\box100
-\pgfnodepartthirteenbox=\box101
-\pgfnodeparttwelvebox=\box102
-\pgfnodepartelevenbox=\box103
-\pgfnodeparttenbox=\box104
-\pgfnodepartninebox=\box105
-\pgfnodeparteightbox=\box106
-\pgfnodepartsevenbox=\box107
-\pgfnodepartsixbox=\box108
-\pgfnodepartfivebox=\box109
+\pgfnodepartlowerbox=\box91
+\pgfnodeparttwobox=\box92
+\pgfnodepartthreebox=\box93
+\pgfnodepartfourbox=\box94
+\pgfnodeparttwentybox=\box95
+\pgfnodepartnineteenbox=\box96
+\pgfnodeparteighteenbox=\box97
+\pgfnodepartseventeenbox=\box98
+\pgfnodepartsixteenbox=\box99
+\pgfnodepartfifteenbox=\box100
+\pgfnodepartfourteenbox=\box101
+\pgfnodepartthirteenbox=\box102
+\pgfnodeparttwelvebox=\box103
+\pgfnodepartelevenbox=\box104
+\pgfnodeparttenbox=\box105
+\pgfnodepartninebox=\box106
+\pgfnodeparteightbox=\box107
+\pgfnodepartsevenbox=\box108
+\pgfnodepartsixbox=\box109
+\pgfnodepartfivebox=\box110
 )))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarybackgrounds.code.tex
 File: tikzlibrarybackgrounds.code.tex 2013/07/18 v3.0.0 (rcs-revision 1.3)
-\pgf@layerbox@background=\box110
-\pgf@layerboxsaved@background=\box111
+\pgf@layerbox@background=\box111
+\pgf@layerboxsaved@background=\box112
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/font/beamerfontthemeseri
 f.sty
 Package: beamerfontthemeserif 2010/06/17  (rcs-revision d02a7cf4d8ae)
 )
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 72.
-Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 72.
-Package hyperref Info: Option `pdffitwindow' set `true' on input line 72.
-Package hyperref Info: Option `pdffitwindow' set `true' on input line 72.
-Package hyperref Info: Option `pdftoolbar' set `true' on input line 72.
-Package hyperref Info: Option `pdfmenubar' set `true' on input line 72.
-Package hyperref Info: Option `pdfwindowui' set `true' on input line 72.
-Package hyperref Info: Option `colorlinks' set `true' on input line 72.
-Package hyperref Info: Option `pdffitwindow' set `true' on input line 72.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 74.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 74.
+Package hyperref Info: Option `pdffitwindow' set `true' on input line 74.
+Package hyperref Info: Option `pdffitwindow' set `true' on input line 74.
+Package hyperref Info: Option `pdftoolbar' set `true' on input line 74.
+Package hyperref Info: Option `pdfmenubar' set `true' on input line 74.
+Package hyperref Info: Option `pdfwindowui' set `true' on input line 74.
+Package hyperref Info: Option `colorlinks' set `true' on input line 74.
+Package hyperref Info: Option `pdffitwindow' set `true' on input line 74.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 77.
+(hyperref)                removing `\\' on input line 79.
 
 )
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 5.
 
-(./DivaWorkshop2015_diva4D.aux)
-\openout1 = `DivaWorkshop2015_diva4D.aux'.
+(./DivaLecce2016_diva4D.aux)
+\openout1 = `DivaLecce2016_diva4D.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
@@ -1335,13 +1344,13 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count186
-\scratchdimen=\dimen230
-\scratchbox=\box112
+\scratchdimen=\dimen258
+\scratchbox=\box113
 \nofMPsegments=\count187
 \nofMParguments=\count188
 \everyMPshowfont=\toks56
 \MPscratchCnt=\count189
-\MPscratchDim=\dimen231
+\MPscratchDim=\dimen259
 \MPnumerator=\count190
 \makeMPintoPDFobject=\count191
 \everyMPtoPDFconversion=\toks57
@@ -1360,7 +1369,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box113
+\AtBeginShipoutBox=\box114
 Package hyperref Info: Link coloring ON on input line 10.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -1375,9 +1384,9 @@ LaTeX Info: Redefining \ref on input line 10.
 LaTeX Info: Redefining \pageref on input line 10.
 LaTeX Info: Redefining \nameref on input line 10.
 
-(./DivaWorkshop2015_diva4D.out) (./DivaWorkshop2015_diva4D.out)
+(./DivaLecce2016_diva4D.out) (./DivaLecce2016_diva4D.out)
 \@outlinefile=\write6
-\openout6 = `DivaWorkshop2015_diva4D.out'.
+\openout6 = `DivaLecce2016_diva4D.out'.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bas
@@ -1407,7 +1416,7 @@ Dictionary: translator-theorem-dictionary, Language: English
 LaTeX Info: Redefining \includegraphics on input line 10.
 \c@lstlisting=\count193
 
-(./DivaWorkshop2015_diva4D.nav)
+(./DivaLecce2016_diva4D.nav)
 LaTeX Font Info:    Try loading font information for T1+phv on input line 12.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
@@ -1453,12 +1462,12 @@ File: ./figures/Logo_Stareso.jpg Graphic file (type jpg)
 Package pdftex.def Info: ./figures/Logo_Stareso.jpg used on input line 12.
 (pdftex.def)             Requested size: 32.77625pt x 17.04341pt.
 
-<./figures/background3.jpg, id=67, 1521.74155pt x 1068.7817pt>
-File: ./figures/background3.jpg Graphic file (type jpg)
+<./figures/Lecce1.jpg, id=67, 1204.5pt x 683.55376pt>
+File: ./figures/Lecce1.jpg Graphic file (type jpg)
 
-<use ./figures/background3.jpg>
-Package pdftex.def Info: ./figures/background3.jpg used on input line 12.
-(pdftex.def)             Requested size: 408.34474pt x 286.80478pt.
+<use ./figures/Lecce1.jpg>
+Package pdftex.def Info: ./figures/Lecce1.jpg used on input line 12.
+(pdftex.def)             Requested size: 505.39032pt x 286.80478pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
@@ -1472,11 +1481,11 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figures/background3.jpg>
- <./figures/gherlogo_transparent.PNG> <./figures/Logo_SeaDataNet_fond_transpare
-nt.png> <./figures/logo_ulg.PNG> <./figures/logo_emodnet.jpg> <./figures/Logo_S
-tareso.jpg>]
-(./DivaWorkshop2015_diva4D.toc
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figures/Lecce1.jpg> <./f
+igures/gherlogo_transparent.PNG> <./figures/Logo_SeaDataNet_fond_transparent.pn
+g> <./figures/logo_ulg.PNG> <./figures/logo_emodnet.jpg> <./figures/Logo_Stares
+o.jpg>]
+(./DivaLecce2016_diva4D.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 9.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1522,7 +1531,7 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  [3
 
 ]
-(./DivaWorkshop2015_diva4D.toc)
+(./DivaLecce2016_diva4D.toc)
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
@@ -1560,7 +1569,7 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  [5
 
 ]
-(./DivaWorkshop2015_diva4D.toc)
+(./DivaLecce2016_diva4D.toc)
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
@@ -1611,7 +1620,7 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [8
 
- <./figures/driverB.png>] (./DivaWorkshop2015_diva4D.toc)
+ <./figures/driverB.png>] (./DivaLecce2016_diva4D.toc)
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
@@ -1626,249 +1635,232 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  [9
 
 ]
+\openout4 = `DivaLecce2016_diva4D.vrb'.
+
+
+(./DivaLecce2016_diva4D.vrb
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+))
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-162.
+170.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 162.
+ input line 170.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [10
 
 ]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+\openout4 = `DivaLecce2016_diva4D.vrb'.
 
-<use ./figures/gherlogo_transparent.PNG>
+
+(./DivaLecce2016_diva4D.vrb)
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+ <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-203.
+188.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 203.
+ input line 188.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [11
 
 ]
-<./figures/coastlines.png, id=192, 951.555pt x 941.01563pt>
-File: ./figures/coastlines.png Graphic file (type png)
-
-<use ./figures/coastlines.png>
-Package pdftex.def Info: ./figures/coastlines.png used on input line 213.
-(pdftex.def)             Requested size: 230.46739pt x 227.91602pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
- <use ./figures/gherlogo_transparent.PNG>
+
+<use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-213.
+207.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 213.
+ input line 207.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [12
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+248.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 248.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [13
+
+]
+<./figures/coastlines.png, id=205, 951.555pt x 941.01563pt>
+File: ./figures/coastlines.png Graphic file (type png)
+
+<use ./figures/coastlines.png>
+Package pdftex.def Info: ./figures/coastlines.png used on input line 258.
+(pdftex.def)             Requested size: 230.46739pt x 227.91602pt.
+
+Overfull \vbox (0.61075pt too high) detected at line 258
+ []
+
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+258.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 258.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [14
 
  <./figures/coastlines.png (PNG copy)>]
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-245.
+290.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 245.
+ input line 290.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [13
+ [15
 
 ]
-<./figures/tocopa.png, id=205, 796.77675pt x 597.432pt>
+<./figures/tocopa.png, id=217, 796.77675pt x 597.432pt>
 File: ./figures/tocopa.png Graphic file (type png)
 
 <use ./figures/tocopa.png>
-Package pdftex.def Info: ./figures/tocopa.png used on input line 286.
+Package pdftex.def Info: ./figures/tocopa.png used on input line 331.
 (pdftex.def)             Requested size: 184.9429pt x 138.6736pt.
 
-Overfull \hbox (31.29797pt too wide) in paragraph at lines 286--286
+Overfull \hbox (31.29797pt too wide) in paragraph at lines 331--331
  [] 
  []
 
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-286.
+331.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 286.
+ input line 331.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [14
+ [16
 
- <./figures/tocopa.png>] <./figures/driver1.png, id=211, 565.11125pt x 120.45pt
+ <./figures/tocopa.png>] <./figures/driver1.png, id=223, 565.11125pt x 120.45pt
 >
 File: ./figures/driver1.png Graphic file (type png)
 
 <use ./figures/driver1.png>
-Package pdftex.def Info: ./figures/driver1.png used on input line 350.
+Package pdftex.def Info: ./figures/driver1.png used on input line 395.
 (pdftex.def)             Requested size: 227.62204pt x 48.51547pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-350.
+395.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 350.
+ input line 395.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [15
+ [17
 
  <./figures/driver1.png>]
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-384.
+429.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 384.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [16
-
-]
-(./DivaWorkshop2015_diva4D.toc)
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
- <use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-387.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 387.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [17
-
-]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-402.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 402.
+ input line 429.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [18
 
 ]
+(./DivaLecce2016_diva4D.toc)
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
+ <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-420.
+432.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 420.
+ input line 432.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [19
 
 ]
-<./figures/driver3.png, id=250, 796.77675pt x 597.432pt>
-File: ./figures/driver3.png Graphic file (type png)
-
-<use ./figures/driver3.png>
-Package pdftex.def Info: ./figures/driver3.png used on input line 463.
-(pdftex.def)             Requested size: 170.71652pt x 127.99869pt.
-
-Overfull \vbox (12.10158pt too high) detected at line 463
- []
-
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-463.
+447.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 463.
+ input line 447.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [20
 
- <./figures/driver3.png>]
+]
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
- <use ./figures/gherlogo_transparent.PNG>
+
+<use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-491.
+465.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 491.
+ input line 465.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [21
 
 ]
+<./figures/driver3.png, id=262, 796.77675pt x 597.432pt>
+File: ./figures/driver3.png Graphic file (type png)
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 494.
+<use ./figures/driver3.png>
+Package pdftex.def Info: ./figures/driver3.png used on input line 508.
+(pdftex.def)             Requested size: 170.71652pt x 127.99869pt.
 
+Overfull \vbox (18.22945pt too high) detected at line 508
+ []
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 494.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 494.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\lambda' on input line 494.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 494.
-
-(./DivaWorkshop2015_diva4D.toc)
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
- <use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-494.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 494.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [22
-
-]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
 508.
@@ -1879,69 +1871,103 @@ File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  input line 508.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [22
+
+ <./figures/driver3.png>]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+ <use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+536.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 536.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [23
 
 ]
-<./figures/driver4.png, id=282, 796.77675pt x 597.432pt>
-File: ./figures/driver4.png Graphic file (type png)
 
-<use ./figures/driver4.png>
-Package pdftex.def Info: ./figures/driver4.png used on input line 530.
-(pdftex.def)             Requested size: 156.49014pt x 117.33289pt.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 539.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 539.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 539.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\lambda' on input line 539.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 539.
+
+(./DivaLecce2016_diva4D.toc)
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-530.
+539.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 530.
+ input line 539.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [24
-
- <./figures/driver4.png>]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
- <use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-576.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 576.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [25
 
 ]
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-604.
+553.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 604.
+ input line 553.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [26
+ [25
 
 ]
-(./DivaWorkshop2015_diva4D.toc)
+<./figures/driver4.png, id=296, 796.77675pt x 597.432pt>
+File: ./figures/driver4.png Graphic file (type png)
+
+<use ./figures/driver4.png>
+Package pdftex.def Info: ./figures/driver4.png used on input line 575.
+(pdftex.def)             Requested size: 156.49014pt x 117.33289pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-608.
+575.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 608.
+ input line 575.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [26
+
+ <./figures/driver4.png>]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+ <use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+621.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 621.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [27
 
@@ -1950,77 +1976,77 @@ File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-627.
+649.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 627.
+ input line 649.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [28
 
 ]
-<./figures/driver5.png, id=323, 394.47375pt x 185.69376pt>
-File: ./figures/driver5.png Graphic file (type png)
-
-<use ./figures/driver5.png>
-Package pdftex.def Info: ./figures/driver5.png used on input line 655.
-(pdftex.def)             Requested size: 156.49014pt x 73.66415pt.
+(./DivaLecce2016_diva4D.toc)
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-655.
+653.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 655.
+ input line 653.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [29
-
- <./figures/driver5.png>]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
- <use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-711.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 711.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [30
 
 ]
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-739.
+672.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 739.
+ input line 672.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [31
+ [30
 
 ]
-(./DivaWorkshop2015_diva4D.toc)
+<./figures/driver5.png, id=335, 394.47375pt x 185.69376pt>
+File: ./figures/driver5.png Graphic file (type png)
+
+<use ./figures/driver5.png>
+Package pdftex.def Info: ./figures/driver5.png used on input line 700.
+(pdftex.def)             Requested size: 156.49014pt x 73.66415pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-742.
+700.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 742.
+ input line 700.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [31
+
+ <./figures/driver5.png>]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+ <use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+756.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 756.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [32
 
@@ -2029,43 +2055,43 @@ File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-771.
+784.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 771.
+ input line 784.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [33
+
+]
+(./DivaLecce2016_diva4D.toc)
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+ <use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+787.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 787.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [34
 
 ]
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-808.
+816.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 808.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [34
-
-]
-(./DivaWorkshop2015_diva4D.toc)
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
- <use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-810.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 810.
+ input line 816.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [35
 
@@ -2074,46 +2100,43 @@ File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-843.
+853.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 843.
+ input line 853.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [36
 
 ]
+(./DivaLecce2016_diva4D.toc)
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
+ <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-869.
+855.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 869.
+ input line 855.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [37
 
 ]
-Overfull \hbox (20.61018pt too wide) in paragraph at lines 901--901
-[][]\T1/pcr/m/n/10 Temperature.19002010.0103.100xx.100yy.fieldgher.ref[]  
- []
-
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-901.
+888.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 901.
+ input line 888.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [38
 
@@ -2122,43 +2145,46 @@ File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-939.
+914.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 939.
+ input line 914.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [39
+
+]
+Overfull \hbox (20.61018pt too wide) in paragraph at lines 946--946
+[][]\T1/pcr/m/n/10 Temperature.19002010.0103.100xx.100yy.fieldgher.ref[]  
+ []
+
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+946.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 946.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [40
 
 ]
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-967.
+984.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 967.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [40
-
-]
-(./DivaWorkshop2015_diva4D.toc)
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
- <use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-970.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 970.
+ input line 984.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [41
 
@@ -2167,99 +2193,128 @@ File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-1000.
+1012.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 1000.
+ input line 1012.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [42
 
 ]
-<./figures/DSCN1615.JPG, id=430, 886.06032pt x 1800.7275pt>
-File: ./figures/DSCN1615.JPG Graphic file (type jpg)
-
-<use ./figures/DSCN1615.JPG>
-Package pdftex.def Info: ./figures/DSCN1615.JPG used on input line 1033.
-(pdftex.def)             Requested size: 96.79521pt x 196.70679pt.
+(./DivaLecce2016_diva4D.toc)
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-1033.
+1015.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 1033.
+ input line 1015.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [43
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+1045.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 1045.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [44
+
+]
+<./figures/DSCN1615.JPG, id=443, 886.06032pt x 1800.7275pt>
+File: ./figures/DSCN1615.JPG Graphic file (type jpg)
+
+<use ./figures/DSCN1615.JPG>
+Package pdftex.def Info: ./figures/DSCN1615.JPG used on input line 1078.
+(pdftex.def)             Requested size: 96.79521pt x 196.70679pt.
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+ <use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+1078.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 1078.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [45
 
  <./figures/DSCN1615.JPG>]
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-1033.
+1078.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 1033.
+ input line 1078.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [44
+ [46
 
 ]
-<./figures/Italia08_025.jpg, id=442, 345.23886pt x 472.28676pt>
+<./figures/Italia08_025.jpg, id=454, 345.23886pt x 472.28676pt>
 File: ./figures/Italia08_025.jpg Graphic file (type jpg)
 
 <use ./figures/Italia08_025.jpg>
-Package pdftex.def Info: ./figures/Italia08_025.jpg used on input line 1033.
+Package pdftex.def Info: ./figures/Italia08_025.jpg used on input line 1078.
 (pdftex.def)             Requested size: 110.62401pt x 151.32942pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-1033.
+1078.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 1033.
+ input line 1078.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [45
+ [47
 
  <./figures/Italia08_025.jpg>]
 \tf@nav=\write7
-\openout7 = `DivaWorkshop2015_diva4D.nav'.
+\openout7 = `DivaLecce2016_diva4D.nav'.
 
 \tf@toc=\write8
-\openout8 = `DivaWorkshop2015_diva4D.toc'.
+\openout8 = `DivaLecce2016_diva4D.toc'.
 
 \tf@snm=\write9
-\openout9 = `DivaWorkshop2015_diva4D.snm'.
+\openout9 = `DivaLecce2016_diva4D.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1036.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1036.
- (./DivaWorkshop2015_diva4D.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1036.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1036.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1081.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1081.
+ (./DivaLecce2016_diva4D.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1081.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1081.
 
-Package rerunfilecheck Info: File `DivaWorkshop2015_diva4D.out' has not changed
-.
-(rerunfilecheck)             Checksum: 439D7770D4D2921906D7FFD0D7417E6E;884.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1036.
+Package rerunfilecheck Info: File `DivaLecce2016_diva4D.out' has not changed.
+(rerunfilecheck)             Checksum: 0EADF5D213FD4A480760665B0A2C70D6;884.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1081.
  ) 
 Here is how much of TeX's memory you used:
- 25509 strings out of 493104
- 502760 string characters out of 6136932
- 607491 words of memory out of 5000000
- 28216 multiletter control sequences out of 15000+600000
- 55868 words of font info for 88 fonts, out of 8000000 for 9000
+ 26024 strings out of 493085
+ 508597 string characters out of 6136916
+ 641347 words of memory out of 5000000
+ 28732 multiletter control sequences out of 15000+600000
+ 56946 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,17n,67p,462b,870s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,17n,67p,459b,1281s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/
@@ -2272,10 +2327,10 @@ share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
 imes/utmri8a.pfb>
-Output written on DivaWorkshop2015_diva4D.pdf (45 pages, 2258300 bytes).
+Output written on DivaLecce2016_diva4D.pdf (47 pages, 2590748 bytes).
 PDF statistics:
- 515 PDF objects out of 1000 (max. 8388607)
- 428 compressed objects within 5 object streams
- 103 named destinations out of 1000 (max. 500000)
+ 527 PDF objects out of 1000 (max. 8388607)
+ 438 compressed objects within 5 object streams
+ 107 named destinations out of 1000 (max. 500000)
  214 words of extra memory for PDF output out of 10000 (max. 10000000)
 

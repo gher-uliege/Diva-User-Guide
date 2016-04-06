@@ -143,8 +143,53 @@ A subdirectory \directory{divadata} is created in \directory{input} directory, a
 \subsection{Topography preparation \& Coastlines files generation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}[fragile]
+\frametitle{Topography preparation: Diva-On-Web}
+
+\url{http://gher-diva.phys.ulg.ac.be/web-vis/diva.html}
+
+After creating this file :
+
+\begin{verbatim}
+lonmin latmin value
+lonmax latmax value
+\end{verbatim}
+
+\begin{enumerate}
+\item Upload the file on Diva-On-Web
+\item Specify the output grid
+\item Perform the analysis
+\item Download the NetCDF file \file{diva\_bath.nc}
+\item Put it in \directory{input}
+\end{enumerate}
+
+\begin{lstlisting}[style=Bash]
+swatelet@gher ~/DIVA/diva-4.6.11/DIVA3D/divastripped/input $ ../../bin/divabath2topogrd.a
+\end{lstlisting}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{Topography preparation: Diva-On-Web}
+
+=> \file{topo.grd} and \file{TopoInfo.dat} are created \\
+\vspace{5mm}
+If you need to erase zones, just create a mask beforehand :
+
+\begin{itemize}
+\item Name : masktopo.nc
+\item Axis : (LON and LAT) or (lon and lat)
+\item Variable : MASKTOPO
+\item Convention : 0 is erased, 1 is kept
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Topography preparation: \command{gebcomodif}}
+\frametitle{Topography preparation, old method: \command{gebcomodif}}
 
 \centerline{
  For a GEBCO topography file, use the script file \command{gebcomodif} to:
