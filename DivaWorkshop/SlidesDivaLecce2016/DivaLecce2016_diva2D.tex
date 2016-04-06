@@ -218,10 +218,79 @@ Appears when
 %---------------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Solutions}
+\frametitle{The gridding problem}
+
+Gridding is the determination of a field $\phi(\vect{r})$, on regular
+grid of positions $\vect{r}$ based on arbitrarily located
+observations.  Often the vector $\vect{r}$ is on a 2D, 3D or even 4D space.\\
+
+\parbox[c]{.45\linewidth}{\includegraphics[width=\linewidth, trim=0 25 0 15,clip]{oi_used_data}} $\rightarrow$
+\parbox[c]{.45\linewidth}{\includegraphics[width=\linewidth, trim=0 25 0 15,clip]{oi_field}}
+
+\begin{itemize} 
+\item The fewer observations are available, the harder the gridding problem is
+\item In oceanography, \textit{in situ} observations are sparse
+\item Observations are inhomogeneously distributed in space and time (more observations in the coastal zones and in summer)
+\item The variability of the ocean is the sum of various processes
+occurring at different spatial and temporal scales. 
+\end{itemize}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Solutions - Subjective methods}
+
 \centerline{
 \includegraphics[width=0.9\textwidth]{discovery}
 }
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Solutions - Subjective methods}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=\linewidth]{tropical_storm_claudette}}
+\caption{Isohyet (lines of constant precipitation) drawn by hand (from \url{http://www.srh.noaa.gov/hgx/hurricanes/1970s.htm})}
+\label{fig:byhand}
+\end{figure}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Solutions - Objective methods}
+
+\begin{itemize}
+\item Subjective method is not sufficiently ... objective.
+\item Data Assimilation: region and model dependent.
+\end{itemize}
+$\Rightarrow$ Objective analysis of data that are anomalies with
+respect to a background field $\varphi_b(\vect{r})$.
+
+As opposed to the subjective method, objective analysis techniques aim
+to use mathematical formulations to infer the value of the field at
+unobserved locations based on the observation $d_j$.  Most objective
+methods can be expressed as a linear combination of data anomalies
+$d_j$ using weights $w_j$:
+\vspace{-0.5cm}
+\begin{equation}
+\varphi(\vect{r}) = \varphi_b(\vect{r}) ~+~ \sum_{j=1}^{N_d} w_j d_j
+\end{equation}
+
+The field $\varphi(\vect{r})$ can be evaluated in any position
+$\vect{r}$, hence gridding is possible.  The {\color{red}background field (or
+first guess)} $\varphi_b$ is defined {\it a priori} and anomalies
+calculated with respect to this reference field (for example a
+climatological average).  There are several ways to define the
+weighting function $w_j$, which result in different gridding
+techniques. %We will review in the following the most used gridding
+%methods.
+
 \end{frame}
 
 %---------------------------------------------------------------------
