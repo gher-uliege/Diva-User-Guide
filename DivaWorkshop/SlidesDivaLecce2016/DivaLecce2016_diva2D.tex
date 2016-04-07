@@ -240,6 +240,125 @@ occurring at different spatial and temporal scales.
 %---------------------------------------------------------------------
 
 \begin{frame}
+\frametitle{The gridding problem}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.5\linewidth, trim=0 28 0 37,clip]{dan_field}}
+\caption{Example of oceanographic field.}
+\label{dan_field}
+\end{figure}
+
+\vspace{-1cm}
+
+\begin{itemize}
+\item Figure \ref{dan_field} shows an idealized square domain with a barrier (\textit{e.g.} a peninsula or a dike).
+\item  This field is the true field  that we want to reconstruct based on observations. Let's assume that the field
+represents temperature. 
+\item The barrier suppresses the exchanges between each side of the barrier.
+\item The field varies smoothly over some length-scale
+\end{itemize}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Sampling locations}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.5\linewidth, trim=0 28 0 37,clip]{dan_field_obs}}
+\caption{Sampling locations within the domain}
+\label{dan_field_obs}
+\end{figure}
+
+\vspace{-1cm}
+
+\begin{itemize}
+\item In regions where a measurement campaign has been
+carried out, a higher spatial coverage is achieved. 
+\item Large gaps are also present. 
+\item Based on the value of the field at the shown location,
+we will estimate the true field.
+\end{itemize}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{True field at the sampling locations}
+
+\begin{figure}[H] 
+\centerline{\includegraphics[width=0.5\linewidth, trim=0 28 0 37,clip]{dan_obs}}
+\caption{Value of the true field extract at the location of the
+  observations.}
+\label{dan_obs}
+\end{figure}
+
+\vspace{-1cm}
+
+\begin{itemize} 
+\item only the value of the observations is shown
+\item  some information about the position of the
+structures and fronts is lost 
+\item no method can provide exactly the true field.
+\item the
+more information about its structure and evolution we include in the
+analysis, to close we can get to the true field.
+\end{itemize}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Observation errors}
+
+Observations are in general affected by different error sources and
+other ``problems'' that need to be taken into account:
+
+\begin{enumerate}
+\item Instrumental errors (limited precision or possible bias of the
+  sensor)
+\item Representative errors: the observations do not necessarily
+  corresponds to the field we want to obtain. For example, we want to
+  have a monthly average, but the observations are instantaneous (or
+  averages over a very short period of time).
+\item Synopticity errors: all observations are not taken at the same time.
+\item Other errors sources: human errors (e.g. permutation of
+  longitude and latitude), transmission errors, malfunctioning of the
+  instrument, wrong decimal separators...
+\end{enumerate}
+
+Quality control is an important step to exclude suspicious data from
+the analysis. But since this is a subjective decision, the data should
+never be deleted but flagged as suspicious or bad data.
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Observation errors}
+
+\begin{figure}[H] 
+\centerline{\includegraphics[width=0.5\linewidth, trim=0 28 0 37,clip]{dan_obs_err}}
+\caption{Observation with errors}
+\label{dan_obs_err}
+\end{figure}
+
+\vspace{-1cm}
+
+In figure \ref{dan_obs_err}, a random perturbation was added to the
+observation shown in figure \ref{dan_obs}. This simulates the impact
+of the different error sources. To simplify matters, each observation
+was perturbed independently.\\
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
 \frametitle{Solutions - Subjective methods}
 
 \centerline{
@@ -257,6 +376,42 @@ occurring at different spatial and temporal scales.
 \caption{Isohyet (lines of constant precipitation) drawn by hand (from \url{http://www.srh.noaa.gov/hgx/hurricanes/1970s.htm})}
 \label{fig:byhand}
 \end{figure}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Interpolation or Analysis ?}
+
+Because observations have errors, it is always better to produce a
+field approximation and never a strict interpolation. 
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.5\linewidth, trim=0 28 0 37,clip]{dan_griddata}}
+\caption{Gridded field using linear interpolation. This method is
+  implemented in the function \texttt{griddata} of Matlab and GNU
+  Octave.}
+\label{dan_griddata}
+\end{figure}
+
+\vspace{-1cm}
+
+{\fontsize{9pt}{10}\selectfont
+\begin{itemize}
+\item Figure
+\ref{dan_griddata} shows what would happen if the observations would
+have been interpolated linearly. 
+\item The domain is
+  decomposed into triangles where the vertices are the location of the
+  data points based on the Delaunay triangulation. 
+\item Within each
+  triangle, the value is interpolated linearly. 
+%\item The noise on the observations is in
+%general amplified when higher order schemes, such as cubic
+%interpolation, are used.
+\end{itemize}
+}
 
 \end{frame}
 
@@ -296,10 +451,113 @@ techniques. %We will review in the following the most used gridding
 %---------------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Solutions}
-\centerline{
-\includegraphics[width=0.9\textwidth]{diva_analysis_data}
-}
+\frametitle{Cressman method}
+
+Cressman weights depend only on the distance $r$ between the location
+$\vect{r}$ where the value of the field should be estimated and the
+location of the observation $\vect{r}_j$:
+
+\begin{equation}
+r = {\left|\vect{r}-\vect{r}_j\right|}
+\end{equation}
+
+The weights are then parameterized according to,
+
+\begin{equation}
+\begin{array}{rclrr}
+\tilde{w}(r) &=& \frac{R^2-r^2}{R^2+r^2} & \mbox{for} & r < R \\ &=& 0
+& \mbox{for} & r \ge R
+   \end{array}
+\end{equation}
+
+The weights as a function of distance are shown in figure
+\ref{fig:dan_cressman_w}.  Weights must be scaled by their sum to
+ensure no bias.
+
+\begin{equation}
+w_j= \tilde{w}_j/\sum_j \tilde{w}_j
+\end{equation}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Cressman method}
+
+\begin{figure}[H] 
+\centerline{\includegraphics[width=0.5\linewidth, trim=0 28 0 37,clip]{dan_cressman_w}}
+\caption{Cressman weights for $R=2$ (blue) and Barnes weights for
+  $R=1$ (red).}
+\label{fig:dan_cressman_w}
+\end{figure}
+
+\vspace{-1cm}
+
+The search radius $R$ is the typical control parameter and defines the
+length-scale over which an observation is used.  This length scale
+can be made to vary in space depending on data coverage and/or
+physical scales. This parameter is chosen by the users based on their
+knowledge of the domain and the problem.
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Cressman method}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.5\linewidth, trim=0 28 0 37,clip]{dan_cressman}}
+\caption{Gridded field by Cressman weighting}
+\label{fig:dan_cressman}
+\end{figure}
+
+\vspace{-1cm}
+
+{\fontsize{9pt}{10}\selectfont The Cressman weighting is a very simple and numerically quite
+efficient method. However, it suffers from some limitations which are
+apparent in figure \ref{fig:dan_cressman}.
+
+\begin{itemize}
+\item No estimate can be obtained at locations when no observation is
+  located within the $R$.
+\item In regions with very few observations, the method can return a
+  discontinuous field.
+\item The presence of barriers
+  cannot be taken into account easily.
+\item All observations are assumed to have a similar error
+  variance since the weighting is based only on distance.
+\end{itemize}}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Barnes method}
+
+{\fontsize{9pt}{10}\selectfont As a variant of the Cressman weights, other weighting functions can be
+defined. In the Barnes scheme, the weights are defined using a
+Gaussian function:}
+
+\begin{eqnarray}
+\tilde{w}(d) &=& e^{-\frac{d^2}{2 R^2}}
+\end{eqnarray}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.5\linewidth, trim=0 28 0 37,clip]{dan_barnes}}
+\caption{Gridded field using Barnes weights}
+\label{dan_barnes}
+\end{figure}
+
+\vspace{-1cm}
+
+{\fontsize{9pt}{10}\selectfont Since the Barnes weights are never zero, in principle all observations
+are used for the gridding. An estimation can be obtained everywhere
+(which can be accurate or not). Artificial discontinuities are avoided
+using the Barnes weights (figure \ref{dan_barnes}).}
+
 \end{frame}
 
 %---------------------------------------------------------------------
@@ -865,6 +1123,15 @@ DINEOF   &   ($\star$)     &  $\star$    &  $\star$ &  $N_a^{5/4}$  &   ($\star$
         \path[-,black,thick] (s-obs) edge  (obs);
         \path[-,black,thick] (s-behaviour) edge  (behaviour);
 \end{tikzpicture}
+}
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{DIVA illustration}
+\centerline{
+\includegraphics[width=0.9\textwidth]{diva_analysis_data}
 }
 \end{frame}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.19)  6 APR 2016 17:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.19)  7 APR 2016 15:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1802,6 +1802,154 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
 
  <./figures/oi_used_data-eps-converted-to.pdf> <./figures/oi_field-eps-converte
 d-to.pdf>]
+Package epstopdf Info: Source file: <./figures/dan_field.eps>
+(epstopdf)                    date: 2016-04-07 11:41:50
+(epstopdf)                    size: 98552 bytes
+(epstopdf)             Output file: <./figures/dan_field-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-04-07 11:41:55
+(epstopdf)                    size: 23244 bytes
+(epstopdf)             Command: <repstopdf --outfile=./figures/dan_field-eps-co
+nverted-to.pdf ./figures/dan_field.eps>
+(epstopdf)             \includegraphics on input line 261.
+Package epstopdf Info: Output file is already uptodate.
+
+<./figures/dan_field-eps-converted-to.pdf, id=143, 501.875pt x 401.5pt>
+File: ./figures/dan_field-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./figures/dan_field-eps-converted-to.pdf>
+Package pdftex.def Info: ./figures/dan_field-eps-converted-to.pdf used on input
+ line 261.
+(pdftex.def)             Requested size: 153.64493pt x 102.9402pt.
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+261.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 261.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [17
+
+ <./figures/dan_field-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <./figures/dan_field_obs.eps>
+(epstopdf)                    date: 2016-04-07 11:46:56
+(epstopdf)                    size: 165758 bytes
+(epstopdf)             Output file: <./figures/dan_field_obs-eps-converted-to.p
+df>
+(epstopdf)                    date: 2016-04-07 11:47:00
+(epstopdf)                    size: 34832 bytes
+(epstopdf)             Command: <repstopdf --outfile=./figures/dan_field_obs-ep
+s-converted-to.pdf ./figures/dan_field_obs.eps>
+(epstopdf)             \includegraphics on input line 284.
+Package epstopdf Info: Output file is already uptodate.
+
+<./figures/dan_field_obs-eps-converted-to.pdf, id=158, 501.875pt x 401.5pt>
+File: ./figures/dan_field_obs-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./figures/dan_field_obs-eps-converted-to.pdf>
+Package pdftex.def Info: ./figures/dan_field_obs-eps-converted-to.pdf used on i
+nput line 284.
+(pdftex.def)             Requested size: 153.64493pt x 102.9402pt.
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+284.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 284.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [18
+
+ <./figures/dan_field_obs-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <./figures/dan_obs.eps>
+(epstopdf)                    date: 2016-04-07 14:47:53
+(epstopdf)                    size: 86673 bytes
+(epstopdf)             Output file: <./figures/dan_obs-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-04-07 14:47:57
+(epstopdf)                    size: 18936 bytes
+(epstopdf)             Command: <repstopdf --outfile=./figures/dan_obs-eps-conv
+erted-to.pdf ./figures/dan_obs.eps>
+(epstopdf)             \includegraphics on input line 310.
+Package epstopdf Info: Output file is already uptodate.
+
+<./figures/dan_obs-eps-converted-to.pdf, id=173, 501.875pt x 401.5pt>
+File: ./figures/dan_obs-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./figures/dan_obs-eps-converted-to.pdf>
+Package pdftex.def Info: ./figures/dan_obs-eps-converted-to.pdf used on input l
+ine 310.
+(pdftex.def)             Requested size: 153.64493pt x 102.9402pt.
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+310.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 310.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [19
+
+ <./figures/dan_obs-eps-converted-to.pdf>]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+ <use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+337.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 337.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [20
+
+]
+Package epstopdf Info: Source file: <./figures/dan_obs_err.eps>
+(epstopdf)                    date: 2016-04-07 14:54:11
+(epstopdf)                    size: 86817 bytes
+(epstopdf)             Output file: <./figures/dan_obs_err-eps-converted-to.pdf
+>
+(epstopdf)                    date: 2016-04-07 14:54:27
+(epstopdf)                    size: 19021 bytes
+(epstopdf)             Command: <repstopdf --outfile=./figures/dan_obs_err-eps-
+converted-to.pdf ./figures/dan_obs_err.eps>
+(epstopdf)             \includegraphics on input line 357.
+Package epstopdf Info: Output file is already uptodate.
+
+<./figures/dan_obs_err-eps-converted-to.pdf, id=193, 501.875pt x 401.5pt>
+File: ./figures/dan_obs_err-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./figures/dan_obs_err-eps-converted-to.pdf>
+Package pdftex.def Info: ./figures/dan_obs_err-eps-converted-to.pdf used on inp
+ut line 357.
+(pdftex.def)             Requested size: 153.64493pt x 102.9402pt.
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+357.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 357.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [21
+
+ <./figures/dan_obs_err-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <./figures/discovery.eps>
 (epstopdf)                    date: 2016-04-04 20:17:20
 (epstopdf)                    size: 11594886 bytes
@@ -1810,29 +1958,29 @@ Package epstopdf Info: Source file: <./figures/discovery.eps>
 (epstopdf)                    size: 754388 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figures/discovery-eps-co
 nverted-to.pdf ./figures/discovery.eps>
-(epstopdf)             \includegraphics on input line 248.
+(epstopdf)             \includegraphics on input line 367.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figures/discovery-eps-converted-to.pdf, id=143, 1297.84875pt x 832.10875pt>
+<./figures/discovery-eps-converted-to.pdf, id=209, 1297.84875pt x 832.10875pt>
 File: ./figures/discovery-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figures/discovery-eps-converted-to.pdf>
 Package pdftex.def Info: ./figures/discovery-eps-converted-to.pdf used on input
- line 248.
+ line 367.
 (pdftex.def)             Requested size: 276.559pt x 177.31277pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-248.
+367.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 248.
+ input line 367.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [17
+ [22
 
  <./figures/discovery-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <./figures/tropical_storm_claudette.eps>
@@ -1844,159 +1992,84 @@ verted-to.pdf>
 (epstopdf)                    size: 326764 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figures/tropical_storm_c
 laudette-eps-converted-to.pdf ./figures/tropical_storm_claudette.eps>
-(epstopdf)             \includegraphics on input line 261.
+(epstopdf)             \includegraphics on input line 380.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figures/tropical_storm_claudette-eps-converted-to.pdf, id=152, 790.955pt x 4
+<./figures/tropical_storm_claudette-eps-converted-to.pdf, id=218, 790.955pt x 4
 80.79625pt>
 File: ./figures/tropical_storm_claudette-eps-converted-to.pdf Graphic file (typ
 e pdf)
  <use ./figures/tropical_storm_claudette-eps-converted-to.pdf>
 Package pdftex.def Info: ./figures/tropical_storm_claudette-eps-converted-to.pd
-f used on input line 261.
+f used on input line 380.
 (pdftex.def)             Requested size: 307.28987pt x 186.79082pt.
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 261.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 380.
 
-Overfull \vbox (7.4895pt too high) detected at line 261
+Overfull \vbox (7.4895pt too high) detected at line 380
  []
 
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-261.
+380.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 261.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [18
-
- <./figures/tropical_storm_claudette-eps-converted-to.pdf>]
-Overfull \vbox (3.12338pt too high) detected at line 294
- []
-
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-<use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-294.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 294.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [19
-
-]
-Package epstopdf Info: Source file: <./figures/diva_analysis_data.eps>
-(epstopdf)                    date: 2016-04-04 20:20:40
-(epstopdf)                    size: 1076115 bytes
-(epstopdf)             Output file: <./figures/diva_analysis_data-eps-converted
--to.pdf>
-(epstopdf)                    date: 2016-04-04 20:22:13
-(epstopdf)                    size: 60260 bytes
-(epstopdf)             Command: <repstopdf --outfile=./figures/diva_analysis_da
-ta-eps-converted-to.pdf ./figures/diva_analysis_data.eps>
-(epstopdf)             \includegraphics on input line 303.
-Package epstopdf Info: Output file is already uptodate.
-
-<./figures/diva_analysis_data-eps-converted-to.pdf, id=176, 850.17625pt x 624.3
-325pt>
-File: ./figures/diva_analysis_data-eps-converted-to.pdf Graphic file (type pdf)
-
- <use ./figures/diva_analysis_data-eps-converted-to.pdf>
-Package pdftex.def Info: ./figures/diva_analysis_data-eps-converted-to.pdf used
- on input line 303.
-(pdftex.def)             Requested size: 276.559pt x 203.09619pt.
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-303.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 303.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [20
-
- <./figures/diva_analysis_data-eps-converted-to.pdf>]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
- <use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-328.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 328.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [21
-
-]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-328.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 328.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [22
-
-]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-328.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 328.
+ input line 380.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [23
 
-]
+ <./figures/tropical_storm_claudette-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <./figures/dan_griddata.eps>
+(epstopdf)                    date: 2016-04-07 15:01:57
+(epstopdf)                    size: 193676 bytes
+(epstopdf)             Output file: <./figures/dan_griddata-eps-converted-to.pd
+f>
+(epstopdf)                    date: 2016-04-07 15:02:02
+(epstopdf)                    size: 38425 bytes
+(epstopdf)             Command: <repstopdf --outfile=./figures/dan_griddata-eps
+-converted-to.pdf ./figures/dan_griddata.eps>
+(epstopdf)             \includegraphics on input line 416.
+Package epstopdf Info: Output file is already uptodate.
+
+<./figures/dan_griddata-eps-converted-to.pdf, id=231, 501.875pt x 401.5pt>
+File: ./figures/dan_griddata-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./figures/dan_griddata-eps-converted-to.pdf>
+Package pdftex.def Info: ./figures/dan_griddata-eps-converted-to.pdf used on in
+put line 416.
+(pdftex.def)             Requested size: 153.64493pt x 102.9402pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-328.
+416.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 328.
+ input line 416.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [24
 
-]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+ <./figures/dan_griddata-eps-converted-to.pdf>]
+Overfull \vbox (3.12338pt too high) detected at line 449
+ []
 
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-328.
+449.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 328.
+ input line 449.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [25
 
@@ -2005,271 +2078,134 @@ File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-349.
+481.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 349.
+ input line 481.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [26
 
 ]
+Package epstopdf Info: Source file: <./figures/dan_cressman_w.eps>
+(epstopdf)                    date: 2016-04-07 11:14:14
+(epstopdf)                    size: 15397 bytes
+(epstopdf)             Output file: <./figures/dan_cressman_w-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2016-04-07 11:14:24
+(epstopdf)                    size: 6799 bytes
+(epstopdf)             Command: <repstopdf --outfile=./figures/dan_cressman_w-e
+ps-converted-to.pdf ./figures/dan_cressman_w.eps>
+(epstopdf)             \includegraphics on input line 503.
+Package epstopdf Info: Output file is already uptodate.
+
+<./figures/dan_cressman_w-eps-converted-to.pdf, id=265, 501.875pt x 401.5pt>
+File: ./figures/dan_cressman_w-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./figures/dan_cressman_w-eps-converted-to.pdf>
+Package pdftex.def Info: ./figures/dan_cressman_w-eps-converted-to.pdf used on 
+input line 503.
+(pdftex.def)             Requested size: 153.64493pt x 102.9402pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-375.
+503.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 375.
+ input line 503.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [27
 
-]pdfTeX warning (ext4): destination with the same identifier (name{eq:epsiloner
-ror}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.395 \end{frame}
-                 
+ <./figures/dan_cressman_w-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <./figures/dan_cressman.eps>
+(epstopdf)                    date: 2016-04-07 11:19:16
+(epstopdf)                    size: 191909 bytes
+(epstopdf)             Output file: <./figures/dan_cressman-eps-converted-to.pd
+f>
+(epstopdf)                    date: 2016-04-07 11:19:21
+(epstopdf)                    size: 38669 bytes
+(epstopdf)             Command: <repstopdf --outfile=./figures/dan_cressman-eps
+-converted-to.pdf ./figures/dan_cressman.eps>
+(epstopdf)             \includegraphics on input line 533.
+Package epstopdf Info: Output file is already uptodate.
 
-Package amsmath Warning: Foreign command \over;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 395.
+<./figures/dan_cressman-eps-converted-to.pdf, id=278, 501.875pt x 401.5pt>
+File: ./figures/dan_cressman-eps-converted-to.pdf Graphic file (type pdf)
 
+<use ./figures/dan_cressman-eps-converted-to.pdf>
+Package pdftex.def Info: ./figures/dan_cressman-eps-converted-to.pdf used on in
+put line 533.
+(pdftex.def)             Requested size: 153.64493pt x 102.9402pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-395.
+533.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 395.
+ input line 533.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [28
 
-]
-Shadow Warning: Box dimension greater than textwidth.
+ <./figures/dan_cressman-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <./figures/dan_barnes.eps>
+(epstopdf)                    date: 2016-04-07 11:35:26
+(epstopdf)                    size: 170354 bytes
+(epstopdf)             Output file: <./figures/dan_barnes-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2016-04-07 11:35:30
+(epstopdf)                    size: 34751 bytes
+(epstopdf)             Command: <repstopdf --outfile=./figures/dan_barnes-eps-c
+onverted-to.pdf ./figures/dan_barnes.eps>
+(epstopdf)             \includegraphics on input line 561.
+Package epstopdf Info: Output file is already uptodate.
+
+<./figures/dan_barnes-eps-converted-to.pdf, id=294, 501.875pt x 401.5pt>
+File: ./figures/dan_barnes-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./figures/dan_barnes-eps-converted-to.pdf>
+Package pdftex.def Info: ./figures/dan_barnes-eps-converted-to.pdf used on inpu
+t line 561.
+(pdftex.def)             Requested size: 153.64493pt x 102.9402pt.
+
+Overfull \vbox (2.26677pt too high) detected at line 561
+ []
+
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-417.
+561.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 417.
+ input line 561.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [29
 
-]
+ <./figures/dan_barnes-eps-converted-to.pdf>]
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
+ <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-446.
+586.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 446.
+ input line 586.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [30
-
-]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-446.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 446.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [31
-
-
-]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-465.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 465.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [32
-
-]pdfTeX warning (ext4): destination with the same identifier (name{eq:analyzedf
-ield}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.490 \end{frame}
-                 
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
- <use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-490.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 490.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [33
-
-]
-<./figures/gridding.pdf, id=262, 614.295pt x 794.97pt>
-File: ./figures/gridding.pdf Graphic file (type pdf)
-
-<use ./figures/gridding.pdf>
-Package pdftex.def Info: ./figures/gridding.pdf used on input line 513.
-(pdftex.def)             Requested size: 122.91406pt x 123.36241pt.
-
-
-LaTeX Font Warning: Font shape `U/wasy/b/n' in size <9> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 513.
-
-
-LaTeX Font Warning: Font shape `U/wasy/b/n' in size <5> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 513.
-
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-<use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-513.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 513.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [34
-
- <./figures/gridding.pdf>]
-File: ./figures/gridding.pdf Graphic file (type pdf)
- <use ./figures/gridding.pdf>
-Package pdftex.def Info: ./figures/gridding.pdf used on input line 513.
-(pdftex.def)             Requested size: 122.91406pt x 123.36241pt.
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
- <use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-513.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 513.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [35
-
-]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-556.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 556.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [36
-
-]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-556.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 556.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [37
-
-]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-556.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 556.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [38
-
-]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-556.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 556.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [39
-
-]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-556.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 556.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [40
-
-]
-File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
-
-<use ./figures/gherlogo_transparent.PNG>
-Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-556.
-(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
-File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
-
-<use ./figures/Logo_SeaDataNet_fond_transparent.png>
-Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 556.
-(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [41
 
 ]
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
@@ -2284,7 +2220,52 @@ File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  input line 586.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [42
+ [31
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+586.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 586.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [32
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+586.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 586.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [33
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+586.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 586.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [34
 
 ]
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
@@ -2299,7 +2280,293 @@ File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  input line 607.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [35
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+633.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 633.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [36
+
+]pdfTeX warning (ext4): destination with the same identifier (name{eq:epsiloner
+ror}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.653 \end{frame}
+                 
+
+Package amsmath Warning: Foreign command \over;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 653.
+
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+653.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 653.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [37
+
+]
+Shadow Warning: Box dimension greater than textwidth.
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+675.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 675.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [38
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+704.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 704.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [39
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+704.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 704.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [40
+
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+723.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 723.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [41
+
+]pdfTeX warning (ext4): destination with the same identifier (name{eq:analyzedf
+ield}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.748 \end{frame}
+                 
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+ <use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+748.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 748.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [42
+
+]
+<./figures/gridding.pdf, id=386, 614.295pt x 794.97pt>
+File: ./figures/gridding.pdf Graphic file (type pdf)
+
+<use ./figures/gridding.pdf>
+Package pdftex.def Info: ./figures/gridding.pdf used on input line 771.
+(pdftex.def)             Requested size: 122.91406pt x 123.36241pt.
+
+
+LaTeX Font Warning: Font shape `U/wasy/b/n' in size <9> not available
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 771.
+
+
+LaTeX Font Warning: Font shape `U/wasy/b/n' in size <5> not available
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 771.
+
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+771.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 771.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [43
+
+ <./figures/gridding.pdf>]
+File: ./figures/gridding.pdf Graphic file (type pdf)
+ <use ./figures/gridding.pdf>
+Package pdftex.def Info: ./figures/gridding.pdf used on input line 771.
+(pdftex.def)             Requested size: 122.91406pt x 123.36241pt.
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+ <use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+771.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 771.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [44
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+814.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 814.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [45
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+814.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 814.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [46
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+814.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 814.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [47
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+814.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 814.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [48
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+814.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 814.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [49
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+814.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 814.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [50
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+844.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 844.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [51
+
+]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+865.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 865.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [52
 
 ]
 Package epstopdf Info: Source file: <./figures/besselvsonepoint.eps>
@@ -2311,92 +2578,92 @@ o.pdf>
 (epstopdf)                    size: 5753 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figures/besselvsonepoint
 -eps-converted-to.pdf ./figures/besselvsonepoint.eps>
-(epstopdf)             \includegraphics on input line 614.
+(epstopdf)             \includegraphics on input line 872.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figures/besselvsonepoint-eps-converted-to.pdf, id=339, 471.7625pt x 378.4137
+<./figures/besselvsonepoint-eps-converted-to.pdf, id=461, 471.7625pt x 378.4137
 6pt>
 File: ./figures/besselvsonepoint-eps-converted-to.pdf Graphic file (type pdf)
  <use ./figures/besselvsonepoint-eps-converted-to.pdf>
 Package pdftex.def Info: ./figures/besselvsonepoint-eps-converted-to.pdf used o
-n input line 614.
+n input line 872.
 (pdftex.def)             Requested size: 276.559pt x 221.83597pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-614.
+872.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 614.
+ input line 872.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [44
+ [53
 
  <./figures/besselvsonepoint-eps-converted-to.pdf>]
-<./figures/medregiso.png, id=350, 4227.795pt x 3508.10625pt>
+<./figures/medregiso.png, id=472, 4227.795pt x 3508.10625pt>
 File: ./figures/medregiso.png Graphic file (type png)
 
 <use ./figures/medregiso.png>
-Package pdftex.def Info: ./figures/medregiso.png used on input line 629.
+Package pdftex.def Info: ./figures/medregiso.png used on input line 887.
 (pdftex.def)             Requested size: 227.59436pt x 113.80333pt.
 
-<./figures/medregtopo.png, id=351, 4306.0875pt x 3646.62375pt>
+<./figures/medregtopo.png, id=473, 4306.0875pt x 3646.62375pt>
 File: ./figures/medregtopo.png Graphic file (type png)
 
 <use ./figures/medregtopo.png>
-Package pdftex.def Info: ./figures/medregtopo.png used on input line 629.
+Package pdftex.def Info: ./figures/medregtopo.png used on input line 887.
 (pdftex.def)             Requested size: 227.60391pt x 113.78978pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-629.
+887.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 629.
+ input line 887.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [45
+ [54
 
  <./figures/medregiso.png> <./figures/medregtopo.png>]
-<./figures/mesh_northsea.pdf, id=357, 614.295pt x 794.97pt>
+<./figures/mesh_northsea.pdf, id=479, 614.295pt x 794.97pt>
 File: ./figures/mesh_northsea.pdf Graphic file (type pdf)
 
 <use ./figures/mesh_northsea.pdf>
-Package pdftex.def Info: ./figures/mesh_northsea.pdf used on input line 650.
+Package pdftex.def Info: ./figures/mesh_northsea.pdf used on input line 908.
 (pdftex.def)             Requested size: 92.1879pt x 102.66176pt.
 
-<./figures/mesh_baltic.pdf, id=358, 614.295pt x 794.97pt>
+<./figures/mesh_baltic.pdf, id=480, 614.295pt x 794.97pt>
 File: ./figures/mesh_baltic.pdf Graphic file (type pdf)
 
 <use ./figures/mesh_baltic.pdf>
-Package pdftex.def Info: ./figures/mesh_baltic.pdf used on input line 650.
+Package pdftex.def Info: ./figures/mesh_baltic.pdf used on input line 908.
 (pdftex.def)             Requested size: 92.1879pt x 86.62685pt.
 
-<./figures/mesh_adriatic.pdf, id=359, 614.295pt x 794.97pt>
+<./figures/mesh_adriatic.pdf, id=481, 614.295pt x 794.97pt>
 File: ./figures/mesh_adriatic.pdf Graphic file (type pdf)
 
 <use ./figures/mesh_adriatic.pdf>
-Package pdftex.def Info: ./figures/mesh_adriatic.pdf used on input line 650.
+Package pdftex.def Info: ./figures/mesh_adriatic.pdf used on input line 908.
 (pdftex.def)             Requested size: 92.1879pt x 89.46484pt.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 650.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 908.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-650.
+908.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 650.
+ input line 908.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [46
+ [55
 
  <./figures/mesh_northsea.pdf> <./figures/mesh_baltic.pdf> <./figures/mesh_adri
 atic.pdf>]
@@ -2408,476 +2675,511 @@ Package epstopdf Info: Source file: <./figures/divamesh.eps>
 (epstopdf)                    size: 160194 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figures/divamesh-eps-con
 verted-to.pdf ./figures/divamesh.eps>
-(epstopdf)             \includegraphics on input line 670.
+(epstopdf)             \includegraphics on input line 928.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figures/divamesh-eps-converted-to.pdf, id=374, 512.91624pt x 324.21124pt>
+<./figures/divamesh-eps-converted-to.pdf, id=497, 512.91624pt x 324.21124pt>
 File: ./figures/divamesh-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figures/divamesh-eps-converted-to.pdf>
 Package pdftex.def Info: ./figures/divamesh-eps-converted-to.pdf used on input 
-line 670.
+line 928.
 (pdftex.def)             Requested size: 199.16928pt x 125.89275pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-670.
+928.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 670.
+ input line 928.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [47
+ [56
 
  <./figures/divamesh-eps-converted-to.pdf>]
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-765.
+1023.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 765.
+ input line 1023.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [48
+ [57
 
 ]
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-765.
+1023.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 765.
+ input line 1023.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [49
+ [58
 
 ]
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-790.
+1048.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 790.
+ input line 1048.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [50
+ [59
 
 ]
-Overfull \hbox (5.8516pt too wide) in paragraph at lines 818--818
+Overfull \hbox (5.8516pt too wide) in paragraph at lines 1076--1076
  |  [] 
  []
 
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-818.
+1076.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 818.
+ input line 1076.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [51
+ [60
 
 ]
-<./figures/cocktail.jpg, id=417, 376.40625pt x 944.7797pt>
+<./figures/cocktail.jpg, id=539, 376.40625pt x 944.7797pt>
 File: ./figures/cocktail.jpg Graphic file (type jpg)
 
 <use ./figures/cocktail.jpg>
-Package pdftex.def Info: ./figures/cocktail.jpg used on input line 869.
+Package pdftex.def Info: ./figures/cocktail.jpg used on input line 1127.
 (pdftex.def)             Requested size: 86.04298pt x 215.96848pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-869.
+1127.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 869.
+ input line 1127.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [52
+ [61
 
  <./figures/cocktail.jpg>]
 File: ./figures/cocktail.jpg Graphic file (type jpg)
  <use ./figures/cocktail.jpg>
-Package pdftex.def Info: ./figures/cocktail.jpg used on input line 869.
+Package pdftex.def Info: ./figures/cocktail.jpg used on input line 1127.
 (pdftex.def)             Requested size: 86.04298pt x 215.96848pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-869.
+1127.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 869.
+ input line 1127.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [53
+ [62
 
 ]
-<./figures/diva_demo.png, id=428, 805.50937pt x 654.19406pt>
+Package epstopdf Info: Source file: <./figures/diva_analysis_data.eps>
+(epstopdf)                    date: 2016-04-04 20:20:40
+(epstopdf)                    size: 1076115 bytes
+(epstopdf)             Output file: <./figures/diva_analysis_data-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2016-04-04 20:22:13
+(epstopdf)                    size: 60260 bytes
+(epstopdf)             Command: <repstopdf --outfile=./figures/diva_analysis_da
+ta-eps-converted-to.pdf ./figures/diva_analysis_data.eps>
+(epstopdf)             \includegraphics on input line 1136.
+Package epstopdf Info: Output file is already uptodate.
+
+<./figures/diva_analysis_data-eps-converted-to.pdf, id=551, 850.17625pt x 624.3
+325pt>
+File: ./figures/diva_analysis_data-eps-converted-to.pdf Graphic file (type pdf)
+
+ <use ./figures/diva_analysis_data-eps-converted-to.pdf>
+Package pdftex.def Info: ./figures/diva_analysis_data-eps-converted-to.pdf used
+ on input line 1136.
+(pdftex.def)             Requested size: 276.559pt x 203.09619pt.
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+1136.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 1136.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [63
+
+ <./figures/diva_analysis_data-eps-converted-to.pdf>]
+<./figures/diva_demo.png, id=560, 805.50937pt x 654.19406pt>
 File: ./figures/diva_demo.png Graphic file (type png)
 
 <use ./figures/diva_demo.png>
-Package pdftex.def Info: ./figures/diva_demo.png used on input line 896.
+Package pdftex.def Info: ./figures/diva_demo.png used on input line 1163.
 (pdftex.def)             Requested size: 227.62209pt x 184.86008pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-896.
+1163.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 896.
+ input line 1163.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [54
+ [64
 
- <./figures/diva_demo.png>] <./figures/divaonweb.png, id=435, 825.0825pt x 439.
+ <./figures/diva_demo.png>] <./figures/divaonweb.png, id=567, 825.0825pt x 439.
 6425pt>
 File: ./figures/divaonweb.png Graphic file (type png)
 
 <use ./figures/divaonweb.png>
-Package pdftex.def Info: ./figures/divaonweb.png used on input line 896.
+Package pdftex.def Info: ./figures/divaonweb.png used on input line 1163.
 (pdftex.def)             Requested size: 291.35739pt x 155.24568pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-896.
+1163.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 896.
+ input line 1163.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [55
+ [65
 
- <./figures/divaonweb.png>] <./figures/divascreen.png, id=443, 1261.71375pt x 7
+ <./figures/divaonweb.png>] <./figures/divascreen.png, id=574, 1261.71375pt x 7
 59.58781pt>
 File: ./figures/divascreen.png Graphic file (type png)
 
 <use ./figures/divascreen.png>
-Package pdftex.def Info: ./figures/divascreen.png used on input line 896.
+Package pdftex.def Info: ./figures/divascreen.png used on input line 1163.
 (pdftex.def)             Requested size: 273.14651pt x 164.44405pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-896.
+1163.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 896.
+ input line 1163.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [56
+ [66
 
- <./figures/divascreen.png>] <./figures/datadat.png, id=450, 578.16pt x 256.709
+ <./figures/divascreen.png>] <./figures/datadat.png, id=581, 578.16pt x 256.709
 06pt>
 File: ./figures/datadat.png Graphic file (type png)
 
 <use ./figures/datadat.png>
-Package pdftex.def Info: ./figures/datadat.png used on input line 916.
+Package pdftex.def Info: ./figures/datadat.png used on input line 1183.
 (pdftex.def)             Requested size: 355.42955pt x 157.81285pt.
 
-Overfull \hbox (48.13968pt too wide) in paragraph at lines 916--916
+Overfull \hbox (48.13968pt too wide) in paragraph at lines 1183--1183
  [] 
  []
 
 
-Overfull \vbox (7.70355pt too high) detected at line 916
+Overfull \vbox (7.70355pt too high) detected at line 1183
  []
 
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-916.
+1183.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 916.
+ input line 1183.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [57
+ [67
 
- <./figures/datadat.png>] <./figures/coastcont.png, id=456, 531.48563pt x 283.8
+ <./figures/datadat.png>] <./figures/coastcont.png, id=588, 531.48563pt x 283.8
 1032pt>
 File: ./figures/coastcont.png Graphic file (type png)
 
 <use ./figures/coastcont.png>
-Package pdftex.def Info: ./figures/coastcont.png used on input line 916.
+Package pdftex.def Info: ./figures/coastcont.png used on input line 1183.
 (pdftex.def)             Requested size: 295.5457pt x 157.81285pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-916.
+1183.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 916.
+ input line 1183.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [58
+ [68
 
- <./figures/coastcont.png>] <./figures/parampar.png, id=463, 581.92406pt x 336.
+ <./figures/coastcont.png>] <./figures/parampar.png, id=594, 581.92406pt x 336.
 50719pt>
 File: ./figures/parampar.png Graphic file (type png)
 
 <use ./figures/parampar.png>
-Package pdftex.def Info: ./figures/parampar.png used on input line 916.
+Package pdftex.def Info: ./figures/parampar.png used on input line 1183.
 (pdftex.def)             Requested size: 272.90942pt x 157.81285pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-916.
+1183.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 916.
+ input line 1183.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [59
+ [69
 
- <./figures/parampar.png>] <./figures/example2D_1_bs.jpg, id=469, 1983.41pt x 1
+ <./figures/parampar.png>] <./figures/example2D_1_bs.jpg, id=600, 1983.41pt x 1
 410.26875pt>
 File: ./figures/example2D_1_bs.jpg Graphic file (type jpg)
 
 <use ./figures/example2D_1_bs.jpg>
-Package pdftex.def Info: ./figures/example2D_1_bs.jpg used on input line 944.
+Package pdftex.def Info: ./figures/example2D_1_bs.jpg used on input line 1211.
 (pdftex.def)             Requested size: 304.21866pt x 216.30838pt.
 
-Overfull \vbox (9.91994pt too high) detected at line 944
+Overfull \vbox (9.91994pt too high) detected at line 1211
  []
 
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-944.
+1211.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 944.
+ input line 1211.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [60
+ [70
 
  <./figures/example2D_1_bs.jpg>]
-Overfull \vbox (9.8936pt too high) detected at line 944
+Overfull \vbox (9.8936pt too high) detected at line 1211
  []
 
-<./figures/example2D_2_bs.jpg, id=476, 1983.41pt x 1410.26875pt>
+<./figures/example2D_2_bs.jpg, id=608, 1983.41pt x 1410.26875pt>
 File: ./figures/example2D_2_bs.jpg Graphic file (type jpg)
 
 <use ./figures/example2D_2_bs.jpg>
-Package pdftex.def Info: ./figures/example2D_2_bs.jpg used on input line 944.
+Package pdftex.def Info: ./figures/example2D_2_bs.jpg used on input line 1211.
 (pdftex.def)             Requested size: 273.4878pt x 194.44514pt.
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-944.
+1211.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 944.
+ input line 1211.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [61
+ [71
 
- <./figures/example2D_2_bs.jpg>] <./figures/example2D_3_bs.jpg, id=483, 1983.41
+ <./figures/example2D_2_bs.jpg>] <./figures/example2D_3_bs.jpg, id=614, 1983.41
 pt x 1410.26875pt>
 File: ./figures/example2D_3_bs.jpg Graphic file (type jpg)
 
 <use ./figures/example2D_3_bs.jpg>
-Package pdftex.def Info: ./figures/example2D_3_bs.jpg used on input line 944.
+Package pdftex.def Info: ./figures/example2D_3_bs.jpg used on input line 1211.
 (pdftex.def)             Requested size: 304.21866pt x 216.30838pt.
 
-Overfull \vbox (9.91994pt too high) detected at line 944
+Overfull \vbox (9.91994pt too high) detected at line 1211
  []
 
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-944.
+1211.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 944.
+ input line 1211.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [62
+ [72
 
- <./figures/example2D_3_bs.jpg>] <./figures/example2D_4_bs.jpg, id=489, 1983.41
+ <./figures/example2D_3_bs.jpg>] <./figures/example2D_4_bs.jpg, id=620, 1983.41
 pt x 1410.26875pt>
 File: ./figures/example2D_4_bs.jpg Graphic file (type jpg)
 
 <use ./figures/example2D_4_bs.jpg>
-Package pdftex.def Info: ./figures/example2D_4_bs.jpg used on input line 944.
+Package pdftex.def Info: ./figures/example2D_4_bs.jpg used on input line 1211.
 (pdftex.def)             Requested size: 304.21866pt x 216.30838pt.
 
-Overfull \vbox (9.91994pt too high) detected at line 944
+Overfull \vbox (9.91994pt too high) detected at line 1211
  []
 
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-944.
+1211.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 944.
+ input line 1211.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [63
+ [73
 
  <./figures/example2D_4_bs.jpg>]
 File: ./figures/example2D_4_bs.jpg Graphic file (type jpg)
  <use ./figures/example2D_4_bs.jpg>
-Package pdftex.def Info: ./figures/example2D_4_bs.jpg used on input line 944.
+Package pdftex.def Info: ./figures/example2D_4_bs.jpg used on input line 1211.
 (pdftex.def)             Requested size: 304.21866pt x 216.30838pt.
 
-Overfull \vbox (9.91994pt too high) detected at line 944
+Overfull \vbox (9.91994pt too high) detected at line 1211
  []
 
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-944.
+1211.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 944.
+ input line 1211.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [64
+ [74
 
 ]
-<./figures/example2D_5_bs.jpg, id=500, 1983.41pt x 1410.26875pt>
+<./figures/example2D_5_bs.jpg, id=632, 1983.41pt x 1410.26875pt>
 File: ./figures/example2D_5_bs.jpg Graphic file (type jpg)
 
 <use ./figures/example2D_5_bs.jpg>
-Package pdftex.def Info: ./figures/example2D_5_bs.jpg used on input line 944.
+Package pdftex.def Info: ./figures/example2D_5_bs.jpg used on input line 1211.
 (pdftex.def)             Requested size: 304.21866pt x 216.30838pt.
 
-Overfull \vbox (9.91994pt too high) detected at line 944
+Overfull \vbox (9.91994pt too high) detected at line 1211
  []
 
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-944.
+1211.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 944.
+ input line 1211.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [65
+ [75
 
- <./figures/example2D_5_bs.jpg>] <./figures/example2D_6_bs.jpg, id=506, 1983.41
+ <./figures/example2D_5_bs.jpg>] <./figures/example2D_6_bs.jpg, id=638, 1983.41
 pt x 1410.26875pt>
 File: ./figures/example2D_6_bs.jpg Graphic file (type jpg)
 
 <use ./figures/example2D_6_bs.jpg>
-Package pdftex.def Info: ./figures/example2D_6_bs.jpg used on input line 944.
+Package pdftex.def Info: ./figures/example2D_6_bs.jpg used on input line 1211.
 (pdftex.def)             Requested size: 304.21866pt x 216.30838pt.
 
-Overfull \vbox (9.91994pt too high) detected at line 944
+Overfull \vbox (9.91994pt too high) detected at line 1211
  []
 
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-944.
+1211.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 944.
+ input line 1211.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [66
+ [76
 
- <./figures/example2D_6_bs.jpg>] <./figures/example2D_7_bs.jpg, id=512, 1983.41
+ <./figures/example2D_6_bs.jpg>] <./figures/example2D_7_bs.jpg, id=644, 1983.41
 pt x 1410.26875pt>
 File: ./figures/example2D_7_bs.jpg Graphic file (type jpg)
 
 <use ./figures/example2D_7_bs.jpg>
-Package pdftex.def Info: ./figures/example2D_7_bs.jpg used on input line 944.
+Package pdftex.def Info: ./figures/example2D_7_bs.jpg used on input line 1211.
 (pdftex.def)             Requested size: 304.21866pt x 216.30838pt.
 
-Overfull \vbox (9.91994pt too high) detected at line 944
+Overfull \vbox (9.91994pt too high) detected at line 1211
  []
 
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-944.
+1211.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 944.
+ input line 1211.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [67
+ [77
 
  <./figures/example2D_7_bs.jpg>]
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
  <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-956.
+1223.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 956.
+ input line 1223.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [68
+ [78
 
 ]
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
 Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
-964.
+1231.
 (pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
 File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
 
 <use ./figures/Logo_SeaDataNet_fond_transparent.png>
 Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
- input line 964.
+ input line 1231.
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
- [69
+ [79
 
 ]
 \tf@nav=\write7
@@ -2889,25 +3191,26 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
 \tf@snm=\write9
 \openout9 = `DivaLecce2016_diva2D.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 967.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 967.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1234.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1234.
 
 (./DivaLecce2016_diva2D.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 967.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 967.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1234.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1234.
+
 Package rerunfilecheck Info: File `DivaLecce2016_diva2D.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 967.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1234.
  ) 
 Here is how much of TeX's memory you used:
- 25829 strings out of 493085
- 509334 string characters out of 6136916
- 612505 words of memory out of 5000000
- 28474 multiletter control sequences out of 15000+600000
+ 25925 strings out of 493085
+ 511510 string characters out of 6136916
+ 613521 words of memory out of 5000000
+ 28534 multiletter control sequences out of 15000+600000
  73413 words of font info for 116 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,15n,67p,459b,937s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2941,10 +3244,10 @@ ist/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
 s/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on DivaLecce2016_diva2D.pdf (69 pages, 11047812 bytes).
+Output written on DivaLecce2016_diva2D.pdf (79 pages, 11260406 bytes).
 PDF statistics:
- 661 PDF objects out of 1000 (max. 8388607)
- 496 compressed objects within 5 object streams
- 151 named destinations out of 1000 (max. 500000)
- 240 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 798 PDF objects out of 1000 (max. 8388607)
+ 598 compressed objects within 6 object streams
+ 179 named destinations out of 1000 (max. 500000)
+ 328 words of extra memory for PDF output out of 10000 (max. 10000000)
 
