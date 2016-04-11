@@ -61,7 +61,7 @@ pdffitwindow=true,
 pdftoolbar=true,
 pdfmenubar=true,
 pdfwindowui=true,
-pdfauthor={Alexander Barth{,} Aida Alvera-Azc\'{a}rate{,} Mohamed~Ouberdous{,} Charles~Troupin{,} Sylvain~Watelet \& Jean-Marie~Beckers},
+pdfauthor={Alexander Barth{,} Sylvain~Watelet{,} Aida Alvera-Azc\'{a}rate{,} Mohamed~Ouberdous{,} Charles~Troupin{,} \& Jean-Marie~Beckers},
 pdfsubject={DIVA Lecce 2016},
 pdftitle={DIVA Lecce 2016},
 bookmarksopenlevel=0,
@@ -125,6 +125,11 @@ pdffitwindow=true
 \newcommand{\inv}[1]{{#1}^{ \mbox{\small{-}}  1}}
 
 \newcommand{\vect}[1] { \mbox{\boldmath   $ #1 $} }
+%\newcommand{\statmean}[1]{\left\langle #1 \right\rangle}
+\newcommand{\mean}[1]{\statmean{#1}}
+\newcommand{\transp}[1]{{#1}^{\protect\mathrm{T}}}
+\newcommand{\vnorm}[1] { \parallel \! #1 \! \parallel }
+\newcommand{\diag}{\mbox{diag}}
 
 \lstdefinestyle{Bash}
 {language=bash,

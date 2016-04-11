@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.19)  6 APR 2016 16:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.19)  11 APR 2016 23:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1516,6 +1516,11 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  [2
 
 ]
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 41.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
 File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
 
 <use ./figures/gherlogo_transparent.PNG>
@@ -1546,11 +1551,6 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  [4
 
 ]
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 76.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
 Overfull \hbox (0.52754pt too wide) in paragraph at lines 76--76
  [] 
  []
@@ -1599,7 +1599,7 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  [7
 
 ]
-<./figures/driverB.png, id=156, 603.75563pt x 118.19156pt>
+<./figures/driverB.png, id=158, 603.75563pt x 118.19156pt>
 File: ./figures/driverB.png Graphic file (type png)
 
 <use ./figures/driverB.png>
@@ -1708,7 +1708,7 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  [13
 
 ]
-<./figures/coastlines.png, id=205, 951.555pt x 941.01563pt>
+<./figures/coastlines.png, id=207, 951.555pt x 941.01563pt>
 File: ./figures/coastlines.png Graphic file (type png)
 
 <use ./figures/coastlines.png>
@@ -1746,7 +1746,7 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  [15
 
 ]
-<./figures/tocopa.png, id=217, 796.77675pt x 597.432pt>
+<./figures/tocopa.png, id=219, 796.77675pt x 597.432pt>
 File: ./figures/tocopa.png Graphic file (type png)
 
 <use ./figures/tocopa.png>
@@ -1770,7 +1770,7 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [16
 
- <./figures/tocopa.png>] <./figures/driver1.png, id=223, 565.11125pt x 120.45pt
+ <./figures/tocopa.png>] <./figures/driver1.png, id=225, 565.11125pt x 120.45pt
 >
 File: ./figures/driver1.png Graphic file (type png)
 
@@ -1850,7 +1850,7 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  [21
 
 ]
-<./figures/driver3.png, id=262, 796.77675pt x 597.432pt>
+<./figures/driver3.png, id=264, 796.77675pt x 597.432pt>
 File: ./figures/driver3.png Graphic file (type png)
 
 <use ./figures/driver3.png>
@@ -1938,7 +1938,7 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  [25
 
 ]
-<./figures/driver4.png, id=296, 796.77675pt x 597.432pt>
+<./figures/driver4.png, id=298, 796.77675pt x 597.432pt>
 File: ./figures/driver4.png Graphic file (type png)
 
 <use ./figures/driver4.png>
@@ -2017,7 +2017,7 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  [30
 
 ]
-<./figures/driver5.png, id=335, 394.47375pt x 185.69376pt>
+<./figures/driver5.png, id=337, 394.47375pt x 185.69376pt>
 File: ./figures/driver5.png Graphic file (type png)
 
 <use ./figures/driver5.png>
@@ -2234,7 +2234,7 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  [44
 
 ]
-<./figures/DSCN1615.JPG, id=443, 886.06032pt x 1800.7275pt>
+<./figures/DSCN1615.JPG, id=445, 886.06032pt x 1800.7275pt>
 File: ./figures/DSCN1615.JPG Graphic file (type jpg)
 
 <use ./figures/DSCN1615.JPG>
@@ -2268,7 +2268,7 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
  [46
 
 ]
-<./figures/Italia08_025.jpg, id=454, 345.23886pt x 472.28676pt>
+<./figures/Italia08_025.jpg, id=456, 345.23886pt x 472.28676pt>
 File: ./figures/Italia08_025.jpg Graphic file (type jpg)
 
 <use ./figures/Italia08_025.jpg>
@@ -2287,7 +2287,52 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
 (pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
  [47
 
- <./figures/Italia08_025.jpg>]
+ <./figures/Italia08_025.jpg>] <./figures/land_sea_decoupling1D.pdf, id=462, 48
+1.8pt x 32.12pt>
+File: ./figures/land_sea_decoupling1D.pdf Graphic file (type pdf)
+
+<use ./figures/land_sea_decoupling1D.pdf>
+Package pdftex.def Info: ./figures/land_sea_decoupling1D.pdf used on input line
+ 1110.
+(pdftex.def)             Requested size: 215.10196pt x 14.34015pt.
+
+<./figures/land_sea_decoupling.pdf, id=463, 481.8pt x 321.2pt>
+File: ./figures/land_sea_decoupling.pdf Graphic file (type pdf)
+
+<use ./figures/land_sea_decoupling.pdf>
+Package pdftex.def Info: ./figures/land_sea_decoupling.pdf used on input line 1
+110.
+(pdftex.def)             Requested size: 215.10196pt x 143.4016pt.
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+
+<use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+1110.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 1110.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [48
+
+ <./figures/land_sea_decoupling1D.pdf>]
+File: ./figures/gherlogo_transparent.PNG Graphic file (type png)
+ <use ./figures/gherlogo_transparent.PNG>
+Package pdftex.def Info: ./figures/gherlogo_transparent.PNG used on input line 
+1110.
+(pdftex.def)             Requested size: 16.50761pt x 14.22636pt.
+File: ./figures/Logo_SeaDataNet_fond_transparent.png Graphic file (type png)
+
+<use ./figures/Logo_SeaDataNet_fond_transparent.png>
+Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
+ input line 1110.
+(pdftex.def)             Requested size: 26.24269pt x 14.22636pt.
+ [49
+
+
+ <./figures/land_sea_decoupling.pdf>]
 \tf@nav=\write7
 \openout7 = `DivaLecce2016_diva4D.nav'.
 
@@ -2297,22 +2342,22 @@ Package pdftex.def Info: ./figures/Logo_SeaDataNet_fond_transparent.png used on
 \tf@snm=\write9
 \openout9 = `DivaLecce2016_diva4D.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1081.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1081.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1113.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1113.
  (./DivaLecce2016_diva4D.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1081.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1081.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1113.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1113.
 
 Package rerunfilecheck Info: File `DivaLecce2016_diva4D.out' has not changed.
 (rerunfilecheck)             Checksum: 0EADF5D213FD4A480760665B0A2C70D6;884.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1081.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1113.
  ) 
 Here is how much of TeX's memory you used:
- 26024 strings out of 493085
- 508597 string characters out of 6136916
- 641347 words of memory out of 5000000
- 28732 multiletter control sequences out of 15000+600000
- 56946 words of font info for 89 fonts, out of 8000000 for 9000
+ 26089 strings out of 493085
+ 509912 string characters out of 6136916
+ 641542 words of memory out of 5000000
+ 28786 multiletter control sequences out of 15000+600000
+ 62842 words of font info for 112 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,17n,67p,459b,1281s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
@@ -2320,17 +2365,18 @@ e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8
-a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
-imes/utmri8a.pfb>
-Output written on DivaLecce2016_diva4D.pdf (47 pages, 2590748 bytes).
+lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/u
+tmri8a.pfb>
+Output written on DivaLecce2016_diva4D.pdf (49 pages, 2608197 bytes).
 PDF statistics:
- 527 PDF objects out of 1000 (max. 8388607)
- 438 compressed objects within 5 object streams
- 107 named destinations out of 1000 (max. 500000)
- 214 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 562 PDF objects out of 1000 (max. 8388607)
+ 466 compressed objects within 5 object streams
+ 111 named destinations out of 1000 (max. 500000)
+ 224 words of extra memory for PDF output out of 10000 (max. 10000000)
 

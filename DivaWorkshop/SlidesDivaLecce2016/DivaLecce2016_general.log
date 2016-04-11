@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.19)  4 APR 2016 21:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.19)  10 APR 2016 19:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1167,6 +1167,15 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 \EndVerbatimTokens=\toks55
 \Verbatim@Outfile=\write5
 \Verbatim@Infile=\read2
+) (/usr/share/texlive/texmf-dist/tex/latex/shadow/shadow.sty
+Package: shadow 2003/02/19 v1.3 shadow boxes (M.O.)
+\txtwdth=\dimen229
+\sht=\dimen230
+\shw=\dimen231
+\shbox=\box90
+\sboxsep=\dimen232
+\sboxrule=\dimen233
+\sdim=\dimen256
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryarrows.code.tex
@@ -1175,7 +1184,7 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.0 (rcs-revision 1.1)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.
 tex
 File: pgflibraryarrows.code.tex 2013/09/23 v3.0.0 (rcs-revision 1.16)
-\arrowsize=\dimen229
+\arrowsize=\dimen257
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryshapes.code.tex
@@ -1226,50 +1235,50 @@ File: tikzlibraryshapes.multipart.code.tex 2008/01/09 v3.0.0 (rcs-revision 1.1)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshape
 s.multipart.code.tex
 File: pgflibraryshapes.multipart.code.tex 2010/01/07 v3.0.0 (rcs-revision 1.2)
-\pgfnodepartlowerbox=\box90
-\pgfnodeparttwobox=\box91
-\pgfnodepartthreebox=\box92
-\pgfnodepartfourbox=\box93
-\pgfnodeparttwentybox=\box94
-\pgfnodepartnineteenbox=\box95
-\pgfnodeparteighteenbox=\box96
-\pgfnodepartseventeenbox=\box97
-\pgfnodepartsixteenbox=\box98
-\pgfnodepartfifteenbox=\box99
-\pgfnodepartfourteenbox=\box100
-\pgfnodepartthirteenbox=\box101
-\pgfnodeparttwelvebox=\box102
-\pgfnodepartelevenbox=\box103
-\pgfnodeparttenbox=\box104
-\pgfnodepartninebox=\box105
-\pgfnodeparteightbox=\box106
-\pgfnodepartsevenbox=\box107
-\pgfnodepartsixbox=\box108
-\pgfnodepartfivebox=\box109
+\pgfnodepartlowerbox=\box91
+\pgfnodeparttwobox=\box92
+\pgfnodepartthreebox=\box93
+\pgfnodepartfourbox=\box94
+\pgfnodeparttwentybox=\box95
+\pgfnodepartnineteenbox=\box96
+\pgfnodeparteighteenbox=\box97
+\pgfnodepartseventeenbox=\box98
+\pgfnodepartsixteenbox=\box99
+\pgfnodepartfifteenbox=\box100
+\pgfnodepartfourteenbox=\box101
+\pgfnodepartthirteenbox=\box102
+\pgfnodeparttwelvebox=\box103
+\pgfnodepartelevenbox=\box104
+\pgfnodeparttenbox=\box105
+\pgfnodepartninebox=\box106
+\pgfnodeparteightbox=\box107
+\pgfnodepartsevenbox=\box108
+\pgfnodepartsixbox=\box109
+\pgfnodepartfivebox=\box110
 )))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarybackgrounds.code.tex
 File: tikzlibrarybackgrounds.code.tex 2013/07/18 v3.0.0 (rcs-revision 1.3)
-\pgf@layerbox@background=\box110
-\pgf@layerboxsaved@background=\box111
+\pgf@layerbox@background=\box111
+\pgf@layerboxsaved@background=\box112
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/font/beamerfontthemeseri
 f.sty
 Package: beamerfontthemeserif 2010/06/17  (rcs-revision d02a7cf4d8ae)
 )
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 73.
-Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 73.
-Package hyperref Info: Option `pdffitwindow' set `true' on input line 73.
-Package hyperref Info: Option `pdffitwindow' set `true' on input line 73.
-Package hyperref Info: Option `pdftoolbar' set `true' on input line 73.
-Package hyperref Info: Option `pdfmenubar' set `true' on input line 73.
-Package hyperref Info: Option `pdfwindowui' set `true' on input line 73.
-Package hyperref Info: Option `colorlinks' set `true' on input line 73.
-Package hyperref Info: Option `pdffitwindow' set `true' on input line 73.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 74.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 74.
+Package hyperref Info: Option `pdffitwindow' set `true' on input line 74.
+Package hyperref Info: Option `pdffitwindow' set `true' on input line 74.
+Package hyperref Info: Option `pdftoolbar' set `true' on input line 74.
+Package hyperref Info: Option `pdfmenubar' set `true' on input line 74.
+Package hyperref Info: Option `pdfwindowui' set `true' on input line 74.
+Package hyperref Info: Option `colorlinks' set `true' on input line 74.
+Package hyperref Info: Option `pdffitwindow' set `true' on input line 74.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 78.
+(hyperref)                removing `\\' on input line 79.
 
 ) (./DivaLecce2016_general.aux)
 \openout1 = `DivaLecce2016_general.aux'.
@@ -1330,13 +1339,13 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count186
-\scratchdimen=\dimen230
-\scratchbox=\box112
+\scratchdimen=\dimen258
+\scratchbox=\box113
 \nofMPsegments=\count187
 \nofMParguments=\count188
 \everyMPshowfont=\toks56
 \MPscratchCnt=\count189
-\MPscratchDim=\dimen231
+\MPscratchDim=\dimen259
 \MPnumerator=\count190
 \makeMPintoPDFobject=\count191
 \everyMPtoPDFconversion=\toks57
@@ -1355,7 +1364,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box113
+\AtBeginShipoutBox=\box114
 Package hyperref Info: Link coloring ON on input line 6.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -1718,10 +1727,10 @@ Package rerunfilecheck Info: File `DivaLecce2016_general.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 259.
  ) 
 Here is how much of TeX's memory you used:
- 25224 strings out of 493085
- 498680 string characters out of 6136916
- 611453 words of memory out of 5000000
- 28061 multiletter control sequences out of 15000+600000
+ 25268 strings out of 493085
+ 499151 string characters out of 6136916
+ 611986 words of memory out of 5000000
+ 28100 multiletter control sequences out of 15000+600000
  37083 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,14n,67p,460b,870s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1730,7 +1739,7 @@ e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8
 a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/wasy2-ps/wasy8.pfb>
-Output written on DivaLecce2016_general.pdf (10 pages, 3283586 bytes).
+Output written on DivaLecce2016_general.pdf (10 pages, 3283591 bytes).
 PDF statistics:
  117 PDF objects out of 1000 (max. 8388607)
  75 compressed objects within 1 object stream

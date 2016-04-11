@@ -1,8 +1,8 @@
 \input{GHERheader2015.tex}
 \parindent 0cm
 
-\author[Alexander Barth, Aida Alvera-Azc\'{a}rate, Mohamed~Ouberdous, Charles~Troupin, Sylvain~Watelet \& Jean-Marie~Beckers]{Alexander Barth, Aida Alvera-Azc\'{a}rate, Mohamed~Ouberdous,\\
- Charles~Troupin, Sylvain~Watelet \& Jean-Marie~Beckers}
+\author[Sylvain~Watelet, Alexander Barth, Aida Alvera-Azc\'{a}rate, Mohamed~Ouberdous, Charles~Troupin \& Jean-Marie~Beckers]{Sylvain~Watelet, Alexander Barth, Aida Alvera-Azc\'{a}rate,\\ Mohamed~Ouberdous,
+ Charles~Troupin, \& Jean-Marie~Beckers}
   
 \title[]{\diva Lecce 2016}
 \subtitle{\diva in 2 dimensions}
@@ -645,11 +645,11 @@ the right-hand side:
 w_2 = \frac{\statmean{\epsilon_1^2}}{\statmean{\epsilon_1^2}+\statmean{\epsilon_2^2}}
 \label{eq:weighterror}
 \end{equation}
-\begin{equation}
-\analyzed{T}=   {\statmean{\epsilon_1^2} \statmean{\epsilon_2^2} \over \statmean{\epsilon_1^2} 
-+ \statmean{\epsilon_2^2} }\left( {T_1 \over \statmean{\epsilon_1^2}} + {T_2 \over \statmean{\epsilon_2^2}}\right) .
- \label{eq:analyzedTb}
-\end{equation}
+%\begin{equation}
+%\analyzed{T}=   {\statmean{\epsilon_1^2} \statmean{\epsilon_2^2} \over \statmean{\epsilon_1^2} 
+%+ \statmean{\epsilon_2^2} }\left( {T_1 \over \statmean{\epsilon_1^2}} + {T_2 \over \statmean{\epsilon_2^2}}\right) .
+% \label{eq:analyzedTb}
+%\end{equation}
 \end{frame}
 
 %---------------------------------------------------------------------
@@ -723,31 +723,6 @@ Example: $f=\sigma^2 \exp(-r^2/L^2)$.
 \end{frame}
 
 %---------------------------------------------------------------------
-
-\begin{frame}{Signal to noise ratio}
-\begin{equation}
-\matr{B}= \sigma^2 \tilde{\matr{B}}
-\end{equation}
-\begin{equation}
-\matr{R}= \epsilon^2 \tilde{\matr{R}}
-\end{equation}
-\begin{equation}
-\matr{c}= \sigma^2 \tilde{\matr{c}}
-\end{equation}
-with non-dimensional correlation matrixes $\tilde{\matr{B}}$, $\tilde{\matr{R}}$, $\tilde{\matr{c}}$
-\begin{equation}
-\phi= {\tilde{\matr{c}}}^t \inv{\left( \tilde{\matr{B}} + {1 \over \lambda} \tilde{\Rerr} \right)} 
-\observation
-\label{eq:analyzedfield}
-\end{equation}
-with signal-to noise ratio
-\begin{equation}
-\lambda= {\sigma^2 \over \epsilon^2}
-\end{equation}
-Also the error field is only depending on the ratio.
-\end{frame}
-
-%---------------------------------------------------------------------
 \begin{frame}[t]
 \frametitle{DIVA: Data-Interpolating Variational Analysis}
 \footnotesize
@@ -794,7 +769,7 @@ L  = \textrm{length scale} &\rightarrow & \tilde{\nablab} = L \nablab\\
 
 \onslide*<3-5>{
 \begin{itemize}
-\item<3-> $\alpha_0$ \fleche $L$ for which data-analysis misfit $\simeq$ regularity term: \hspace*{\fill} $\alpha_0 L^4 = 1$
+\item<3-> $\alpha_0$ \fleche $L$ for which data anomaly term $\simeq$ regularity term: \hspace*{\fill} $\alpha_0 L^4 = 1$
 
 \item<4-> $\alpha_1$ \fleche influence of gradients: \hspace*{\fill}  $\alpha_1 L^2 = 2 \xi, \qquad \xi=1$
 
@@ -860,16 +835,52 @@ C(r) = \frac{r}{L} K_1 \left(\frac{r}{L}\right)
 where $r$ is the Euclidean distance, $L$ is the correlation length and
 $K_1$ is the modified Bessel function. %\citep{ABRA64}
 
-%-------------------------------------------------------------------------------
-
 \end{frame}
+
+%-------------------------------------------------------------------------------
 
 \begin{frame}
 \frametitle{Correlation function}
 
-\centerline{\includegraphics[width=0.9\textwidth]{besselvsonepoint}}
+Correlation functions can be examined by analysing a single point with high signal-to-noise ratio and no background field (Fig.~\ref{singleanalysis}). In this particular case, we performed an analysis with a point located at the center $(0,0)$ of a square domain. The correlation length is equal to $1$ and the signal-to-noise ratio is taken equal to $1000$.
+
+\begin{figure}[htpb]
+	\centering
+	\parbox{.6\textwidth}{
+		\includegraphics[width=.55\textwidth,bb=148 269 507 577]{results_test1}
+		}\parbox{.4\textwidth}{
+		\caption{Analysis of a single data point with high signal-to-noise ration and no background field.\label{singleanalysis}}}
+\end{figure}
 
 \end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Correlation function}
+
+Figure~\ref{kernel1} shows both the exact solution and the correlation function by a single point analysis. The two curves are close to each other, the differences between the two curves being only due to the boundaries.
+
+\begin{figure}[htpb]
+	\centering
+	\parbox{.6\textwidth}{
+		\includegraphics[width=.55\textwidth,bb=50 25 450 300]{kernelf}
+		}\parbox{.4\textwidth}{
+		\caption[Theoretical Kernel function and analysis of a single point with a unit value.]{The theoretical Kernel function is given in red, while the black curve comes from the analysis of a single point with a unit value.\label{kernel1}}}
+\end{figure}
+
+The Kernel function can be used to calibrate \diva parameters ($\alpha_0, \alpha_1, \mu$) so as to fit observed covariance functions. This principle is used by the tool \command{divafit} which helps one to estimate the correlation length.
+
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+%\begin{frame}
+%\frametitle{Correlation function}
+
+%\centerline{\includegraphics[width=0.9\textwidth]{besselvsonepoint}}
+
+%\end{frame}
 
 %-------------------------------------------------------------------------------
 
@@ -883,6 +894,210 @@ $K_1$ is the modified Bessel function. %\citep{ABRA64}
 %\caption{Left: data influence of alternating anomalies assuming isotropic and homogeneous covariances (typically OI approach). Right: With DIVA, data influence is not %crossing land without requiring a specific formulation in the covariance function. The finite element mesh naturally creates some decoupling.}
 \end{center}
 \end{figure}
+
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Parameter calibration : L}
+
+\begin{figure}[H]
+\centerline{
+\includegraphics[height=4cm]{CL} \includegraphics[height=4cm]{diva_covafit.eps}
+}
+% Add divafit image
+\caption {Spatial coherence of parameters: here correlation length obtained with covariance fitting  
+(Troupin {\it et al.}, 2010).}
+\end{figure}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}[allowframebreaks]
+\frametitle{Parameter calibration : SNR}
+\framesubtitle{Generalities}
+
+Let us consider the vector $\vect{d}$ containing the $N$ data anomalies. Objective analysis of $\vect{d}$ leads to analysed field with minimal expected error variance. The analysis $\varphi^a$ at any location $\vect{r}$ is given by
+\begin{equation}
+\varphi^a(\vect{r}) = \vect{c} \inv{(\matr{B}+\matr{R})} \matr{d}
+\end{equation}
+where $\vect{c}$ is a vector containing the background covariance between the point in which the analysis is to be performed and all data point locations. The optimal interpolation is based on the \textit{background covariance} matrix $\matr{B}$ and \textit{error covariance} matrix $\matr{R}$ of the data.
+ 
+Let us call $\tilde{\vect{d}}$, the analysis vector at data points. The two vectors ${\vect{d}}$ and $\tilde{\vect{d}}$ can be related by the expression:
+
+\begin{equation}
+\tilde{\vect{d}}  =  \matr{A} \vect{d}
+\end{equation}
+
+where the matrix $\matr{A}$, used to perform the analysis at the data points, is calculated according to 
+
+\begin{equation}
+\matr{A}=\matr{B} \inv{(\matr{B}+\matr{R})}.
+\end{equation}
+
+The \textit{data-covariance} matrix is the statistical average $\mean{\quad}$ of data products:
+
+\begin{equation}
+\mean{\vect{d} \, \transp{\vect{d}}} = \matr{B}+\matr{R}, 
+\label{eq:datavar}
+\end{equation}
+where $\transp{\,}$ it the transposed matrix or vector. For uncorrelated observational errors, error-covariance matrix $\matr{R}$ is diagonal, with a variance $\noise_i^2$ for point $i$, \textit{i.e.}
+
+\[
+\matr{R} = \mathrm{diag}(\noise_i^2)%\quad\textrm{or}\quad R_{ij}= \noise_i^2\delta_{ij}.
+\]
+
+In that case, we can show that the variance of expected misfit at point $i$ is
+ 
+\begin{equation}
+\mean{\left(d_i - \tilde{d}_i\right)^2} = \noise_i^2 (1 - A_{ii}).
+\label{eq:epsilonmisfit}
+\end{equation}
+
+In practice covariance matrices are known only imperfectly: their structure is often considered to be
+fixed, but with imperfectly known amplitude. In other words it is often assumed that
+
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}{Parameter calibration : SNR}
+\framesubtitle{Generalities}
+
+\begin{equation}
+\matr{B}= \sigma^2 \tilde{\matr{B}}
+\end{equation}
+\begin{equation}
+\matr{R}= \epsilon^2 \tilde{\matr{R}}
+\end{equation}
+\begin{equation}
+\matr{c}= \sigma^2 \tilde{\matr{c}}
+\end{equation}
+with non-dimensional correlation matrixes $\tilde{\matr{B}}$, $\tilde{\matr{R}}$, $\tilde{\matr{c}}$
+\begin{equation}
+\phi= {\tilde{\matr{c}}}^t \inv{\left( \tilde{\matr{B}} + {1 \over \lambda} \tilde{\Rerr} \right)} 
+\observation
+\label{eq:analyzedfield}
+\end{equation}
+with signal-to noise ratio
+\begin{equation}
+\lambda= {\sigma^2 \over \epsilon^2}
+\end{equation}
+Also the error field is only depending on the ratio.
+\end{frame}
+
+%-------------------------------------------------------------------------------§
+
+\begin{frame}[allowframebreaks]{Parameter calibration : SNR}
+\framesubtitle{Ordinary Cross Validation (OCV)}
+
+The objective is to optimize the parameter $\snr$ by searching for its value for which the analysis has a minimal error. For this reason, we need to find a proxy norm that we will be able to minimize. As the difference of the analysis with the true field is not available, we could try to work with the difference of the analysed field at the data points with respect to the original data field:
+
+\begin{equation}
+{\theta_i^2} = {(d_i - \tilde{d}_i)^2}.
+\end{equation}
+
+If we try to minimize this norm, we will get an infinite signal-to-noise ratio and a perfect data-analysis fit. This is because the analysis at the data point is directly influenced by the corresponding data. 
+
+\begin{itemize}
+\item To avoid this inconvenience, the solution is to calculate the difference of the data value with respect to the analysed field in which the data under investigation was not taken into account. This is called the \textit{Ordinary Cross Validation} and is, with a practical trick, implemented in \command{divacv}. To make this estimate robust, the analysis has to be repeated over a large number of data points, increasing the computing cost, so that OCV is generally too expensive to perform unless a trick as in \command{divacv} can be used (there the analysis can be done without actually disregarding a data point but by correcting the difference).
+ 
+\item Variants of OCV take out several points at once to calculate error estimates and repeat the exercise several times to make estimates robust.  In \diva this options are available in \command{divacvrand}. A variant is \command{divacvclasses} in which all data from a given class (e.g. specific year) are set aside and the analysis compared to.
+\end{itemize}
+
+\end{frame}
+
+%-------------------------------------------------------------------------------§
+
+\begin{frame}{Parameter calibration : SNR}
+\framesubtitle{Generalised cross validation (GCV)}
+
+According to Craven and Wahba (1978), modifying the error estimate as follows:
+
+\begin{equation}
+{\hat{\theta}_i^2} =  \frac{(d_i - \tilde{d}_i)^2}{(1 - A_{ii})^2}.
+\label{eq:misfitestimate}
+\end{equation}
+
+allows one to keep the data during the analysis and will reduce the computing cost. In this formulation, the denominator penalizes more heavily data points in which the analysis is forced to be close the data and accounts therefore for the self-influence of the data point (which is absent in the case of pure cross-validation).
+
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Parameter calibration : SNR}
+\framesubtitle{Computation of $A_{ii}$}
+
+When the matrix $\matr{A}$ is not explicitly calculated, $A_{ii}$ can be obtained by performing an analysis with a vector $\vect{e}_i=(0\,0\ldots\,0\,1\,0\ldots 0)$ (zero on all data locations, except at point $i$, where its value is one). This demands an analysis for every data point in which the estimator is constructed.  
+
+The associated computational cost can be reduced by replacing $A_{ii}$ by the average value and assuming:
+\begin{equation}
+A_{ii} \simeq \frac{1}{N} \trace{\matr{A}}.
+\label{eq:aiitrace}
+\end{equation}
+
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Parameter calibration : SNR}
+\framesubtitle{Computation of $A_{ii}$}
+
+To avoid calculating all $A_{ii}$ and summing them up, we can use the following estimate (Girard, 1989):
+\begin{equation}
+\frac{1}{N} \trace{\matr{A}} \simeq  \frac{ \transp{\vect{z}} \matr{A} \vect{z} }{\transp{\vect{z}} \vect{z} }
+\label{eq:traceest}
+\end{equation}
+where $\vect{z}$ is a vector of random variables of zero mean. For robustness, the trace estimate can be repeated several times with different random vectors, averaging of the different estimates. The number of estimates is the parameter provided to the module \texttt{GCVFAC} of \diva.
+
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Parameter calibration : SNR}
+\framesubtitle{Generalized cross validator}
+
+In order to make the error estimator robust, we take the average over all data points and define the \textit{generalized cross validator} as 
+\[
+\Theta^{2}=\frac{1}{N}\sum_{i=1}^{N}\hat{\theta}_i^2.
+\] 
+Assuming temporarily $\noise_{i}^{2} = \noise^{2}$, hence having all misfits with the same weight, the generalized cross validator is obtained:
+
+\begin{equation}
+\Theta^2=\frac{\vnorm{\vect{d}-\tilde{\vect{d}}}^2}{N \left(1- \frac{1}{N}\trace{\matr{A}}\right)^2} 
+        =\frac{\vnorm{(\matr{I}-\matr{A})\vect{d}}^2}{(1/N)\left(\trace{\matr{I}-\matr{A}}\right)^2}
+\label{eq:gcv}
+\end{equation}
+
+The GCV consists in minimizing $\Theta^{2}$ by changing the signal-to-noise ratio $\snr$. $\Theta^2$ is a global estimate of the analysis error variance.
+
+\end{frame}
+
+%-------------------------------------------------------------------------------§
+
+\begin{frame}{Parameter calibration : SNR}
+\framesubtitle{Generalized cross validator}
+
+Defining the diagonal matrix $\matr{W} = \diag(w_i)$, the generalized cross validator then reads:
+
+\begin{equation}
+\Theta^2=\frac{ \transp{\left(\vect{d}-\tilde{\vect{d}}\right)} \matr{W} \left(\vect{d}-\tilde{\vect{d}}\right) }{ N \left(1 - \frac{1}{N}\trace{\matr{A}}\right)^2} 
+\label{eq:gcvbis}
+\end{equation}
+
+where the weights should satisfy
+
+\begin{equation}
+\sum_i \frac{1 }{w_i} = N.
+\label{eq:condition}
+\end{equation}
+
+The $\tilde{w}_i$ are the values provided as optional fourth column in \file{data.dat}.
+
+\command{divacv} uses cross validation with complete calculation of $A_{ii}$, whereas \command{divagcv} uses the approximation $A_{ii} N=\trace{\matr{A}}$.
 
 \end{frame}
 
