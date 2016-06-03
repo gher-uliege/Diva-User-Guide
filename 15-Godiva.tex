@@ -695,7 +695,7 @@ All actions performed by \command{divadoall} are prescribed in the file \file{dr
 possible actions and corresponding flag values are listed:
 
 \begin{itemize}
-\item {\bf Data extraction}: Possible flag values: $0$,$1$,$2$,$-1$ and $-10$. If you activate the data extraction (flag value $\neq 0$)
+\item {\bf Data extraction}: Possible flag values: $0$,$1$,$2$,$3$,$-1$ and $-10$. If you activate the data extraction (flag value $\neq 0$)
 in the \file{driver} file, the execution of \command{divadoall} will run the \command{divaselectorODV4} automatically, including
 interpolation to the levels specified in {\tt contour.depth}. Data will be extracted from the ODV spreadsheat file(s) specified in
 \file{datasource}. Command \command{divaselectorODV4} will recognises if the data export to ODV file was done with depths (in meters)
@@ -705,6 +705,8 @@ to use pressure coordinates and transform to meters by using the Saunders approa
 
 If you choose the flag $=2$, the weighting option will be activated. Particularly suited for time series or in other cases of overabundant 
 data in some limited spatial and temporal zones.
+
+If you choose the flag $=3$, the extraction will be performed from the bottom.
 
 If there is a \file{qflist} file, the selection with \file{divaselectorODV4} will only use those measurements for which the quality flag is one of those found in the file \file{qflist}. In the absence of \file{qflist} (or if \file{qflist} is empty), no quality flag analysis is done and all data taken.
 
@@ -720,14 +722,15 @@ into x-y components (North, East). In this second case, depth axis has to be pre
 can only deal with a maximum of 2 scalar variables (+ current direction and speed). If you need to analyse more than 2 scalar 
 variables, you can proceed by steps (just changing the \file{varlist}).
 
-\item {\bf Boundary lines and coastlines generation}: Possible flag values are $0$, $1$, $2$ and $3$. When this action is activated (flag $\geq 1$), you must provide in the \directory{input} directory the files \file{TopoInfo.dat} and  \file{topo.grd} in addition to \file{contour.depth} file.
+\item {\bf Boundary lines and coastlines generation}: Possible flag values are $0$, $1$, $2$, $3$ and $4$. When this action is activated (flag $\geq 1$), you must provide in the \directory{input} directory the files \file{TopoInfo.dat} and  \file{topo.grd} in addition to \file{contour.depth} file.
               \begin{itemize}
                 \item[*] $=1$ if contour files are to be generated,
                 \item[*] $=2$ if advection constraint (Anisotropic correlation along topography) files are to be generated from  \texttt{topo.grd},
-                \item[*] $=3$ if contour files and advection constraint are to be generated.
+                \item[*] $=3$ if contour files and advection constraint are to be generated,
+		\item[*] $=4$ if advection constraint (Anisotropic correlation along topography) files are to be generated from  \texttt{topo.grd}, in coherence with the relative length field generated when the cleaning index is set to $7$.
               \end{itemize}
 
-\item {\bf Cleaning data and Relative Length}: Possible flag values are $0$, $1$, $2$, $3$, $4$ and $5$:
+\item {\bf Cleaning data and Relative Length}: Possible flag values are $0$, $1$, $2$, $3$, $4$, $5$, $6$ and $7$:
               \begin{itemize}
                 \item[*] $=1$ if data files are to be cleaned,
                 \item[*] $=2$ if relative length files depending on data coverage are to be generated,
@@ -735,6 +738,7 @@ variables, you can proceed by steps (just changing the \file{varlist}).
                 \item[*] $=4$ if outliers are to be cleaned from data files.
                 \item[*] $=5$ if outliers are to be cleaned from data files and, relative length files depending on data coverage to be generated.
                 \item[*] $=6$ if data files are to be cleaned and relative length files depending on depth to be generated.
+		\item[*] $=6$ if data files are to be cleaned and relative length files depending on the gradient of depth to be generated.
               \end{itemize}
 
 \item {\bf Minimum number of data in a layer}: Any value from -1 to infinity. If less, uses data from any month.
@@ -816,6 +820,46 @@ if your colorbar definition goes from 0 to 10 and the {\tt VAR} bounds are from 
 \item {\bf Detrending} Possible flag values are $0$ and $n$: the action is activated when choosing flag value an integer $n$ $>0$. The chosen value $n$ must be equal or smaller to groups number in data files.\par
 {\bf Note}: If you use \command{divadoall} (or \command{divaselectorODV4}) to extract data and create data input files, columns 5, 6 ,7 and 8 contain respectively groups years, months, days and hours (1 for the first year in the selection etc).
 \end{itemize}
+
+\subsection{Producing bottom climatologies}
+
+Here are the steps to produce climatologies at a certain distance from the ocean bottom (unlike previous sections where the distance is counted from the surface).
+
+\begin{enumerate}
+ \item Create a fine topography in GHER format, in files \file{topo\_fine.grd} and \\ \file{topoInfo\_fine.dat}. The simplest option is to copy them from \file{topo.grd} and \file{topoInfo.dat}, while it is also possible to derive them by using the bathymetry provided by EMODnet. Once you have downloaded one of their NetCDF file, you can transform it to gher format by using the command \command{emobath2ghertopo}. Do not forget to first edit the script in order to specify the paths.
+ \item Specify the distances from the bottom in the file \file{contour.depth}. Important convention : the deepest layer is still on the first line, meaning you have to write the smallest distance from the bottom first. See example file \ref{contourfrombottom.depth}.
+ \item Set the extraction index to $3$ in the file \file{driver}.
+ \item Launch \command{divadoall}.
+ \item Launch \command{divadocommit}.
+ \item Optional: set the cleaning index to $7$ in the file \file{driver}, in order to generate a relative length field depending on the gradient of the depth. This reduces the correlation length where the slope is too steep.
+ \item Optional: Launch \command{divadoall}.
+ \item Optional: Launch \command{divadocommit}. A file \file{theta.dat} is created in \directory{input/divaparam} and contains the advised $\theta$ parameter for the use of the advection constraint in the analysis (last step).
+ \item Optional: set the coastlines index to $4$ in the file \file{driver}, so that the generated velocity field is coherent with the relative length field previously generated, and increase the correlation length in directions where the bottom is flat. In this case, the new correlation length is equal to the correlation length provided by the user in \file{param.par}.
+ \item Launch \command{divadoall}.
+ \item Launch \command{divadocommit}.
+ \item Set the analysis index to $1$ in the file \file{driver}.
+ \item Optional: use the $\theta$ from the file \file{theta.dat} to replace the first number of the file \file{constraint.dat}.
+ \item Optional: activate the advection constraint in the file \file{constandrefe}.
+ \item Launch \command{divadoall}.
+\end{enumerate}
+
+\begin{center}
+\begin{exfile}[H] %[htpb]
+\begin{footnotesize}
+\begin{verbatim}
+
+0
+50
+100
+
+\end{verbatim}
+\end{footnotesize}
+\caption{\file{contour.depth}}
+\label{contourfrombottom.depth}
+\end{exfile}
+\end{center}
+
+Remark: during the extraction process (index $=3$), the observations located between or close to the levels specified in \file{contour.depth} are interpolated vertically. But, if the observations are all below the levels specified, the closest (deeper) data will also be used, if it is not too far. The limit is $1000$ m if $z>=1300$ m, $400$ m if $z>=500$, $200$ m otherwise.
 
 \section{Climatologies postprocessing}
 
