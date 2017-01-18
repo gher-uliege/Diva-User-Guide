@@ -47,6 +47,8 @@
 
 @STRING{geb = {Global Ecology and Biogeography}}
 
+@STRING{gmd = {Geoscientific Model Development}}
+
 @STRING{grl = {Geophysical Research Letters}}
 
 @STRING{ijclim = {International Journal of Climatology}}
@@ -198,14 +200,18 @@
   url = {www.adv-geosci.net/28/29/2010/}
 }
 
-@UNPUBLISHED{BARTH13,
-  author = {A. Barth and J.-M- Beckers and C. Troupin and A. Alvera-Azc\'arate
+@ARTICLE{BARTH13,
+  author = {A. Barth and J.-M. Beckers and C. Troupin and A. Alvera-Azc\'{a}rate
 	and L. Vandenbulcke},
-  title = {{\texttt{divand}-1.0: n-dimensional variational data analysis for
-	ocean}},
-  note = {submitted to } # gmd,
+  title = {divand-1.0: n-dimensional variational data analysis for ocean observations},
+  journal = gmd,
+  year = {2014},
+  volume = {7},
+  pages = {225-241},
+  doi = {10.5194/gmd-7-225-2014},
   owner = {ctroupin},
-  timestamp = {2013.10.21}
+  timestamp = {2013.08.21},
+  url = {http://www.geosci-model-dev.net/7/225/2014/gmd-7-225-2014.html}
 }
 
 @ARTICLE{BECKERS06,
@@ -222,18 +228,21 @@
   url = {http://www.ocean-sci.net/2/183/2006/}
 }
 
-@UNPUBLISHED{BECKERS13,
+@ARTICLE{BECKERS13,
   author = {J.-M. Beckers and A. Barth and C. Troupin and A. Alvera-Azc\'{a}rate},
   title = {{Some approximate and efficient methods to assess error fields in
 	spatial gridding with DIVA (Data Interpolating Variational Analysis)}},
-  note = jaot,
-  year = {2013},
-  doi = {10.1175/JTECH-D-13-00130.1},
   journal = jaot,
+  year = {2014},
+  volume = {31},
+  pages = {515-530},
+  number = {2},
+  month = {February},
+  doi = {10.1175/JTECH-D-13-00130.1},
+  keywords = {DIVA, interpolation, SeaDataNet},
   owner = {ctroupin},
-  pages = {{}},
   timestamp = {2013.08.21},
-  volume = {{}}
+  url = {http://journals.ametsoc.org/doi/abs/10.1175/JTECH-D-13-00130.1}
 }
 
 @ARTICLE{BECKERS03,
@@ -376,16 +385,24 @@
   doi = {10.1016/0011-7471(76)90001-2}
 }
 
-@UNPUBLISHED{CAPET13,
-  author = {A.~Capet and C.~Troupin and J.~Carstensen and M.~Gr\'{e}goire and
+@ARTICLE{CAPET13,
+  author = {A. Capet and C. Troupin and J. Carstensen and M. Gr\'{e}goire and
 	J.-M. Beckers},
-  title = {{Recognizing temporal trends in spatial interpolation: an application
-	to the Black Sea Cold Intermediate Layer}},
-  note = {submitted to } # od,
-  year = {2013},
+  title = {{Untangling spatial and temporal trends in the variability of the
+	Black Sea Cold Intermediate Layer and mixed Layer Depth using the
+	DIVA detrending procedure}},
   journal = od,
+  year = {2014},
+  volume = {64},
+  pages = {315-324},
+  number = {3},
+  month = {January},
+  doi = {10.1007/s10236-013-0683-4},
+  keywords = {Black Sea, Data interpolation, Detrending, Inverse method, 40Â°Nâ48Â°N
+	27Â°Eâ42Â°E, Cold intermediate layer, Mixed layer depth, Climatologies},
   owner = {ctroupin},
-  timestamp = {2013.06.10}
+  timestamp = {2013.08.21},
+  url = {http://link.springer.com/article/10.1007%2Fs10236-013-0683-4}
 }
 
 @BOOK{CHILES99,
@@ -905,13 +922,13 @@
 
 @CONFERENCE{ZENDER12,
   author = {C. S. Zender and P. Vicente and W. Wang},
-  title = {NCO: Simpler and faster model evaluation by NASA satellite data via
-	unified file-level netCDF and HDF-EOS data post-processing tools},
+  title = {{NCO: Simpler and faster model evaluation by NASA satellite data
+	via unified file-level netCDF and HDF-EOS data post-processing tools}},
   booktitle = {Fall Meeting of the American Geophysical Union},
   year = {2012},
   volume = {{Eos Trans. AGU, 93}},
   number = {53},
-  pages = {Abstract IN34A-07},
+  pages = {{Abstract IN34A-07}},
   address = {{San Francisco, CA}},
   month = {December},
   owner = {ctroupin},
