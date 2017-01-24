@@ -143,7 +143,7 @@ while the characteristic time scale is fixed to 7 days. This option is particula
 \begin{itemize}
 \item[*] When data extraction is activated in the \file{driver}, the execution is made for all levels found in \file{contour.depth} file provided in the subdirectory \file{input}. It is also taking into account a minimum number of data in a layer with regard to the corresponding flag value given in \file{driver}.
 \item[*] When boundary line and coastline generation is activated in the \file{driver}, the execution is made for all levels found in \file{contour.depth} file provided in the subdirectory \directory{input}.
-\item[*] When parameter optimisation and/or analysis is activated, the execution is made for the levels between the values chosen for the lower and upper level numbers and takes into account the bound values (maximum and minimum) prescribed in \file{driver}.
+\item[*] When parameter optimisation and/or analysis is activated, the execution is made for the levels between the values chosen for the lower and upper level numbers and takes into account the bound values (maximum and minimum) prescribed in \file{driver}. Be consistent between the values specified as lower/upper level and the depth levels listed in contour.depth (i.e., avoid to specify more levels than those listed in contour.depth).
 \end{itemize}
 
 
