@@ -5,3 +5,7 @@
 *.aux
 *.log
 *.vrb
+*.gz
+*.mtc
+*.idx
+*.dvi
