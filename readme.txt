@@ -1,21 +1,26 @@
-j'ai changé le style de chapite, en espérant que les packages nécessaires ne posent pas de problème lors de la compilation do code chez vous. 
 
-Pour la suite:
+## For the readers
 
-1) essayer d'utiliser les commandes
+This repository contains the source file (.tex) as well as the figures necessary to build the Diva User Guide in pdf.
+
+
+
+
+## For the editors
+
+1. Try to use the commands 
+```
 \file{}
 \command{}
 \directory{}
+```
+in order to evidence the files, command and directory names.
 
-de manière à mettre en évidence et distinguer les fichiers, répertoires et commandes diva.
-
-Un exemple de texte:
+Example:
+```latex
 "Execute \command{divafit}, and you get file \file{param.par.fit} in \directory{output}"
+```
 
-2) Ajouter des commandes \index{mot-clé} pour petit à petit construire un index cohérent
+2. Progressively add commands such as `\index{key-word}` to build a consistent index.
 
-3) Anglais: j'ai mis english British (projets européens...), j'essaierai de rester cohérent dans le document
-
-
-
-SI VOUS VOYEZ autre chose, n'hésitez pas à l'ajouter ici!
+3. English: try to stick to British English
