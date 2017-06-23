@@ -46,10 +46,13 @@ You need to have [LaTeX](https://www.latex-project.org/) and [BibTex](http://www
 cd src/
 latex DivaUserGuide.tex
 bibtex bibtex DivaUserGuide.aux
+mkindex DivaUserGuide.tex
 latex DivaUserGuide.tex
 latex DivaUserGuide.tex
 ```
-The last 2 lines are identical but necessary to obtain the correct references to the bibliography. 
+* The 3rd line creates a list of references for the bibliography.
+* The 4th line prepares the index.
+* The last 2 lines are identical but necessary to obtain the correct references to the bibliography. 
 
 
 ## For the editors
