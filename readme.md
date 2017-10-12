@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/95117345.svg)](https://zenodo.org/badge/latestdoi/95117345)
+
 This repository contains the source files ([LaTeX](https://www.latex-project.org/)) and the figures necessary to generate the User Guide of the [Diva](https://github.com/gher-ulg/DIVA) (Data Interpolating Variational Analysis) tool.
 
 ![Diva logo](https://cloud.githubusercontent.com/assets/11868914/24106959/c6d8fb44-0d89-11e7-921b-a36fcccf5a21.png)
