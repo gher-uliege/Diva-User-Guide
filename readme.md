@@ -6,9 +6,10 @@ This repository contains the source files ([LaTeX](https://www.latex-project.org
 
 ## For the readers
 
-Directly download the [main documentation](./DivaUserGuide.pdf). The source files (.tex) in the [source](./src/) directory and the figures necessary to build the pdf.
+Directly download the [main documentation](./DivaUserGuide.pdf) in pdf format.      
+The source files (.tex) in the [source](./src/) directory and the figures necessary to build the pdf.
 
-### Organisation 
+### Directory organisation 
 
 ```
 .
@@ -43,7 +44,7 @@ The manual requires several LaTeX packages to be compiled; the [header](src/00-D
 
 ### Compilation
 
-You need to have [LaTeX](https://www.latex-project.org/) and [BibTex](http://www.bibtex.org/) installed on your machine if you want to compile the sources.
+You need to have [LaTeX](https://www.latex-project.org/) and [BibTex](http://www.bibtex.org/) installed on your machine in order to compile the sources.
 ```bash
 cd src/
 latex DivaUserGuide.tex
@@ -65,7 +66,7 @@ latex DivaUserGuide.tex
 \command{}
 \directory{}
 ```
-in order to evidence the files, command and directory names.
+in order to evidence the file, command and directory names.
 
 Example:
 ```latex
@@ -74,7 +75,7 @@ Example:
 
 2. Progressively add commands such as `\index{key-word}` to build a consistent index.
 
-3. English: try to stick to British English
+3. English: try to stick to British English.
 
 ## Related projects 
 
