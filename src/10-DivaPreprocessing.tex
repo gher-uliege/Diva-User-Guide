@@ -377,7 +377,7 @@ The script \command{divafit}: uses the data (\file{./input/data.dat}) for a dire
 When dealing with very large datasets, using \command{divafit} with sub-sampling may save you a large amount of time.
 \etips
 
-\textbf{Note:} when using advection \index{Advection} constraint and variable $L$, \command{divafit} will not provide a very meaningful value.
+\info when using advection \index{Advection} constraint and variable $L$, \command{divafit} will not provide a very meaningful value.
 
 \subsubsection{Output files}
 %---------------------------
@@ -401,7 +401,7 @@ Output file \file{covariancefit.dat} allows looking at the fitted covariance fun
 
 Finally, file \file{param.par.fit} is the original \file{param.par} file except that the correlation length has been replaced by the fitted value. 
 
-\textbf{Note:} always have a look at the fit to judge on its quality. %see example ref... divacovafit
+\info always have a look at the fit to judge on its quality. %see example ref... divacovafit
 
 \subsection{\command{divagcv}}
 %-------------------------------
@@ -451,7 +451,7 @@ of the parameters (CL and/or SNR) optimization by averaging a part of the highly
 \command{divacv} runs a cross validation by sub-samples of points.
 
 
-Note that in the present version (\diva-\divaversion), tools  \command{divacv} and \command{divacvrand}  
+\info in the present version (\diva-\divaversion), tools  \command{divacv} and \command{divacvrand}  
 do not adapt the error norm to include the relative weights on data. This will be introduced in the next versions.
 
 %--------------

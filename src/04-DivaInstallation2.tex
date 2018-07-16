@@ -1,9 +1,9 @@
 \chapter{Installation of the software\label{chap:installation}}
 %-------------------------------
 
-\diva is a software designed to run with any operating system (Microsoft Windows, Linux, Mac OS X). The main steps for the the installation are described in this chapter. A more detailed and up-to-date list of instructions is available on the Installation web page of \diva: \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/Diva_installation}
+\diva is a software designed to run with any operating system (Microsoft Windows, Linux, Mac OS X). The main steps for the installation are described in this chapter. A more detailed and up-to-date list of instructions is available on the Installation web page of \diva: \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/Diva_installation}
 
-{\bf \underline{WARNING:} IF you have a previous \diva version  running on your system, please make a copy (or save it somewhere) before installing the new version.} 
+\warning If you have a previous \diva version running on your system, please make a copy (or save it somewhere) before installing the new version.
 
 %%while the Graphical User Interface (GUI) is presented in Section~\ref{sec:guiinstall}. Note that the GUI is not up-to-date.
 
@@ -19,30 +19,34 @@
 The basic requirements to compile and run \diva are:
 \begin{enumerate}
 \item A command-line interface. With Linux or Mac, the interface is directly available: it is the shell or terminal. With Windows, it is necessary to install a Unix-like environment such as Cygwin (\url{http://www.cygwin.com/}).
-\item A Fortran 95 compiler with preprocessing -cpp possibilities, such as:
+\item A Fortran 95 compiler with preprocessing \texttt{-cpp} possibilities, such as:
 \begin{itemize}
-\item gfortran (\url{http://gcc.gnu.org/wiki/GFortran}),
-\item ifort (Intel\textsuperscript{\textregistered}, \url{http://software.intel.com/en-us/intel-compilers}),
+\item gfortran (\url{https://gcc.gnu.org/wiki/GFortran}),
+\item ifort (Intel\textsuperscript{\textregistered}, \url{https://software.intel.com/en-us/fortran-compilers}),
 \item pgf (Portland Group, \url{http://www.pgroup.com/}).
 \end{itemize}    
-\item The NetCDF library (\url{http://www.unidata.ucar.edu/software/netcdf/}) for Fortran. Note that the library is available in recent versions of the Cygwin installer, but does not properly work in all cases (and you must add the library \texttt{nclib=/usr/lib/libnetcdff.dll.a} into the compiling options). When trying to make the Cygwin NetCDF library to work, you might need to use 
+\item The netCDF library (\url{http://www.unidata.ucar.edu/software/netcdf/}) for Fortran. Note that the library is available in recent versions of the Cygwin installer, but does not properly work in all cases (and you must add the library \texttt{nclib=/usr/lib/libnetcdff.dll.a} into the compiling options). When trying to make the Cygwin netCDF library to work, you might need to use 
 
 \begin{lstlisting}[style=Bash]
 [charles@gher13 ~]$ cygcheck netcdfoutput.a
 \end{lstlisting}
 %$
-to see which libraries are still missing (in our case \texttt{sasl}) and therefore to install them with the cygwin installer.  
+to see which libraries are still missing (in our case \texttt{sasl}) and therefore to install them with the Cygwin installer.  
 \end{enumerate}
 
 Other requirements :
 \begin{enumerate}
- \item dos2unix (on Linux Ubuntu : sudo apt-get install dos2unix, on Cygwin : launch the setup.exe and tick ``dos2unix'').
- \item bc (on Linux Ubuntu : sudo apt-get install bc, on Cygwin : launch the setup.exe and tick ``bc'').
+ \item \command{dos2unix}:\\
+ on Linux Ubuntu : sudo apt-get install dos2unix, \\
+ on Cygwin : launch the setup.exe and tick ``dos2unix'').
+ \item \command{bc}:\\
+ on Linux Ubuntu : sudo apt-get install bc,\\
+  on Cygwin : launch the setup.exe and tick ``bc''.
 \end{enumerate}
 
 
 
-For a quick visualization of the results, a software able to read and display the content of a NetCDF \index{NetCDF} file is recommended:
+For a quick visualization of the results, a software tool able to read and display the content of a netCDF \index{NetCDF} file is recommended:
 \begin{itemize}
 \item ncBrowse (\url{http://www.epic.noaa.gov/java/ncBrowse/}, a Java application,
 \item Ncview (\url{http://meteora.ucsd.edu/~pierce/ncview_home_page.html}), a visual browser, 
@@ -53,32 +57,26 @@ For a quick visualization of the results, a software able to read and display th
 \section{Download and extraction of the archive}
 %-----------------------------------------
 \index{Download}
-Select a directory on your local disk (here we install in a directory \directory{\textasciitilde/Software/}) where you want install \diva and download the archive available at \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/DIVA#How_to_get_the_code.3F}.
+Select a directory on your local disk (here we install in a directory \directory{\textasciitilde/Software/}) where you want install \diva and download the most recent release from \url{https://github.com/gher-ulg/DIVA}. You can either download the archive and extract it, or use git if you familiar with the tool.
+
 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 ~]$ cd Software/
-[charles@gher13 Software]$ wget http://modb.oce.ulg.ac.be/mediawiki/upload/DIVA/releases/diva4.6.4.tar.gz
-\end{lstlisting}
-
-Extract the archive and go in the main directory:
-\begin{lstlisting}[style=Bash]
-[charles@gher13 Software]$ tar -xvf diva4.6.4.tar.gz
-[charles@gher13 Software]$ cd diva4.6.4/
+[charles@gher13 Software]$ tar -xvf diva-4.7.1.tar.gz
+[charles@gher13 Software]$ cd diva-4.7.1/
 \end{lstlisting}
 
 The directory tree has the following structure: %\newpage 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 diva4.6.4]$ tree -d -L 2
+[charles@gher13 diva-4.7.1]$ tree -d -L 2
 .
-|-- DIVA3D
-|   |-- bin
-|   |-- divastripped
-|   `-- src
-|-- Example4D
-	|--input
-`-- JRA4
-    `-- Climatology
-8 directories
+├── DIVA3D
+│   ├── bin
+│   ├── divastripped
+│   └── src
+├── Example4D
+│   └── input
+├── JRA4
+│   └── Climatology
 \end{lstlisting}
 
 
@@ -86,9 +84,6 @@ The directory tree has the following structure: %\newpage
 \item \directory{DIVA3D/bin/} contains the executables generated by the code compilation. Pre-compiled executables for various operating systems are provided in the sub-folders.
 \item \directory{DIVA3D/divastripped/} is the main working directory at the 2-D level. 
 \item \directory{DIVA3D/src/} contains the Fortran source code. This is where the compilation has to be done.
-\item[]
-%\item \directory{Doc/} contains the link to publications. For \LaTeX users: you find the corresponding \BibTeX  entries in the file \file{DivaPublications.bib}.
-\item \directory{Example4D/} contains a set of input file that cab be used to run a simple test.
 \item \directory{JRA4/Climatology/} is the main working directory at the 3-D and 4-D levels.
 \end{itemize}
 
@@ -101,24 +96,28 @@ There are two possibilities to obtain the binaries:
 \item Compile the source code.
 \item Copy the provided binaries.
 \end{enumerate}
-The second option is provided for cases where the compilation was not possible, mainly because of missing libraries (e.g., NetCDF) or Fortran compilers.
+The second option is provided for cases where the compilation was not possible, mainly because of missing libraries (e.g., netCDF) or Fortran compilers.
 
 \subsection{Compilation\label{sec:compilation}}
 %-----------------------------------------------
+\index{Compilation}
 
-The \diva Fortran programs compilation is done by running the shell script \file{divacompileall}, which uses a configuration file \file{divacompile\_options}. In the configuration file \\ \file{divacompile\_options} are prescribed the options for Fortran compiler and libraries.
+The compilation is performed in the directory \directory{DIVA3D/src/Fortran}. There are presently 2 ways to compile the code: through a specific shell script or using the Makefile.
+
+\subsubsection{Use the compilation script}
+
+Summary:\\ 
+Edit configuration file \file{divacompile\_options} and run the shell script \file{divacompileall}
+\begin{lstlisting}[style=Bash]
+[charles@gher13 Fortran]$ ./divacompileall
+\end{lstlisting}
+
+Detailed explanation:\\
+In the configuration file \file{divacompile\_options} are prescribed the options for Fortran compiler and libraries.
 \begin{itemize}
-\item If you have allready a previous running \diva version and -within it- the file \\ \file{divacompile\_options} configured according to your system, you can simply copy it to the same place in the new version (\directory{diva4.6.4/DIVA3D/src/Fortran/)} before running  \file{divacompileall}.
+\item If you have already a previous running \diva version and -within it- the file \\ \file{divacompile\_options} configured according to your system, you can simply copy it to the same place in the new version (\directory{diva-4.7.1/DIVA3D/src/Fortran/)} before running  \file{divacompileall}.
 \item If not proceed as follow:
 \end{itemize}
-
-
-\index{Compilation}
-Go in the source directory 
-\begin{lstlisting}[style=Bash]
-[charles@gher13 diva4.6.4]$ cd DIVA3D/src/Fortran/
-\end{lstlisting}
-and edit the configuration file \file{divacompile\_options} for the compilation according to your machine. 
 
 \begin{verbatim}
 compiler=gfortran
@@ -131,14 +130,14 @@ flagscalc=' -O3 -cpp   -DDIVAITERATIVE -Wall -fbounds-check'
 ...
 \end{verbatim}
 
-If your installation knows the \command{nf-config} or \command{nc-config} command, the compiler and the options for the NetCDF \index{NetCDF} library will be detected automatically during the compilation. If you want to check before compilation, type:
+If your installation has the \command{nf-config} or \command{nc-config} commands (installed with the recent netCDF libraries), the compiler and the options for the netCDF \index{NetCDF} library will be detected automatically during the compilation. If you want to check before compilation, type:
 \begin{lstlisting}[style=Bash]
 [charles@gher13 ~]$ nf-config --fc
 gfortran
 [charles@gher13 ~]$ nf-config --flibs
 -L/usr/lib -lnetcdff -lnetcdf
 \end{lstlisting}
-Check the options of this command by typing \command{nf-config}, or visit the web page: \url{http://www.unidata.ucar.edu/software/netcdf/workshops/2011/utilities/Nc-config.html}. If you have installed several versions of the NetCDF libraries, you might find several \command{nf-config} on your system, and each of them may provide you different outputs for the two previous commands. In older versions of NetCDF libraries \command{nc-config} was used instead of \command{nf-config}.
+Check the options of this command by typing \command{nf-config}, or visit the web page: \url{http://www.unidata.ucar.edu/software/netcdf/workshops/2011/utilities/Nc-config.html}. If you have installed several versions of the netCDF libraries, you might find several \command{nf-config} on your system, and each of them may provide you different outputs for the two previous commands. In older versions of netCDF libraries \command{nc-config} was used instead of \command{nf-config}.
 
 If neither \command{nc-config} nor \command{nf-config} is installed, you may have to further edit\\ 
 \file{divacompile\_options}:
@@ -152,39 +151,44 @@ Once this is done, run the compilation script:
 \end{lstlisting}
 and check the content of the log file (\file{compilation.log}). You should obtain something similar to that:
 \begin{verbatim}
-Compilation time:  Wed May 22 20:57:28 CEST 2013
+Compilation time:  Wed Jul 15 20:57:28 CEST 2018
 compiler:          gfortran
-compilation flags: -O3 -cpp -DDIVAITERATIVE
-Calc directory:       1/1   program compiled
-Extensions directory: 13/13 programs compiled
-Mesh directory:       9/9   programs compiled
-NC directory:         3/3   programs compiled
-PlPlot directory:     1/1   programs compiled
-Util directory:       41/41 programs compiled
-Pipetest directory:   1/1   program compiled
-Stabil directory:     28/28 programs compiled
+compilation flags: -O3 -frecord-marker=4 -cpp -DDIVAITERATIVE
+Calc directory:       1/1 program compiled
+Extensions directory: 5/5 programs compiled
+Mesh directory:       6/6 programs compiled
+NC directory:         8/8 programs compiled
+Util directory:       49/49 programs compiled
+Pipetest directory:   1/1 program compiled
+Stabil directory:     31/31 programs compiled
 ----------------------------------------------------------
-TOTAL:                97/97 programs compiled
+TOTAL:                101/101 programs compiled
 ----------------------------------------------------------
 Binaries are located in directory:
-/home/ctroupin/Software/diva4.6.4/DIVA3D/bin
+/home/ctroupin/ULg/Tools/DIVA/DIVA3D/bin
+
 \end{verbatim}
+
+\subsubsection{Use the Makefile}
+
+Edit the file \file{Makefile} and set the compilers and the compiling flags, then run:
+
+\begin{lstlisting}[style=Bash]
+[charles@gher13 Fortran]$ make
+\end{lstlisting}
 
 \subsection{Direct copy of pre-compiled binaries}
 
-If the compilation failed, go in the \directory{diva-4.6.1/DIVA3D/bin/} directory and copy directly the binaries available in the sub-directories. For example for Windows with the Cygwin tool:
-\begin{lstlisting}[style=Bash]
-[charles@gher13 bin] cp -f cygwin/* .
-\end{lstlisting}
+For some releases of the code we also provided pre-compiled binaries. If it is not the case and you have problems to compile the code, we can prepare the binaries for you.
 
 \section{Run tests\label{sec:divatest}}
 %------------------
 
-In the main working directory (\directory{GODIVA\_mm\_yyyy/DIVA3D/divastripped}), run one the two available tests: \command{divatest} and \command{divabigtest}. 
+In the main working directory (\directory{diva-4.7.1/DIVA3D/divastripped}), run the available tests: 
+\command{divatest}, \command{divabigtest}, \command{divatest0}, \command{divatest2}, \command{divatest3}, \command{divatesterror} and \command{test\_fit}.
 
 
 \subsection{Basic test}
-
 
 \command{divatest} creates basic input files (see Chapter~\ref{chap:general} for details), performs a simple \diva execution,
 checks if \command{awk} is appropriate, checks if the pipes are supported in your operating system (O.S.), checks if \command{dos2unix}
@@ -209,7 +213,15 @@ The results you obtain have to be similar to those of Fig.~\ref{fig:diva_test_re
 
 \subsection{Another basic test}
 
-\command{divatest0} creates basic input files for a fine mesh and a single data point in the center of the domain and runs the analysis. You should obtain the \index{Bessel function} Bessel function with a maximum value of 0.5.
+\command{divatest0} creates basic input files for a fine mesh and a single data point in the center of the domain and runs the analysis. You should obtain the \index{Bessel function} Bessel function with a maximum value close to 0.5.
+
+\begin{lstlisting}[style=Bash]
+[charles@gher13 divastripped]$ divatest0
+...
+Field value at origin =  0.49961258874045061
+\end{lstlisting}
+
+\info okokok
 
 
 \subsection{Large-memory test}

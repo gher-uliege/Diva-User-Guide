@@ -42,7 +42,7 @@ Generates the finite-element mesh based on contour(s) specified in file \file{co
 }
 \end{figure}
 
-Note that since version \diva-\divaversion, mesh generation takes into account coordinate change (specified by \texttt{icoord}) so that meshes are uniform in the transformed domain. 
+\info since version 4.3, mesh generation takes into account coordinate change (specified by \texttt{icoord}) so that meshes are uniform in the transformed domain. 
 
 
 \subsubsection{Mesh with different element sizes}
@@ -344,7 +344,7 @@ If coordinate change is activated, the advection direction in real space is not 
 \end{figure}
 
 
-Note that the diffusion coefficient is not changed. If this coefficient is given in 
+\info the diffusion coefficient is not changed. If this coefficient is given in 
 Cartesian coordinates (in this case, it must be specified in $m^2/s$ if 
 velocities are in $m/s$) but you provide input in degrees and do not set 
 \texttt{icoord=1}, the diffusion coefficient is basically overestimated by a 
