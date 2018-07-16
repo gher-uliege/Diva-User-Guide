@@ -44,6 +44,9 @@
 \usepackage{epic,eepic}
 \usepackage{rotating}
 \usepackage{etex}
+\usepackage[skins]{tcolorbox}
+\usepackage{fontawesome}
+\usepackage{academicons}
 
 \lstdefinestyle{Bash}
 {language=bash,
@@ -142,7 +145,7 @@ literate={\$}{{\textcolor{red}{\$}}}1
 \newcommand{\matlab}{\textsf{Matlab}\xspace}
 \newcommand{\plplot}{\textsf{PlPlot}}
 \newcommand{\tcltk}{\textsf{Tcl/Tk}}
-\newcommand{\divaversion}{4.3}
+\newcommand{\divaversion}{4.7.1}
 \newcommand{\gnuplot}{\textsf{gnuplot\xspace}}
 \newcommand{\divawebpage}{http://modb.oce.ulg.ac.be/mediawiki/index.php/DIVA}
 
@@ -232,7 +235,22 @@ literate={\$}{{\textcolor{red}{\$}}}1
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\newtcbox{\warn}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.4pt,top=0mm,bottom=0mm,
+right=0mm,left=4mm,arc=1pt,boxsep=2pt,before upper={\vphantom{dlg}},
+colframe=RedOrange,coltext=Orange,colback=white,
+overlay={\begin{tcbclipinterior}\fill[Orange] (frame.south west)
+    rectangle node[text=white,font=\sffamily\tiny,rotate=0] {\faWarning} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}  
     
+\newtcbox{\note}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.4pt,top=0mm,bottom=0mm,
+right=0mm,left=4mm,arc=1pt,boxsep=2pt,before upper={\vphantom{dlg}},
+colframe=NavyBlue,coltext=NavyBlue,colback=white,
+overlay={\begin{tcbclipinterior}\fill[NavyBlue] (frame.south west)
+    rectangle node[text=white,font=\sffamily\scriptsize,rotate=0] {\faInfoCircle} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}  
+    
+\newcommand{\warning}{\warn{Warning}~}
+\newcommand{\info}{\note{Note:}~}
+
 % ------------------------------------------------
 % hyperref setup
 %-------------------------------------------------
