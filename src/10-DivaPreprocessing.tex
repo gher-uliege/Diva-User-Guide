@@ -113,7 +113,7 @@ you have your main climatological working place. Push {\tt OK} and be patient. (
 Go into Cygwin (or into Linux mode) and place yourself in the main directory of your climatology production. You should have a big \file{topogebco.asc} file on which you can apply
 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 input] head -20 topogebco.asc
+[ input] head -20 topogebco.asc
 \end{lstlisting}
 
 to see if the file was created correctly. You also should have a \command{gebcoprep} file. If not, copy the \file{gebcoprep.example} file as \command{gebcoprep}.
@@ -468,7 +468,7 @@ Only one variable (myfield, i.e. the name of your field) is accepted.
 To launch the conversion, just type 
 
 \begin{lstlisting}[style=Bash]
-[sylvain@gher-diva DIVA3D/divastripped] ./ncdf2gher myfield
+[DIVA3D/divastripped] ./ncdf2gher myfield
 \end{lstlisting}
 
 Your variable ``myfield'' will then be stored into a gher format file named \file{myfield.grd} and its info file \file{myfieldInfo.dat}.
@@ -486,7 +486,7 @@ These two files have the same form and conventions as \file{topo.grd} and \file{
 To launch the conversion, just type 
 
 \begin{lstlisting}[style=Bash]
-[sylvain@gher-diva DIVA3D/divastripped] ./gher2ncdf myfield
+[DIVA3D/divastripped] ./gher2ncdf myfield
 \end{lstlisting}
 
 Your variable ``myfield'' will then be stored into a netcdf file named \file{myfield.nc}. Its axis will be ``lon'' and ``lat''.
@@ -508,7 +508,7 @@ Script \command{divadataclean} takes the input data \file{./input/data.dat} and 
 
 \example
 \begin{lstlisting}[style=Bash]
-[charles@gher13 divastripped] divadataclean -3 35
+[divastripped] divadataclean -3 35
 \end{lstlisting}
 will remove all data points of which the value is not between $-3$ and $35$.
 
@@ -521,7 +521,7 @@ The output overwrites \file{./input/data.dat} but keeps the original one in \dir
 
 \example
 \begin{lstlisting}[style=Bash]
-[charles@gher13 divastripped] divaload ~/DIVA/test/
+[divastripped] divaload ~/DIVA/test/
 \end{lstlisting}
 will load the files from \directory{\textasciitilde/DIVA/test/input}.
  

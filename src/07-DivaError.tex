@@ -410,12 +410,12 @@ All approaches were implemented into \command{divaintegral}. If there is a file\
 Otherwise it will be created (and put in the \directory{./output}), based on the analysis on the output grid. This files must contain \texttt{x,y,val,1,h}. If the file did not exist but was created, it will pass through an execution of \command{divaintegral}. 
 \command{divaintegral} can be edited by the user to chose special points for the integration (for example only those points for which the analysis is positive, or points that fall in a given square etc). 
 
-When {\tt ispec } is negative, the full covariance calculation will be used. When {\tt ispec} is positive, the hybrid covariance calculation will be used.
+When {\tt ispec} is negative, the full covariance calculation will be used. When {\tt ispec} is positive, the hybrid covariance calculation will be used.
 
 When called with the optional argument \texttt{-naive}, it also calculates the simple sum of the diagonal term of the analysis error variance. The error field itself is calculated with the methods specified by \texttt{ispec}. 
 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 divastripped] divaintegral -naive
+[divastripped] divaintegral -naive
 \end{lstlisting}
 
 The output files generated are:
@@ -450,7 +450,7 @@ Output: \file{fort.14} double sum, \file{fort.12} pseudo-data vector.
 For exact covariance functions, 
 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 divastripped] divacalc -pfsum
+[divastripped] divacalc -pfsum
 \end{lstlisting}
 
 is executed, which allows the use of the full suite of \diva parameters (including for example advection constraint). Internally, as we need the covariance of all integral points with all integral points and data locations, we provide to \command{divacalc -pfsum} in input "data" which are the integration points and ask in addition values in a list of points (which are the original data location).

@@ -8,10 +8,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{color}
-\usepackage[dvipsnames]{xcolor}
+\usepackage[svgnames]{xcolor}
 \usepackage{fancyhdr}
 \usepackage{amsmath}
 \usepackage{array}
+\usepackage[left=2.5cm, right=2.5cm, top=2cm, bottom=3cm]{geometry}
 \usepackage{colortbl}
 \usepackage{amssymb}
 \usepackage{fancybox}
@@ -47,19 +48,20 @@
 \usepackage[skins]{tcolorbox}
 \usepackage{fontawesome}
 \usepackage{academicons}
+\usepackage{titling}
+\usepackage{GoSans}
 
 \lstdefinestyle{Bash}
 {language=bash,
-keywordstyle=\color{blue},
+keywordstyle=\color{DarkGray},
 basicstyle=\ttfamily,
-morekeywords={charles@gher13},
 alsoletter={:~$},
-commentstyle=\color{dkgreen},
+commentstyle=\color{DimGray},
 morekeywords=[2]{charles@gher13:},
-keywordstyle=[2]{\color{red}},
-literate={\$}{{\textcolor{red}{\$}}}1 
-         {:}{{\textcolor{red}{:}}}1
-         {~}{{\textcolor{red}{\textasciitilde}}}1,
+keywordstyle=[2]{\color{DimGray}},
+literate={\$}{{\textcolor{DimGray}{\$}}}1 
+         {:}{{\textcolor{DimGray}{:}}}1
+         {~}{{\textcolor{DimGray}{\textasciitilde}}}1,
 }
 \lstset{
     breaklines     = true,
@@ -71,16 +73,15 @@ literate={\$}{{\textcolor{red}{\$}}}1
 
 \lstdefinestyle{Matlab}
 {language=matlab,
-keywordstyle=\color{blue},
+keywordstyle=\color{DarkGray},
 basicstyle=\ttfamily,
-morekeywords={charles@gher13},
 alsoletter={:~$},
 commentstyle=\color{dkgreen},
 morekeywords=[2]{charles@gher13:},
-keywordstyle=[2]{\color{red}},
-literate={\$}{{\textcolor{red}{\$}}}1 
-         {:}{{\textcolor{red}{:}}}1
-         {~}{{\textcolor{red}{\textasciitilde}}}1,
+keywordstyle=[2]{\color{DimGray}},
+literate={\$}{{\textcolor{DimGray}{\$}}}1 
+         {:}{{\textcolor{DimGray}{:}}}1
+         {~}{{\textcolor{DimGray}{\textasciitilde}}}1,
 }
 \lstset{
     breaklines     = true,
@@ -95,8 +96,20 @@ literate={\$}{{\textcolor{red}{\$}}}1
 \graphicspath{
 {./figures/preprocessing/},{./figures/postprocessing/},{./figures/icones/},{./figures/test_cases/},
 {./figures/examples/},{./figures/gallery/},{./figures/images/},{./figures/GUI/},{./figures/analysis/},
-{./figures/errors/},{./figures/advection/},{./figures/papers/},{./figures/divaonweb/}
+{./figures/errors/},{./figures/advection/},{./figures/papers/},{./figures/divaonweb/},{./figures/icones/}
 } 
+
+\tikzstyle{na} = [baseline=-.5ex]
+\usetikzlibrary{arrows,shapes,backgrounds}
+%\tikzstyle{every picture}+=[remember picture]
+\usetikzlibrary{spy}
+
+% fonts
+\newfontfamily\mytitle[Path = /home/ctroupin/.fonts/]{Varela-Regular.otf}
+
+\makeatletter%
+\special{pdf: put @thispage <</Group << /S /Transparency /I true /CS /DeviceRGB>> >>}%
+\makeatother%
  
 %------------------------
 %biblio style
@@ -107,23 +120,44 @@ literate={\$}{{\textcolor{red}{\$}}}1
 % NEW COLOR
 \definecolor{gris}{rgb}{0.7,0.7,0.7}
 \definecolor{darkgreen}{rgb}{0.14 0.73 0.21}
-
+\definecolor{greybackground}{RGB}{235, 235, 235}
+\definecolor{bluegher}{RGB}{4,99,128}  		% blue 
+\definecolor{greygher}{RGB}{50, 50, 50}  	% grey 
 % ------------------------------------------------
 % LENGTH DEFINITIONS
 %-------------------------------------------------
-\setlength{\textwidth}{16cm}
-\setlength{\textheight}{24cm}
-\setlength{\headheight}{50.3pt}
-\setlength{\footskip}{45pt}
-\setlength{\hoffset}{-1cm}
-\setlength{\voffset}{-3cm}
-\setlength{\unitlength}{1cm}
+%\setlength{\textwidth}{16cm}
+%\setlength{\textheight}{24cm}
+%\setlength{\headheight}{50.3pt}
+%\setlength{\footskip}{45pt}
+%\setlength{\hoffset}{-1cm}
+%\setlength{\voffset}{-3cm}
+%\setlength{\unitlength}{1cm}
 \setlength{\parindent}{0pt}
+
+\newsavebox{\ximagebox}
+\newlength{\ximageheight}
+\newsavebox{\xglyphbox}
+\newlength{\xglyphheight}
+\newcommand{\xbox}[1]%
+   {\savebox{\ximagebox}{#1}%
+    \settoheight{\ximageheight}{\usebox{\ximagebox}}%
+    \savebox{\xglyphbox}{\char32}%
+    \settoheight{\xglyphheight}{\usebox{\xglyphbox}}%
+    \raisebox{\ximageheight}[0pt][0pt]{\raisebox{-\xglyphheight}[0pt][0pt]{%
+      \makebox[0pt][l]{\usebox{\xglyphbox}}}}%
+    \usebox{\ximagebox}%
+    \raisebox{0pt}[0pt][0pt]{\makebox[0pt][r]{\usebox{\xglyphbox}}}}
+    
+\newcommand{\seplogo}{\hspace{.45cm}}
+\newcommand{\figheight}{.0625\textheight}
+\newcommand{\putlogolink}[2]{\href{#1}{\xbox{\includegraphics[height=\figheight]{#2}}}}
 % ------------------------------------------------
 % new commands
 %-------------------------------------------------
 \renewcommand{\footrulewidth}{0.4pt}
 \renewcommand{\captionfont}{\it \small}
+
 
 %\renewcommand{\LettrineFontHook}{\color[gray]{0.5}}
 
@@ -229,16 +263,16 @@ literate={\$}{{\textcolor{red}{\$}}}1
 \newcommand{\intermediate}{$\star\star$}
 \newcommand{\expert}{$\star\star\star$}
 
-\newcommand{\directory}[1]{\texttt{\color{ForestGreen}{#1}}}
+\newcommand{\directory}[1]{\texttt{\color{Green}{#1}}}
 \newcommand{\file}[1]{\texttt{\color{MidnightBlue}{#1}}}
-\newcommand{\command}[1]{\texttt{\color{RedOrange}{#1}}}
+\newcommand{\command}[1]{\texttt{\color{OrangeRed}{#1}}}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \newtcbox{\warn}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.4pt,top=0mm,bottom=0mm,
 right=0mm,left=4mm,arc=1pt,boxsep=2pt,before upper={\vphantom{dlg}},
-colframe=RedOrange,coltext=Orange,colback=white,
+colframe=OrangeRed,coltext=Orange,colback=white,
 overlay={\begin{tcbclipinterior}\fill[Orange] (frame.south west)
     rectangle node[text=white,font=\sffamily\tiny,rotate=0] {\faWarning} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}  
     
@@ -249,7 +283,7 @@ overlay={\begin{tcbclipinterior}\fill[NavyBlue] (frame.south west)
     rectangle node[text=white,font=\sffamily\scriptsize,rotate=0] {\faInfoCircle} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}  
     
 \newcommand{\warning}{\warn{Warning}~}
-\newcommand{\info}{\note{Note:}~}
+\newcommand{\info}{\note{Note}~}
 
 % ------------------------------------------------
 % hyperref setup
@@ -268,10 +302,10 @@ bookmarksopenlevel=2,
 colorlinks=true,%
 breaklinks=true,%
 colorlinks=true,%
-linkcolor=blue,anchorcolor=blue,%
-citecolor=blue,filecolor=blue,%
+linkcolor=DimGray,anchorcolor=blue,%
+citecolor=DimGray,filecolor=blue,%
 menucolor=black,%
-urlcolor=blue}
+urlcolor=DimGray}
 
 % ------------------------------------------------
 % page style
@@ -305,7 +339,7 @@ urlcolor=blue}
    \normalfont\sffamily\Huge\bfseries\scshape}
   {\gdef\chapterlabel{\thechapter\ }}{0pt}
   {\begin{tikzpicture}[remember picture,overlay]
-    \node[yshift=+0.5cm] at (current page.north west) %old value : -2.5cm
+    \node[yshift=-2.5cm] at (current page.north west) %old value : -2.5cm
       {\begin{tikzpicture}[remember picture, overlay]
         \draw[fill=lightgray] (0,0) rectangle
           (1.05\paperwidth,2.5cm); %old value : 1.00
@@ -352,7 +386,7 @@ urlcolor=blue}
 
 
 \title{\diva User Guide}
-\author{C.~Troupin, M.~Ouberdous, D.~Sirjacobs, A.~Alvera-Azc\'{a}rate,\\ A.~Barth, M.-E. Toussaint, S.~Watelet \& J.-M.~Beckers}
+\author{C.~Troupin, S.~Watelet, M.~Ouberdous, D.~Sirjacobs, A.~Alvera-Azcárate, A.~Barth, M.-E.~Toussaint \& J.-M.~Beckers}
 \date{}
 
 \makeindex

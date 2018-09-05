@@ -1,9 +1,9 @@
 \chapter{Installation of the software\label{chap:installation}}
 %-------------------------------
 
-\diva is a software designed to run with any operating system (Microsoft Windows, Linux, Mac OS X). The main steps for the installation are described in this chapter. A more detailed and up-to-date list of instructions is available on the Installation web page of \diva: \url{http://modb.oce.ulg.ac.be/mediawiki/index.php/Diva_installation}
+\diva is a software tool designed to run with any operating system (Microsoft Windows, Linux, Mac OS X). The main steps for the installation are described in this chapter. A more detailed and up-to-date list of instructions is available on the Installation web page of \diva: \url{https://github.com/gher-ulg/DIVA}
 
-\warning If you have a previous \diva version running on your system, please make a copy (or save it somewhere) before installing the new version.
+\warning If you have a previous \diva version running on your system, please make a copy before installing the new version.
 
 %%while the Graphical User Interface (GUI) is presented in Section~\ref{sec:guiinstall}. Note that the GUI is not up-to-date.
 
@@ -28,7 +28,7 @@ The basic requirements to compile and run \diva are:
 \item The netCDF library (\url{http://www.unidata.ucar.edu/software/netcdf/}) for Fortran. Note that the library is available in recent versions of the Cygwin installer, but does not properly work in all cases (and you must add the library \texttt{nclib=/usr/lib/libnetcdff.dll.a} into the compiling options). When trying to make the Cygwin netCDF library to work, you might need to use 
 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 ~]$ cygcheck netcdfoutput.a
+[ ~]$ cygcheck netcdfoutput.a
 \end{lstlisting}
 %$
 to see which libraries are still missing (in our case \texttt{sasl}) and therefore to install them with the Cygwin installer.  
@@ -59,15 +59,14 @@ For a quick visualization of the results, a software tool able to read and displ
 \index{Download}
 Select a directory on your local disk (here we install in a directory \directory{\textasciitilde/Software/}) where you want install \diva and download the most recent release from \url{https://github.com/gher-ulg/DIVA}. You can either download the archive and extract it, or use git if you familiar with the tool.
 
-
 \begin{lstlisting}[style=Bash]
-[charles@gher13 Software]$ tar -xvf diva-4.7.1.tar.gz
-[charles@gher13 Software]$ cd diva-4.7.1/
+[Software]$ tar -xvf diva-4.7.1.tar.gz
+[Software]$ cd diva-4.7.1/
 \end{lstlisting}
 
 The directory tree has the following structure: %\newpage 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 diva-4.7.1]$ tree -d -L 2
+[diva-4.7.1]$ tree -d -L 2
 .
 ├── DIVA3D
 │   ├── bin
@@ -109,7 +108,7 @@ The compilation is performed in the directory \directory{DIVA3D/src/Fortran}. Th
 Summary:\\ 
 Edit configuration file \file{divacompile\_options} and run the shell script \file{divacompileall}
 \begin{lstlisting}[style=Bash]
-[charles@gher13 Fortran]$ ./divacompileall
+[Fortran]$ ./divacompileall
 \end{lstlisting}
 
 Detailed explanation:\\
@@ -132,9 +131,9 @@ flagscalc=' -O3 -cpp   -DDIVAITERATIVE -Wall -fbounds-check'
 
 If your installation has the \command{nf-config} or \command{nc-config} commands (installed with the recent netCDF libraries), the compiler and the options for the netCDF \index{NetCDF} library will be detected automatically during the compilation. If you want to check before compilation, type:
 \begin{lstlisting}[style=Bash]
-[charles@gher13 ~]$ nf-config --fc
+[~]$ nf-config --fc
 gfortran
-[charles@gher13 ~]$ nf-config --flibs
+[~]$ nf-config --flibs
 -L/usr/lib -lnetcdff -lnetcdf
 \end{lstlisting}
 Check the options of this command by typing \command{nf-config}, or visit the web page: \url{http://www.unidata.ucar.edu/software/netcdf/workshops/2011/utilities/Nc-config.html}. If you have installed several versions of the netCDF libraries, you might find several \command{nf-config} on your system, and each of them may provide you different outputs for the two previous commands. In older versions of netCDF libraries \command{nc-config} was used instead of \command{nf-config}.
@@ -147,7 +146,7 @@ nclib=/usr/lib/libnetcdff.dll.a
 
 Once this is done, run the compilation script: 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 Fortran] ./divacompileall
+[Fortran] ./divacompileall
 \end{lstlisting}
 and check the content of the log file (\file{compilation.log}). You should obtain something similar to that:
 \begin{verbatim}
@@ -174,7 +173,7 @@ Binaries are located in directory:
 Edit the file \file{Makefile} and set the compilers and the compiling flags, then run:
 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 Fortran]$ make
+[Fortran]$ make
 \end{lstlisting}
 
 \subsection{Direct copy of pre-compiled binaries}
@@ -198,9 +197,9 @@ and you can use a \command{CTRL-C} to exit. The analysis output can be checked u
 NetCDF\index{NetCDF} files. In this case we use ncview (see Chapter~\ref{chap:postprocessing} for details and installation). 
 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 divastripped]$ divatest
+[divastripped]$ divatest
 ...
-[charles@gher13 divastripped]$ ncview output/ghertonetcdf/results.nc
+[divastripped]$ ncview output/ghertonetcdf/results.nc
 \end{lstlisting}
 The results you obtain have to be similar to those of Fig.~\ref{fig:diva_test_results}.
 
@@ -216,7 +215,7 @@ The results you obtain have to be similar to those of Fig.~\ref{fig:diva_test_re
 \command{divatest0} creates basic input files for a fine mesh and a single data point in the center of the domain and runs the analysis. You should obtain the \index{Bessel function} Bessel function with a maximum value close to 0.5.
 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 divastripped]$ divatest0
+[divastripped]$ divatest0
 ...
 Field value at origin =  0.49961258874045061
 \end{lstlisting}
@@ -229,7 +228,7 @@ Field value at origin =  0.49961258874045061
 
 \command{divabigtest} creates input files to simulate a case with a large number of data and a very fine mesh. Again, the results, obtained after a few minutes, are viewable using the command:
 \begin{lstlisting}[style=Bash]
-[charles@gher13 divastripped] ncview output/ghertonetcdf/results.nc
+[divastripped] ncview output/ghertonetcdf/results.nc
 \end{lstlisting}
 and should be close to Fig.~\ref{fig:diva_bigtest_results}.
 

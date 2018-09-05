@@ -1,16 +1,5 @@
+\subsection*{Conditions of use}
 
-\vspace*{\fill}
-
-\begin{center}
-\begin{minipage}[c]{.85\textwidth}
-
-\Large{Conditions of use}
-%\addcontentsline{toc}{chapter}{Conditions of use}
-\vspace{1cm}
-\normalsize
-
- 
-\vspace{.25cm}
 \diva is a software developed at the GeoHydrodynamic and Environmental Research (GHER, \url{http://labos.ulg.ac.be/gher/}) group at the University of Liège (\url{https://www.uliege.be})) and further developed for SeaDataNet scientific data products in \textsf{JRA4} activities. \diva is copyright $\copyright$  2006-\the\year\xspace by the GHER group and is distributed under the terms of the GNU General Public License (GPL): \url{http://www.gnu.org/copyleft/gpl.html} \index{SeaDataNet}
 
 In short, this means that everyone is free to use \diva and to redistribute it on a free basis. \diva is not in the public domain; it is copyrighted and there are restrictions on its distribution (see the license \url{https://www.gnu.org/copyleft/gpl.html} and its associated FAQ \url{https://www.gnu.org/licenses/gpl-faq.html}). For example, you cannot integrate this version of \diva (in full or in parts) in any \textit{closed-source} software you plan to distribute (commercially or not).
@@ -18,32 +7,19 @@ In short, this means that everyone is free to use \diva and to redistribute it o
 If you want to integrate \diva into a closed-source software, or want to sell a modified closed-source version of \diva, please contact us in person. You can purchase a version of \diva under a different license, with \textit{no strings attached} (for example allowing you to take parts of \diva and integrate them into your own proprietary code).
 
 \vspace{.25cm}
-All SeaDataNet~2 products (data and software) are freely distributed to the scientific community at the following conditions: 
+All SeaDataNet/SeaDataCloud products (data and software tools) are freely distributed to the scientific community at the following conditions: 
 
 \begin{description}
 \item[\checkmark] The products should be used for scientific purposes only.
-\item[\checkmark] Articles, papers, or written scientific works of any form, based in whole or in part on data or software supplied by SeaDataNet, will contain a suitable acknowledgement to the SeaDataNet~2 program of the European Union. Related publications (see bibliography) should also be cited.
-\item[\checkmark] The applications of SeaDataNet~2 products are under the full responsibility of the users; neither the Commission of the European Communities nor the SeaDataNet~2 partners shall be held responsible for any consequence resulting from the use of SeaDataNet~2 products. 
+\item[\checkmark] Articles, papers, or written scientific works of any form, based in whole or in part on data or software supplied by SeaDataNet, will contain a suitable acknowledgement to the SeaDataNet/SeaDataCloud program of the European Union. Related publications (see bibliography) should also be cited.
+\item[\checkmark] The applications of SeaDataNet/SeaDataCloud products are under the full responsibility of the users; neither the Commission of the European Communities nor the SeaDataNet partners shall be held responsible for any consequence resulting from the use of SeaDataNet/SeaDataCloud products. 
 \item[\checkmark] The recipient of these data will accept responsibility of informing all data users of these conditions.
 \end{description}
 
-\end{minipage}
-
-\end{center}
-
-\vspace*{\fill}
-
 \newpage
 
-\vspace*{\fill}
 
-\begin{center}
-\begin{minipage}[c]{.85\textwidth}
-%\parskip 0.25cm
-\Large{How to use this guide?}
-%\addcontentsline{toc}{chapter}{Conditions of use}
-\vspace{1cm}
-\normalsize
+\subsection*{How to use this guide?}
 
 This \diva User Guide aims to cover all the aspects of the methods: the theory (Part~\ref{part:theory}), the two-dimension version (Part~\ref{part:2Dimplementation}), the climatology production with GODIVA \index{GODIVA}(Part~\ref{part:godiva}) and the description of the scripts and the Fortran code (Part~\ref{part:appendix}). 
 
@@ -59,26 +35,33 @@ To make easier the reading of the document, different text font and colors are u
 \end{itemize}
 Various example files are provided for different situations. 
 
+\subsection*{\diva or DIVAnd?}
+%-----------------------------
 
-\vspace{.25cm}
-\end{minipage}
+DIVAnd is another software tool developed at GHER and dedicated to the spatial interpolation of in situ data. While the objective is the same as \diva, the method, language and formulation are different. 
 
-\end{center}
+\info From 2017 on, most of the developments are performed on DIVAnd, \diva is only modified for possible bug corrections.
 
-\vspace*{\fill}
 
-\newpage
+The table below provides a short summary of the differences. Users interested in DIVAnd are invited to consult the \url{https://github.com/gher-ulg/DIVAnd.jl} and to read the article \citet{BARTH13}.
 
-\vspace*{\fill}
+\begin{table}[h]
+\begin{tabular}{cll}
+\toprule
+				& \diva 								& DIVAnd	\\
+\midrule
+Language		& Fortran, bash							& Julia		\\
+Dimensions		& 2										& $n$ 		\\
+Solver			& Finite-element, direct (skyline)		& Cholesky factorization\\
+Code			& \url{https://github.com/gher-ulg/DIVA} & \url{https://github.com/gher-ulg/DIVAnd.jl} 	\\
+DOI				& \doi{10.5281/zenodo.836727}			& \doi{10.5281/zenodo.1303229}\\
+Main publication & \citet{TROUPIN12}					& \citet{BARTH13}\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{center}
-\begin{minipage}[c]{.85\textwidth}
-%\parskip 0.25cm
-\Large{How to cite?}
-%\addcontentsline{toc}{chapter}{Conditions of use}
-\vspace{1cm}
-\normalsize
-
+\subsection*{How to cite?}
+%--------------------------
 
 \begin{itemize}
 \item This document:
@@ -111,8 +94,8 @@ Interpolating Variational Analysis (Diva).
             A. Alvera-Azc\'{a}rate and A. Capet and M. Ouberdous and 
             F. Lenartz and M.-E. Toussaint and J.-M. Beckers},
   title = {{Generation of analysis and consistent error fields 
-            using the Data 	Interpolating Variational Analysis (Diva)}},
-  journal = om,
+            using the Data Interpolating Variational Analysis (Diva)}},
+  journal = Ocean Modelling,
   year = {2012},
   volume = {52-53},
   pages = {90-101},
@@ -122,13 +105,12 @@ Interpolating Variational Analysis (Diva).
 \end{verbatim}
 }
 
+\item the \diva code: we encourage the users to cite the code release they are using in their applications using the corresponding DOI that they can find at \url{https://zenodo.org/record/836727}. For instance:\\
+Version 4.7.1: \doi{10.5281/zenodo.836727}\\
+Version 4.6.11: \doi{10.5281/zenodo.400970}\\
+\ldots\\
+The DOI for all the versions is: \doi{10.5281/zenodo.592476}
+
 \end{itemize}
 
-
-\vspace{.25cm}
-\end{minipage}
-
-\end{center}
-
-\vspace*{\fill}
 

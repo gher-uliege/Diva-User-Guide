@@ -22,7 +22,7 @@ represented with\quad \textbf{.}\quad  not \quad \textbf{,}
 \btips
 Use unix command \command{sed} to replace \textbf{,} by \textbf{.}:
 \begin{lstlisting}[style=Bash]
-[charles@gher13 Software] cat file1.dat | sed s/,/./g > file2.dat
+[Software] cat file1.dat | sed s/,/./g > file2.dat
 \end{lstlisting}
 
 where: \file{file1.dat} is the old file and \\
@@ -35,7 +35,7 @@ Use editor \textsl{vi} to replace \textbf{,} by \textbf{.}:
 
 Simply type:
 \begin{lstlisting}[style=Bash]
-[charles@gher13 Software]$ vi file1.dat
+[Software]$ vi file1.dat
 :,$s/,/./g
 \end{lstlisting}
 
@@ -383,7 +383,7 @@ If they exist, columns 3 and higher are not used.
 
 For 2-D analysis, the main working directory is \directory{divastripped}. Inside it, we have:
 \begin{lstlisting}[style=Bash]
-[charles@gher13 divastripped] tree -d -L 2
+[divastripped] tree -d -L 2
 .
 |-- divawork
 |   `-- sub

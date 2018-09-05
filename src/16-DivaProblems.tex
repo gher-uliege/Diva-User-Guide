@@ -415,12 +415,12 @@ End of lines in Unix,  Windows and Mac files are different, and this causes prob
 Working on a individual file, the command\\
 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 divastripped]$ dos2unix  file2convert
+[divastripped]$ dos2unix  file2convert
 \end{lstlisting}
 does the conversion between Windows and Unix end of lines. According to the Linux distribution, \command{dos2unix} may requires options to perform the conversion. For example with Mandriva~2010, it is necessary to add the option \texttt{-U}:
 
 \begin{lstlisting}[style=Bash]
-[charles@gher13 divastripped]$ dos2unix  -U file2convert
+[divastripped]$ dos2unix  -U file2convert
 \end{lstlisting}
 As a general rule, use the man command to see how a command is used on your particular computer. 
 When working with GODIVA, the transformation is automatically done on all the files. \\

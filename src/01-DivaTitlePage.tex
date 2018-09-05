@@ -1,66 +1,64 @@
 \begin{titlepage}
 
-
-\begin{figure}[H]
 \centering
-\includegraphics[height=1.5cm]{Logo_SeaDataNet_fond_transparent.png}
-\end{figure}
 
-\begin{center}
-\vspace*{1cm}
+\begin{tikzpicture}[remember picture, overlay]
+  \node[opacity=0.6,inner sep=0pt] at (current page.center)
+   {\includegraphics[width=\paperwidth,height=\paperheight]{meshA4.png}};
 
-\colorbox{grey}{
-	\parbox[t]{1.0\linewidth}{
-	\huge
-		\printtitle 
-		\vspace*{0.7cm}
-	}
-}
+\node[opacity=0.3] at ([yshift=-2cm]current page.center) {\includegraphics[width=1.4\textwidth]{medsea_sal.png}};
 
-  	\vspace*{1cm}
-  	
-\printauthor								% Print the author data as defined above
+%\draw[step=1cm,lightgray,very thin] (-11,-24) grid (20, 20);
+ 
+\coordinate (tp1) at ([yshift=9cm, xshift=.25cm]current page.west);
+\coordinate (tp2) at ([yshift=6cm, xshift=.25cm]current page.west);
+\coordinate (tp3) at ([yshift=6cm, xshift=-.25cm]current page.east);
+\coordinate (tp4) at ([yshift=9cm, xshift=-.25cm]current page.east);
 
-\vspace*{1cm}
+\coordinate (tp5) at ([xshift=.25cm,yshift=-.25cm]current page.north west);
+\coordinate (tp6) at ([yshift=-\figheight-1.2cm, xshift=.25cm]current page.north west);
+\coordinate (tp7) at ([yshift=-\figheight-1.2cm, xshift=-.25cm]current page.north east);
+\coordinate (tp8) at ([xshift=-.25cm,yshift=-.25cm]current page.north east);
+
+\filldraw[draw=greybackground,fill=greybackground,opacity=0.5] (tp5)--(tp6)--(tp7)--(tp8)--cycle;
+\shade[top color=bluegher,bottom color=white,opacity=0.7] (tp1)--(tp2)--(tp3)--(tp4)--cycle;
 
 
-\begin{figure}[H]
+\node at ([yshift=8cm]current page.center) {\huge\selectfont\mytitle Data Interpolating Variational Analysis};
+\node at ([yshift=7cm]current page.center) {\LARGE User Guide};
+
+
+\node at ([yshift=2cm]current page.south) {\includegraphics[height=.5cm]{zenodo-836723.pdf}};
+\node at ([yshift=1cm]current page.south) {\footnotesize{\textcolor{Gray}{(last modified: \today)}}};
+
+%\node[text width=12cm] at ([yshift=-5cm]current page.center) {\normalsize\insertauthor};
+
+
+%\filldraw[draw=none,fill=DarkTurquoise,opacity=0.35] (tp1)--(tp2)--(tp3)--(tp4)--cycle;
+
+
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture, overlay]
+ \node[anchor=north,yshift=-.35cm] at (current page.north) {
+\putlogolink{http://www.ulg.ac.be}{logo_uliege.jpg} \seplogo \putlogolink{http://modb.oce.ulg.ac.be/}{logo_gher.png} \seplogo \putlogolink{http://seadatanet.org/}{logo_seadatacloud_notransp.png}
+};
+
+\end{tikzpicture}
+
+
+
+\vspace{10cm}
+
 \centering
-\includegraphics[height=7cm]{casta}
-\end{figure}
 
-\normalsize{(last modified: \today)}
-
-
-\vfill
-
-\parbox{.20\textwidth}{
-\flushleft
-\includegraphics[height=1.75cm]{gherlogo.PNG}
-}\parbox{.60\textwidth}{
+\begin{minipage}[c]{.65\textwidth}
 \centering
-\vspace{.4cm}
-
-
-\footnotesize{GeoHydrodynamics and Environment Research, MARE\\ 
-Departement of Astrophysics, Geophysics and Oceanography\\
-University of Li\`{e}ge\\ 
-\url{http://modb.oce.ulg.ac.be}
+{\fontfamily{ptm}\selectfont
+\footnotesize{\large\theauthor}
 }
-\vspace{.15cm}
-}\parbox{.20\textwidth}{
-\flushright
-\includegraphics[height=1.75cm]{logo_uliege.jpeg}
-}
+\end{minipage}
 
-\end{center}
+
 
 \end{titlepage}
-
-%%----------------------
-%\newpage
-%
-%\thispagestyle{empty}
-%
-%\vspace{5cm}
-
