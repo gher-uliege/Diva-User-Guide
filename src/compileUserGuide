@@ -1,0 +1,13 @@
+#!/bin/bash
+
+XELATEX=xelatex
+BIBTEX=bibtex
+MKDINDEX=mkindex
+SRCFILE="DivaUserGuide.tex"
+AUXFILE=$(basename "${SRCFILE}" .tex)'.aux'
+
+${XELATEX} ${SRCFILE}
+${BIBTEX} ${AUXFILE}
+${MKDINDEX} ${SRCFILE}
+${XELATEX} ${SRCFILE}
+${XELATEX} ${SRCFILE}
