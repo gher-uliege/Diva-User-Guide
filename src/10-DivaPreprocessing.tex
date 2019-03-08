@@ -6,75 +6,100 @@ We describe in this chapter the tools to prepare the various input files present
 
 \minitoc
 
+\newpage
+
+\vspace*{.25cm}
+
 \section{Creation of topography\label{sec:howtotopo}}
 %---------------------------------------------------------
 
 \index{Topography}
-A topography may be the first thing you have to prepare in order to generate a climatology. They are necessary in two cases: 
+A topography is often the first thing you have to prepare in order to generate a climatology. They are necessary in two cases:
 \begin{enumerate}
 \item when you need contour files at different depths to perform analysis;
 \item when you work in a vertical plane and want to interpolate several profiles from a cruise.
-\end{enumerate} 
+\end{enumerate}
 
-Basically, the procedure consists in creating files with a format readable by \diva. The list of methods presented in this Section is not exhaustive, but corresponds to different procedures to create topography files using different data bases freely available on the web. 
+Basically, the procedure consists in creating files with a format readable by \diva. The list of methods presented in this Section is not exhaustive, but corresponds to different procedures to create topography files using different data bases freely available on the web.
 
 \begin{center}
 \fbox{
 \begin{minipage}{0.9\textwidth}
 \vspace{.25cm}
-\textbf{Convention:} \diva works with the convention that depth are positive under the sea level. This is especially important when creating contours. \matlab tools provided with the software create topographies which respect this convention, but in case that you work with topography database that are not described in the following section,  
+\textbf{Convention:} \diva works with the convention that depth are positive under the sea level. This is especially important when creating contours. Tools provided with the software create topographies which respect this convention, but in case that you work with topography database that are not described in the following section,
 \vspace{.25cm}
 \end{minipage}
 }
 \end{center}
 
 \btips
-A simple way to change the sign of a given column of a data file is to use the following command:
-\begin{verbatim}
+A simple way to change the sign of a given column of a data file is to use the following \texttt{awk} command:
+\begin{lstlisting}[style=Bash]
 awk '{print $1,$2,-$3}' infile > outfile
-\end{verbatim}
+\end{lstlisting}
 where \texttt{infile} is the old file and \texttt{outfile} the new one.
 
 If you need to switch two columns of a file, type:
-\begin{verbatim}
+\begin{lstlisting}[style=Bash]
 awk '{print $2,$1,$3}' infile > outfile
-\end{verbatim}
+\end{lstlisting}
 \etips
 
 \subsection{Method 1: using \diva on web}
 
 Go to \url{http://gher-diva.phys.ulg.ac.be/web-vis/diva.html}, upload any data (it can be the example provided on the web).
-It is faster to use a small file, and you can even create a simple file with 2 measurements in the lower left and upper right corners of 
+It is faster to use a small file, and you can even create a simple file with 2 measurements in the lower left and upper right corners of
 your region.
-\begin{verbatim}
+\begin{lstlisting}[style=Bash]
 lonmin latmin value
 lonmax latmax value
-\end{verbatim}
-Then specify the output grid on the region where you want the topography and provide the resolution which is typical for
-the resolution you will use later for the analysis.
-Perform the analysis with your "data". In the download section, you can download the topography in a NetCDF file
+\end{lstlisting}
+
+Then specify the output grid on the region where you want the topography and provide the resolution which is typical for the resolution you will use later for the analysis.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{baltic_bathy_divaweb01.png}
+\caption{Bathymetry extraction from \diva on web (1/3).\label{fig:baltic_bathy_divaweb01}}
+\end{figure}
+
+Perform the analysis with your "data".
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{baltic_bathy_divaweb02.png}
+\caption{Bathymetry extraction from \diva on web (2/3).\label{fig:baltic_bathy_divaweb02}}
+\end{figure}
+
+In the download section, you can download the topography in a NetCDF file
 \file{diva\_bath.nc}. Save this file into your \directory{input}. Then on the command line, placed in this \directory{input},
 execute \command{../../bin/divabath2topogrd.a}. This will create \file{topo.grd} and \file{TopoInfo.dat}.
 
-If you need to erase some zones from your topography, you have to create a netcdf file \file{masktopo.nc} before executing 
-\command{../../bin/divabath2topogrd.a}. This \file{masktopo.nc} has to be a 2D file containing a binary variable called MASKTOPO 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{baltic_bathy_divaweb03.png}
+\caption{Bathymetry extraction from \diva on web (3/3).\label{fig:baltic_bathy_divaweb03}}
+\end{figure}
+
+If you need to erase some zones from your topography, you have to create a netcdf file \file{masktopo.nc} before executing
+\command{../../bin/divabath2topogrd.a}. This \file{masktopo.nc} has to be a 2D file containing a binary variable called MASKTOPO
 (0 where you want to erase the topography, 1 elsewhere). The dimensions have to be the same as \file{diva\_bath.nc} and the axis
-have to be named ``lon'' and ``lat'' or ``LON'' and ``LAT''. 
+have to be named ``lon'' and ``lat'' or ``LON'' and ``LAT''.
 
 %If tapering with topography is needed, you can either work first in the NetCDF file \file{diva\_bath.nc} before you run this executable or work on the gher format file \file{topo.grd} afterwards.
 
 \subsection{Method 2: conversion from GEBCO topography\label{sec:topogebco}}
 %------------------------------------------------------
 
-The GEBCO bathymetry is distributed by the British Oceanographic Data Centre (BODC). If you have already registered, you can log in (\url{https://www.bodc.ac.uk/my\_account/login/}), otherwise it is necessary to register to become a new user. 
+The GEBCO bathymetry is distributed by the British Oceanographic Data Centre (BODC). If you have already registered, you can log in (\url{https://www.bodc.ac.uk/my\_account/login/}), otherwise it is necessary to register to become a new user.
 
-Download the complete, global GEBCO One-Minute Grid file (\file{90n90s180w180e.zip}) from \url{http://www.bodc.ac.uk/data/online\_delivery/gebco/} and unzip it to obtain the file \file{GridOne.grd}. Download the software \texttt{GebcoCE\_GridOnly} as well and run it (on Linux : open the .exe with Wine). 
+Download the complete, global GEBCO One-Minute Grid file (\file{90n90s180w180e.zip}) from \url{http://www.bodc.ac.uk/data/online\_delivery/gebco/} and unzip it to obtain the file \file{GridOne.grd}. Download the software \texttt{GebcoCE\_GridOnly} as well and run it (on Linux : open the .exe with Wine).
 
 \subsubsection{Select your area}
 %-------------------------------
 
 Select your region of interest (Fig.~\ref{fig:gebco1}), possibly slightly increased to make sure boundaries are well included in the topography. Then select {\tt File->Export Data->Gridded Data}. Chose Ascii longitude-latitude-depth (default). For the longitude range, use {\tt -180:180} for European seas. Note regions you possibly want to mask later by their coordinate ranges.  Use {\tt topo.gebco.asc} as output file name, into a directory where
-you have your main climatological working place. Push {\tt OK} and be patient. (Fig. \ref{fig:gebco2}). 
+you have your main climatological working place. Push {\tt OK} and be patient. (Fig. \ref{fig:gebco2}).
 
 \begin{figure}[htpb]
 \centering
@@ -98,7 +123,7 @@ you have your main climatological working place. Push {\tt OK} and be patient. (
 
 
 \subsubsection{Convert the file into \texttt{gher} format}
-%--------------------------------------------------------- 
+%---------------------------------------------------------
 
 %For the conversion, two possibilities are offered:
 %\begin{enumerate}
@@ -118,11 +143,11 @@ Go into Cygwin (or into Linux mode) and place yourself in the main directory of 
 
 to see if the file was created correctly. You also should have a \command{gebcoprep} file. If not, copy the \file{gebcoprep.example} file as \command{gebcoprep}.
 
-If you need to mask regions, edit \command{gebcoprep} and add lines as those put with {\tt \#awk} followed by {\tt \#mv bidon}. They should be self explaining and allow excluding regions that are defined by relationships between longitude and latitude. 
+If you need to mask regions, edit \command{gebcoprep} and add lines as those put with {\tt \#awk} followed by {\tt \#mv bidon}. They should be self explaining and allow excluding regions that are defined by relationships between longitude and latitude.
 
 \example {\tt ($2 > 57.0+0.6*$1) {x=-10.} } means that regions where latitude is larger than \texttt{57+0.6*longitude} will be masked.
 
-Once you defined the regions to be masked in this way, execute \command{gebcoprep}. When working on large domains, the computation time can be very long. However, this step has not to be repeated a lot of times. The execution of \command{gebcoprep} will create an ascii file called 
+Once you defined the regions to be masked in this way, execute \command{gebcoprep}. When working on large domains, the computation time can be very long. However, this step has not to be repeated a lot of times. The execution of \command{gebcoprep} will create an ascii file called
 \file{./input/topo.gebco}.
 
 Now you are ready to prepare the gridded topography \file{topo.grd} from which \diva will extract contours. To prepare it,
@@ -143,7 +168,7 @@ In the \directory{divastripped} directory, the execution if \command{gebco2diva}
 
 You can further check the two files by copying them into the \directory{divastripped/input} directory and executing \command{divacont} and \command{divagnu}. If results seem right, you can save the files \file{TopoInfo.data} and \file{topo.grd} into your main data directory, to be used with \file{divacont} on all levels defined by \file{contour.depth}.
 
-If everything is stable, you can erase \file{topogebco.asc} and \file{topo.gebco} to save disk space. 
+If everything is stable, you can erase \file{topogebco.asc} and \file{topo.gebco} to save disk space.
 
 \begin{figure}[htpb]
 \centering
@@ -160,7 +185,7 @@ The principle of this method is to apply a \diva analysis to a data file contain
 \subsubsection{Get topography measurements}
 %------------------------------------------
 
-In the present example data points are extracted from \url{http://topex.ucsd.edu/cgi-bin/get_data.cgi} in the same region as the previous case ($9-12^{\circ}W\, \times\, 30-33^{\circ}N$). The output file is composed of three column: \texttt{| longitude | latitude | depth |}, i.e., the same format as \file{data.dat} files used by \diva. Once the file is downloaded, edit its name in \file{topo.dat}. Figure~\ref{fig:guirtopo} shows the individual measurements (coloured dots) in the region of interest. 
+In the present example data points are extracted from \url{http://topex.ucsd.edu/cgi-bin/get_data.cgi} in the same region as the previous case ($9-12^{\circ}W\, \times\, 30-33^{\circ}N$). The output file is composed of three column: \texttt{| longitude | latitude | depth |}, i.e., the same format as \file{data.dat} files used by \diva. Once the file is downloaded, edit its name in \file{topo.dat}. Figure~\ref{fig:guirtopo} shows the individual measurements (coloured dots) in the region of interest.
 
 
 \begin{figure}[htpb]
@@ -173,13 +198,13 @@ In the present example data points are extracted from \url{http://topex.ucsd.edu
 \subsubsection{Adapt parameters}
 %-------------------------------
 
-As in any \diva analysis, you need to provide parameters concerning the analysis itself and the output grid (file \file{param.par}, described extensively in Section~\ref{sec:param.par}, page~\pageref{sec:param.par}). 
+As in any \diva analysis, you need to provide parameters concerning the analysis itself and the output grid (file \file{param.par}, described extensively in Section~\ref{sec:param.par}, page~\pageref{sec:param.par}).
 
 \begin{itemize}
 \item Correlation length is chosen according to the resolution of the gridded topography you extracted, i.e., the distance between two measurements.
 \item Signal-to-noise ratio is assigned with a large value (typically 100 or more).
 \item \texttt{x/yorigin} are chosen according to the region where you extracted data.
-\item \texttt{dx} and \texttt{dy} are the same as the values you use for your analysis. 
+\item \texttt{dx} and \texttt{dy} are the same as the values you use for your analysis.
 \end{itemize}
 
 
@@ -187,7 +212,7 @@ As in any \diva analysis, you need to provide parameters concerning the analysis
 \subsubsection{Execute \command{divatopo}}
 %----------------------------------------
 
-With the two files \file{topo.dat} and \file{param.par} located in \directory{divastripped/input/}, type \command{divatopo} to launch the analysis. \command{divatopo} automatically creates a contour file according to grid parameters taken in \file{param.par}. The interpolated field is presented on Fig.~\ref{fig:guirtopodiva}. Outputs \file{topo.grd} and \file{TopoInfo.dat} may then be used to generate contours (see Section~\ref{sec:contourgen}). 
+With the two files \file{topo.dat} and \file{param.par} located in \directory{divastripped/input/}, type \command{divatopo} to launch the analysis. \command{divatopo} automatically creates a contour file according to grid parameters taken in \file{param.par}. The interpolated field is presented on Fig.~\ref{fig:guirtopodiva}. Outputs \file{topo.grd} and \file{TopoInfo.dat} may then be used to generate contours (see Section~\ref{sec:contourgen}).
 
 
 
@@ -229,7 +254,7 @@ This DBDB-B topography is not available any more, hence the method described bel
 \subsubsection{Select your area}
 %-------------------------------
 
-Go to \url{https://idbms.navo.navy.mil/dbdbv/dbvquery.html}, select the area and spacing and download the corresponding file in \texttt{CHRTR ascii} format (Fig. \ref{fig:topoextract}). In this example we worked in the region delimited by $[9-12^{\circ}W\, \times\, 30-33^{\circ}N]$ (NW Africa) with a resolution of $0.01^{\circ}$ in both directions. 
+Go to \url{https://idbms.navo.navy.mil/dbdbv/dbvquery.html}, select the area and spacing and download the corresponding file in \texttt{CHRTR ascii} format (Fig. \ref{fig:topoextract}). In this example we worked in the region delimited by $[9-12^{\circ}W\, \times\, 30-33^{\circ}N]$ (NW Africa) with a resolution of $0.01^{\circ}$ in both directions.
 
 
 \begin{figure}[htpb]
@@ -239,11 +264,11 @@ Go to \url{https://idbms.navo.navy.mil/dbdbv/dbvquery.html}, select the area and
 \end{figure}
 
 If the web server is not operational, you can also access this database at \url{http://ferret.pmel.noaa.gov/NVODS/servlets/}
-Then select your dataset by clicking on "\textsl{by Dataset Name}" and chose 
+Then select your dataset by clicking on "\textsl{by Dataset Name}" and chose
 "\textsl{NAVAL OCEANOGRAPHIC OFFICE Bathymetry/Topography 5min resolution}".
 
 Mark the topography box and click on "\textsl{Next}" (Fig. \ref{fig:nvods1}).\\
-Delimit your region and select "ASCII file" as output (Fig. \ref{fig:nvods2}). 
+Delimit your region and select "ASCII file" as output (Fig. \ref{fig:nvods2}).
 
 
 \begin{figure}[htpb]
@@ -283,9 +308,9 @@ As seen in first chapter, a relevant asset of \diva is the fact that it takes in
 \subsection{By hand}
 %----------------------
 
-The first possibility is to build your file \textit{by hand}: having at your disposal the location of different points of the coast (longitude, latitude), simply create a file containing $M$ contours, with the $i-th$ contour having being made up of $N_{i}$ points ($i=1,2,\ldots, N$). 
+The first possibility is to build your file \textit{by hand}: having at your disposal the location of different points of the coast (longitude, latitude), simply create a file containing $M$ contours, with the $i-th$ contour having being made up of $N_{i}$ points ($i=1,2,\ldots, N$).
 
-Be aware that some cases (Fig.~\ref{divaprob}) are to be avoided, since problems arise during the mesh generation when crossings occur in the contour. Also note that, as contours are automatically closed by \diva, the segment joining the first and the last points may generate errors. 
+Be aware that some cases (Fig.~\ref{divaprob}) are to be avoided, since problems arise during the mesh generation when crossings occur in the contour. Also note that, as contours are automatically closed by \diva, the segment joining the first and the last points may generate errors.
 
 
 \begin{figure}[H]
@@ -337,7 +362,7 @@ Contours for the specified depths are showed on Fig.~\ref{fig:contourdepth}.
 %---------------------
 
 \index{Ocean Data View}
-Tool \command{divacoa2cont} allows converting ODV-format coastlines to \diva-format coastlines. Simply copy coastline file in the \directory{input} directory with the name \file{coast.coa} along with a \file{param.par} file and type \command{divacoa2cont} in the shell. 
+Tool \command{divacoa2cont} allows converting ODV-format coastlines to \diva-format coastlines. Simply copy coastline file in the \directory{input} directory with the name \file{coast.coa} along with a \file{param.par} file and type \command{divacoa2cont} in the shell.
 
 This provides you the new file \file{./input/coast.cont}.
 
@@ -368,7 +393,7 @@ The script \command{divafit}: uses the data (\file{./input/data.dat}) for a dire
 
 \command{divafit} \qquad: performs a fit of the data correlation function based on the whole data set. \\
 \command{divafit -r} \qquad: puts the new value of $L$ in \file{param.par} in function of the fit.\\
-\command{divafit n} \qquad: performs the fit on a sample of \texttt{n*(n-1)/2} couples of data (sub-sampling). 
+\command{divafit n} \qquad: performs the fit on a sample of \texttt{n*(n-1)/2} couples of data (sub-sampling).
 
 \example\\
 \command{divafit -r 100}: performs a fit on $4950$ couples of data and update the file \file{param.par}.
@@ -388,18 +413,18 @@ Estimates of the correlation length are rather robust while those of the signal-
 Output file \file{covariance.dat} is the data-based covariance function:
 \begin{description}
 \item[column 1:] distance between points,
-\item[column 2:] covariances, 
-\item[column 3:] number of data couples used to estimate the covariance. 
-\end{description} 
+\item[column 2:] covariances,
+\item[column 3:] number of data couples used to estimate the covariance.
+\end{description}
 
 Output file \file{covariancefit.dat} allows looking at the fitted covariance function:
 \begin{description}
-\item[column 1:] distance between points, 
-\item[column 2:] data-covariance, 
+\item[column 1:] distance between points,
+\item[column 2:] data-covariance,
 \item[column 3:] fitted covariance.
-\end{description} 
+\end{description}
 
-Finally, file \file{param.par.fit} is the original \file{param.par} file except that the correlation length has been replaced by the fitted value. 
+Finally, file \file{param.par.fit} is the original \file{param.par} file except that the correlation length has been replaced by the fitted value.
 
 \info always have a look at the fit to judge on its quality. %see example ref... divacovafit
 
@@ -411,7 +436,7 @@ The script \command{divagcv} exploits \diva module (\texttt{gcvfac}), analysing 
 
 Input to the module is the number of random estimates required (the larger the value, the more robust the estimator). Default value is 5, unless you change in \command{divacalc}. The user has to provide an input file \file{./input/gvcsampling.dat} containing the list of values for $\snr$ on which to try the estimator (typically around the values provided by \command{divafit}).
 
-During the \command{divagcv} execution, error-field calculations are disabled to reduce computing time. 
+During the \command{divagcv} execution, error-field calculations are disabled to reduce computing time.
 
 \btips
 If a mesh already exists (in \directory{meshgenwork} directory), \command{divagcv} disables the \command{divamesh} procedure. For this reason, ensure you are working with the adequate mesh.
@@ -422,28 +447,28 @@ If a mesh already exists (in \directory{meshgenwork} directory), \command{divagc
 
 File \file{./output/gcv.dat} contains the GCV estimator:
 \begin{description}
-\item[column 1:] signal-to-noise ratio, 
+\item[column 1:] signal-to-noise ratio,
 \item[column 2:] GCV,
 \item[column 3:] data anomaly variance.
-\end{description}  
+\end{description}
 and \file{./output/gcvsnvar.dat} the best new estimate for the S/N and \texttt{VARBAK} parameters.
 
 In \file{param.par.gcv}, you find an adapted version of the original \file{param.par}.
 
 \subsection{\command{divabin}}
 
-\command{divabin} performs a spatial binning of the data with the spatial resolution defined in \\ \file{param.par}. 
-The script is called by \file{DIVA3D/divastripped/divafit} (for CL) and/or by \file{DIVA3D/divastripped/diva3Dsnop} 
-(for SNR, only called when working in 3 or 4D) 
+\command{divabin} performs a spatial binning of the data with the spatial resolution defined in \\ \file{param.par}.
+The script is called by \file{DIVA3D/divastripped/divafit} (for CL) and/or by \file{DIVA3D/divastripped/diva3Dsnop}
+(for SNR, only called when working in 3 or 4D)
 if the parameter ``binning'' is set to the value
-``1'' in these scripts (at the beginning). The purpose of this optional binning is to improve the quality 
-of the parameters (CL and/or SNR) optimization by averaging a part of the highly correlated observations 
-(taken by a boat in a restricted area, for instance).  
+``1'' in these scripts (at the beginning). The purpose of this optional binning is to improve the quality
+of the parameters (CL and/or SNR) optimization by averaging a part of the highly correlated observations
+(taken by a boat in a restricted area, for instance).
 
 \subsection{\command{divacv}}
 %-------------------------------
 
-\command{divacv} carries out a cross validation, point by point, without new matrix inversions. 
+\command{divacv} carries out a cross validation, point by point, without new matrix inversions.
 
 \subsection{\command{divacvrand}}
 %-------------------------------
@@ -451,7 +476,7 @@ of the parameters (CL and/or SNR) optimization by averaging a part of the highly
 \command{divacv} runs a cross validation by sub-samples of points.
 
 
-\info in the present version (\diva-\divaversion), tools  \command{divacv} and \command{divacvrand}  
+\info in the present version (\diva-\divaversion), tools  \command{divacv} and \command{divacvrand}
 do not adapt the error norm to include the relative weights on data. This will be introduced in the next versions.
 
 %--------------
@@ -463,9 +488,9 @@ do not adapt the error norm to include the relative weights on data. This will b
 
 \command{ncdf2gher} performs a format conversion from a 2D NETCDF file to a file in GHER format, with its info file (ASCII).
 The netcdf file \file{myfield.nc} has to be placed in \directory{input}. Its axis have to be ``lon'' and ``lat'' or ``LON'' and ``LAT''.
-Only one variable (myfield, i.e. the name of your field) is accepted. 
+Only one variable (myfield, i.e. the name of your field) is accepted.
 
-To launch the conversion, just type 
+To launch the conversion, just type
 
 \begin{lstlisting}[style=Bash]
 [DIVA3D/divastripped] ./ncdf2gher myfield
@@ -480,17 +505,17 @@ By default, the exclusion value will be $10^6$.
 %-----------------------------
 
 \command{gher2ncdf} performs a format conversion from a file in GHER format, with its info file (ASCII) to a 2D NETCDF file.
-The gher file \file{myfield.grd} has to be placed in \directory{input}, as well as its info file \file{myfieldInfo.dat}. 
-These two files have the same form and conventions as \file{topo.grd} and \file{TopoInfo.dat}. 
+The gher file \file{myfield.grd} has to be placed in \directory{input}, as well as its info file \file{myfieldInfo.dat}.
+These two files have the same form and conventions as \file{topo.grd} and \file{TopoInfo.dat}.
 
-To launch the conversion, just type 
+To launch the conversion, just type
 
 \begin{lstlisting}[style=Bash]
 [DIVA3D/divastripped] ./gher2ncdf myfield
 \end{lstlisting}
 
 Your variable ``myfield'' will then be stored into a netcdf file named \file{myfield.nc}. Its axis will be ``lon'' and ``lat''.
-The exclusion value will be the same as in gher file. Only one variable (myfield, i.e. the name of your field) is accepted. 
+The exclusion value will be the same as in gher file. Only one variable (myfield, i.e. the name of your field) is accepted.
 
 %--------------
 \section{Misc}
@@ -524,7 +549,7 @@ The output overwrites \file{./input/data.dat} but keeps the original one in \dir
 [divastripped] divaload ~/DIVA/test/
 \end{lstlisting}
 will load the files from \directory{\textasciitilde/DIVA/test/input}.
- 
+
 
 \btips
 When you want to know to which correspond the data present in the input directory, simply read the content of the file \file{input/casename}; it indicates the repertory from which you loaded input files with command \command{divaload}.
