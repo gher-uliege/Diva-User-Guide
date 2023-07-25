@@ -38,6 +38,11 @@ The source files (.tex) in the [source](./src/) directory and the figures necess
         └── figures
 ```
 
+
+## For the editors
+
+If you plan to edit the User Guide, here are some instructions.
+
 ### Requirements
 
 The manual requires several LaTeX packages to be compiled; the [header](src/00-DivaHeader.tex) file contains the list package to be installed along with the commands for the layout.
@@ -56,9 +61,6 @@ latex DivaUserGuide.tex
 * The 3rd line creates a list of references for the bibliography.
 * The 4th line prepares the index.
 * The last 2 lines are identical but necessary to obtain the correct references to the bibliography. 
-
-
-## For the editors
 
 1. Try to use the commands 
 ```
@@ -79,14 +81,14 @@ Example:
 
 ## Related projects 
 
-### divand.jl 
+### DIVAnd.jl 
 
-[divand.jl](https://github.com/gher-ulg/divand.jl)(Julia)  performs n-dimensional variational analysis of arbitrarily located observations.
+[DIVAndnd.jl](https://github.com/gher-uliege/divand.jl) (Julia) performs n-dimensional variational analysis of arbitrarily located observations.
 
 ### divand.py
 
-[divand.py](https://github.com/gher-ulg/divand.py) is the Python interface to the previous code.
+[divand.py](https://github.com/gher-uliege/divand.py) is the Python interface to the previous code (not maintained anymore).
 
 ### DivaPythonTools
 
-[DivaPythonTools](https://github.com/gher-ulg/DivaPythonTools) is a set of utilies to read, write and plot the content of input or output files used in Diva.
+[DivaPythonTools](https://github.com/gher-ulg/DivaPythonTools) is a set of utilies to read, write and plot the content of input or output files used in DIVA.
