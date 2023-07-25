@@ -81,14 +81,14 @@ Example:
 
 ## Related projects 
 
-### DIVAnd.jl 
+### DIVAnd.jl ![Julia](https://img.shields.io/badge/-Julia-9558B2?style=for-the-badge&logo=julia&logoColor=white)
 
-[DIVAndnd.jl](https://github.com/gher-uliege/divand.jl) (Julia) performs n-dimensional variational analysis of arbitrarily located observations.
+[DIVAndnd.jl](https://github.com/gher-uliege/divand.jl)  performs n-dimensional variational analysis of arbitrarily located observations.
 
-### divand.py
+### divand.py ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 [divand.py](https://github.com/gher-uliege/divand.py) is the Python interface to the previous code (not maintained anymore).
 
-### DivaPythonTools
+### DivaPythonTools ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 [DivaPythonTools](https://github.com/gher-ulg/DivaPythonTools) is a set of utilies to read, write and plot the content of input or output files used in DIVA.
