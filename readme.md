@@ -1,4 +1,6 @@
-[![DOI](https://zenodo.org/badge/95117345.svg)](https://zenodo.org/badge/latestdoi/95117345)
+[![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive) [![DOI](https://zenodo.org/badge/95117345.svg)](https://zenodo.org/badge/latestdoi/95117345) ![GitHub top language](https://img.shields.io/github/languages/top/gher-uliege/Diva-User-Guide) ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/gher-uliege/Diva-User-Guide) ![GitHub contributors](https://img.shields.io/github/contributors/gher-uliege/Diva-User-Guide) 
+
+
 
 This repository contains the source files ([LaTeX](https://www.latex-project.org/)) and the figures necessary to generate the User Guide of the [Diva](https://github.com/gher-ulg/DIVA) (Data Interpolating Variational Analysis) tool.
 
